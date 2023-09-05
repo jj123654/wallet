@@ -20,6 +20,8 @@
     <string name="index_3">3</string>
     <string name="secure_wallet">Secure wallet</string>
     <string name="confirm">Confirm</string>
+    <string name="total">Total</string>
+    <string name="estimated_gas_fee">Estimated gas fee</string>
     <string name="i_have_carefully_and_afree_with">I have carefully and afree with <font color='#007DFF'>User Agreement</font></string>
     <string name="secure_wallet_hint_title">These secret recovery phrase are for recovering your wallet, write down it correctly on paper and keep it in a safe place</string>
     <string name="secure_wallet_alert">Dont’t desclose secret recovery phrase to anyone Once the secret recovery phrase is lost, assets canot be reccovered</string>
