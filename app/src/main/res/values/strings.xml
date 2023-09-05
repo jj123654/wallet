@@ -120,5 +120,8 @@
     <string name="popular_tokens">Popular Tokens</string>
     <string name="congratulations">Congratulations</string>
     <string name="create_wallet_success_tips">You‘ve successfully import your wallet.\nRemember to keep your secret recovery phrase\nsafe, it’s your responsibility!</string>
+    <string name="create_a_new_account">Create a new account</string>
+    <string name="import_an_account">Import an account</string>
+    <string name="switch_account">Switch Account</string>
 
 </resources>

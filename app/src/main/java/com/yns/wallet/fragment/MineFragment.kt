@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.yns.wallet.activity.AboutUsActivity
 import com.yns.wallet.R
+import com.yns.wallet.activity.AccountActivity
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.databinding.FragmentMineBinding
 import com.yns.wallet.util.getStatusBarHeight
@@ -18,6 +19,9 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
         }
         view.findViewById<View>(R.id.v_about_bg).setOnClickListener {
             startActivity(Intent(view.context, AboutUsActivity::class.java))
+        }
+        view.findViewById<View>(R.id.v_mine_account).setOnClickListener {
+            startActivity(Intent(view.context, AccountActivity::class.java))
         }
     }
 
