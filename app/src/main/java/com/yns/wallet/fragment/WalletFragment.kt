@@ -34,13 +34,17 @@ class WalletFragment : Fragment(R.layout.fragment_home) {
             .setOnClickListener {
                 startActivity(Intent(view.context, ReceiveActivity::class.java))
             }
-//        view.findViewById<View>(R.id.tv_send)
+        view.findViewById<View>(R.id.tv_send)
+            .setOnClickListener {
+                startActivity(Intent(view.context, SendActivity::class.java))
+            }
+        view.findViewById<View>(R.id.tv_swap)
+            .setOnClickListener {
+                startActivity(Intent(view.context, SwapActivity::class.java))
+            }
+//        view.findViewById<View>(R.id.iv_add)
 //            .setOnClickListener {
-//                startActivity(Intent(view.context, SendActivity::class.java))
-//            }
-//        view.findViewById<View>(R.id.tv_swap)
-//            .setOnClickListener {
-//                startActivity(Intent(view.context, SwapActivity::class.java))
+//                startActivity(Intent(view.context, AddTokenActivity::class.java))
 //            }
     }
 

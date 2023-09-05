@@ -214,6 +214,7 @@
         app:layout_constraintTop_toTopOf="@id/tv_list_title" />
 
     <ImageView
+        android:id="@+id/iv_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"

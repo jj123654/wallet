@@ -236,6 +236,7 @@
 
     <!--about-->
     <View
+        android:id="@+id/v_about_bg"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"

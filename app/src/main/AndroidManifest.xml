@@ -36,6 +36,7 @@
         <activity android:name=".SendActivity" />
         <activity android:name=".SwapActivity" />
         <activity android:name=".AboutUsActivity" />
+        <activity android:name=".AddTokenActivity" />
     </application>
 
 </manifest>

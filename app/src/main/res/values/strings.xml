@@ -103,5 +103,11 @@
     <string name="records">Records</string>
     <string name="choose_tokens">Choose Tokens</string>
     <string name="service_email">Service Email</string>
+    <string name="support_vitails_one">Support@vitails.one</string>
+    <string name="official_website">Official Website</string>
+    <string name="http_yunus_network">Http://yunus.network/</string>
+    <string name="check_for_updates">Check For Updates</string>
+    <string name="search">Search</string>
+    <string name="popular_tokens">Popular Tokens</string>
 
 </resources>
