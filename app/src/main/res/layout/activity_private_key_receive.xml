@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <View
@@ -17,25 +18,46 @@
         android:layout_height="wrap_content"
         app:bar_title="@string/receive" />
 
-    <TextView
-        android:id="@+id/iv_mine_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
-        android:gravity="center_horizontal"
-        android:text="@string/test_mine_string"
-        android:textColor="@color/white"
-        android:textSize="13sp" />
 
     <ImageView
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/shape_round_white_bg"
         android:padding="10dp"
         android:src="#DFDFDF" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_main_corner_20_bg"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:padding="20dp"
+        tools:text="0xfdkjghkasjdfhkashdfkjashdkfjh2314123n4b1kj23dfgwertwerth4kj12h3"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_alert"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/private_key_tips"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="-3dp"
+            android:textColor="@color/tips_red_color"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_super_loop"
@@ -46,18 +68,9 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/shape_bg_btn"
         android:gravity="center"
-        android:text="@string/copy_address"
+        android:text="@string/copy_private_key"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="74dp"
-        android:drawableTop="@mipmap/logo"
-        android:text="@string/yns_wallet"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
 
 </LinearLayout>

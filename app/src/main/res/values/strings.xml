@@ -25,12 +25,17 @@
     <string name="secure_wallet_alert">Dont’t desclose secret recovery phrase to anyone Once the secret recovery phrase is lost, assets canot be reccovered</string>
     <string name="custom_networks">Custom Networks</string>
     <string name="network_name">Network Name</string>
+    <string name="networks">Networks</string>
+    <string name="presets">Presets</string>
     <string name="network_name_optiona">Network Name（optiona）</string>
     <string name="rpc_url">RPC Url</string>
     <string name="chain_id">Chain ID</string>
     <string name="symbol">Symbol</string>
     <string name="block_explorer_url">Block Explorer URL</string>
     <string name="add">Add</string>
+    <string name="private_key_tips">The private key is not encrypted, please export it carefully and the private key.</string>
+    <string name="import_tips">Resetting the password will reset the wallet, and accounts previously imported through the private key will be deleted</string>
+    <string name="add_custom_networks">Add Custom Networks</string>
     <string name="block_explore_url_optional">Block Explore URL（optional）</string>
     <string name="yns_wallet">YNS Wallet</string>
     <string name="yns">YNS</string>
@@ -62,6 +67,7 @@
     <string name="repeat_password">Repeat Password</string>
     <string name="resetting_the_password_will_reset">Resetting the password will reset the wallet, and accounts previously imported through the private key will be deleted</string>
     <string name="next">next</string>
+    <string name="done">Done</string>
     <string name="wallet_step_hint_title">Please write down the following words in the correct order.</string>
     <string name="wallet_step_hint_bottom">Anyone with your private key can access all your assets. Please keep the information to yourself.</string>
     <string name="wallet_step2_2_hint_title">These secret recovery phrase are for recovering your wallet, write down it correctly on paper and keep it in a safe place</string>
@@ -90,6 +96,7 @@
     <string name="check_back_up_record">Check Back Up Record</string>
     <string name="old_password">Old Password</string>
     <string name="copy_address">Copy Address</string>
+    <string name="copy_private_key">Copy Private Key</string>
     <string name="send">Send</string>
     <string name="swap">Swap</string>
     <string name="to">To</string>
@@ -109,5 +116,7 @@
     <string name="check_for_updates">Check For Updates</string>
     <string name="search">Search</string>
     <string name="popular_tokens">Popular Tokens</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="create_wallet_success_tips">You‘ve successfully import your wallet.\nRemember to keep your secret recovery phrase\nsafe, it’s your responsibility!</string>
 
 </resources>

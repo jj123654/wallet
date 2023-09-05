@@ -126,4 +126,7 @@
     <color name="teal_700">#ff018786</color>
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6ffffff</color>
+    <color name="normal_blue_color">#007DFF</color>
+    <color name="tips_red_color">#FF0000</color>
+
 </resources>

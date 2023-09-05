@@ -5,6 +5,7 @@ import android.content.Context
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,6 +22,7 @@ class TitleBar @JvmOverloads constructor(
         val array = context.obtainStyledAttributes(attrs, R.styleable.TitleBar)
         val iconId = array.getInteger(R.styleable.TitleBar_bar_icon, -1)
         val iconView = findViewById<ImageView>(R.id.iv_back)
+        val imgRight = findViewById<ImageView>(R.id.img_right)
 
         iconView.setOnClickListener {
             if (context is Activity) {
@@ -35,6 +37,13 @@ class TitleBar @JvmOverloads constructor(
             val titleView = findViewById<TextView>(R.id.tv_title)
             titleView.text = string
         }
+
+        val rightIconId = array.getInteger(R.styleable.TitleBar_bar_right, -1)
+        if (rightIconId != -1) {
+            imgRight.visibility = View.VISIBLE
+            imgRight.setImageResource(rightIconId)
+        }
+
         array.recycle()
     }
 }
