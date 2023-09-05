@@ -1,7 +1,12 @@
 package com.yns.wallet.fragment
 
-import androidx.fragment.app.Fragment
-import com.yns.wallet.R
+import android.os.Bundle
+import android.view.View
+import com.yns.wallet.base.BaseFragment
+import com.yns.wallet.databinding.FragmentSecureWalletBinding
 
-class SecureWalletFragment: Fragment(R.layout.fragment_secure_wallet) {
+class SecureWalletFragment: BaseFragment<FragmentSecureWalletBinding>() {
+    override fun initView(root: View, savedInstanceState: Bundle?) {
+
+    }
 }

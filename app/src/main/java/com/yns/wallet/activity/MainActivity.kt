@@ -1,4 +1,4 @@
-package com.yns.wallet
+package com.yns.wallet.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,17 +7,17 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import com.yns.wallet.R
+import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.databinding.ActivityMainBinding
 import com.yns.wallet.fragment.MineFragment
 import com.yns.wallet.fragment.WalletFragment
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private lateinit var walletCreateDialog: AlertDialog
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+    override fun initView(root: View, savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
@@ -55,4 +55,5 @@ class MainActivity : BaseActivity() {
     private fun openImportOrCreate() {
         startActivity(Intent(this, ImportOrCreateWallet::class.java))
     }
+
 }

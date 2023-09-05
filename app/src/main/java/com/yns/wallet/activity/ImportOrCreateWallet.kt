@@ -1,12 +1,16 @@
-package com.yns.wallet
+package com.yns.wallet.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.yns.wallet.R
+import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.databinding.ActivityImportCreateBinding
 
-class ImportOrCreateWallet : BaseActivity() {
+class ImportOrCreateWallet : BaseActivity<ActivityImportCreateBinding>() {
 
-    override fun init(savedInstanceState: Bundle?) {
+    override fun initView(root: View, savedInstanceState: Bundle?) {
+
         setContentView(R.layout.activity_import_create)
 
         findViewById<View>(R.id.tv_import).setOnClickListener {
@@ -16,5 +20,6 @@ class ImportOrCreateWallet : BaseActivity() {
             startActivity(Intent(this, CreateActivity::class.java))
         }
     }
+
 
 }

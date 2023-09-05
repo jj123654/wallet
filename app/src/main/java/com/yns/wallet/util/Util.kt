@@ -1,15 +1,18 @@
-package com.yns.wallet
+package com.yns.wallet.util
 
 import android.content.Context
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
+import android.view.Gravity
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.yns.wallet.R
+import com.yns.wallet.base.BaseApplication
 
 fun adjustStatusBarMargin(view: View) {
     val params = view.layoutParams as ConstraintLayout.LayoutParams
@@ -81,4 +84,41 @@ open class EditTextWatch(editText: EditText) {
             }
         })
     }
+}
+
+
+/**
+ * 扩展onClick方法，防止双击
+ * @param onClickListener 监听器
+ * @param doubleClickInterval 防止双击的间隔毫秒，默认1秒，小于0则不检测双击
+ */
+fun View.onClick(doubleClickInterval: Long = 1000L, onClickListener: View.OnClickListener?) {
+    if (onClickListener == null) {
+        setOnClickListener(null)
+        return
+    }
+    if (doubleClickInterval <= 0) {
+        setOnClickListener(onClickListener)
+        return
+    }
+    setOnClickListener {
+        //取出上一次点击的时间戳
+        val lastClick = this.getTag(R.id.no_double_click) as? Long ?: 0
+        if (System.currentTimeMillis() - lastClick <= doubleClickInterval) {
+            return@setOnClickListener
+        }
+        //记录本次点击的时间戳
+        this.setTag(R.id.no_double_click, System.currentTimeMillis())
+        onClickListener.onClick(it)
+    }
+
+}
+/**
+ * 显示toast ，在中间
+ */
+fun showToast(toast: CharSequence?) {
+    toast ?: return
+    Toast.makeText(BaseApplication.globalContext(), toast, Toast.LENGTH_SHORT).apply {
+        setGravity(Gravity.CENTER, 0, 0)
+    }.show()
 }

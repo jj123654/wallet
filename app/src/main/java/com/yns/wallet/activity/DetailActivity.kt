@@ -1,4 +1,4 @@
-package com.yns.wallet
+package com.yns.wallet.activity
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,15 +7,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.yns.wallet.R
+import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.databinding.ActivityDetailBinding
 
-class DetailActivity : BaseActivity() {
+class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
-    override fun init(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_detail)
-        initView()
-    }
+    override fun initView(root: View, savedInstanceState: Bundle?) {
 
-    private fun initView() {
         findViewById<View>(R.id.iv_mine_name).setOnClickListener {
             showEditDialog()
         }
@@ -45,4 +44,6 @@ class DetailActivity : BaseActivity() {
         view.findViewById<View>(R.id.tv_cancel).setOnClickListener { dialog.dismiss() }
         view.findViewById<View>(R.id.tv_confirm).setOnClickListener { dialog.dismiss() }
     }
+
+
 }

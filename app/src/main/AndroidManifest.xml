@@ -4,6 +4,7 @@
     package="com.yns.wallet">
 
     <application
+        android:name=".base.BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +15,7 @@
         android:theme="@style/Theme.Wallet"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:launchMode="singleTask">
 
@@ -24,19 +25,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ImportOrCreateWallet" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ImportActivity" />
-        <activity android:name=".CreateActivity" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".DetailResetPwdActivity" />
-        <activity android:name=".CreateStepImportActivity" />
-        <activity android:name=".AddWalletActivity" />
-        <activity android:name=".ReceiveActivity" />
-        <activity android:name=".SendActivity" />
-        <activity android:name=".SwapActivity" />
-        <activity android:name=".AboutUsActivity" />
-        <activity android:name=".AddTokenActivity" />
+        <activity android:name=".activity.ImportOrCreateWallet" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.ImportActivity" />
+        <activity android:name=".activity.CreateActivity" />
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.DetailResetPwdActivity" />
+        <activity android:name=".activity.CreateStepImportActivity" />
+        <activity android:name=".activity.AddWalletActivity" />
+        <activity android:name=".activity.ReceiveActivity" />
+        <activity android:name=".activity.SendActivity" />
+        <activity android:name=".activity.SwapActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.AddTokenActivity" />
     </application>
 
 </manifest>

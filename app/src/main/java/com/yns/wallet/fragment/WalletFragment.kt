@@ -8,20 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yns.wallet.*
+import com.yns.wallet.activity.*
+import com.yns.wallet.base.BaseFragment
+import com.yns.wallet.databinding.FragmentHomeBinding
+import com.yns.wallet.util.adjustStatusBarMargin
 
-class WalletFragment : Fragment(R.layout.fragment_home) {
+class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initView(view)
-        adjustStatusBarMargin(view.findViewById(R.id.iv_logo))
-        initListDate(view)
-    }
 
-    private fun initView(view: View) {
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         view.findViewById<View>(R.id.tv_detail)
             .setOnClickListener {
                 startActivity(Intent(view.context, DetailActivity::class.java))
@@ -46,6 +44,9 @@ class WalletFragment : Fragment(R.layout.fragment_home) {
 //            .setOnClickListener {
 //                startActivity(Intent(view.context, AddTokenActivity::class.java))
 //            }
+
+        adjustStatusBarMargin(view.findViewById(R.id.iv_logo))
+        initListDate(view)
     }
 
     private fun initListDate(view: View) {
@@ -96,4 +97,5 @@ class WalletFragment : Fragment(R.layout.fragment_home) {
         val tvIndex: TextView = view.findViewById(R.id.tv_index)
         val tvBalance: TextView = view.findViewById(R.id.tv_balance)
     }
+
 }

@@ -1,4 +1,4 @@
-package com.yns.wallet
+package com.yns.wallet.activity
 
 import android.content.Context
 import android.os.Bundle
@@ -7,19 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.yns.wallet.R
+import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.databinding.ActivitySendBinding
 import com.yns.wallet.widget.bottomsheet.BottomSheet
 
-class SendActivity :BaseActivity() {
+class SendActivity : BaseActivity<ActivitySendBinding>() {
 
     private lateinit var bottomSheet: BottomSheet
 
-    override fun init(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_send)
+    override fun initView(root: View, savedInstanceState: Bundle?) {
 
-        initView()
-    }
-
-    private fun initView() {
         // bottom sheet
         val view: View = LayoutInflater.from(this).inflate(R.layout.layout_choose_account, null)
         bottomSheet = BottomSheet.Builder(this).contentView(view).build()
@@ -50,4 +48,6 @@ class SendActivity :BaseActivity() {
     }
 
     class BottomSheetViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
+
 }

@@ -1,28 +1,26 @@
-package com.yns.wallet
+package com.yns.wallet.activity
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.yns.wallet.R
+import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.base.Constant
+import com.yns.wallet.databinding.ActivityCreateStepImportBinding
 import com.yns.wallet.util.SharedPreferencesUtils
 import com.yns.wallet.widget.bottomsheet.BottomSheet
 
-class CreateStepImportActivity : BaseActivity() {
+class CreateStepImportActivity : BaseActivity<ActivityCreateStepImportBinding>() {
 
     private lateinit var bottomSheet: BottomSheet
 
-    override fun init(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_create_step_import)
 
-        initView()
-    }
-
-    private fun initView() {
+    override fun initView(root: View, savedInstanceState: Bundle?) {
         // bottom sheet
         val view: View = LayoutInflater.from(this).inflate(R.layout.layout_choose_account, null)
         bottomSheet = BottomSheet.Builder(this).contentView(view).build()
@@ -58,4 +56,5 @@ class CreateStepImportActivity : BaseActivity() {
     }
 
     class BottomSheetViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
 }

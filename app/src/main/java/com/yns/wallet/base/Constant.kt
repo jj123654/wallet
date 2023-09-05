@@ -1,4 +1,4 @@
-package com.yns.wallet
+package com.yns.wallet.base
 
 class Constant {
 

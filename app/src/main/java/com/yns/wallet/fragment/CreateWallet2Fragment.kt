@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yns.wallet.R
+import com.yns.wallet.base.BaseFragment
+import com.yns.wallet.databinding.FragmentCreateWallet2Binding
 
-class CreateWallet2Fragment : Fragment(R.layout.fragment_create_wallet2) {
+class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
 
     private val wordList: List<String> = listOf(
         "fine", "poverty", "satisfy",
@@ -21,11 +22,7 @@ class CreateWallet2Fragment : Fragment(R.layout.fragment_create_wallet2) {
         "never", "squirrel", "trumpet"
     )
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initView(view)
-    }
-
-    private fun initView(view: View) {
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         val vPopBg = view.findViewById<View>(R.id.v_pop_bg)
         val llPopLayout = view.findViewById<View>(R.id.ll_pop_layout)
         view.findViewById<View>(R.id.tv_view_mnemonic).setOnClickListener {
@@ -62,4 +59,6 @@ class CreateWallet2Fragment : Fragment(R.layout.fragment_create_wallet2) {
     class WordListHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvWord = view.findViewById<TextView>(R.id.tv_word)
     }
+
+
 }

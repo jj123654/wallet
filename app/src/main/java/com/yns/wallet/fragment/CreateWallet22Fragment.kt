@@ -7,14 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yns.wallet.CreateStepImportActivity
+import com.yns.wallet.activity.CreateStepImportActivity
 import com.yns.wallet.R
+import com.yns.wallet.base.BaseFragment
+import com.yns.wallet.databinding.FragmentCreateWallet22Binding
 import kotlin.random.Random
 
-class CreateWallet22Fragment : Fragment(R.layout.fragment_create_wallet22) {
+class CreateWallet22Fragment : BaseFragment<FragmentCreateWallet22Binding>() {
 
     private val line0: List<String> = listOf(
         "fine", "poverty", "satisfy"
@@ -30,17 +31,14 @@ class CreateWallet22Fragment : Fragment(R.layout.fragment_create_wallet22) {
     )
     private val indexArray = ArrayList<Int>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initView(view)
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         indexArray.add(Random.nextInt(0, 3))
         indexArray.add(Random.nextInt(0, 3) + 3)
         indexArray.add(Random.nextInt(0, 3) + 6)
         indexArray.add(Random.nextInt(0, 3) + 9)
         val removeIndex = Random.nextInt(0, 3)
         indexArray.removeAt(removeIndex)
-    }
 
-    private fun initView(view: View) {
         val rvList = view.findViewById<RecyclerView>(R.id.rv_list)
         rvList.layoutManager = GridLayoutManager(context, 3)
         rvList.adapter = WordListAdapter(view.context, indexArray)
@@ -75,4 +73,5 @@ class CreateWallet22Fragment : Fragment(R.layout.fragment_create_wallet22) {
     class WordListHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvWord = view.findViewById<TextView>(R.id.tv_word)
     }
+
 }
