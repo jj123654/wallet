@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/et_pwd"
+        style="@style/import_edit"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        android:hint="@string/password_is_not_less_than_8digits"
+        android:inputType="textPassword"
+        android:paddingStart="20dp"
+        android:paddingEnd="80dp"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/iv_pwd_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/et_pwd"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:src="@drawable/selector_pwd_eye" />
+</RelativeLayout>

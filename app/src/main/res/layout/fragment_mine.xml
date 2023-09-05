@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/v_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/main"
+        android:gravity="center"
+        android:text="@string/me"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_status_bar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_mine_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_mine_icon" />
+
+    <ImageView
+        android:id="@+id/iv_mine_icon"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="32dp"
+        android:src="@mipmap/icon_default_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <TextView
+        android:id="@+id/iv_mine_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:drawableRight="@mipmap/icon_arrow_dow"
+        android:drawablePadding="8dp"
+        android:text="@string/chain_id"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/iv_mine_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_mine_icon" />
+
+
+    <TextView
+        android:id="@+id/iv_mine_hash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:text="@string/test_mine_string"
+        android:textColor="#8775AE"
+        android:maxEms="16"
+        android:maxLines="1"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/iv_mine_icon"
+        app:layout_constraintTop_toBottomOf="@id/iv_mine_name" />
+
+    <!--trans-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_trans_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_trans_icon" />
+
+    <ImageView
+        android:id="@+id/iv_trans_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="46dp"
+        android:src="@mipmap/icon_personal_receive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_mine_icon" />
+
+    <TextView
+        android:id="@+id/tv_trans_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/transaction_records"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/iv_trans_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_trans_icon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:src="@mipmap/icon_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/tv_trans_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_trans_title" />
+
+
+    <!--share-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_share_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_share_icon" />
+
+    <ImageView
+        android:id="@+id/iv_share_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="46dp"
+        android:src="@mipmap/icon_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_trans_icon" />
+
+    <TextView
+        android:id="@+id/tv_share_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/share_my_address"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/iv_share_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_share_icon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:src="@mipmap/icon_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/iv_share_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_share_icon" />
+
+    <!--language-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_language_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_language_icon" />
+
+    <ImageView
+        android:id="@+id/iv_language_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="46dp"
+        android:src="@mipmap/icon_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_trans_icon" />
+
+    <TextView
+        android:id="@+id/tv_language_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/language"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/iv_language_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_language_icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="@string/english"
+        android:textColor="#8775AE"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_language_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_language_icon" />
+
+    <!--agreement-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_agreement_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_agreement_icon" />
+
+    <ImageView
+        android:id="@+id/iv_agreement_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="46dp"
+        android:src="@mipmap/icon_user_agreement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_language_icon" />
+
+    <TextView
+        android:id="@+id/tv_agreement_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/user_agreement"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/iv_agreement_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_agreement_icon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:src="@mipmap/icon_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/iv_agreement_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_agreement_icon" />
+
+
+    <!--about-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_about_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_about_icon" />
+
+    <ImageView
+        android:id="@+id/iv_about_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="46dp"
+        android:src="@mipmap/icon_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_agreement_icon" />
+
+    <TextView
+        android:id="@+id/tv_about_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/about_us"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/iv_about_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_about_icon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:src="@mipmap/icon_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/iv_about_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_about_icon" />
+
+
+    <!--logout-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_logout_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_logout_icon" />
+
+    <ImageView
+        android:id="@+id/iv_logout_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="46dp"
+        android:src="@mipmap/icon_log_out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_about_icon" />
+
+    <TextView
+        android:id="@+id/tv_logout_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/iv_logout_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_logout_icon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:src="@mipmap/icon_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/iv_logout_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_logout_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

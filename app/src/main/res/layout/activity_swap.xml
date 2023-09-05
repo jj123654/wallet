@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.yns.wallet.widget.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_title="@string/modify_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_status_bar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_bottom_round_bg"
+        app:layout_constraintBottom_toTopOf="@id/v_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar" />
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_swap" />
+
+    <RelativeLayout
+        android:id="@+id/rl_from_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar">
+
+        <ImageView
+            android:id="@+id/iv_mine_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/icon_default_user" />
+
+        <TextView
+            android:id="@+id/iv_mine_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_mine_icon"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/iv_mine_icon"
+            android:drawableRight="@mipmap/icon_arrow_down_small"
+            android:drawablePadding="8dp"
+            android:text="@string/yns"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/iv_mine_hash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_mine_name"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/iv_mine_icon"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="@string/from"
+            android:textColor="#8775AE"
+            android:textSize="8sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar">
+
+        <ImageView
+            android:id="@+id/iv_mine_icon_to"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/icon_default_user" />
+
+        <TextView
+            android:id="@+id/iv_mine_name_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_mine_icon_to"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/iv_mine_icon_to"
+            android:drawableRight="@mipmap/icon_arrow_down_small"
+            android:drawablePadding="8dp"
+            android:text="@string/yns"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/iv_mine_hash_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_mine_name_to"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/iv_mine_icon_to"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="@string/to"
+            android:textColor="#8775AE"
+            android:textSize="8sp" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_swap_ico"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="57dp"
+        android:background="@drawable/shape_circle_white"
+        android:padding="12dp"
+        android:src="@mipmap/icon_change"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar" />
+
+    <LinearLayout
+        android:id="@+id/ll_left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rl_from_layout">
+
+        <TextView
+            android:id="@+id/tv_left_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="0"
+            android:textColor="#8775AE"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="@string/enter_an_amount"
+            android:textColor="#8775AE"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_right_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rl_from_layout">
+
+        <TextView
+            android:id="@+id/tv_right_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="0"
+            android:textColor="#8775AE"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="@string/enter_an_amount"
+            android:textColor="#8775AE"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_swap"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_btn_gray"
+        android:gravity="center"
+        android:text="@string/instant_swap"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_left_layout" />
+
+
+    <TextView
+        android:id="@+id/tv_records"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:maxEms="16"
+        android:maxLines="1"
+        android:text="@string/records"
+        android:textColor="#8775AE"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_line" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

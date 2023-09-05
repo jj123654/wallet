@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="local_status_bar_height">24dp</dimen>
+    <dimen name="dialog_width">235dp</dimen>
+
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_13">8sp</dimen>
+    <dimen name="sp_10">6sp</dimen>
+</resources>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main" />
+
+    <com.yns.wallet.widget.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_title="@string/wallet_details" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_mine_icon"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:src="@mipmap/icon_default_user" />
+
+        <TextView
+            android:id="@+id/iv_mine_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_mine_icon"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/iv_mine_icon"
+            android:drawablePadding="8dp"
+            android:text="@string/chain_id"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/iv_mine_hash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_mine_name"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/iv_mine_icon"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="@string/test_mine_string"
+            android:textColor="#8775AE"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_old_pwd_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/to"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar" />
+
+    <EditText
+        android:id="@+id/et_pwd"
+        style="@style/import_edit"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        android:hint="@string/enter_or_paste_the_address"
+        android:inputType="textPassword"
+        android:paddingStart="20dp"
+        android:paddingEnd="80dp"
+        android:textSize="13sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/to"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_mine_icon2"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:src="@mipmap/icon_default_user" />
+
+        <TextView
+            android:id="@+id/iv_mine_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_mine_icon2"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/iv_mine_icon2"
+            android:drawableRight="@mipmap/icon_arrow_dow"
+            android:drawablePadding="8dp"
+            android:text="@string/chain_id"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/iv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_mine_icon2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:text="0"
+            android:textColor="#8775AE"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/iv_mine_hash2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_mine_name2"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/iv_mine_icon2"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="@string/test_mine_string"
+            android:textColor="#8775AE"
+            android:textSize="13sp" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/iv_mine_icon2"
+            android:layout_marginTop="16dp"
+            android:background="#886229FF" />
+
+        <TextView
+            android:id="@+id/iv_mine_wallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v_line"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:drawableStart="@mipmap/icon_wallet"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="0BNB"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/iv_mine_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v_line"
+            android:layout_alignEnd="@id/iv_balance"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:maxEms="16"
+            android:maxLines="1"
+            android:text="@string/max"
+            android:textColor="#007DFF"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_bg_btn"
+        android:gravity="center"
+        android:text="@string/send"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>
