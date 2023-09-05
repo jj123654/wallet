@@ -34,22 +34,86 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_marginStart="20dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="20dp">
 
         <ImageView
+            android:id="@+id/iv_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
             android:src="@mipmap/icon_email" />
 
         <TextView
+            android:id="@+id/tv_email_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/iv_icon"
+            android:src="@mipmap/icon_email"
+            android:text="@string/service_email"
+            android:textColor="#8775AE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_email_name"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/iv_icon"
+            android:src="@mipmap/icon_email"
+            android:textColor="@color/white"
+            android:text="@string/support_vitails_one" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="20dp">
+
+        <ImageView
+            android:id="@+id/iv_website_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
-            android:text="@string/service_email"
-            android:src="@mipmap/icon_email" />
+            android:src="@mipmap/icon_website" />
+
+        <TextView
+            android:id="@+id/tv_website_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/iv_website_icon"
+            android:text="@string/official_website"
+            android:textColor="#8775AE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_website_name"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/iv_website_icon"
+            android:textColor="@color/white"
+            android:text="@string/http_yunus_network" />
+
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_btn_full_bg"
+        android:gravity="center"
+        android:text="@string/check_for_updates"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 </LinearLayout>

@@ -40,10 +40,10 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
             .setOnClickListener {
                 startActivity(Intent(view.context, SwapActivity::class.java))
             }
-//        view.findViewById<View>(R.id.iv_add)
-//            .setOnClickListener {
-//                startActivity(Intent(view.context, AddTokenActivity::class.java))
-//            }
+        view.findViewById<View>(R.id.iv_add)
+            .setOnClickListener {
+                startActivity(Intent(view.context, AddTokenActivity::class.java))
+            }
 
         adjustStatusBarMargin(view.findViewById(R.id.iv_logo))
         initListDate(view)
@@ -74,7 +74,8 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
     class WalletListAdapter(private var context: Context, private val items: List<WalletItem>) :
         RecyclerView.Adapter<WalletListViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WalletListViewHolder {
-            val view = LayoutInflater.from(context).inflate(R.layout.layout_wallet_item, parent, false)
+            val view =
+                LayoutInflater.from(context).inflate(R.layout.layout_wallet_item, parent, false)
             return WalletListViewHolder(view)
         }
 

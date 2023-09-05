@@ -54,6 +54,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.WalletDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddTokenActivity" />
     </application>
 
 </manifest>
