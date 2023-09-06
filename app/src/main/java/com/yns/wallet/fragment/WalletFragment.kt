@@ -45,6 +45,10 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 startActivity(NetworksActivity::class.java)
             }
 
+            ivLogo.onClick {
+                startActivity(SelectTokenActivity::class.java)
+            }
+
         }
 
 

@@ -64,6 +64,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.SelectLanguageActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SelectTokenActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

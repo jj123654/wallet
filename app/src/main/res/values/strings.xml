@@ -23,6 +23,7 @@
     <string name="total">Total</string>
     <string name="custom_tokens">Custom Tokens</string>
     <string name="token_address">Token Address</string>
+    <string name="token_name">Token Name</string>
     <string name="gno">GNO</string>
     <string name="all">All</string>
     <string name="transfer">Transfer</string>
@@ -60,6 +61,7 @@
     <string name="test_mine_string">037hd75jdr83hfnlksowu5fddhu43ew82737edhfvjskfjhgi99</string>
     <string name="transaction_records">Transaction Records</string>
     <string name="select_language">Select Language</string>
+    <string name="select_token">Select Token</string>
     <string name="share_my_address">Share my address</string>
     <string name="language">Language</string>
     <string name="user_agreement">User Agreement</string>
