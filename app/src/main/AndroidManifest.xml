@@ -60,6 +60,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.CustomTokensActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CustomNetworksActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activity.TransactionRecordsActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.SelectLanguageActivity"
