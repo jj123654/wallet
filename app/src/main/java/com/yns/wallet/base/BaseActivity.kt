@@ -1,5 +1,7 @@
 package com.yns.wallet.base
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -55,4 +57,9 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
             statusBar.layoutParams.height = getStatusBarHeight(this)
         }
     }
+
+    fun startActivity(activity: Class<out Activity>) {
+        startActivity(Intent(this@BaseActivity, activity))
+    }
+
 }

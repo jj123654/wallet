@@ -12,8 +12,7 @@
         </shape>
     </item>
 
-    <item android:state_selected="true"
-        android:state_checked="true">
+    <item android:state_selected="true">
 
         <shape>
             <solid android:color="@color/main" />

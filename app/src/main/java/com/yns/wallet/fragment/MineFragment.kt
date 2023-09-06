@@ -3,12 +3,13 @@ package com.yns.wallet.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.yns.wallet.activity.AboutUsActivity
+import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
-import com.yns.wallet.activity.AccountActivity
+import com.yns.wallet.activity.*
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.databinding.FragmentMineBinding
 import com.yns.wallet.util.getStatusBarHeight
+import com.yns.wallet.util.onClick
 
 class MineFragment : BaseFragment<FragmentMineBinding>() {
 
@@ -23,6 +24,21 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
         view.findViewById<View>(R.id.v_mine_account).setOnClickListener {
             startActivity(Intent(view.context, AccountActivity::class.java))
         }
+
+        viewBinding.apply {
+            transactionRecordLayout.onClick{
+                startActivity(TransactionRecordsActivity::class.java)
+            }
+
+            languageLayout.onClick {
+                startActivity(SelectLanguageActivity::class.java)
+            }
+
+            logoutLayout.onClick{
+                startActivity(LoginActivity::class.java)
+            }
+        }
+
     }
 
 }

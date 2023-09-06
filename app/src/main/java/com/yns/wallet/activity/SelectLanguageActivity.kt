@@ -1,0 +1,46 @@
+package com.yns.wallet.activity
+
+import android.os.Bundle
+import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.qmuiteam.qmui.util.QMUIDisplayHelper
+import com.yns.wallet.adapter.LanguageListAdapter
+import com.yns.wallet.adapter.TransactionListAdapter
+import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.bean.LanguageBean
+import com.yns.wallet.bean.TransactionRecord
+import com.yns.wallet.databinding.ActivitySelectLanguageBinding
+import com.yns.wallet.widget.decoration.SpacesItemDecoration
+import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
+
+class SelectLanguageActivity:BaseActivity<ActivitySelectLanguageBinding>() {
+
+    private val languageListAdapter: LanguageListAdapter by lazy {
+        LanguageListAdapter(this@SelectLanguageActivity, mutableListOf()).apply {
+            setOnItemClickListener { adapter, view, position ->
+                if(!data[position].isSelected){
+                    refreshData(position)
+                }
+            }
+        }
+    }
+
+    var list:MutableList<LanguageBean> = ArrayList()
+
+    override fun initView(root: View, savedInstanceState: Bundle?) {
+        viewBinding.apply {
+            recyclerView.layoutManager = WrapContentLinearLayoutManager(this@SelectLanguageActivity, LinearLayoutManager.VERTICAL,false)
+            recyclerView.addItemDecoration(SpacesItemDecoration(QMUIDisplayHelper.dp2px(this@SelectLanguageActivity, 20), QMUIDisplayHelper.dp2px(this@SelectLanguageActivity, 20)))
+            recyclerView.adapter = languageListAdapter
+        }
+
+        if(list==null||list.size<=0) {
+            list.add(LanguageBean("English",true))
+            list.add(LanguageBean("简体中文",false))
+            list.add(LanguageBean("繁体中文",false))
+
+            languageListAdapter.addData(list)
+        }
+    }
+}

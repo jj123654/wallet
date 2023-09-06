@@ -54,8 +54,16 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.WalletDetailActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.AddTokenActivity" />
-        <activity android:name=".activity.AccountActivity" />
+        <activity android:name=".activity.AddTokenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CustomTokensActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.TransactionRecordsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SelectLanguageActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

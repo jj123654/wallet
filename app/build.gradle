@@ -60,7 +60,10 @@ dependencies {
     implementation "jp.wasabeef:glide-transformations:4.3.0"
 
     //recyclerView的adapter
-    'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7'
+    //
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
 
+    implementation 'com.qmuiteam:qmui:2.0.1'
 
 }

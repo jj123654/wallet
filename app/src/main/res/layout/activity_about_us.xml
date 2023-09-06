@@ -15,7 +15,7 @@
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:bar_title="@string/wallet_details" />
+        app:bar_title="@string/about_us" />
 
     <ImageView
         android:layout_width="103dp"

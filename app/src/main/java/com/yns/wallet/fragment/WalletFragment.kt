@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.*
 import com.yns.wallet.activity.*
 import com.yns.wallet.base.BaseFragment
@@ -20,30 +21,32 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        view.findViewById<View>(R.id.tv_detail)
-            .setOnClickListener {
-                startActivity(Intent(view.context, DetailActivity::class.java))
+
+        viewBinding.apply {
+            tvDetail.onClick {
+                startActivity(DetailActivity::class.java)
             }
-        view.findViewById<View>(R.id.iv_wallet)
-            .setOnClickListener {
-                startActivity(Intent(view.context, AddWalletActivity::class.java))
+            ivWallet.onClick {
+                startActivity(AddWalletActivity::class.java)
             }
-        view.findViewById<View>(R.id.tv_receive)
-            .setOnClickListener {
-                startActivity(Intent(view.context, ReceiveActivity::class.java))
+            tvReceive.onClick {
+                startActivity(ReceiveActivity::class.java)
             }
-        view.findViewById<View>(R.id.tv_send)
-            .setOnClickListener {
-                startActivity(Intent(view.context, SendActivity::class.java))
+            tvSend.onClick {
+                startActivity(SendActivity::class.java)
             }
-        view.findViewById<View>(R.id.tv_swap)
-            .setOnClickListener {
-                startActivity(Intent(view.context, SwapActivity::class.java))
+            tvSwap.onClick {
+                startActivity(SwapActivity::class.java)
             }
-        view.findViewById<View>(R.id.iv_add)
-            .setOnClickListener {
-                startActivity(Intent(view.context, AddTokenActivity::class.java))
+            ivAdd.onClick {
+                startActivity(AddTokenActivity::class.java)
             }
+            tvSuperLoop.onClick {
+                startActivity(NetworksActivity::class.java)
+            }
+
+        }
+
 
         adjustStatusBarMargin(view.findViewById(R.id.iv_logo))
         initListDate(view)

@@ -37,14 +37,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
 
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_one_btn, null)
-        view.findViewById<View>(R.id.tv_confirm).setOnClickListener { openImportOrCreate() }
-        walletCreateDialog = AlertDialog.Builder(this).create()
-        walletCreateDialog.setView(view)
-        walletCreateDialog.show()
-        val width = resources.getDimensionPixelOffset(R.dimen.dialog_width)
-        val height = walletCreateDialog.window?.attributes?.height as Int
-        walletCreateDialog.window?.setLayout(width, height)
+//        val view = LayoutInflater.from(this).inflate(R.layout.dialog_one_btn, null)
+//        view.findViewById<View>(R.id.tv_confirm).setOnClickListener { openImportOrCreate() }
+//        walletCreateDialog = AlertDialog.Builder(this).create()
+//        walletCreateDialog.setView(view)
+//        walletCreateDialog.show()
+//        val width = resources.getDimensionPixelOffset(R.dimen.dialog_width)
+//        val height = walletCreateDialog.window?.attributes?.height as Int
+//        walletCreateDialog.window?.setLayout(width, height)
     }
 
     override fun onNewIntent(intent: Intent?) {

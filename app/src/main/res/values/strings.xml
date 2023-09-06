@@ -21,6 +21,15 @@
     <string name="secure_wallet">Secure wallet</string>
     <string name="confirm">Confirm</string>
     <string name="total">Total</string>
+    <string name="custom_tokens">Custom Tokens</string>
+    <string name="token_address">Token Address</string>
+    <string name="gno">GNO</string>
+    <string name="all">All</string>
+    <string name="transfer">Transfer</string>
+    <string name="address_start_tips">0x...</string>
+    <string name="default_decimal">18</string>
+    <string name="token_symbol">Token Symbol</string>
+    <string name="token_decimal">Token Decimal</string>
     <string name="estimated_gas_fee">Estimated gas fee</string>
     <string name="i_have_carefully_and_afree_with">I have carefully and afree with <font color='#007DFF'>User Agreement</font></string>
     <string name="secure_wallet_hint_title">These secret recovery phrase are for recovering your wallet, write down it correctly on paper and keep it in a safe place</string>
@@ -50,6 +59,7 @@
     <string name="me">Me</string>
     <string name="test_mine_string">037hd75jdr83hfnlksowu5fddhu43ew82737edhfvjskfjhgi99</string>
     <string name="transaction_records">Transaction Records</string>
+    <string name="select_language">Select Language</string>
     <string name="share_my_address">Share my address</string>
     <string name="language">Language</string>
     <string name="user_agreement">User Agreement</string>

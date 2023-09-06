@@ -73,6 +73,7 @@
 
     <!--trans-->
     <View
+        android:id="@+id/transaction_record_layout"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
@@ -154,6 +155,7 @@
 
     <!--language-->
     <View
+        android:id="@+id/language_layout"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
@@ -279,6 +281,7 @@
 
     <!--logout-->
     <View
+        android:id="@+id/logout_layout"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
