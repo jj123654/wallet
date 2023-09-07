@@ -11,16 +11,21 @@ import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.LanguageBean
 import com.yns.wallet.bean.TransactionRecord
 import com.yns.wallet.databinding.ActivitySelectLanguageBinding
+import com.yns.wallet.util.LanguageType
+import com.yns.wallet.util.LanguageUtils
+import com.yns.wallet.util.restartApp
 import com.yns.wallet.widget.decoration.SpacesItemDecoration
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 
 class SelectLanguageActivity:BaseActivity<ActivitySelectLanguageBinding>() {
 
     private val languageListAdapter: LanguageListAdapter by lazy {
-        LanguageListAdapter(this@SelectLanguageActivity, mutableListOf()).apply {
+        LanguageListAdapter(this@SelectLanguageActivity, LanguageUtils.getInstance().languageList).apply {
             setOnItemClickListener { adapter, view, position ->
                 if(!data[position].isSelected){
-                    refreshData(position)
+                    refreshData()
+                    LanguageUtils.getInstance().updateLanguage(this@SelectLanguageActivity,data[position].languageLocale?.language);
+                    restartApp(this@SelectLanguageActivity)
                 }
             }
         }
@@ -35,12 +40,12 @@ class SelectLanguageActivity:BaseActivity<ActivitySelectLanguageBinding>() {
             recyclerView.adapter = languageListAdapter
         }
 
-        if(list==null||list.size<=0) {
-            list.add(LanguageBean("English",true))
-            list.add(LanguageBean("简体中文",false))
-            list.add(LanguageBean("繁体中文",false))
-
-            languageListAdapter.addData(list)
+        languageListAdapter.data.forEach {
+            if(it.languageLocale?.language == LanguageUtils.getInstance().language){
+                it.isSelected = true
+            }
         }
+        languageListAdapter.refreshData()
+
     }
 }

@@ -1,8 +1,9 @@
 package com.yns.wallet.base
 
-class Constant {
+object Constant {
 
-    companion object {
-        const val walletStateKey: String = "WalletState"
-    }
+    const val walletStateKey: String = "WalletState"
+
+    const val APP_LANGUAGE = "APP_LANGUAGE"
+
 }
