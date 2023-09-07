@@ -1,6 +1,7 @@
 package com.yns.wallet.util
 
 import android.content.Context
+import android.content.Intent
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -12,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.yns.wallet.R
+import com.yns.wallet.activity.MainActivity
 import com.yns.wallet.base.BaseApplication
 
 fun adjustStatusBarMargin(view: View) {
@@ -121,4 +123,10 @@ fun showToast(toast: CharSequence?) {
     Toast.makeText(BaseApplication.globalContext(), toast, Toast.LENGTH_SHORT).apply {
         setGravity(Gravity.CENTER, 0, 0)
     }.show()
+}
+
+fun restartApp(context: Context){
+    val LaunchIntent = Intent(context, MainActivity::class.java)
+    LaunchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    context.startActivity(LaunchIntent)
 }

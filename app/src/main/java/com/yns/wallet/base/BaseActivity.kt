@@ -1,6 +1,8 @@
 package com.yns.wallet.base
 
 import android.app.Activity
+import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -10,6 +12,9 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.yns.wallet.R
+import com.yns.wallet.util.AppManager
+import com.yns.wallet.util.EventBusUtil
+import com.yns.wallet.util.LanguageUtils
 import com.yns.wallet.util.getStatusBarHeight
 import java.lang.reflect.ParameterizedType
 
@@ -30,6 +35,7 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
         window.statusBarColor = Color.TRANSPARENT
 
         super.onCreate(savedInstanceState)
+        AppManager.getAppManager().addActivity(this)
         //利用反射，调用指定ViewBinding中的inflate方法填充视图
         val type = javaClass.genericSuperclass
         if (type is ParameterizedType) {
@@ -58,8 +64,48 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
         }
     }
 
+    /**
+     * 是否注册事件分发
+     *
+     * @return true绑定EventBus事件分发，默认不绑定，子类需要绑定的话复写此方法返回true.
+     */
+    protected open fun isRegisterEventBus(): Boolean {
+        return false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppManager.getAppManager().finishActivity(this);
+        if (isRegisterEventBus()) {
+            EventBusUtil.unregister(this)
+        }
+    }
+
     fun startActivity(activity: Class<out Activity>) {
         startActivity(Intent(this@BaseActivity, activity))
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LanguageUtils.attachBaseContext(newBase))
+        //app杀进程启动后会调用Activity attachBaseContext
+        //app杀进程启动后会调用Activity attachBaseContext
+        LanguageUtils.getInstance().setConfiguration(newBase)
+    }
+
+
+    private var dialog: ProgressDialog? = null
+    fun showProgress() {
+        dismissProgress()
+        ProgressDialog(this).apply {
+            setCancelable(false)
+            setCanceledOnTouchOutside(false)
+            show()
+            dialog = this
+        }
+    }
+
+    fun dismissProgress() {
+        dialog?.dismiss()
     }
 
 }

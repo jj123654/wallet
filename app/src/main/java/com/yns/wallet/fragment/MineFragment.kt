@@ -8,6 +8,7 @@ import com.yns.wallet.R
 import com.yns.wallet.activity.*
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.databinding.FragmentMineBinding
+import com.yns.wallet.util.LanguageUtils
 import com.yns.wallet.util.getStatusBarHeight
 import com.yns.wallet.util.onClick
 
@@ -26,6 +27,7 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
         }
 
         viewBinding.apply {
+            languageTv.text = LanguageUtils.getInstance().getLanguageName(activity)
             transactionRecordLayout.onClick{
                 startActivity(TransactionRecordsActivity::class.java)
             }
