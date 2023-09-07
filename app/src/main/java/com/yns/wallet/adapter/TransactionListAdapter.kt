@@ -11,8 +11,8 @@ import com.yns.wallet.databinding.ItemTransactionRecordBinding
 
 
 class TransactionListAdapter(context:Context, data: MutableList<TransactionRecord>?) :
-    BaseQuickAdapter<TransactionRecord, TransactionListAdapter.DeviceHolder>(R.layout.item_transaction_record, data) {
-    override fun convert(holder: DeviceHolder, item: TransactionRecord) {
+    BaseQuickAdapter<TransactionRecord, TransactionListAdapter.BaseHolder>(R.layout.item_transaction_record, data) {
+    override fun convert(holder: BaseHolder, item: TransactionRecord) {
         holder.vb.apply {
             sourceTv.text = "智能触发合约"
             addressTv.text = "sdfasdfasdf....asdf"
@@ -25,7 +25,7 @@ class TransactionListAdapter(context:Context, data: MutableList<TransactionRecor
 
     }
 
-    class DeviceHolder(view: View) : BaseViewHolder(view) {
+    class BaseHolder(view: View) : BaseViewHolder(view) {
         val vb = ItemTransactionRecordBinding.bind(view)
     }
 

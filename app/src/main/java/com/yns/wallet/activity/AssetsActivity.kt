@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import com.yns.wallet.R
 import com.yns.wallet.adapter.ContentPagerAdapter
 import com.yns.wallet.base.BaseActivity
-import com.yns.wallet.databinding.ActivityTransactionRecordsBinding
+import com.yns.wallet.databinding.ActivityAboutUsBinding
+import com.yns.wallet.databinding.ActivityAssetsBinding
+import com.yns.wallet.fragment.AssetsFragment
 import com.yns.wallet.fragment.TransactionRecordFragment
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.UIUtil
@@ -18,7 +20,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTit
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView
 
-class TransactionRecordsActivity : BaseActivity<ActivityTransactionRecordsBinding>() {
+class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
 
     private val tabFragments: MutableList<Fragment> = ArrayList()
 
@@ -29,11 +31,15 @@ class TransactionRecordsActivity : BaseActivity<ActivityTransactionRecordsBindin
     }
 
     private fun initIndicator(){
+        viewBinding.apply {
+            titleBar.setTitle(getString(R.string.usdt))
+            priceTv.text = "$ 1.1434415"
+        }
         tabList.add(getString(R.string.all))
-        tabList.add(getString(R.string.disburse))
-        tabList.add(getString(R.string.income))
+        tabList.add(getString(R.string.transfer))
+        tabList.add(getString(R.string.receive))
         tabList.forEach {
-            tabFragments.add(TransactionRecordFragment.newInstance(it))
+            tabFragments.add(AssetsFragment.newInstance(it))
         }
         viewBinding.viewPager.adapter =
             ContentPagerAdapter(
@@ -42,7 +48,7 @@ class TransactionRecordsActivity : BaseActivity<ActivityTransactionRecordsBindin
             )
 
         val commonNavigator = CommonNavigator(this)
-        commonNavigator.isAdjustMode = true
+        commonNavigator.isAdjustMode = false
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getCount(): Int {
                 return tabList.size
@@ -51,7 +57,7 @@ class TransactionRecordsActivity : BaseActivity<ActivityTransactionRecordsBindin
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
                 val simplePagerTitleView = SimplePagerTitleView(context)
                 simplePagerTitleView.text = tabList[index]
-                simplePagerTitleView.normalColor = resources.getColor(R.color.white)
+                simplePagerTitleView.normalColor = resources.getColor(R.color.transaction_blue_tv_color)
                 simplePagerTitleView.selectedColor = resources.getColor(R.color.transaction_blue_color)
                 simplePagerTitleView.setOnClickListener { viewBinding.viewPager.currentItem = index }
                 return simplePagerTitleView

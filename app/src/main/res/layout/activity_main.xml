@@ -17,26 +17,26 @@
         android:id="@+id/v_bottom_bg"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#2E1766"
+        android:background="@mipmap/main_bottom_bg"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
         android:id="@+id/iv_wallet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:src="@mipmap/icon_wallet"
+        android:layout_marginStart="58dp"
+        android:src="@mipmap/icon_wallet_selected"
+        android:padding="@dimen/dp_10"
         app:layout_constraintBottom_toBottomOf="@id/v_bottom_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/v_bottom_bg" />
 
     <ImageView
         android:id="@+id/iv_main"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="46dp"
-        android:background="@drawable/shape_bg_btn"
-        android:src="@mipmap/logo_white"
+        android:layout_width="102dp"
+        android:layout_height="102dp"
+        android:layout_marginBottom="22dp"
+        android:src="@mipmap/main_center_bg"
         app:layout_constraintBottom_toBottomOf="@id/v_bottom_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -45,8 +45,9 @@
         android:id="@+id/iv_mine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:src="@mipmap/icon_user"
+        android:layout_marginEnd="58dp"
+        android:src="@mipmap/icon_user_normal"
+        android:padding="@dimen/dp_10"
         app:layout_constraintBottom_toBottomOf="@id/v_bottom_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/v_bottom_bg" />

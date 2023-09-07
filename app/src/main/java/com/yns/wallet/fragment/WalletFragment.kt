@@ -13,12 +13,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.*
 import com.yns.wallet.activity.*
+import com.yns.wallet.adapter.WalletListAdapter
 import com.yns.wallet.base.BaseFragment
+import com.yns.wallet.bean.WalletItemInfo
 import com.yns.wallet.databinding.FragmentHomeBinding
 import com.yns.wallet.util.adjustStatusBarMargin
+import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 
 class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
+    private val walletListAdapter:WalletListAdapter by lazy{
+        WalletListAdapter(requireContext(), mutableListOf()).apply {
+            setOnItemClickListener{adapter,position,view->
+                startActivity(AssetsActivity::class.java)
+            }
+        }
+    }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
 
@@ -42,7 +52,7 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 startActivity(AddTokenActivity::class.java)
             }
             tvSuperLoop.onClick {
-                startActivity(NetworksActivity::class.java)
+                startActivity(LoopActivity::class.java)
             }
 
             ivLogo.onClick {
@@ -58,52 +68,18 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun initListDate(view: View) {
         val rvListView = view.findViewById<RecyclerView>(R.id.rv_list)
-        val list = listOf(
-            WalletItem(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-            WalletItem(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-            WalletItem(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-            WalletItem(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-            WalletItem(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
+        val list = mutableListOf(
+            WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
+            WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
+            WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
+            WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
+            WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
         )
-        rvListView.adapter = WalletListAdapter(view.context, list)
         rvListView.layoutManager =
-            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, true)
+            WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true)
+        rvListView.adapter = walletListAdapter
+        walletListAdapter.addData(list)
     }
 
-    data class WalletItem(
-        var iconId: Int,
-        var name: String,
-        var desc: String,
-        var index: Int,
-        var balance: Double
-    )
-
-    class WalletListAdapter(private var context: Context, private val items: List<WalletItem>) :
-        RecyclerView.Adapter<WalletListViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WalletListViewHolder {
-            val view =
-                LayoutInflater.from(context).inflate(R.layout.layout_wallet_item, parent, false)
-            return WalletListViewHolder(view)
-        }
-
-        override fun getItemCount(): Int = items.size
-
-        override fun onBindViewHolder(holder: WalletListViewHolder, position: Int) {
-            val item = items[position]
-            holder.ivIcon.setImageResource(item.iconId)
-            holder.tvName.text = item.name
-            holder.tvDesc.text = item.desc
-            holder.tvIndex.text = item.index.toString()
-            holder.tvBalance.text = item.balance.toString()
-        }
-    }
-
-    class WalletListViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
-        val ivIcon: ImageView = view.findViewById(R.id.iv_icon)
-        val tvName: TextView = view.findViewById(R.id.tv_name)
-        val tvDesc: TextView = view.findViewById(R.id.tv_desc)
-        val tvIndex: TextView = view.findViewById(R.id.tv_index)
-        val tvBalance: TextView = view.findViewById(R.id.tv_balance)
-    }
 
 }

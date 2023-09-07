@@ -14,8 +14,8 @@ import com.yns.wallet.util.LanguageUtils
 
 
 class LanguageListAdapter(context:Context, data: MutableList<LanguageBean>?) :
-    BaseQuickAdapter<LanguageBean, LanguageListAdapter.DeviceHolder>(R.layout.item_select_language, data) {
-    override fun convert(holder: DeviceHolder, item: LanguageBean) {
+    BaseQuickAdapter<LanguageBean, LanguageListAdapter.BaseHolder>(R.layout.item_select_language, data) {
+    override fun convert(holder: BaseHolder, item: LanguageBean) {
         holder.vb.apply {
             nameTv.text = item.language
             tagImg.isSelected = item.isSelected
@@ -23,7 +23,7 @@ class LanguageListAdapter(context:Context, data: MutableList<LanguageBean>?) :
 
     }
 
-    class DeviceHolder(view: View) : BaseViewHolder(view) {
+    class BaseHolder(view: View) : BaseViewHolder(view) {
         val vb = ItemSelectLanguageBinding.bind(view)
     }
 

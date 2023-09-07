@@ -46,4 +46,15 @@ class TitleBar @JvmOverloads constructor(
 
         array.recycle()
     }
+
+    fun setTitle(title:String){
+        val titleView = findViewById<TextView>(R.id.tv_title)
+        titleView.text = title
+    }
+
+    fun setRightImg(rightIconId:Int){
+        val imgRight = findViewById<ImageView>(R.id.img_right)
+        imgRight.visibility = View.VISIBLE
+        imgRight.setImageResource(rightIconId)
+    }
 }

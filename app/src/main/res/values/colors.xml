@@ -3,7 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#2E1766</color>
-
+    <color name="main_2">#170745</color>
+    <color name="main_3">#1E0B4F</color>
+    <color name="main_4">#27125C</color>
 
     <color name="abc_decor_view_status_guard">#ff000000</color>
     <color name="abc_decor_view_status_guard_light">#ffffffff</color>
@@ -129,6 +131,7 @@
     <color name="normal_blue_color">#007DFF</color>
     <color name="tips_red_color">#FF0000</color>
     <color name="transaction_blue_color">#6229FF</color>
+    <color name="transaction_blue_color_50">#7f6229FF</color>
     <color name="transaction_blue_tv_color">#8775AE</color>
     <color name="transaction_green_color">#2DFE4F</color>
 

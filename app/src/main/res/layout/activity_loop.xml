@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_loop_gradient_bg"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
+
+            <View
+                android:id="@+id/v_status_bar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shape_back_bg"
+                    android:padding="12dp"
+                    android:src="@mipmap/icon_back" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/loop_usdt"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/loop_logo_img" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/super_loop"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/provided_by_yunus"
+                        android:textColor="@color/transaction_blue_tv_color" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:src="@mipmap/loop_circle_bottom_bg" />
+
+            <TextView
+                android:id="@+id/center_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="19 517 510"
+                android:textColor="#8000FF"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/center_tv"
+                android:layout_centerHorizontal="true"
+                android:text="@string/circulation"
+                android:textColor="@color/normal_blue_color" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_main_corner_20_normal_bg"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:paddingHorizontal="@dimen/dp_10">
+
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:text="@string/account"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="Test1(0xsdfa...4532dsfg)"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="18dp"
+                    android:paddingHorizontal="15dp"
+                    android:background="@drawable/shape_detail_edit_bg">
+
+                    <EditText
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:paddingVertical="15dp"
+                        android:textColor="@color/white"
+                        android:background="@null"
+                        android:textColorHint="@color/transaction_blue_tv_color"
+                        android:hint="@string/loop_edit_tips"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/normal_blue_color"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/max"
+                        android:paddingHorizontal="@dimen/dp_10"
+                        android:paddingVertical="5dp"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:background="@drawable/shape_blue_alpha_10_corner_50_bg"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="@dimen/dp_10">
+
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/cycle"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingHorizontal="@dimen/dp_10">
+
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/return_due"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingHorizontal="@dimen/dp_10">
+
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/token_rewards"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="@dimen/dp_10"
+                    android:background="@color/transaction_blue_color"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingHorizontal="@dimen/dp_10">
+
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:text="@string/available_balance"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/transaction_green_color"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/common_button_1"
+                    android:layout_margin="0dp"
+                    android:text="@string/confirm_loop"/>
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/common_white_tv"
+                android:text="@string/participate_in_orders"
+                android:layout_marginTop="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/shape_main_corner_10_bg"
+                android:layout_marginTop="15dp"
+                android:paddingVertical="@dimen/dp_10"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/period"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/loop_return"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/token_rewards"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/state"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/common_white_tv"
+                android:text="@string/product_overview"
+                android:layout_marginTop="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/shape_main_corner_10_bg"
+                android:layout_marginTop="15dp"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    style="@style/common_white_tv"
+                    android:text="@string/usdt_yns"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@mipmap/usdt_yns_img"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/rate"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:drawableRight="@mipmap/loop_up"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/yield_bearing_token"/>
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:drawableRight="@mipmap/icon_info_light_blue"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:text="30 Days"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/common_white_tv"
+                android:text="@string/rule_description"
+                android:layout_marginTop="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="7dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:src="@drawable/shape_circle_light_blue_bg"/>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/transaction_blue_color_50"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:text="@string/open_for_deposit"/>
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/anytime"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="@dimen/dp_10"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="7dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="7dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:src="@drawable/shape_circle_light_blue_bg"/>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/transaction_blue_color_50"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:text="@string/yields"/>
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/yields_tips"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="@dimen/dp_10"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="7dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:src="@drawable/shape_circle_light_blue_bg"/>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/transaction_blue_color_50"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:text="@string/yields_usdt_distribution"/>
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/yields_usdt_distribution_tips"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="@dimen/dp_10"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="7dp"
+                    android:src="@drawable/shape_circle_light_blue_bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:text="@string/token_distribution"/>
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/return_due"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/transaction_blue_color_50"/>
+
+            <TextView
+                style="@style/common_light_blue_tv"
+                android:text="@string/token_distribution_rules"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@mipmap/icon_info_light_blue_big"
+                android:drawablePadding="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="8dp"
+                android:text="@string/loop_bottom_tips"
+                android:layout_marginBottom="@dimen/dp_40"
+                android:textColor="@color/transaction_blue_tv_color"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

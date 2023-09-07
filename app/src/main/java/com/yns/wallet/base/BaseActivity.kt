@@ -24,17 +24,19 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
     lateinit var viewBinding: VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // 1. 使内容区域全屏
-//        WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-        window.decorView.systemUiVisibility =
-            (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        // 2. 设置 System bar 透明
-        window.statusBarColor = Color.TRANSPARENT
-
         super.onCreate(savedInstanceState)
+        if(!beforeSetContentView()){
+            // 1. 使内容区域全屏
+//        WindowCompat.setDecorFitsSystemWindows(window, true)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+            window.decorView.systemUiVisibility =
+                (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            // 2. 设置 System bar 透明
+            window.statusBarColor = Color.TRANSPARENT
+        }
+
         AppManager.getAppManager().addActivity(this)
         //利用反射，调用指定ViewBinding中的inflate方法填充视图
         val type = javaClass.genericSuperclass
@@ -62,6 +64,11 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
         if (statusBar != null) {
             statusBar.layoutParams.height = getStatusBarHeight(this)
         }
+    }
+
+    //部分页面有特殊需求的
+    open fun beforeSetContentView():Boolean{
+        return false
     }
 
     /**
