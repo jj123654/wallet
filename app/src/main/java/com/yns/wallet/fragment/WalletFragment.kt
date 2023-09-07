@@ -52,7 +52,6 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 startActivity(AddTokenActivity::class.java)
             }
             tvSuperLoop.onClick {
-                startActivity(LoopActivity::class.java)
             }
 
             ivLogo.onClick {
