@@ -1,140 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="20dp">
 
     <View
         android:id="@+id/v_status_bar"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/main"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.yns.wallet.widget.TitleBar
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:bar_title="@string/import_wallet"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/v_status_bar" />
-
-    <TextView
-        android:id="@+id/tv_create_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/import_wallet"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_bar" />
-
     <ImageView
-        android:id="@+id/tv_wallet_title_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:src="@mipmap/import_wallet"
-        app:layout_constraintBottom_toBottomOf="@id/tv_create_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_create_title" />
+        android:id="@+id/iv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/shape_back_bg"
+        android:padding="12dp"
+        android:src="@mipmap/icon_back" />
 
-    <TextView
-        android:id="@+id/tv_import_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/accounts_to_be_imported"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_wallet_title_icon" />
-
-    <TextView
-        android:id="@+id/tv_choose_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="@string/choose_another_account"
-        android:textColor="#6229FF"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_import_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_import_title" />
-
-    <View
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/shape_edit_import_bg"
-        app:layout_constraintBottom_toBottomOf="@id/tv_account_path"
-        app:layout_constraintTop_toBottomOf="@id/tv_choose_account" />
+        android:layout_weight="1"
+        android:scrollbars="none">
 
-    <TextView
-        android:id="@+id/tv_account_hash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/tabbgfncgyhjvprxg1wp57va5wae6chrwc"
-        android:textColor="#6229FF"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_choose_account" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="25dp"
+            android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:src="@mipmap/radio_checked"
-        app:layout_constraintBottom_toBottomOf="@id/tv_account_hash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_account_hash" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_account_path"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="12dp"
-        android:paddingBottom="16dp"
-        android:text="@string/path_m_dhdj_345_1"
-        android:textColor="#8775AE"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_account_hash" />
+                <TextView
+                    android:id="@+id/tv_create_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/generate_wallet"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_account_balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:text="0"
-        android:textColor="#8775AE"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_account_path" />
+                <ImageView
+                    android:id="@+id/tv_wallet_title_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/import_wallet"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_create_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_create_title" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/new_wallet_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/common_white_tv"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/shape_main_corner_20_normal_bg"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/input_name"
+                        android:paddingHorizontal="15dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/transaction_blue_tv_color" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/common_white_tv"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/generate_wallet_content" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/shape_main_corner_10_bg"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="@string/wallet" />
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:layout_marginTop="7dp"
+                        android:text="Tablkdfsjglsjadflkjasldfjlkaslfjkdjkasdljfls" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/common_white_tv"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/create_a_new_account" />
+
+                <TextView
+                    style="@style/common_white_tv"
+                    android:paddingVertical="15dp"
+                    android:text="@string/change_account"
+                    android:textColor="@color/transaction_blue_color" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_main_corner_10_bg"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/common_white_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Tablkdfsjlksjadflkjasdlsdfasdfasdfaewqrqwerqwerkfjlasjdf" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/selector_radio_button_bg" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Path：m/dhh/d12/23"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        style="@style/common_light_blue_tv"
+                        android:text="1" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <TextView
         android:id="@+id/tv_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/shape_btn_full_bg"
-        android:gravity="center"
-        android:text="@string/confirm"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        style="@style/common_button_1"
+        android:layout_margin="0dp"
+        android:text="@string/generate_related_wallet" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

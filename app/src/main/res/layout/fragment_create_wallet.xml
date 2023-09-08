@@ -137,6 +137,19 @@
         app:layout_constraintTop_toBottomOf="@id/tv_name_title" />
 
     <TextView
+        android:id="@+id/wallet_name_empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/tips_red_color"
+        android:textSize="10sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/please_enter_name"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_name" />
+
+    <TextView
         android:id="@+id/tv_pwd_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -172,6 +185,19 @@
         app:layout_constraintBottom_toBottomOf="@id/et_pwd"
         app:layout_constraintEnd_toEndOf="@id/et_pwd"
         app:layout_constraintTop_toTopOf="@id/et_pwd" />
+
+    <TextView
+        android:id="@+id/psw_empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/tips_red_color"
+        android:textSize="10sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:text="@string/please_enter_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_pwd" />
 
     <TextView
         android:id="@+id/tv_repeat_pwd_title"
@@ -210,12 +236,25 @@
         app:layout_constraintEnd_toEndOf="@id/et_repeat_pwd"
         app:layout_constraintTop_toTopOf="@id/et_repeat_pwd" />
 
+    <TextView
+        android:id="@+id/repeat_psw_empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/tips_red_color"
+        android:textSize="10sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:text="@string/please_repeat_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_repeat_pwd" />
+
     <ImageView
         android:id="@+id/rb_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/selector_radio_button_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_repeat_pwd" />

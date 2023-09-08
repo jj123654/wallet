@@ -9,36 +9,48 @@ import android.widget.TextView
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.databinding.FragmentCreateWallet2Binding
 
 class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
 
-    private val wordList: List<String> = listOf(
-        "fine", "poverty", "satisfy",
-        "noise", "trial", "hazard",
-        "access", "ginger", "rocket",
-        "never", "squirrel", "trumpet"
-    )
+    var wordList = mutableListOf<String>()
+
+    companion object {
+        fun newInstance(it:String): CreateWallet2Fragment {
+            val arguments = Bundle()
+            arguments.putString("menomic",it)
+            val createWallet2Fragment = CreateWallet2Fragment()
+            createWallet2Fragment.arguments = arguments
+            return createWallet2Fragment
+        }
+    }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        val vPopBg = view.findViewById<View>(R.id.v_pop_bg)
-        val llPopLayout = view.findViewById<View>(R.id.ll_pop_layout)
-        view.findViewById<View>(R.id.tv_view_mnemonic).setOnClickListener {
-            vPopBg.visibility = View.GONE
-            llPopLayout.visibility = View.GONE
-        }
-
-        view.findViewById<View>(R.id.tv_confirm).setOnClickListener {
-            parentFragmentManager.commit {
-                replace(R.id.fl_content, CreateWallet22Fragment())
+        viewBinding.apply {
+            topLayout.tvViewMnemonic.onClick{
+                tipsLayout.visibility = View.GONE
             }
+
+            tvConfirm.onClick {
+                parentFragmentManager.commit {
+                    replace(R.id.fl_content, CreateWallet22Fragment.newInstance(arguments?.getString("menomic")?:""))
+                }
+            }
+
+            val menomics = arguments?.getString("menomic")
+            menomics?.let {
+                it?.split(" ")?.forEach {menomic->
+                    wordList.add(menomic)
+                }
+            }
+
+            rvList.layoutManager = GridLayoutManager(context, 3)
+            rvList.adapter = WordListAdapter(view.context, wordList)
         }
 
-        val rvList = view.findViewById<RecyclerView>(R.id.rv_list)
-        rvList.layoutManager = GridLayoutManager(context, 3)
-        rvList.adapter = WordListAdapter(view.context, wordList)
     }
 
     class WordListAdapter(private val context: Context, private val wordList: List<String>) :

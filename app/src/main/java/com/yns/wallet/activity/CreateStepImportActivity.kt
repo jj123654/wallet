@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.base.Constant
+import com.yns.wallet.databinding.ActivityCreateStepImport2Binding
 import com.yns.wallet.databinding.ActivityCreateStepImportBinding
+import com.yns.wallet.util.AppManager
 import com.yns.wallet.util.SharedPreferencesUtils
 import com.yns.wallet.widget.bottomsheet.BottomSheet
 
-class CreateStepImportActivity : BaseActivity<ActivityCreateStepImportBinding>() {
+class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>() {
 
     private lateinit var bottomSheet: BottomSheet
 
@@ -37,7 +39,7 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImportBinding>()
         }
         findViewById<View>(R.id.tv_confirm).setOnClickListener {
             SharedPreferencesUtils.putString(this, Constant.walletStateKey, "true")
-            startActivity(Intent(this, MainActivity::class.java))
+            AppManager.getAppManager().returnToActivity(MainActivity::class.java)
         }
     }
 

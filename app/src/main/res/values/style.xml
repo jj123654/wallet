@@ -6,6 +6,12 @@
         <attr name="bar_right" format="integer"></attr>
     </declare-styleable>
 
+    <declare-styleable name="CommonWarningView">
+        <attr name="title_text" format="string" />
+        <attr name="content_text" format="string"></attr>
+        <attr name="button_text" format="string"></attr>
+    </declare-styleable>
+
     <declare-styleable name="DrawableTextView">
         <attr name="leftDrawable" format="reference|color"/>
         <attr name="rightDrawable" format="reference|color"/>

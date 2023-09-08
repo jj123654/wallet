@@ -4,6 +4,8 @@
     <string name="welcome_back">Welcome Back！</string>
     <string name="password">Password</string>
     <string name="unlock">Unlock</string>
+    <string name="name">Name</string>
+    <string name="input_name">Input Name</string>
     <string name="reset_wallet">Reset Wallet</string>
     <string name="import_or_create_a_wallet">Import or\nCreate a wallet</string>
     <string name="import_an_existing">Import an existing wallet or\ncreate a new one</string>
@@ -15,6 +17,12 @@
     <string name="enter_your_secret">Enter your Secret Recovery Phrase</string>
     <string name="set_wallet_name">Set wallet name</string>
     <string name="please_enter_a_name">Please enter a name</string>
+    <string name="please_enter_name">Please enter name</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_repeat_password">Please repeat password</string>
+    <string name="repeat_password_should_equal_to_password">repeat password should equal to password</string>
+    <string name="agree_first">Agree first</string>
+
     <string name="set_password">Set Password</string>
     <string name="password_is_not_less_than_8digits">Password is not less than 8digits</string>
     <string name="create_wallet">Create Wallet</string>
@@ -51,6 +59,8 @@
     <string name="symbol">Symbol</string>
     <string name="block_explorer_url">Block Explorer URL</string>
     <string name="add">Add</string>
+    <string name="add_wallet">Add Wallet</string>
+    <string name="add_wallet_title">Hi～\nWelcome to YNS Wallet！</string>
     <string name="private_key_tips">The private key is not encrypted, please export it carefully and the private key.</string>
     <string name="import_tips">Resetting the password will reset the wallet, and accounts previously imported through the private key will be deleted</string>
     <string name="add_custom_networks">Add Custom Networks</string>
@@ -87,6 +97,7 @@
     <string name="no_wallet">No Wallet</string>
     <string name="go_to_create_wallet">Go to create wallet</string>
     <string name="wallet_details">Wallet Details</string>
+    <string name="wallet">Wallet</string>
     <string name="network_name_optional">Network Name(optional)</string>
     <string name="export_private_key">Export Private Key</string>
     <string name="modify_password">Modify Password</string>
@@ -106,7 +117,8 @@
     <string name="keep_content2">YNS 不会保持您的私钥，所以一旦丢失，将不能恢复</string>
     <string name="already_back_up">Already Back Up</string>
     <string name="view_mnemonic">View Mnemonic</string>
-    <string name="choose_index_1">选择第1个单词</string>
+    <string name="choose_index_1">选择第%s个单词</string>
+    <string name="word_order_wrong_tips">顺序错误，请重试</string>
     <string name="import_wallet">Import Wallet</string>
     <string name="accounts_to_be_imported">Accounts to be imported</string>
     <string name="choose_another_account">choose another account</string>
@@ -116,6 +128,7 @@
     <string name="change_hd_wallet">Change HD Wallet</string>
     <string name="hi_welcome_to_yns_wallet">Hi～\nWelcome to YNS Wallet!</string>
     <string name="generate_wallet">Generate Wallet</string>
+    <string name="generate_related_wallet">Generate Related Wallet</string>
     <string name="generate_wallet_content">Generate a related wallet based on your HD wallet</string>
     <string name="import_your_mnemonic_private_key_or_keystore_with_one_tap">Import your mnemonic, private key, or keystore with one tap</string>
     <string name="change_password">change password</string>
@@ -186,6 +199,8 @@
     <string name="congratulations">Congratulations</string>
     <string name="create_wallet_success_tips">You‘ve successfully import your wallet.\nRemember to keep your secret recovery phrase\nsafe, it’s your responsibility!</string>
     <string name="create_a_new_account">Create a new account</string>
+    <string name="new_account">New Account</string>
+    <string name="change_account">Change Account</string>
     <string name="import_an_account">Import an account</string>
     <string name="switch_account">Switch Account</string>
 

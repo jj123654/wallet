@@ -1,4 +1,5 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation" >
     <string name="app_name">wallet</string>
     <string name="welcome_back">Welcome Back！</string>
     <string name="password">Password</string>
@@ -12,6 +13,12 @@
     <string name="enter_your_secret">Enter your Secret Recovery Phrase</string>
     <string name="set_wallet_name">Set wallet name</string>
     <string name="please_enter_a_name">Please enter a name</string>
+    <string name="please_enter_name">请输入名称</string>
+    <string name="please_enter_password">请输入密码</string>
+    <string name="please_repeat_password">请重复密码</string>
+    <string name="repeat_password_should_equal_to_password">重复密码需与密码相同</string>
+    <string name="agree_first">请先同意</string>
+
     <string name="set_password">Set Password</string>
     <string name="password_is_not_less_than_8digits">Password is not less than 8digits</string>
     <string name="create_wallet">Create Wallet</string>
@@ -32,7 +39,7 @@
     <string name="token_symbol">Token Symbol</string>
     <string name="token_decimal">Token Decimal</string>
     <string name="estimated_gas_fee">Estimated gas fee</string>
-    <string name="i_have_carefully_and_afree_with">I have carefully and afree with <font color='#007DFF'>User Agreement</font></string>
+    <string name="i_have_carefully_and_afree_with">我已认证阅读并同意<font color='#007DFF'>用户协议</font></string>
     <string name="secure_wallet_hint_title">These secret recovery phrase are for recovering your wallet, write down it correctly on paper and keep it in a safe place</string>
     <string name="secure_wallet_alert">Dont’t desclose secret recovery phrase to anyone Once the secret recovery phrase is lost, assets canot be reccovered</string>
     <string name="custom_networks">Custom Networks</string>
@@ -91,7 +98,7 @@
     <string name="keep_content2">YNS 不会保持您的私钥，所以一旦丢失，将不能恢复</string>
     <string name="already_back_up">Already Back Up</string>
     <string name="view_mnemonic">View Mnemonic</string>
-    <string name="choose_index_1">选择第1个单词</string>
+    <string name="choose_index_1">选择第%s个单词</string>
     <string name="import_wallet">Import Wallet</string>
     <string name="accounts_to_be_imported">Accounts to be imported</string>
     <string name="choose_another_account">choose another account</string>

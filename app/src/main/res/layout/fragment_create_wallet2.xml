@@ -125,7 +125,7 @@
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginHorizontal="10dp"
         android:background="@drawable/shape_text_arc_bg"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
@@ -155,6 +155,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape_wallet_trans_bg"
         app:layout_constraintBottom_toBottomOf="@id/tv_keep_content2"
         app:layout_constraintTop_toTopOf="@id/tv_keep_title" />
@@ -165,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:drawablePadding="6dp"
-        android:paddingTop="20dp"
+        android:paddingTop="35dp"
         android:text="@string/keep_mnemonic_safe"
         android:textColor="#8775AE"
         android:textSize="13sp"
@@ -221,70 +222,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_keep_content2" />
 
-    <!--hint-->
-    <View
-        android:id="@+id/v_pop_bg"
+
+    <FrameLayout
+        android:id="@+id/tips_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#aa000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/v_step_bg" />
+        app:layout_constraintTop_toBottomOf="@id/v_step_bg">
 
-    <LinearLayout
-        android:id="@+id/ll_pop_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/v_pop_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/v_pop_bg">
+        <include
+            android:id="@+id/top_layout"
+            layout="@layout/common_warning_view" />
 
-        <TextView
-            android:id="@+id/tv_pop_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/wallet_step_hint_title"
-            android:textColor="@android:color/holo_red_dark" />
+    </FrameLayout>
 
 
-        <ImageView
-            android:id="@+id/iv_pop_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/shape_camera_bg"
-            android:src="@mipmap/camer_muite" />
-
-        <TextView
-            android:id="@+id/tv_pop_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/wallet_step_hint_bottom"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:id="@+id/tv_view_mnemonic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/shape_btn_full_bg"
-            android:paddingStart="26dp"
-            android:paddingTop="6dp"
-            android:paddingEnd="26dp"
-            android:paddingBottom="6dp"
-            android:text="@string/view_mnemonic"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

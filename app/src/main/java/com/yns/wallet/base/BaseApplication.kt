@@ -3,10 +3,14 @@ package com.yns.wallet.base
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
+import com.yns.wallet.WalletViewModel
 import com.yns.wallet.io.SpUtil
 import com.yns.wallet.util.LanguageUtils
+
+val walletViewModel:WalletViewModel by lazy {BaseApplication.walletViewModelInstance}
 
 class BaseApplication:Application(), ViewModelStoreOwner {
 
@@ -14,6 +18,7 @@ class BaseApplication:Application(), ViewModelStoreOwner {
         super.onCreate()
         _context = this
         SpUtil.initSp(this)
+        walletViewModelInstance = ViewModelProvider(this)[WalletViewModel::class.java]
     }
 
     companion object {
@@ -23,6 +28,8 @@ class BaseApplication:Application(), ViewModelStoreOwner {
         fun globalContext(): BaseApplication {
             return _context!!
         }
+
+        lateinit var walletViewModelInstance: WalletViewModel
     }
 
     var modelStore: ViewModelStore? = null
