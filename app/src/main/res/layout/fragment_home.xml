@@ -209,6 +209,11 @@
         android:text="@string/ethereum_mainnet"
         android:textColor="@color/white"
         android:textSize="12sp"
+        android:paddingVertical="3dp"
+        android:paddingHorizontal="5dp"
+        android:drawablePadding="4dp"
+        android:drawableLeft="@mipmap/eth"
+        android:background="@drawable/shape_wallet_net_bg"
         app:layout_constraintBottom_toBottomOf="@id/tv_list_title"
         app:layout_constraintStart_toEndOf="@id/tv_list_title"
         app:layout_constraintTop_toTopOf="@id/tv_list_title" />

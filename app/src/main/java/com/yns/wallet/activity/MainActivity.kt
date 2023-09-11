@@ -55,9 +55,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun changeState(walletOrMe:Boolean){
         viewBinding.apply {
             if(walletOrMe){
+                walletIndicatorImg.visibility = View.VISIBLE
+                mineIndicatorImg.visibility = View.GONE
                 ivWallet.setImageResource(R.mipmap.icon_wallet_selected)
                 ivMine.setImageResource(R.mipmap.icon_user_normal)
             }else{
+                walletIndicatorImg.visibility = View.GONE
+                mineIndicatorImg.visibility = View.VISIBLE
                 ivWallet.setImageResource(R.mipmap.icon_wallet_normal)
                 ivMine.setImageResource(R.mipmap.icon_user_selected)
             }

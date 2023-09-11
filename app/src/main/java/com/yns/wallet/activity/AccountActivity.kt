@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
-import com.yns.wallet.databinding.AccountActivityBinding
+import com.yns.wallet.databinding.ActivityAccountBinding
 
-class AccountActivity : BaseActivity<AccountActivityBinding>() {
+class AccountActivity : BaseActivity<ActivityAccountBinding>() {
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.rvList.layoutManager = LinearLayoutManager(this)

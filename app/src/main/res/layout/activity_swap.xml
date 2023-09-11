@@ -17,7 +17,7 @@
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:bar_title="@string/modify_password"
+        app:bar_title="@string/swap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_status_bar" />
 
@@ -51,9 +51,10 @@
 
         <ImageView
             android:id="@+id/iv_mine_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@mipmap/icon_default_user" />
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_default_user" />c
 
         <TextView
             android:id="@+id/iv_mine_name"
@@ -94,8 +95,9 @@
 
         <ImageView
             android:id="@+id/iv_mine_icon_to"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_centerVertical="true"
             android:src="@mipmap/icon_default_user" />
 
         <TextView
@@ -128,8 +130,8 @@
 
     <ImageView
         android:id="@+id/iv_swap_ico"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="57dp"
         android:background="@drawable/shape_circle_white"
         android:padding="12dp"
@@ -158,14 +160,25 @@
             android:textColor="#8775AE"
             android:textSize="13sp" />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
             android:maxEms="16"
             android:maxLines="1"
             android:text="@string/enter_an_amount"
             android:textColor="#8775AE"
-            android:textSize="13sp" />
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:drawableLeft="@mipmap/icon_alert"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="@string/insufficient_amount"
+            android:textColor="@color/tips_red_color"
+            android:textSize="11sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -189,23 +202,177 @@
             android:textColor="#8775AE"
             android:textSize="13sp" />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
             android:maxEms="16"
             android:maxLines="1"
             android:text="@string/enter_an_amount"
             android:textColor="#8775AE"
-            android:textSize="13sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/token_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        android:visibility=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_left_layout">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_token_info"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/yns_trx"
+                android:textColor="@color/normal_blue_color" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_light_blue_corner_10_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@mipmap/yns"
+                    app:qmui_is_circle="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/yns"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yns"
+                    android:textColor="@color/transaction_blue_tv_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1TRX = 0.07265465RTX"
+                    android:layout_gravity="right"
+                    android:textColor="@color/white" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fee"
+                    android:textColor="@color/transaction_blue_tv_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1TRX = 0.07265465RTX"
+                    android:layout_gravity="right"
+                    android:textColor="@color/white" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/price_impact"
+                    android:textColor="@color/transaction_blue_tv_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1TRX = 0.07265465RTX"
+                    android:layout_gravity="right"
+                    android:textColor="@color/white" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/maximum_sold"
+                    android:textColor="@color/transaction_blue_tv_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1TRX = 0.07265465RTX"
+                    android:layout_gravity="right"
+                    android:textColor="@color/white" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_swap"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/shape_btn_gray"
         android:gravity="center"
@@ -214,7 +381,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_left_layout" />
+        app:layout_constraintTop_toBottomOf="@id/token_info_layout" />
 
 
     <TextView
@@ -231,5 +398,13 @@
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_line" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_records" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
