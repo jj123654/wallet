@@ -4,11 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:id="@+id/v_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:src="@drawable/shape_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/et_pwd"
+        app:layout_constraintBottom_toTopOf="@+id/tv_unlock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,16 +35,14 @@
         android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/shape_circle_white"
-        android:paddingStart="22dp"
-        android:paddingTop="22dp"
-        android:paddingEnd="22dp"
-        android:paddingBottom="22dp"
+        android:paddingHorizontal="22dp"
+        android:paddingVertical="28dp"
         android:src="@mipmap/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/v_status_bar" />
 
     <TextView
         android:id="@+id/tv_wb"
@@ -46,6 +52,7 @@
         android:text="@string/welcome_back"
         android:textColor="@color/white"
         android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_logo" />
@@ -59,6 +66,7 @@
         android:layout_marginEnd="20dp"
         android:text="@string/password"
         android:textColor="@color/white"
+        android:textStyle="bold"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_wb" />
@@ -73,8 +81,7 @@
         android:background="@drawable/shape_edit_pwd_bg"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingHorizontal="18dp"
         android:textColor="@color/white"
         android:textColorHint="#8775AE"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,13 +107,14 @@
     <TextView
         android:id="@+id/tv_reset_wallet"
         android:layout_width="wrap_content"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dp_10"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
         android:text="@string/reset_wallet"
-        android:textColor="#007DFF"
+        android:textColor="@color/normal_blue_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

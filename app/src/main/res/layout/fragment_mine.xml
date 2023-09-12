@@ -23,53 +23,105 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_status_bar" />
 
-    <View
+    <LinearLayout
         android:id="@+id/v_mine_account"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:padding="8dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
         android:background="@drawable/shape_edit_import_bg"
-        app:layout_constraintBottom_toBottomOf="@id/iv_mine_icon"
-        app:layout_constraintTop_toTopOf="@+id/iv_mine_icon" />
-
-    <ImageView
-        android:id="@+id/iv_mine_icon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="32dp"
-        android:src="@mipmap/icon_default_user"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/iv_mine_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:drawableRight="@mipmap/icon_arrow_dow"
-        android:drawablePadding="8dp"
-        android:text="@string/chain_id"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/iv_mine_icon"
-        app:layout_constraintTop_toTopOf="@id/iv_mine_icon" />
+        <ImageView
+            android:id="@+id/iv_mine_icon"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:src="@mipmap/icon_default_user" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp">
+
+            <TextView
+                android:id="@+id/iv_mine_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/icon_arrow_dow"
+                android:drawablePadding="8dp"
+                android:text="@string/chain_id"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/iv_mine_hash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:maxLines="1"
+                android:text="asdfasdfawerawsdfgasdfasddfgsdfgsdfgsdfgfasdfasdfasdfasdf"
+                android:textColor="#8775AE"
+                android:textSize="13sp" />
 
 
-    <TextView
-        android:id="@+id/iv_mine_hash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
-        android:text="@string/test_mine_string"
-        android:textColor="#8775AE"
-        android:maxEms="16"
-        android:maxLines="1"
-        android:textSize="13sp"
-        app:layout_constraintStart_toEndOf="@id/iv_mine_icon"
-        app:layout_constraintTop_toBottomOf="@id/iv_mine_name" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+<!--    <View-->
+<!--        android:id="@+id/v_mine_account"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/shape_edit_import_bg"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/iv_mine_icon"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/iv_mine_icon" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_mine_icon"-->
+<!--        android:layout_width="54dp"-->
+<!--        android:layout_height="54dp"-->
+<!--        android:layout_marginStart="27dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:src="@mipmap/icon_default_user"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_title" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/iv_mine_name"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:drawableRight="@mipmap/icon_arrow_dow"-->
+<!--        android:drawablePadding="8dp"-->
+<!--        android:text="@string/chain_id"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/iv_mine_icon"-->
+<!--        app:layout_constraintTop_toTopOf="@id/iv_mine_icon" />-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/iv_mine_hash"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:text="asdfasdfawerawsdfgasdfasddfgsdfgsdfgsdfgfasdfasdfasdfasdf"-->
+<!--        android:layout_marginRight="28dp"-->
+<!--        android:textColor="#8775AE"-->
+<!--        android:maxLines="1"-->
+<!--        android:textSize="13sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/v_mine_account"-->
+<!--        app:layout_constraintStart_toEndOf="@id/iv_mine_icon"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/iv_mine_name" />-->
 
     <!--trans-->
     <View
@@ -87,10 +139,10 @@
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="32dp"
         android:src="@mipmap/icon_personal_receive"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_mine_icon" />
+        app:layout_constraintTop_toBottomOf="@id/v_mine_account" />
 
     <TextView
         android:id="@+id/tv_trans_title"

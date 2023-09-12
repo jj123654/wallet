@@ -110,7 +110,7 @@
     <string name="generate_wallet">Generate Wallet</string>
     <string name="generate_wallet_content">Generate a related wallet based on your HD wallet</string>
     <string name="import_your_mnemonic_private_key_or_keystore_with_one_tap">Import your mnemonic, private key, or keystore with one tap</string>
-    <string name="change_password">change password</string>
+    <string name="change_password">Change Password</string>
     <string name="wallet_management">Wallet Management</string>
     <string name="back_up_private_key">Back Up Private Key</string>
     <string name="back_up_mnemonic">Back Up Mnemonic</string>

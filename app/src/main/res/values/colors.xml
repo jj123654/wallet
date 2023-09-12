@@ -131,6 +131,7 @@
     <color name="normal_blue_color">#007DFF</color>
     <color name="tips_red_color">#FF0000</color>
     <color name="transaction_blue_color">#6229FF</color>
+    <color name="transaction_blue_color_20">#376229FF</color>
     <color name="transaction_blue_color_50">#7f6229FF</color>
     <color name="transaction_blue_tv_color">#8775AE</color>
     <color name="transaction_green_color">#2DFE4F</color>

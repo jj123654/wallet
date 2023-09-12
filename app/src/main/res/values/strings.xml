@@ -38,8 +38,10 @@
     <string name="gno">GNO</string>
     <string name="all">All</string>
     <string name="fee">Fee</string>
+    <string name="related_wallet">Related Wallet(s): 0</string>
     <string name="disburse">Disburse</string>
     <string name="income">Income</string>
+    <string name="rename">Rename</string>
     <string name="transfer">Transfer</string>
     <string name="address_start_tips">0x...</string>
     <string name="default_decimal">18</string>
@@ -59,6 +61,7 @@
     <string name="symbol">Symbol</string>
     <string name="block_explorer_url">Block Explorer URL</string>
     <string name="add">Add</string>
+    <string name="approval_management">Approval Management</string>
     <string name="insufficient_amount">Insufficient amount</string>
     <string name="add_wallet">Add Wallet</string>
     <string name="add_wallet_title">Hi～\nWelcome to YNS Wallet！</string>
@@ -133,7 +136,7 @@
     <string name="generate_related_wallet">Generate Related Wallet</string>
     <string name="generate_wallet_content">Generate a related wallet based on your HD wallet</string>
     <string name="import_your_mnemonic_private_key_or_keystore_with_one_tap">Import your mnemonic, private key, or keystore with one tap</string>
-    <string name="change_password">change password</string>
+    <string name="change_password">Change Password</string>
     <string name="wallet_management">Wallet Management</string>
     <string name="back_up_private_key">Back Up Private Key</string>
     <string name="back_up_mnemonic">Back Up Mnemonic</string>
@@ -154,6 +157,7 @@
     <string name="token_rewards">Token Rewards</string>
     <string name="receive_account">Receive Account</string>
     <string name="confirm_loop">Confirm Loop</string>
+    <string name="confirm_to_reset">Confirm to reset?</string>
 
     <string name="participate_in_orders">Participate in orders</string>
 
