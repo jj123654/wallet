@@ -5,6 +5,9 @@
     <string name="unlock">Unlock</string>
     <string name="name">Name</string>
     <string name="input_name">Input Name</string>
+    <string name="input">Input</string>
+    <string name="paste">Paste</string>
+    <string name="import_wallet_tips">Scan or enter your mnemonic, private key, keystore</string>
     <string name="reset_wallet">Reset Wallet</string>
     <string name="delete_wallet">Delete Wallet</string>
     <string name="verify_password">Verify Password</string>
@@ -137,6 +140,7 @@
     <string name="change_hd_wallet">Change HD Wallet</string>
     <string name="hi_welcome_to_yns_wallet">Hi～\nWelcome to YNS Wallet!</string>
     <string name="generate_wallet">Generate Wallet</string>
+    <string name="generate_wallet_tips">Generate one or more new wallets with the seed of the following wallet</string>
     <string name="generate_related_wallet">Generate Related Wallet</string>
     <string name="generate_wallet_content">Generate a related wallet based on your HD wallet</string>
     <string name="import_your_mnemonic_private_key_or_keystore_with_one_tap">Import your mnemonic, private key, or keystore with one tap</string>
@@ -211,6 +215,7 @@
     <string name="create_a_new_account">Create a new account</string>
     <string name="new_account">New Account</string>
     <string name="change_account">Change Account</string>
+    <string name="change_wallet_name">Change Wallet Name</string>
     <string name="import_an_account">Import an account</string>
     <string name="switch_account">Switch Account</string>
 

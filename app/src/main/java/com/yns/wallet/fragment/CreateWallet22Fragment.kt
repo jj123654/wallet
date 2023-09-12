@@ -78,6 +78,8 @@ class CreateWallet22Fragment : BaseFragment<FragmentCreateWallet22Binding>() {
                     showToast(getString(R.string.word_order_wrong_tips))
                     return@onClick
                 }
+                var intent = Intent(activity,CreateStepImportActivity::class.java)
+                intent.putExtra("isFirstLoad",true)
                 startActivity(CreateStepImportActivity::class.java)
             }
 

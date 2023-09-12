@@ -40,6 +40,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.ImportActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.Import2Activity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activity.CreateActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.DetailActivity"

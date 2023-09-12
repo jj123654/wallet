@@ -21,8 +21,17 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
 
     private lateinit var bottomSheet: BottomSheet
 
+    var isFirstLoad = false
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
+        isFirstLoad = intent.getBooleanExtra("isFirstLoad",false)
+
+        if(isFirstLoad){
+            viewBinding.topLayout.visibility = View.GONE
+        }else{
+            viewBinding.topLayout.visibility = View.VISIBLE
+        }
+
         // bottom sheet
         val view: View = LayoutInflater.from(this).inflate(R.layout.layout_choose_account, null)
         bottomSheet = BottomSheet.Builder(this).contentView(view).build()

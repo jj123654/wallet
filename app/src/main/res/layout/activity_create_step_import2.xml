@@ -42,6 +42,95 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_create_title" />
 
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_wallet_title_icon">
+
+        <TextView
+            android:id="@+id/wallet_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/et_wallet_name"
+            style="@style/import_edit"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_edit_import_bg"
+            android:hint="@string/input_name"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/generate_wallet_tips"
+            android:textColor="@color/white"
+            android:layout_marginTop="24dp"
+            android:textSize="13sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_edit_import_bg">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/transaction_blue_tv_color"
+                android:text="@string/wallet"
+                android:textSize="13sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:textColor="@color/transaction_blue_tv_color"
+                    android:text="@string/test_mine_string"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/transaction_blue_tv_color"
+                    android:textSize="13sp"
+                    android:text="0"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
     <TextView
         android:id="@+id/tv_import_title"
         android:layout_width="wrap_content"
@@ -52,7 +141,7 @@
         android:textColor="@color/white"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_wallet_title_icon" />
+        app:layout_constraintTop_toBottomOf="@id/top_layout" />
 
     <TextView
         android:id="@+id/tv_choose_account"
@@ -83,7 +172,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="28dp"
         android:text="@string/tabbgfncgyhjvprxg1wp57va5wae6chrwc"
-        android:textColor="#6229FF"
+        android:textColor="@color/white"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_choose_account" />
@@ -91,7 +180,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="40dp"
         android:src="@mipmap/radio_checked"
         app:layout_constraintBottom_toBottomOf="@id/tv_account_hash"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,9 +203,9 @@
         android:id="@+id/tv_account_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="40dp"
         android:text="0"
-        android:textColor="#8775AE"
+        android:textColor="@color/transaction_blue_tv_color"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_account_path" />
