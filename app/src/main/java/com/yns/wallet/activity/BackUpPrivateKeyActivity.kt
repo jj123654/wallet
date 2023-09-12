@@ -9,6 +9,7 @@ import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityBackUpPrivateKeyBinding
 import com.yns.wallet.util.onClick
+import com.yns.wallet.util.showToast
 import com.yns.wallet.widget.CommonAlertDialog
 import com.yns.wallet.widget.CommonCenterDialog
 
@@ -41,6 +42,7 @@ class BackUpPrivateKeyActivity : BaseActivity<ActivityBackUpPrivateKeyBinding>()
             clip?.apply {
                 setPrimaryClip(ClipData.newPlainText("copy", text))
             }
+            showToast(getString(R.string.copy_success))
         }
         viewBinding.qrCode.onClick {
             val text = viewBinding.key.text.toString()
