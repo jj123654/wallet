@@ -8,6 +8,7 @@
     <string name="input_name">Input Name</string>
     <string name="reset_wallet">Reset Wallet</string>
     <string name="delete_wallet">Delete Wallet</string>
+    <string name="verify_password">Verify Password</string>
     <string name="import_or_create_a_wallet">Import or\nCreate a wallet</string>
     <string name="import_an_existing">Import an existing wallet or\ncreate a new one</string>
     <string name="import_text">Import</string>
