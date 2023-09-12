@@ -226,5 +226,8 @@
     <string name="anyone_with_your_private_key_can_access_all_your_assets_please_keep_the_information_to_yourself">Anyone with your private key can access all your assets. Please keep the information to yourself.</string>
     <string name="view_private_key">View Private Key</string>
     <string name="please_correctly_copy_the_private_key_in_order">Please correctly copy the private key in order.</string>
+    <string name="continue_">Continue</string>
+    <string name="risk_warning">Risk Warning</string>
+    <string name="there_are_risks_in_copying_private_key_the_clipboard_is_vulnerable_to_hacking_recommended_to_store_in_a_secure_manner">There are risks in copying private key. The clipboard is vulnerable to hacking. Recommended to store in a secure manner.</string>
 
 </resources>

@@ -9,6 +9,7 @@ import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityBackUpPrivateKeyBinding
 import com.yns.wallet.util.onClick
+import com.yns.wallet.widget.CommonAlertDialog
 
 /**
  * 备份私钥页面
@@ -18,6 +19,11 @@ class BackUpPrivateKeyActivity : BaseActivity<ActivityBackUpPrivateKeyBinding>()
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.topLayout.let {
             it.tvViewMnemonic.onClick {
+                CommonAlertDialog.show(
+                    this,
+                    title = getString(R.string.risk_warning),
+                    content = getString(R.string.there_are_risks_in_copying_private_key_the_clipboard_is_vulnerable_to_hacking_recommended_to_store_in_a_secure_manner),
+                )
                 viewBinding.topLayout.root.visibility = View.GONE
             }
             it.tvPopContent.text =
