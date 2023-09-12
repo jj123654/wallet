@@ -90,6 +90,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.BackUpMnemonicActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BackUpMnemonic2Activity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

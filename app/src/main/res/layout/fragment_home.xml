@@ -10,7 +10,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_receive" />
+        app:layout_constraintTop_toBottomOf="@id/btn_layout" />
 
     <View
         android:id="@+id/v_top_line2"
@@ -118,61 +118,69 @@
         android:text="@string/doller_0_00"
         android:textColor="@color/white"
         android:textSize="36sp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@id/tv_home_name"
         app:layout_constraintTop_toBottomOf="@id/tv_home_name" />
 
-    <TextView
-        android:id="@+id/tv_receive"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:background="@drawable/shape_home_icon_bg"
-        android:paddingStart="32dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="12dp"
-        android:text="@string/receive"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        app:drawableTopCompat="@mipmap/icon_download"
-        app:layout_constraintStart_toStartOf="@id/tv_balance"
-        app:layout_constraintTop_toBottomOf="@id/tv_balance" />
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_balance"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/tv_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/shape_home_icon_bg"
-        android:paddingStart="32dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="12dp"
-        android:text="@string/send"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        app:drawableTopCompat="@mipmap/icon_share"
-        app:layout_constraintEnd_toStartOf="@id/tv_swap"
-        app:layout_constraintStart_toEndOf="@id/tv_receive"
-        app:layout_constraintTop_toTopOf="@id/tv_receive" />
+        <TextView
+            android:id="@+id/tv_receive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/shape_home_icon_bg"
+            android:paddingVertical="12dp"
+            android:text="@string/receive"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:drawableTop="@mipmap/icon_download"
+            android:drawablePadding="4dp"/>
 
-    <TextView
-        android:id="@+id/tv_swap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/shape_home_icon_bg"
-        android:paddingStart="32dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="12dp"
-        android:text="@string/swap"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        app:drawableTopCompat="@mipmap/icon_swap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_send"
-        app:layout_constraintTop_toTopOf="@id/tv_receive" />
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/shape_home_icon_bg"
+            android:paddingVertical="12dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:drawableTop="@mipmap/icon_share"
+            android:drawablePadding="4dp"/>
+
+        <TextView
+            android:id="@+id/tv_swap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/shape_home_icon_bg"
+            android:paddingVertical="12dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/swap"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:drawableTop="@mipmap/icon_swap"
+            android:drawablePadding="4dp"/>
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_super_loop"

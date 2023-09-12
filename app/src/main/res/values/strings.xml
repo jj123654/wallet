@@ -144,6 +144,7 @@
     <string name="wallet_management">Wallet Management</string>
     <string name="back_up_private_key">Back Up Private Key</string>
     <string name="back_up_mnemonic">Back Up Mnemonic</string>
+    <string name="verify_mnemonic">Verify Mnemonic</string>
     <string name="check_back_up_record">Check Back Up Record</string>
     <string name="old_password">Old Password</string>
     <string name="copy_address">Copy Address</string>
