@@ -33,6 +33,7 @@
     <string name="index_3">3</string>
     <string name="secure_wallet">Secure wallet</string>
     <string name="confirm">Confirm</string>
+    <string name="continue_tips">Continue</string>
     <string name="total">Total</string>
     <string name="custom_tokens">Custom Tokens</string>
     <string name="token_address">Token Address</string>
@@ -77,6 +78,7 @@
     <string name="current_price">Current Price</string>
     <string name="yns">YNS</string>
     <string name="price_impact">Price Impact</string>
+    <string name="private_key_qr_code">Private Key QR Code</string>
     <string name="details">Details</string>
     <string name="hide_small_transactions">hide small\ntransactions</string>
     <string name="doller_0_00">$ 0.00</string>
