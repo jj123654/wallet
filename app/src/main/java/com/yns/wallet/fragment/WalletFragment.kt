@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.qmuiteam.qmui.kotlin.onClick
@@ -22,6 +23,8 @@ import com.yns.wallet.databinding.FragmentHomeBinding
 import com.yns.wallet.util.adjustStatusBarMargin
 import com.yns.wallet.widget.decoration.SpacesItemDecoration
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
@@ -33,9 +36,9 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
         WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
     )
 
-    private val walletListAdapter:WalletListAdapter by lazy{
-        WalletListAdapter(requireContext(), mutableListOf()).apply {
-            setOnItemClickListener{adapter,position,view->
+    private val walletListAdapter: WalletListAdapter by lazy {
+        WalletListAdapter(requireContext(), list).apply {
+            setOnItemClickListener { adapter, position, view ->
                 startActivity(AssetsActivity::class.java)
             }
         }
@@ -71,24 +74,16 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 startActivity(SelectTokenActivity::class.java)
             }
 
-            val list = mutableListOf(
-                WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-                WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-                WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-                WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-                WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
-            )
 
-            rvList.layoutManager = WrapContentLinearLayoutManager(activity,LinearLayoutManager.VERTICAL, true)
-            rvList.adapter = walletListAdapter
+            rvList.layoutManager =
+                WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
 
-
-        Handler().postDelayed(Runnable {
-            walletListAdapter.addData(list)
-        },1000)
+        lifecycleScope.launch {
+            delay(1000)
+            viewBinding.rvList.adapter = walletListAdapter
+        }
     }
-
 
 
 }
