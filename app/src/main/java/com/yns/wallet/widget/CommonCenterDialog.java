@@ -14,9 +14,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.luck.picture.lib.utils.ToastUtils;
 import com.yns.wallet.R;
 import com.yns.wallet.base.BaseActivity;
+import com.yns.wallet.util.CodeCreator;
 
 /**
  * dialog样式
@@ -31,8 +34,8 @@ public class CommonCenterDialog {
         dialog = dialogBuilder.create();
     }
 
-    public void showPswEditDialog(EditCallBackListener editCallBackListener){
-        this.showCenterEditDialog(true,null,null,null,null,null,editCallBackListener);
+    public void showPswEditDialog(EditCallBackListener editCallBackListener) {
+        this.showCenterEditDialog(true, null, null, null, null, null, editCallBackListener);
     }
 
 
@@ -118,7 +121,7 @@ public class CommonCenterDialog {
         if (!TextUtils.isEmpty(title)) {
             titleTv.setText(title);
         }
-        if(!TextUtils.isEmpty(content)){
+        if (!TextUtils.isEmpty(content)) {
             inputEt.setHint(content);
         }
         if (!TextUtils.isEmpty(left)) {
@@ -158,18 +161,16 @@ public class CommonCenterDialog {
     /**
      * 通用中间带输入框的弹窗
      */
-    public AlertDialog showCenterQRDialog(String imageUrl,String title, String left, String right, View.OnClickListener leftClickListener, View.OnClickListener rightClickListener) {
+    public AlertDialog showCenterQRDialog(String imageUrl, String title, String left, String right, View.OnClickListener leftClickListener, View.OnClickListener rightClickListener) {
         View contentView = View.inflate(context, R.layout.dialog_qr_code, null);
 
         TextView titleTv = contentView.findViewById(R.id.title_tv);
 
         ImageView qrImg = contentView.findViewById(R.id.qr_img);
 
-        if(!TextUtils.isEmpty(imageUrl)){
-
+        if (!TextUtils.isEmpty(imageUrl)) {
+            CodeCreator.setQRCode((AppCompatActivity) context, imageUrl, qrImg);
         }
-
-
         TextView leftTv = contentView.findViewById(R.id.left_tv);
         TextView rightTv = contentView.findViewById(R.id.right_tv);
 

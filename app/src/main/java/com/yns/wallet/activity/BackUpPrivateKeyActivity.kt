@@ -10,6 +10,7 @@ import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityBackUpPrivateKeyBinding
 import com.yns.wallet.util.onClick
 import com.yns.wallet.widget.CommonAlertDialog
+import com.yns.wallet.widget.CommonCenterDialog
 
 /**
  * 备份私钥页面
@@ -40,6 +41,22 @@ class BackUpPrivateKeyActivity : BaseActivity<ActivityBackUpPrivateKeyBinding>()
             clip?.apply {
                 setPrimaryClip(ClipData.newPlainText("copy", text))
             }
+        }
+        viewBinding.qrCode.onClick {
+            val text = viewBinding.key.text.toString()
+            if (TextUtils.isEmpty(text)) {
+                return@onClick
+            }
+            CommonCenterDialog(this).showCenterQRDialog(text,
+                getString(R.string.private_key_qr_code),
+                getString(R.string.cancel),
+                getString(R.string.continue_),
+                View.OnClickListener {
+
+                },
+                View.OnClickListener {
+
+                })
         }
     }
 
