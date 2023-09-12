@@ -166,8 +166,9 @@
             android:background="@null"
             android:maxEms="16"
             android:maxLines="1"
-            android:text="@string/enter_an_amount"
-            android:textColor="#8775AE"
+            android:textColorHint="@color/transaction_blue_tv_color"
+            android:hint="@string/enter_an_amount"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -208,8 +209,9 @@
             android:background="@null"
             android:maxEms="16"
             android:maxLines="1"
-            android:text="@string/enter_an_amount"
-            android:textColor="#8775AE"
+            android:textColorHint="@color/transaction_blue_tv_color"
+            android:hint="@string/enter_an_amount"
+            android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
 

@@ -13,6 +13,7 @@ import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.databinding.FragmentCreateWallet2Binding
+import com.yns.wallet.widget.CommonCenterDialog
 
 class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
 
@@ -38,6 +39,10 @@ class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
                 parentFragmentManager.commit {
                     replace(R.id.fl_content, CreateWallet22Fragment.newInstance(arguments?.getString("menomic")?:""))
                 }
+            }
+
+            tvScanBtn.onClick {
+                CommonCenterDialog(activity).showCenterQRDialog("",getString(R.string.mnemonic_qr_code),"","",null,null)
             }
 
             val menomics = arguments?.getString("menomic")
