@@ -1,5 +1,7 @@
 package com.yns.wallet.util
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.text.Editable
@@ -12,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.luck.picture.lib.utils.ToastUtils
 import com.yns.wallet.R
 import com.yns.wallet.activity.MainActivity
 import com.yns.wallet.base.BaseApplication
@@ -115,6 +118,7 @@ fun View.onClick(doubleClickInterval: Long = 1000L, onClickListener: View.OnClic
     }
 
 }
+
 /**
  * 显示toast ，在中间
  */
@@ -125,8 +129,17 @@ fun showToast(toast: CharSequence?) {
     }.show()
 }
 
-fun restartApp(context: Context){
+fun restartApp(context: Context) {
     val LaunchIntent = Intent(context, MainActivity::class.java)
     LaunchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
     context.startActivity(LaunchIntent)
+}
+
+
+fun String.copyToClipboard(context: Context) {
+    val clip = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+    clip?.let {
+        it.setPrimaryClip(ClipData.newPlainText("copy", this))
+        ToastUtils.showToast(context, context.getString(R.string.copy_success))
+    }
 }

@@ -28,14 +28,21 @@
         android:textColor="@color/white"
         android:textSize="13sp" />
 
-    <ImageView
+    <FrameLayout
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="19dp"
-        android:background="@drawable/shape_round_white_bg"
-        android:padding="10dp"
-        android:src="#DFDFDF" />
+        android:background="@drawable/shape_round_white_bg">
+
+        <ImageView
+            android:id="@+id/qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="11dp"
+            android:background="#DFDFDF" />
+    </FrameLayout>
+
 
     <TextView
         android:id="@+id/tv_super_loop"
