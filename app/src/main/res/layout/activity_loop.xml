@@ -138,171 +138,172 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/dp_10">
 
 
                     <TextView
                         style="@style/common_white_tv"
-                        android:text="@string/account"/>
+                        android:text="@string/account" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="Test1(0xsdfa...4532dsfg)"/>
+                        android:text="Test1(0xsdfa...4532dsfg)" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="18dp"
-                    android:paddingHorizontal="15dp"
-                    android:background="@drawable/shape_detail_edit_bg">
+                    android:background="@drawable/shape_detail_edit_bg"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="15dp">
 
                     <EditText
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="@string/loop_edit_tips"
                         android:paddingVertical="15dp"
                         android:textColor="@color/white"
-                        android:background="@null"
-                        android:textColorHint="@color/transaction_blue_tv_color"
-                        android:hint="@string/loop_edit_tips"/>
+                        android:textColorHint="@color/transaction_blue_tv_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/normal_blue_color"
                         android:layout_gravity="center_vertical"
-                        android:text="@string/max"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:background="@drawable/shape_blue_alpha_10_corner_50_bg"
                         android:paddingHorizontal="@dimen/dp_10"
                         android:paddingVertical="5dp"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:background="@drawable/shape_blue_alpha_10_corner_50_bg"/>
+                        android:text="@string/max"
+                        android:textColor="@color/normal_blue_color" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/dp_10">
 
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/cycle"/>
+                        android:text="@string/cycle" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/dp_10">
 
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/return_due"/>
+                        android:text="@string/return_due" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/dp_10">
 
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/token_rewards"/>
+                        android:text="@string/token_rewards" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginHorizontal="@dimen/dp_10"
-                    android:background="@color/transaction_blue_color"/>
+                    android:layout_marginTop="8dp"
+                    android:background="@color/transaction_blue_color" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/dp_10">
 
 
                     <TextView
                         style="@style/common_white_tv"
-                        android:text="@string/available_balance"/>
+                        android:text="@string/available_balance" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textColor="@color/transaction_green_color"
-                        android:gravity="right"
                         android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="30 Days"
+                        android:textColor="@color/transaction_green_color" />
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/confirm"
                     style="@style/common_button_1"
                     android:layout_margin="0dp"
-                    android:text="@string/confirm_loop"/>
+                    android:text="@string/confirm_loop" />
 
             </LinearLayout>
 
             <TextView
                 style="@style/common_white_tv"
-                android:text="@string/participate_in_orders"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="24dp"
+                android:text="@string/participate_in_orders" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/shape_main_corner_10_bg"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/shape_main_corner_10_bg"
+                android:orientation="vertical"
                 android:paddingVertical="@dimen/dp_10"
                 android:paddingLeft="@dimen/dp_10"
                 android:paddingRight="20dp">
@@ -314,15 +315,15 @@
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/period"/>
+                        android:text="@string/period" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
@@ -330,60 +331,60 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dp_10">
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/loop_return"/>
+                        android:text="@string/loop_return" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dp_10">
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/token_rewards"/>
+                        android:text="@string/token_rewards" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dp_10">
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/state"/>
+                        android:text="@string/state" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
+                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
@@ -392,64 +393,64 @@
 
             <TextView
                 style="@style/common_white_tv"
-                android:text="@string/product_overview"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="24dp"
+                android:text="@string/product_overview" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/shape_main_corner_10_bg"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/shape_main_corner_10_bg"
+                android:orientation="vertical"
                 android:padding="@dimen/dp_10">
 
                 <TextView
                     style="@style/common_white_tv"
-                    android:text="@string/usdt_yns"
+                    android:drawableLeft="@mipmap/usdt_yns_img"
                     android:drawablePadding="8dp"
-                    android:drawableLeft="@mipmap/usdt_yns_img"/>
+                    android:text="@string/usdt_yns" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dp_10">
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/rate"/>
+                        android:text="@string/rate" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:gravity="right"
                         android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_weight="1"
                         android:drawableRight="@mipmap/loop_up"
                         android:drawablePadding="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:gravity="right"
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dp_10">
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/yield_bearing_token"/>
+                        android:text="@string/yield_bearing_token" />
 
                     <TextView
                         style="@style/common_white_tv"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:gravity="right"
                         android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_weight="1"
                         android:drawableRight="@mipmap/icon_info_light_blue"
                         android:drawablePadding="@dimen/dp_10"
-                        android:text="30 Days"/>
+                        android:gravity="right"
+                        android:text="30 Days" />
 
                 </LinearLayout>
 
@@ -458,31 +459,31 @@
 
             <TextView
                 style="@style/common_white_tv"
-                android:text="@string/rule_description"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="24dp"
+                android:text="@string/rule_description" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
                     android:layout_marginTop="7dp"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="7dp"
                         android:layout_height="7dp"
-                        android:src="@drawable/shape_circle_light_blue_bg"/>
+                        android:src="@drawable/shape_circle_light_blue_bg" />
 
                     <View
                         android:layout_width="0.5dp"
                         android:layout_height="match_parent"
-                        android:background="@color/transaction_blue_color_50"/>
+                        android:background="@color/transaction_blue_color_50" />
 
                 </LinearLayout>
 
@@ -494,13 +495,13 @@
 
                     <TextView
                         style="@style/common_white_tv"
-                        android:text="@string/open_for_deposit"/>
+                        android:text="@string/open_for_deposit" />
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/anytime"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="@dimen/dp_10"/>
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:text="@string/anytime" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -508,25 +509,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="7dp">
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
                     android:layout_marginTop="7dp"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="7dp"
                         android:layout_height="7dp"
-                        android:src="@drawable/shape_circle_light_blue_bg"/>
+                        android:src="@drawable/shape_circle_light_blue_bg" />
 
                     <View
                         android:layout_width="0.5dp"
                         android:layout_height="match_parent"
-                        android:background="@color/transaction_blue_color_50"/>
+                        android:background="@color/transaction_blue_color_50" />
 
                 </LinearLayout>
 
@@ -538,13 +539,13 @@
 
                     <TextView
                         style="@style/common_white_tv"
-                        android:text="@string/yields"/>
+                        android:text="@string/yields" />
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/yields_tips"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="@dimen/dp_10"/>
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:text="@string/yields_tips" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -552,25 +553,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
                     android:layout_marginTop="7dp"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="7dp"
                         android:layout_height="7dp"
-                        android:src="@drawable/shape_circle_light_blue_bg"/>
+                        android:src="@drawable/shape_circle_light_blue_bg" />
 
                     <View
                         android:layout_width="0.5dp"
                         android:layout_height="match_parent"
-                        android:background="@color/transaction_blue_color_50"/>
+                        android:background="@color/transaction_blue_color_50" />
 
                 </LinearLayout>
 
@@ -582,13 +583,13 @@
 
                     <TextView
                         style="@style/common_white_tv"
-                        android:text="@string/yields_usdt_distribution"/>
+                        android:text="@string/yields_usdt_distribution" />
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/yields_usdt_distribution_tips"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="@dimen/dp_10"/>
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:text="@string/yields_usdt_distribution_tips" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -596,14 +597,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="7dp"
                     android:layout_height="7dp"
                     android:layout_marginTop="7dp"
-                    android:src="@drawable/shape_circle_light_blue_bg"/>
+                    android:src="@drawable/shape_circle_light_blue_bg" />
 
 
                 <LinearLayout
@@ -614,12 +615,12 @@
 
                     <TextView
                         style="@style/common_white_tv"
-                        android:text="@string/token_distribution"/>
+                        android:text="@string/token_distribution" />
 
                     <TextView
                         style="@style/common_light_blue_tv"
-                        android:text="@string/return_due"
-                        android:layout_marginTop="4dp"/>
+                        android:layout_marginTop="4dp"
+                        android:text="@string/return_due" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -628,24 +629,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/transaction_blue_color_50"/>
+                android:background="@color/transaction_blue_color_50" />
 
             <TextView
                 style="@style/common_light_blue_tv"
-                android:text="@string/token_distribution_rules"
                 android:layout_marginTop="20dp"
                 android:drawableLeft="@mipmap/icon_info_light_blue_big"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="8dp"
+                android:text="@string/token_distribution_rules" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="11sp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="@dimen/dp_40"
                 android:lineSpacingExtra="8dp"
                 android:text="@string/loop_bottom_tips"
-                android:layout_marginBottom="@dimen/dp_40"
-                android:textColor="@color/transaction_blue_tv_color"/>
+                android:textColor="@color/transaction_blue_tv_color"
+                android:textSize="11sp" />
 
         </LinearLayout>
 

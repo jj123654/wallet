@@ -1,19 +1,33 @@
 package com.yns.wallet.base
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
+import androidx.appcompat.app.AppCompatDialog
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
+import com.yns.wallet.R
+import java.lang.Exception
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseFragment<VB:ViewBinding>: Fragment() {
+abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
 
-    private var vb: VB?=null
-    val viewBinding :VB get() = vb!!
+    private var vb: VB? = null
+    val viewBinding: VB get() = vb!!
+    open val isDialog: Boolean = false
+
+    open val fullScreenDialog: Boolean = true
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        showsDialog = isDialog
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,11 +35,11 @@ abstract class BaseFragment<VB:ViewBinding>: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        vb?:findView(container).apply {
+        vb ?: findView(container).apply {
             initView(vb!!.root, savedInstanceState)
         }
 
-        if(vb!=null&&vb!!.root!=null){
+        if (vb != null && vb!!.root != null) {
             (vb!!.root.parent as ViewGroup?)?.removeView(vb!!.root)
 
         }
@@ -64,5 +78,40 @@ abstract class BaseFragment<VB:ViewBinding>: Fragment() {
 
     fun startActivityForResult(activity: Class<out Activity>, requestCode: Int) {
         startActivityForResult(Intent(getActivity(), activity), requestCode);
+    }
+
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        if (isDialog) {
+            return AppCompatDialog(requireContext(), R.style.Dialog)
+        }
+        return super.onCreateDialog(savedInstanceState)
+    }
+
+    override fun show(manager: FragmentManager, tag: String?) {
+        try {
+            val clazz = Fragment::class.java
+            val f = clazz.getField("mShownByMe")
+            f.set(this, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        val ft = manager.beginTransaction()
+        ft.setReorderingAllowed(true)
+        ft.add(this, tag)
+        ft.commitAllowingStateLoss()
+    }
+
+    fun show(manager: FragmentManager) {
+        show(manager, this.javaClass.name)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (isDialog) {
+            dialog?.window?.let {
+                it.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            }
+        }
     }
 }

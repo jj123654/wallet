@@ -238,5 +238,7 @@
     <string name="risk_warning">Risk Warning</string>
     <string name="there_are_risks_in_copying_private_key_the_clipboard_is_vulnerable_to_hacking_recommended_to_store_in_a_secure_manner">There are risks in copying private key. The clipboard is vulnerable to hacking. Recommended to store in a secure manner.</string>
     <string name="copy_success">Copy success</string>
+    <string name="contract">Contract</string>
+    <string name="transaction_resources">Transaction Resources</string>
 
 </resources>
