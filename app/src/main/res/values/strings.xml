@@ -1,5 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">wallet</string>
     <string name="welcome_back">Welcome Back！</string>
     <string name="password">Password</string>
@@ -183,8 +182,6 @@
     <string name="loop_bottom_tips">1. Circulate 500 USDT and you will receive 30 YNS tokens.\n2. Circulate 5000USDT, you will get 400 YNS tokens.\n3. Circulate 50,000 USDT and you will get 4,500 YNS tokens.\n4. Circulate 500000USDT, you will get 50000 YNS tokens.</string>
 
 
-
-
     <string name="available_balance">Available Balance</string>
     <string name="hexadecimal">Hexadecimal</string>
     <string name="swap">Swap</string>
@@ -216,5 +213,8 @@
     <string name="double_click_exit_tips">Double-click to exit</string>
     <string name="language_english">English</string>
     <string name="language_chinese">中文</string>
+    <string name="back_up_records">Back up records</string>
+    <string name="back_up_record_tips">If you find records that are not operated by yourself, it is very likely that the mnemonic room and the mobile phone ID have been leaked, please transfer your assets as soon as possible. At the same time, you can check the monitor in your environment to find the suspect who operated your mobile phone during the relevant time</string>
+    <string name="current">当前</string>
 
 </resources>

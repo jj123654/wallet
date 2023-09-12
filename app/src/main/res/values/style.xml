@@ -31,20 +31,20 @@
     </declare-styleable>
 
     <declare-styleable name="DrawableTextView">
-        <attr name="leftDrawable" format="reference|color"/>
-        <attr name="rightDrawable" format="reference|color"/>
-        <attr name="topDrawable" format="reference|color"/>
-        <attr name="bottomDrawable" format="reference|color"/>
+        <attr name="leftDrawable" format="reference|color" />
+        <attr name="rightDrawable" format="reference|color" />
+        <attr name="topDrawable" format="reference|color" />
+        <attr name="bottomDrawable" format="reference|color" />
 
-        <attr name="leftDrawableWidth" format="reference|dimension"/>
-        <attr name="rightDrawableWidth" format="reference|dimension"/>
-        <attr name="topDrawableWidth" format="reference|dimension"/>
-        <attr name="bottomDrawableWidth" format="reference|dimension"/>
+        <attr name="leftDrawableWidth" format="reference|dimension" />
+        <attr name="rightDrawableWidth" format="reference|dimension" />
+        <attr name="topDrawableWidth" format="reference|dimension" />
+        <attr name="bottomDrawableWidth" format="reference|dimension" />
 
-        <attr name="leftDrawableHeight" format="reference|dimension"/>
-        <attr name="rightDrawableHeight" format="reference|dimension"/>
-        <attr name="topDrawableHeight" format="reference|dimension"/>
-        <attr name="bottomDrawableHeight" format="reference|dimension"/>
+        <attr name="leftDrawableHeight" format="reference|dimension" />
+        <attr name="rightDrawableHeight" format="reference|dimension" />
+        <attr name="topDrawableHeight" format="reference|dimension" />
+        <attr name="bottomDrawableHeight" format="reference|dimension" />
     </declare-styleable>
 
     <style name="SplashTheme" parent="Theme.Wallet">
@@ -99,4 +99,10 @@
 
     </style>
 
+    <style name="BaseCard">
+        <item name="useCompatPadding">false</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardMaxElevation">0dp</item>
+    </style>
 </resources>
