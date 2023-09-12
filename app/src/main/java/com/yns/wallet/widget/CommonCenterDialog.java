@@ -2,6 +2,7 @@ package com.yns.wallet.widget;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.media.Image;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.Display;
@@ -145,6 +146,57 @@ public class CommonCenterDialog {
                     if (editCallBackListener != null) {
                         editCallBackListener.onEditCallBackLisnter(inputEt.getText().toString());
                     }
+                }
+
+            }
+        });
+
+        showDialog(contentView);
+        return dialog;
+    }
+
+    /**
+     * 通用中间带输入框的弹窗
+     */
+    public AlertDialog showCenterQRDialog(String imageUrl,String title, String left, String right, View.OnClickListener leftClickListener, View.OnClickListener rightClickListener) {
+        View contentView = View.inflate(context, R.layout.dialog_qr_code, null);
+
+        TextView titleTv = contentView.findViewById(R.id.title_tv);
+
+        ImageView qrImg = contentView.findViewById(R.id.qr_img);
+
+        if(!TextUtils.isEmpty(imageUrl)){
+
+        }
+
+
+        TextView leftTv = contentView.findViewById(R.id.left_tv);
+        TextView rightTv = contentView.findViewById(R.id.right_tv);
+
+        if (!TextUtils.isEmpty(title)) {
+            titleTv.setText(title);
+        }
+        if (!TextUtils.isEmpty(left)) {
+            leftTv.setText(left);
+        }
+        if (!TextUtils.isEmpty(right)) {
+            rightTv.setText(right);
+        }
+        leftTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                if (leftClickListener != null) {
+                    leftClickListener.onClick(view);
+                }
+            }
+        });
+        rightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                if (rightClickListener != null) {
+                    rightClickListener.onClick(view);
                 }
 
             }
