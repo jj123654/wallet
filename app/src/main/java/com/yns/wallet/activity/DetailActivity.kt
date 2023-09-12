@@ -36,7 +36,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
             }
             tvPrivateKey.onClick {
-                startActivity(BackUpPrivateKeyActivity::class.java)
+                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
+                    startActivity(BackUpPrivateKeyActivity::class.java)
+                }
             }
             tvMnemonic.onClick {
                 CommonCenterDialog(this@DetailActivity).showPswEditDialog {

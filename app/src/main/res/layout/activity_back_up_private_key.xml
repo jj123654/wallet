@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,59 +14,135 @@
         android:layout_height="wrap_content"
         app:bar_title="@string/back_up_private_key" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <TextView
-            android:layout_width="298dp"
-            android:layout_height="15dp"
-            android:text="Please correctly copy the private key in order."
-            android:textColor="#ffff0000"
-            android:textSize="13sp" />
-
-        <androidx.cardview.widget.CardView
-            style="@style/BaseCard"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="20dp"
-            app:cardBackgroundColor="#2E1766"
-            app:cardCornerRadius="20dp">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:gravity="top|start"
-                android:padding="20dp"
-                android:text="037hd75jdr83hfnlksowu5fddhu43ew82737edhfvjskfjhgi99"
-                android:textColor="#ffffffff"
-                android:textSize="13sp" />
-        </androidx.cardview.widget.CardView>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
-                style="@style/common_button_1"
+                android:layout_width="298dp"
+                android:layout_height="15dp"
+                android:text="@string/please_correctly_copy_the_private_key_in_order"
+                android:textColor="#ffff0000"
+                android:textSize="13sp" />
+
+            <androidx.cardview.widget.CardView
+                style="@style/BaseCard"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="#2E1766"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/key"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="top|start"
+                    android:padding="20dp"
+                    android:text="037hd75jdr83hfnlksowu5fddhu43ew82737edhfvjskfjhgi99"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/copy"
+                    style="@style/common_button_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_btn_full_bg"
+                    android:minHeight="26dp"
+                    android:text="@string/copy" />
+
+                <TextView
+                    android:id="@+id/qr_code"
+                    style="@style/common_button_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_btn_full_bg"
+                    android:minHeight="26dp"
+                    android:text="@string/qr_code" />
+            </LinearLayout>
+
+            <Space
                 android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/shape_btn_full_bg"
-                android:minHeight="26dp"
-                android:text="@string/copy" />
+                android:background="@drawable/tips_bg"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_alert" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/icon"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/icon"
+                        android:text="@string/keep_your_private_key_in_a_safe_place"
+                        android:textColor="#8775AE"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/anyone_with_your_private_key_can_access_all_your_assets_please_store_it_safely_as_it_cannot_be_retrieved_once_lost"
+                    android:textColor="#ff8775ae"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/yns_will_not_store_your_private_key_on_its_server_and_therefore_is_unable_to_recover_your_wallet_once_it_is_lost"
+                    android:textColor="#ff8775ae"
+                    android:textSize="10sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <TextView
+                android:id="@+id/confirm"
                 style="@style/common_button_1"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/shape_btn_full_bg"
-                android:minHeight="26dp"
-                android:text="@string/qr_code" />
+                android:background="@drawable/shape_color_border_round"
+                android:minHeight="46dp"
+                android:text="@string/i_have_saved_it_securely" />
         </LinearLayout>
-    </LinearLayout>
+
+        <include
+            android:id="@+id/top_layout"
+            layout="@layout/common_warning_view"
+            tools:visibility="gone" />
+    </FrameLayout>
+
 </LinearLayout>
