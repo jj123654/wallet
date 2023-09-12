@@ -19,18 +19,24 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
         viewBinding.apply {
             ivMineName.onClick {
-                CommonCenterDialog(this@DetailActivity).showCenterEditDialog(false,null,null,null,null,null,null)
+                CommonCenterDialog(this@DetailActivity).showCenterEditDialog(
+                    false,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                )
             }
             changePasswordTv.onClick {
-                CommonCenterDialog(this@DetailActivity).showPswEditDialog{
+                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
                     startActivity(ChangePasswordActivity::class.java)
                 }
 
             }
             tvPrivateKey.onClick {
-                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
-                    startActivity(BackUpPrivateKeyActivity::class.java)
-                }
+                startActivity(BackUpPrivateKeyActivity::class.java)
             }
             tvMnemonic.onClick {
                 CommonCenterDialog(this@DetailActivity).showPswEditDialog {
@@ -41,7 +47,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
                 startActivity(BackUpRecordActivity::class.java)
             }
             tvResetWallet.onClick {
-                CommonCenterDialog(this@DetailActivity).showPswEditDialog{
+                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
 
                 }
             }

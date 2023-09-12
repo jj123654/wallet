@@ -217,5 +217,7 @@
     <string name="back_up_records">Back up records</string>
     <string name="back_up_record_tips">If you find records that are not operated by yourself, it is very likely that the mnemonic room and the mobile phone ID have been leaked, please transfer your assets as soon as possible. At the same time, you can check the monitor in your environment to find the suspect who operated your mobile phone during the relevant time</string>
     <string name="current">当前</string>
+    <string name="copy">Copy</string>
+    <string name="qr_code">QR Code</string>
 
 </resources>

@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/layout_status_bar_placeholder" />
+
+    <com.yns.wallet.widget.TitleBar
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_title="@string/back_up_private_key" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="15dp"
+            android:text="Please correctly copy the private key in order."
+            android:textColor="#ffff0000"
+            android:textSize="13sp" />
+
+        <androidx.cardview.widget.CardView
+            style="@style/BaseCard"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#2E1766"
+            app:cardCornerRadius="20dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="top|start"
+                android:padding="20dp"
+                android:text="037hd75jdr83hfnlksowu5fddhu43ew82737edhfvjskfjhgi99"
+                android:textColor="#ffffffff"
+                android:textSize="13sp" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/common_button_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_btn_full_bg"
+                android:minHeight="26dp"
+                android:text="@string/copy" />
+
+            <TextView
+                style="@style/common_button_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_btn_full_bg"
+                android:minHeight="26dp"
+                android:text="@string/qr_code" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

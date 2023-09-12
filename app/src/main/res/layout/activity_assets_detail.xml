@@ -5,11 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/v_status_bar"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/main" />
+    <include layout="@layout/layout_status_bar_placeholder" />
 
     <com.yns.wallet.widget.TitleBar
         android:id="@+id/title_bar"
