@@ -17,6 +17,21 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
         viewBinding.walletName.onClick {
             showPopup()
         }
+        showContractMode()
+    }
+
+    /**
+     * 只显示合约
+     * UI 图有两个版本，调用这个方法可以切换到 调用智能合约版本
+     */
+    private fun showContractMode() {
+        viewBinding.contractArea.visibility = View.VISIBLE
+        viewBinding.transferArea.visibility = View.GONE
+    }
+
+    private fun showTransferMode() {
+        viewBinding.contractArea.visibility = View.GONE
+        viewBinding.transferArea.visibility = View.VISIBLE
     }
 
     var popup: PopupWindow? = null

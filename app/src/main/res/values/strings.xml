@@ -244,5 +244,7 @@
     <string name="trx_balance">TRX余额</string>
     <string name="bind_width">带宽</string>
     <string name="energy">能量</string>
+    <string name="trx_not_enough">账户可用TRX不足，交易可能失败</string>
+    <string name="use_contract">调用智能合约</string>
 
 </resources>
