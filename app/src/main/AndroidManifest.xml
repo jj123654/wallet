@@ -82,6 +82,14 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.LoopActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChangePasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BackUpRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BackUpPrivateKeyActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BackUpMnemonicActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

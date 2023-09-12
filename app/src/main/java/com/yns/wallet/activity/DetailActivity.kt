@@ -22,16 +22,18 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
                 CommonCenterDialog(this@DetailActivity).showCenterEditDialog(false,null,null,null,null,null,null)
             }
             changePasswordTv.onClick {
-//                startActivity(PasswordA)
+                startActivity(ChangePasswordActivity::class.java)
             }
             tvPrivateKey.onClick {
-                CommonCenterDialog(this@DetailActivity).showCenterEditDialog(false,null,null,null,null,null,null)
+                startActivity(BackUpPrivateKeyActivity::class.java)
+            }
+            tvMnemonic.onClick {
+                startActivity(BackUpMnemonicActivity::class.java)
+            }
+            backUpRecordsTv.onClick {
+                startActivity(BackUpRecordActivity::class.java)
             }
             tvResetWallet.onClick {
-                CommonCenterDialog(this@DetailActivity).showCenterEditDialog(false,null,null,null,null,null,null)
-            }
-            ivChangePwd.onClick {
-                CommonCenterDialog(this@DetailActivity).showCenterEditDialog(false,null,null,null,null,null,null)
             }
         }
 

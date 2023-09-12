@@ -7,6 +7,7 @@
     <string name="name">Name</string>
     <string name="input_name">Input Name</string>
     <string name="reset_wallet">Reset Wallet</string>
+    <string name="delete_wallet">Delete Wallet</string>
     <string name="import_or_create_a_wallet">Import or\nCreate a wallet</string>
     <string name="import_an_existing">Import an existing wallet or\ncreate a new one</string>
     <string name="import_text">Import</string>
@@ -24,6 +25,7 @@
     <string name="agree_first">Agree first</string>
 
     <string name="set_password">Set Password</string>
+    <string name="current_password">Current Password</string>
     <string name="password_is_not_less_than_8digits">Password is not less than 8digits</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="index_1">1</string>
