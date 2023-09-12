@@ -18,22 +18,32 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
     override fun initView(root: View, savedInstanceState: Bundle?) {
 
         viewBinding.apply {
-            renameTv.onClick {
+            ivMineName.onClick {
                 CommonCenterDialog(this@DetailActivity).showCenterEditDialog(false,null,null,null,null,null,null)
             }
             changePasswordTv.onClick {
-                startActivity(ChangePasswordActivity::class.java)
+                CommonCenterDialog(this@DetailActivity).showPswEditDialog{
+                    startActivity(ChangePasswordActivity::class.java)
+                }
+
             }
             tvPrivateKey.onClick {
-                startActivity(BackUpPrivateKeyActivity::class.java)
+                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
+                    startActivity(BackUpPrivateKeyActivity::class.java)
+                }
             }
             tvMnemonic.onClick {
-                startActivity(BackUpMnemonicActivity::class.java)
+                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
+                    startActivity(BackUpMnemonicActivity::class.java)
+                }
             }
             backUpRecordsTv.onClick {
                 startActivity(BackUpRecordActivity::class.java)
             }
             tvResetWallet.onClick {
+                CommonCenterDialog(this@DetailActivity).showPswEditDialog{
+
+                }
             }
         }
 

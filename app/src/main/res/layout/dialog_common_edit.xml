@@ -6,12 +6,13 @@
     android:background="@drawable/shape_edit_dialog_bg">
 
     <TextView
+        android:id="@+id/title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="@dimen/sp_16"
         android:layout_gravity="center_horizontal"
-        android:text="@string/modify_walletname"
+        android:text="@string/verify_password"
         android:layout_marginTop="24dp"/>
 
 
@@ -31,8 +32,10 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:textSize="13sp"
-            android:textColor="@color/transaction_blue_tv_color"
-            android:text="@string/please_enter_name"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/transaction_blue_tv_color"
+            android:hint="@string/please_enter_password"
             android:background="@null"/>
 
         <ImageView

@@ -2,6 +2,7 @@ package com.yns.wallet.widget;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
@@ -27,6 +28,10 @@ public class CommonCenterDialog {
         this.context = context;
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context, R.style.Dialog);
         dialog = dialogBuilder.create();
+    }
+
+    public void showPswEditDialog(EditCallBackListener editCallBackListener){
+        this.showCenterEditDialog(true,null,null,null,null,null,editCallBackListener);
     }
 
 
@@ -93,6 +98,18 @@ public class CommonCenterDialog {
 
         if (isPassword) {
             eyeImg.setVisibility(View.VISIBLE);
+            eyeImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (eyeImg.isSelected()) {
+                        inputEt.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    } else {
+                        inputEt.setInputType(InputType.TYPE_CLASS_TEXT);
+                    }
+                    eyeImg.setSelected(!eyeImg.isSelected());
+                }
+            });
         } else {
             eyeImg.setVisibility(View.GONE);
         }
