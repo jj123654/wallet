@@ -240,5 +240,9 @@
     <string name="copy_success">Copy success</string>
     <string name="contract">Contract</string>
     <string name="transaction_resources">Transaction Resources</string>
+    <string name="balance_">账户剩余：</string>
+    <string name="trx_balance">TRX余额</string>
+    <string name="bind_width">带宽</string>
+    <string name="energy">能量</string>
 
 </resources>
