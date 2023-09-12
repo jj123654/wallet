@@ -20,6 +20,7 @@ import com.yns.wallet.adapter.WalletListAdapter
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.bean.WalletItemInfo
 import com.yns.wallet.databinding.FragmentHomeBinding
+import com.yns.wallet.databinding.LayoutWalletHeaderBinding
 import com.yns.wallet.util.adjustStatusBarMargin
 import com.yns.wallet.widget.decoration.SpacesItemDecoration
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
@@ -45,7 +46,13 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        adjustStatusBarMargin(view.findViewById(R.id.iv_logo))
+        viewBinding.rvList.layoutManager =
+            WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val viewBinding =
+            LayoutWalletHeaderBinding.inflate(layoutInflater, viewBinding.rvList, false)
+        walletListAdapter.addHeaderView(viewBinding.root)
+        this.viewBinding.rvList.adapter = walletListAdapter
+        adjustStatusBarMargin(viewBinding.ivLogo)
 
         viewBinding.apply {
             tvDetail.onClick {
@@ -71,9 +78,9 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
             }
 
             ivHomeBalanceEye.onClick {
-                if(ivHomeBalanceEye.isSelected){
+                if (ivHomeBalanceEye.isSelected) {
                     tvBalance.text = "$ 0.00"
-                }else{
+                } else {
                     tvBalance.text = "$ ******"
                 }
                 ivHomeBalanceEye.isSelected = !ivHomeBalanceEye.isSelected
@@ -84,14 +91,9 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
             }
 
 
-            rvList.layoutManager =
-                WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
 
-        lifecycleScope.launch {
-            delay(1000)
-            viewBinding.rvList.adapter = walletListAdapter
-        }
+
     }
 
 
