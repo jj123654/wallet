@@ -11,7 +11,7 @@ class AddWalletActivity : BaseActivity<ActivityAddWalletBinding>() {
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
             vGenerateWalletBg.onClick{
-                startActivity(CreateActivity::class.java)
+                startActivity(CreateStepImportActivity::class.java)
             }
         }
     }

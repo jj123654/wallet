@@ -52,7 +52,7 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 startActivity(DetailActivity::class.java)
             }
             ivWallet.onClick {
-                startActivity(CreateActivity::class.java)
+                startActivity(AddWalletActivity::class.java)
             }
             tvReceive.onClick {
                 startActivity(ReceiveActivity::class.java)
@@ -70,8 +70,17 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 startActivity(LoopActivity::class.java)
             }
 
+            ivHomeBalanceEye.onClick {
+                if(ivHomeBalanceEye.isSelected){
+                    tvBalance.text = "$ 0.00"
+                }else{
+                    tvBalance.text = "$ ******"
+                }
+                ivHomeBalanceEye.isSelected = !ivHomeBalanceEye.isSelected
+            }
+
             ivLogo.onClick {
-                startActivity(SelectTokenActivity::class.java)
+//                startActivity(SelectTokenActivity::class.java)
             }
 
 
