@@ -20,9 +20,9 @@ class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
     var wordList = mutableListOf<String>()
 
     companion object {
-        fun newInstance(it:String): CreateWallet2Fragment {
+        fun newInstance(it: String): CreateWallet2Fragment {
             val arguments = Bundle()
-            arguments.putString("menomic",it)
+            arguments.putString("menomic", it)
             val createWallet2Fragment = CreateWallet2Fragment()
             createWallet2Fragment.arguments = arguments
             return createWallet2Fragment
@@ -31,26 +31,34 @@ class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
-            topLayout.tvViewMnemonic.onClick{
+            topLayout.tvViewMnemonic.onClick {
                 tipsLayout.visibility = View.GONE
             }
 
             tvConfirm.onClick {
                 parentFragmentManager.commit {
-                    replace(R.id.fl_content, CreateWallet22Fragment.newInstance(arguments?.getString("menomic")?:""))
+                    replace(
+                        R.id.fl_content,
+                        CreateWallet22Fragment.newInstance(arguments?.getString("menomic") ?: "")
+                    )
                 }
             }
-
-            tvScanBtn.onClick {
-                CommonCenterDialog(activity).showCenterQRDialog("",getString(R.string.mnemonic_qr_code),"","",null,null)
-            }
-
             val menomics = arguments?.getString("menomic")
-            menomics?.let {
-                it?.split(" ")?.forEach {menomic->
-                    wordList.add(menomic)
-                }
+            menomics?.split(" ")?.forEach { menomic ->
+                wordList.add(menomic)
             }
+            tvScanBtn.onClick {
+                CommonCenterDialog(activity).showCenterQRDialog(
+                    menomics,
+                    getString(R.string.mnemonic_qr_code),
+                    "",
+                    "",
+                    null,
+                    null
+                )
+            }
+
+
 
             rvList.layoutManager = GridLayoutManager(context, 3)
             rvList.adapter = WordListAdapter(view.context, wordList)
