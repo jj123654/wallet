@@ -42,13 +42,11 @@ public class BottomSheetDialog extends AppCompatDialog {
         super(context, getThemeResId(context, theme));
         // We hide the title bar for any style configuration. Otherwise, there will be a gap
         // above the bottom sheet when it is expanded.
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
     }
 
     protected BottomSheetDialog(@NonNull Context context, boolean cancelable,
                                 OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         mCancelable = cancelable;
     }
 

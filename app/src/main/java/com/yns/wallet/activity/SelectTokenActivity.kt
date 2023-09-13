@@ -19,7 +19,7 @@ import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 
 class SelectTokenActivity:BaseActivity<ActivitySelectTokenBinding>() {
 
-    private val languageListAdapter: SelectTokenListAdapter by lazy {
+    private val selectTokenListAdapter: SelectTokenListAdapter by lazy {
         SelectTokenListAdapter(this@SelectTokenActivity, mutableListOf()).apply {
             setOnItemClickListener { adapter, view, position ->
                 if(!data[position].isSelected){
@@ -35,7 +35,7 @@ class SelectTokenActivity:BaseActivity<ActivitySelectTokenBinding>() {
         viewBinding.apply {
             recyclerView.layoutManager = WrapContentLinearLayoutManager(this@SelectTokenActivity, LinearLayoutManager.VERTICAL,false)
             recyclerView.addItemDecoration(SpacesItemDecoration(QMUIDisplayHelper.dp2px(this@SelectTokenActivity, 20), QMUIDisplayHelper.dp2px(this@SelectTokenActivity, 20)))
-            recyclerView.adapter = languageListAdapter
+            recyclerView.adapter = selectTokenListAdapter
         }
 
         if(list==null||list.size<=0) {
@@ -43,7 +43,7 @@ class SelectTokenActivity:BaseActivity<ActivitySelectTokenBinding>() {
             list.add(TokenBean(0,"Account-2","0xsadtr234",false))
             list.add(TokenBean(0,"Account-3","0xsadtr234",false))
 
-            languageListAdapter.addData(list)
+            selectTokenListAdapter.addData(list)
         }
     }
 }

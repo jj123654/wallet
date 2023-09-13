@@ -24,6 +24,17 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <!-- 底部dialog的样式 -->
+    <style name="BottomDialog" parent="Dialog">
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/DialogWindowBottomPopupAnim</item>
+    </style>
+
+    <style name="DialogWindowBottomPopupAnim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_bottom_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/dialog_bottom_exit_anim</item>
+    </style>
+
     <declare-styleable name="CommonWarningView">
         <attr name="title_text" format="string" />
         <attr name="content_text" format="string"></attr>

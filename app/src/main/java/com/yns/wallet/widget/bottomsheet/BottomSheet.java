@@ -14,7 +14,7 @@ public class BottomSheet {
     private BottomSheetDialog dialog;
 
     private BottomSheet(Builder builder) {
-        dialog = new BottomSheetDialog(builder.context, android.R.style.Theme_Translucent);
+        dialog = new BottomSheetDialog(builder.context, R.style.Dialog);
         View view = builder.contentView;
         if (view == null) {
             view = LayoutInflater.from(builder.context).inflate(builder.contentViewRes, null);
