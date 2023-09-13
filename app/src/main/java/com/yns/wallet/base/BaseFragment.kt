@@ -21,6 +21,10 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
 
     private var vb: VB? = null
     val viewBinding: VB get() = vb!!
+
+    /**
+     * 是否dialog
+     */
     open val isDialog: Boolean = false
 
     open val fullScreenDialog: Boolean = true
