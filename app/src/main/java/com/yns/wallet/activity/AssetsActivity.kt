@@ -11,6 +11,7 @@ import com.yns.wallet.databinding.ActivityAboutUsBinding
 import com.yns.wallet.databinding.ActivityAssetsBinding
 import com.yns.wallet.fragment.AssetsFragment
 import com.yns.wallet.fragment.TransactionRecordFragment
+import com.yns.wallet.util.onClick
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
@@ -24,13 +25,13 @@ class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
 
     private val tabFragments: MutableList<Fragment> = ArrayList()
 
-    private var tabList:MutableList<String> = mutableListOf()
+    private var tabList: MutableList<String> = mutableListOf()
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         initIndicator()
     }
 
-    private fun initIndicator(){
+    private fun initIndicator() {
         viewBinding.apply {
             titleBar.setTitle(getString(R.string.usdt))
             priceTv.text = "$ 1.1434415"
@@ -57,9 +58,13 @@ class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
                 val simplePagerTitleView = SimplePagerTitleView(context)
                 simplePagerTitleView.text = tabList[index]
-                simplePagerTitleView.normalColor = resources.getColor(R.color.transaction_blue_tv_color)
-                simplePagerTitleView.selectedColor = resources.getColor(R.color.transaction_blue_color)
-                simplePagerTitleView.setOnClickListener { viewBinding.viewPager.currentItem = index }
+                simplePagerTitleView.normalColor =
+                    resources.getColor(R.color.transaction_blue_tv_color)
+                simplePagerTitleView.selectedColor =
+                    resources.getColor(R.color.transaction_blue_color)
+                simplePagerTitleView.setOnClickListener {
+                    viewBinding.viewPager.currentItem = index
+                }
                 return simplePagerTitleView
             }
 
@@ -76,6 +81,9 @@ class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
         }
         viewBinding.magicIndicator.navigator = commonNavigator
         ViewPagerHelper.bind(viewBinding.magicIndicator, viewBinding.viewPager)
+        viewBinding.hideSmallTransactionLayout.onClick {
+            it.isSelected = !it.isSelected
+        }
     }
 
 }
