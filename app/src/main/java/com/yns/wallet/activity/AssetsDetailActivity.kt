@@ -1,7 +1,9 @@
 package com.yns.wallet.activity
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
+import android.widget.TextView
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityAboutUsBinding
 import com.yns.wallet.databinding.ActivityAssetsDetailBinding
@@ -17,7 +19,18 @@ class AssetsDetailActivity : BaseActivity<ActivityAssetsDetailBinding>() {
         viewBinding.copy.onClick {
             link.copyToClipboard(this)
         }
+        bindCopyButton(viewBinding.copyReceive, viewBinding.tvReceive)
+        bindCopyButton(viewBinding.copySend, viewBinding.tvSend)
+        bindCopyButton(viewBinding.copyHex, viewBinding.tvHex)
     }
 
 
+    private fun bindCopyButton(view: View, textView: TextView) {
+        view.onClick {
+            val text = textView.text.toString()
+            if (!TextUtils.isEmpty(text)) {
+                text.copyToClipboard(this)
+            }
+        }
+    }
 }
