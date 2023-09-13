@@ -246,5 +246,6 @@
     <string name="energy">能量</string>
     <string name="trx_not_enough">账户可用TRX不足，交易可能失败</string>
     <string name="use_contract">调用智能合约</string>
+    <string name="search_by_token_address">通过Token地址搜索</string>
 
 </resources>

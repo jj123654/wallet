@@ -1,53 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginEnd="20dp"
-    android:background="@drawable/shape_edit_import_bg"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/iv_mine_icon2"
         android:layout_width="54dp"
         android:layout_height="54dp"
-        android:src="@mipmap/icon_default_user" />
+        android:layout_margin="16dp"
+        android:src="@mipmap/icon_default_user"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/iv_mine_name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/iv_mine_icon2"
         android:layout_marginStart="16dp"
-        android:layout_toEndOf="@id/iv_mine_icon2"
         android:text="@string/chain_id"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/iv_mine_icon2"
+        app:layout_constraintTop_toTopOf="@id/iv_mine_icon2" />
 
     <ImageView
         android:id="@+id/iv_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/iv_mine_icon2"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:src="@mipmap/icon_search_add"
         android:textColor="#8775AE"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_mine_icon2" />
 
     <TextView
         android:id="@+id/iv_mine_hash2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_mine_name2"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
-        android:layout_toEndOf="@id/iv_mine_icon2"
         android:maxEms="16"
         android:maxLines="1"
         android:text="@string/test_mine_string"
         android:textColor="#8775AE"
-        android:textSize="13sp" />
-</RelativeLayout>
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@id/iv_balance"
+        app:layout_constraintStart_toEndOf="@id/iv_mine_icon2"
+        app:layout_constraintTop_toBottomOf="@id/iv_balance" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#66FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
