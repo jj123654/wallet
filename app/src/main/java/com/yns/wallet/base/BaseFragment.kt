@@ -114,4 +114,16 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
             }
         }
     }
+
+
+    /**
+     * 移除自己
+     */
+    fun removeSelf() {
+        if (isDialog) {
+            dismissAllowingStateLoss()
+        } else {
+            fragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+        }
+    }
 }
