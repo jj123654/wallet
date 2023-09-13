@@ -35,7 +35,7 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
         // bottom sheet
         val view: View = LayoutInflater.from(this).inflate(R.layout.layout_choose_account, null)
         bottomSheet = BottomSheet.Builder(this).contentView(view).build()
-        view.findViewById<View>(R.id.tv_cancel).setOnClickListener {
+        view.findViewById<View>(R.id.close_img).setOnClickListener {
             bottomSheet.dismiss()
         }
         val rvList = view.findViewById<RecyclerView>(R.id.rv_list)

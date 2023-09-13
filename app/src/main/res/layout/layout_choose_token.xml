@@ -48,7 +48,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:minHeight="300dp"
+        android:maxHeight="500dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:nestedScrollingEnabled="false"
