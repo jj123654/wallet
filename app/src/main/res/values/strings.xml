@@ -7,12 +7,12 @@
     <string name="input_name">Input Name</string>
     <string name="input">Input</string>
     <string name="paste">Paste</string>
-    <string name="import_wallet_tips">Scan or enter your mnemonic, private key, keystore</string>
+    <string name="import_wallet_tips">Enter your private key or mnemonic</string>
     <string name="reset_wallet">Reset Wallet</string>
     <string name="delete_wallet">Delete Wallet</string>
     <string name="verify_password">Verify Password</string>
     <string name="import_or_create_a_wallet">Import or\nCreate a wallet</string>
-    <string name="import_an_existing">Import an existing wallet or\ncreate a new one</string>
+    <string name="import_an_existing">Import an existing wallet\nor create a new one</string>
     <string name="import_text">Import</string>
     <string name="create">Create</string>
     <string name="import_a_wallet">Import a Wallet</string>
@@ -44,7 +44,6 @@
     <string name="gno">GNO</string>
     <string name="all">All</string>
     <string name="fee">Fee</string>
-    <string name="related_wallet">Related Wallet(s): 0</string>
     <string name="disburse">Disburse</string>
     <string name="income">Income</string>
     <string name="rename">Rename</string>
@@ -55,8 +54,6 @@
     <string name="token_decimal">Token Decimal</string>
     <string name="estimated_gas_fee">Estimated gas fee</string>
     <string name="i_have_carefully_and_afree_with">I have carefully and afree with <font color='#007DFF'>User Agreement</font></string>
-    <string name="secure_wallet_hint_title">These secret recovery phrase are for recovering your wallet, write down it correctly on paper and keep it in a safe place</string>
-    <string name="secure_wallet_alert">Dont’t desclose secret recovery phrase to anyone Once the secret recovery phrase is lost, assets canot be reccovered</string>
     <string name="custom_networks">Custom Networks</string>
     <string name="network_name">Network Name</string>
     <string name="networks">Networks</string>
@@ -94,7 +91,6 @@
     <string name="me">Me</string>
     <string name="test_mine_string">037hd75jdr83hfnlksowu5fddhu43ew82737edhfvjskfjhgi99</string>
     <string name="transaction_records">Transaction Records</string>
-    <string name="select_language">Select Language</string>
     <string name="select_token">Select Token</string>
     <string name="share_my_address">Share my address</string>
     <string name="language">Language</string>
@@ -122,15 +118,14 @@
     <string name="done">Done</string>
     <string name="wallet_step_hint_title">Please write down the following words in the correct order.</string>
     <string name="wallet_step_hint_bottom">Anyone with your private key can access all your assets. Please keep the information to yourself.</string>
-    <string name="wallet_step2_2_hint_title">These secret recovery phrase are for recovering your wallet, write down it correctly on paper and keep it in a safe place</string>
     <string name="mnemonic_qr_code">Mnemonic QR Code</string>
     <string name="keep_mnemonic_safe">Keep Mnemonic safe</string>
-    <string name="keep_content">任何人获取你私钥，意味着获取了资产的所有权，请妥善保管</string>
-    <string name="keep_content2">YNS 不会保持您的私钥，所以一旦丢失，将不能恢复</string>
+    <string name="keep_content">Anyone with your private key can access all your assets. Please be sure to back up your mnemonic before you receive transfers or delete the app.</string>
+    <string name="keep_content2">YNS will not store your private key on its server, and therefore is unable to recover your wallet once it is lost.</string>
     <string name="already_back_up">Already Back Up</string>
     <string name="view_mnemonic">View Mnemonic</string>
-    <string name="choose_index_1">选择第%s个单词</string>
-    <string name="word_order_wrong_tips">顺序错误，请重试</string>
+    <string name="choose_index_1">Choose the No.%s word</string>
+    <string name="word_order_wrong_tips">Wrong order, Please try again</string>
     <string name="import_wallet">Import Wallet</string>
     <string name="accounts_to_be_imported">Accounts to be imported</string>
     <string name="choose_another_account">choose another account</string>
@@ -174,7 +169,7 @@
     <string name="loop_return">Loop - Return</string>
     <string name="state">State</string>
     <string name="product_overview">Product Overview</string>
-    <string name="maximum_sold">Maximum Sold</string>
+    <string name="maximum_sold">Min Receive</string>
     <string name="rate">Rate</string>
     <string name="yield_bearing_token">Yield-Bearing Token(s)</string>
     <string name="rule_description">Rule Description</string>
@@ -194,7 +189,7 @@
     <string name="hexadecimal">Hexadecimal</string>
     <string name="swap">Swap</string>
     <string name="to">To</string>
-    <string name="enter_or_paste_the_address">Enter or paste the address</string>
+    <string name="enter_or_paste_the_address">Please enter the address</string>
     <string name="max">Max</string>
     <string name="from">From</string>
     <string name="enter_an_amount">Enter an amount</string>
@@ -213,11 +208,9 @@
     <string name="popular_tokens">Popular Tokens</string>
     <string name="congratulations">Congratulations</string>
     <string name="create_wallet_success_tips">You‘ve successfully import your wallet.\nRemember to keep your secret recovery phrase\nsafe, it’s your responsibility!</string>
-    <string name="create_a_new_account">Create a new account</string>
+    <string name="create_a_new_account">Create a new wallet</string>
     <string name="new_account">New Account</string>
-    <string name="change_account">Change Account</string>
-    <string name="change_wallet_name">Change Wallet Name</string>
-    <string name="import_an_account">Import an account</string>
+    <string name="import_an_account">Import a wallet</string>
     <string name="switch_account">Switch Account</string>
 
     <string name="double_click_exit_tips">Double-click to exit</string>
@@ -225,28 +218,25 @@
     <string name="language_chinese">中文</string>
     <string name="back_up_records">Back up records</string>
     <string name="back_up_record_tips">If you find records that are not operated by yourself, it is very likely that the mnemonic room and the mobile phone ID have been leaked, please transfer your assets as soon as possible. At the same time, you can check the monitor in your environment to find the suspect who operated your mobile phone during the relevant time</string>
-    <string name="current">当前</string>
+    <string name="current">Current</string>
     <string name="copy">Copy</string>
     <string name="qr_code">QR Code</string>
     <string name="keep_your_private_key_in_a_safe_place">Keep your private key in a safe place</string>
     <string name="i_have_saved_it_securely">I have saved it securely</string>
-    <string name="anyone_with_your_private_key_can_access_all_your_assets_please_store_it_safely_as_it_cannot_be_retrieved_once_lost">Anyone with your private key can access all your assets. Please store it safely, as it cannot be retrieved once lost.</string>
-    <string name="yns_will_not_store_your_private_key_on_its_server_and_therefore_is_unable_to_recover_your_wallet_once_it_is_lost">YNS will not store your private key on its server, and therefore is unable to recover your wallet once it is lost.</string>
     <string name="anyone_with_your_private_key_can_access_all_your_assets_please_keep_the_information_to_yourself">Anyone with your private key can access all your assets. Please keep the information to yourself.</string>
     <string name="view_private_key">View Private Key</string>
     <string name="please_correctly_copy_the_private_key_in_order">Please correctly copy the private key in order.</string>
-    <string name="continue_">Continue</string>
     <string name="risk_warning">Risk Warning</string>
     <string name="there_are_risks_in_copying_private_key_the_clipboard_is_vulnerable_to_hacking_recommended_to_store_in_a_secure_manner">There are risks in copying private key. The clipboard is vulnerable to hacking. Recommended to store in a secure manner.</string>
     <string name="copy_success">Copy success</string>
     <string name="contract">Contract</string>
     <string name="transaction_resources">Transaction Resources</string>
-    <string name="balance_">账户剩余：</string>
-    <string name="trx_balance">TRX余额</string>
-    <string name="bind_width">带宽</string>
-    <string name="energy">能量</string>
-    <string name="trx_not_enough">账户可用TRX不足，交易可能失败</string>
-    <string name="use_contract">调用智能合约</string>
-    <string name="search_by_token_address">通过Token地址搜索</string>
+    <string name="balance_">Account Balance：</string>
+    <string name="trx_balance">TRX balance</string>
+    <string name="bind_width">Bandwidth</string>
+    <string name="energy">Energy</string>
+    <string name="trx_not_enough">Insufficient TRX, Transaction may fail</string>
+    <string name="use_contract">Call Smart Contract</string>
+    <string name="search_by_token_address">Search for token address</string>
 
 </resources>

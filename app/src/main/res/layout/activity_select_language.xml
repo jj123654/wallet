@@ -16,7 +16,7 @@
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:bar_title="@string/select_language"/>
+        app:bar_title="@string/language"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

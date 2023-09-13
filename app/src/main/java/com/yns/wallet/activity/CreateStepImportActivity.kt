@@ -12,7 +12,6 @@ import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.base.Constant
 import com.yns.wallet.databinding.ActivityCreateStepImport2Binding
-import com.yns.wallet.databinding.ActivityCreateStepImportBinding
 import com.yns.wallet.util.AppManager
 import com.yns.wallet.util.SharedPreferencesUtils
 import com.yns.wallet.widget.bottomsheet.BottomSheet
