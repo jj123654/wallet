@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <View
@@ -39,10 +39,10 @@
             android:background="@drawable/shape_edit_pwd_bg"
             android:drawableStart="@mipmap/icon_search"
             android:drawablePadding="8dp"
-            android:gravity="center_vertical"
             android:padding="12dp"
-            android:text="@string/search_by_token_address"
             android:textColor="@color/white"
+            android:hint="@string/search_for_token_address"
+            android:textColorHint="@color/transaction_blue_tv_color"
             android:textSize="13sp" />
 
         <TextView
@@ -63,19 +63,15 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/popular_tokens"
-        android:textColor="#8775AE"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/shape_edit_import_bg"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_add_token" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/item_add_token"/>
 
 </LinearLayout>

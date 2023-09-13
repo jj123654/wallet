@@ -4,7 +4,7 @@
     style="@style/BaseCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
+    android:layout_marginBottom="16dp"
     app:cardBackgroundColor="#2E1766"
     app:cardCornerRadius="12dp"
     app:contentPadding="12dp">
@@ -19,18 +19,20 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="112dp"
-                android:layout_height="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/back_up_mnemonic"
-                android:textColor="#ffffffff"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
                 android:textSize="13sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="end|center_vertical"
                 android:text="@string/current"
-                android:textColor="#ff6229ff"
+                android:textColor="@color/transaction_blue_color"
                 android:textSize="10sp" />
         </FrameLayout>
 
@@ -47,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Account address: TAbBgFNCgYHJvPRxG1wp57Va5Wae6chRwc"
-            android:textColor="#ff8775ae"
+            android:textColor="@color/transaction_blue_tv_color"
             android:textSize="10sp" />
 
         <TextView
@@ -55,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Back up time: 2023/07/19 22:33:00"
-            android:textColor="#ff8775ae"
+            android:textColor="@color/transaction_blue_tv_color"
             android:textSize="10sp" />
     </LinearLayout>
 

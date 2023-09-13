@@ -45,7 +45,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_toEndOf="@id/icon"
                 android:text="@string/back_up_record_tips"
-                android:textColor="#8775AE"
+                android:textColor="@color/transaction_blue_tv_color"
                 android:textSize="10sp" />
         </RelativeLayout>
 
@@ -53,7 +53,6 @@
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="@dimen/qmui_group_list_section_header_footer_padding_vertical"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

@@ -7,6 +7,7 @@ import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityImport2Binding
+import com.yns.wallet.util.AppManager
 import com.yns.wallet.util.addEditEyeViewLogic
 
 class Import2Activity : BaseActivity<ActivityImport2Binding>() {
@@ -34,7 +35,7 @@ class Import2Activity : BaseActivity<ActivityImport2Binding>() {
                     ||repeatPswEmptyTv.visibility != View.GONE){
                     return@onClick
                 }
-                finish()
+                AppManager.getAppManager().returnToActivity(MainActivity::class.java)
             }
         }
 

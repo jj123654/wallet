@@ -1,6 +1,7 @@
 package com.yns.wallet.fragment
 
 import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
@@ -15,13 +16,19 @@ import com.yns.wallet.util.onClick
 class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
     override val isDialog: Boolean = true
     override fun initView(root: View, savedInstanceState: Bundle?) {
+        viewBinding.close.onClick {
+            removeSelf()
+        }
         viewBinding.walletName.onClick {
             showPopup()
         }
         viewBinding.confirm.onClick {
-            parentFragmentManager?.beginTransaction()?.remove(this@ConfirmLoopFragment)?.commitAllowingStateLoss()
+            removeSelf()
         }
-        showContractMode()
+        showTransferMode()
+
+        viewBinding.walletName.paint.flags = Paint.UNDERLINE_TEXT_FLAG
+        viewBinding.walletName.paint.isAntiAlias = true
     }
 
     /**

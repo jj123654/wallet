@@ -209,6 +209,7 @@
     <string name="http_yunus_network">Http://yunus.network/</string>
     <string name="check_for_updates">Check For Updates</string>
     <string name="search">Search</string>
+    <string name="search_for_token_address">Search for token address</string>
     <string name="popular_tokens">Popular Tokens</string>
     <string name="congratulations">Congratulations</string>
     <string name="create_wallet_success_tips">You‘ve successfully import your wallet.\nRemember to keep your secret recovery phrase\nsafe, it’s your responsibility!</string>

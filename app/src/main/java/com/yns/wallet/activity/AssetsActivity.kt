@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.adapter.ContentPagerAdapter
 import com.yns.wallet.base.BaseActivity
@@ -35,6 +36,10 @@ class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
         viewBinding.apply {
             titleBar.setTitle(getString(R.string.usdt))
             priceTv.text = "$ 1.1434415"
+
+            hideSmallTransactionLayout.onClick{
+                checkRb.isSelected = !checkRb.isSelected
+            }
         }
         tabList.add(getString(R.string.all))
         tabList.add(getString(R.string.transfer))

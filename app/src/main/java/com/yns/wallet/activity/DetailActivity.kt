@@ -11,6 +11,7 @@ import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityDetailBinding
+import com.yns.wallet.util.copyToClipboard
 import com.yns.wallet.widget.CommonCenterDialog
 
 class DetailActivity : BaseActivity<ActivityDetailBinding>() {
@@ -21,13 +22,17 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
             ivMineName.onClick {
                 CommonCenterDialog(this@DetailActivity).showCenterEditDialog(
                     false,
-                    null,
-                    null,
-                    null,
+                    getString(R.string.change_wallet_name),
+                    getString(R.string.change_wallet_name),
                     null,
                     null,
                     null
-                )
+                ){
+                    ivMineName.text = it
+                }
+            }
+            ivMineHash.onClick {
+                ivMineHash.text.toString().copyToClipboard(this@DetailActivity)
             }
             changePasswordTv.onClick {
                 CommonCenterDialog(this@DetailActivity).showPswEditDialog {

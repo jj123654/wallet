@@ -118,6 +118,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/check_rb"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:src="@drawable/selector_radio_button_bg"/>

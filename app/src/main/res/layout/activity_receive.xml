@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="20dp"
         android:gravity="center_horizontal"
         android:text="@string/test_mine_string"
         android:textColor="@color/white"
@@ -49,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/shape_bg_btn"
         android:gravity="center"
@@ -63,8 +64,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="74dp"
         android:drawableTop="@mipmap/logo"
+        android:drawablePadding="@dimen/dp_10"
         android:text="@string/yns_wallet"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

@@ -34,6 +34,8 @@
             android:id="@+id/content_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="middle"
             android:textColor="@color/transaction_blue_tv_color"
             android:layout_marginTop="@dimen/dp_4"
             android:visibility="gone"
