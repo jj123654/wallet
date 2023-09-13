@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityAccountBinding
+import com.yns.wallet.util.onClick
 
 class AccountActivity : BaseActivity<ActivityAccountBinding>() {
 
@@ -21,6 +22,9 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
         viewBinding.rvList.adapter = AccountListAdapter(this)
 
         viewBinding.tvCreate.setOnClickListener { showEditDialog() }
+        viewBinding.tvImport.onClick {
+            startActivity(ImportActivity::class.java)
+        }
     }
 
     private fun showEditDialog() {
