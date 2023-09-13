@@ -81,7 +81,7 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 if (ivHomeBalanceEye.isSelected) {
                     tvBalance.text = "$ 0.00"
                 } else {
-                    tvBalance.text = "$ ******"
+                    tvBalance.text = "$ ⁕⁕⁕⁕⁕⁕"
                 }
                 ivHomeBalanceEye.isSelected = !ivHomeBalanceEye.isSelected
             }

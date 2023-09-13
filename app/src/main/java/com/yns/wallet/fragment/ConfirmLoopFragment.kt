@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.PopupWindow
 import com.luck.lib.camerax.utils.DensityUtil
+import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.databinding.FragmentConfirmLoopBinding
 import com.yns.wallet.databinding.PopupWindowBalanceBinding
@@ -16,6 +17,9 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.walletName.onClick {
             showPopup()
+        }
+        viewBinding.confirm.onClick {
+            parentFragmentManager?.beginTransaction()?.remove(this@ConfirmLoopFragment)?.commitAllowingStateLoss()
         }
         showContractMode()
     }

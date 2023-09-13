@@ -16,7 +16,7 @@
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:bar_title="@string/wallet_details" />
+        app:bar_title="@string/send" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="@string/to"
+        android:text="@string/account"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,15 +123,18 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/iv_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/iv_mine_icon2"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="16dp"
-            android:text="0"
-            android:textColor="#8775AE"
+            android:background="@null"
+            android:inputType="numberDecimal"
+            android:hint="0"
+            android:textColor="@color/white"
+            android:textColorHint="@color/transaction_blue_tv_color"
             android:textSize="18sp" />
 
         <TextView
@@ -144,8 +147,8 @@
             android:layout_toEndOf="@id/iv_mine_icon2"
             android:maxEms="16"
             android:maxLines="1"
-            android:text="@string/test_mine_string"
-            android:textColor="#8775AE"
+            android:text="BNB"
+            android:textColor="@color/transaction_blue_tv_color"
             android:textSize="13sp" />
 
         <View
@@ -161,7 +164,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/v_line"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="14dp"
             android:drawableStart="@mipmap/icon_wallet_selected"
             android:drawablePadding="6dp"
@@ -179,7 +181,7 @@
             android:layout_below="@id/v_line"
             android:layout_alignEnd="@id/iv_balance"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="18dp"
             android:gravity="center"
             android:maxEms="16"
             android:maxLines="1"
@@ -194,6 +196,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
+        android:visibility="gone"
         android:layout_marginTop="15dp">
 
 
@@ -217,6 +220,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:paddingHorizontal="20dp"
         android:layout_marginTop="15dp">
 
