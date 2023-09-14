@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.text.TextUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
@@ -16,11 +17,30 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Hashtable
 
+/**
+ * 二维码生成器
+ */
 object CodeCreator {
 
+    /**
+     * 设置显示二维码
+     */
     @JvmStatic
     fun setQRCode(activity: AppCompatActivity, code: String, imageView: ImageView) {
         activity.lifecycleScope.launch {
+            val bitmap = withContext(Dispatchers.IO) {
+                createQRCode(code, 400, 400)
+            }
+            imageView.setImageBitmap(bitmap)
+        }
+    }
+
+    /**
+     * 设置显示二维码
+     */
+    @JvmStatic
+    fun setQRCode(fragment: Fragment, code: String, imageView: ImageView) {
+        fragment.lifecycleScope.launch {
             val bitmap = withContext(Dispatchers.IO) {
                 createQRCode(code, 400, 400)
             }
