@@ -239,5 +239,6 @@
     <string name="use_contract">Call Smart Contract</string>
     <string name="search_by_token_address">Search for token address</string>
     <string name="loading">loading...</string>
+    <string name="password_is_wrong">Wrong password</string>
 
 </resources>

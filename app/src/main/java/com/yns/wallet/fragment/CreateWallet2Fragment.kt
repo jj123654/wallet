@@ -20,12 +20,14 @@ class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
     var wordList = mutableListOf<String>()
 
     var menomic:String?=null
+    var name:String?=null
     var password:String?=null
 
     companion object {
-        fun newInstance(menomic: String,password: String): CreateWallet2Fragment {
+        fun newInstance(menomic: String,name:String,password: String): CreateWallet2Fragment {
             val arguments = Bundle()
             arguments.putString("menomic", menomic)
+            arguments.putString("name", name)
             arguments.putString("password", password)
             val createWallet2Fragment = CreateWallet2Fragment()
             createWallet2Fragment.arguments = arguments
@@ -43,11 +45,12 @@ class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
                 parentFragmentManager.commit {
                     replace(
                         R.id.fl_content,
-                        CreateWallet22Fragment.newInstance(menomic?:"",password?:"")
+                        CreateWallet22Fragment.newInstance(menomic?:"",name?:"",password?:"")
                     )
                 }
             }
             password = arguments?.getString("password")
+            name = arguments?.getString("name")
             menomic = arguments?.getString("menomic")
             menomic?.split(" ")?.forEach { menomic ->
                 wordList.add(menomic)

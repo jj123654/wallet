@@ -24,8 +24,10 @@ class WalletViewModel : ViewModel() {
     //创建助记词
     fun createMenomic(callback: suspend (String) -> Unit) {
         viewModelScope.launch {
-            val menomic: String = withContext(Dispatchers.IO) {
-                WalletApi.createMenomic()
+            val menomic: String
+            withContext(Dispatchers.IO) {
+                menomic = WalletApi.createMenomic()
+                WalletApi.saveMenomic(menomic)
             }
             callback(menomic)
         }
@@ -33,14 +35,17 @@ class WalletViewModel : ViewModel() {
 
     //通过助记词创建钱包
     fun createWalletFromMenomic(
+        name:String,
         menomic: String,
+        index:Int,
         password: String,
         callback: suspend (WalletModel) -> Unit
     ) {
         viewModelScope.launch(Dispatchers.Main) {
             val walletEntity: WalletModel = withContext(Dispatchers.IO) {
-                val m =
-                    WalletApi.createWalletFromMenomic(menomic, WalletApi.getWalletCnt(), password)
+                var m =
+                    WalletApi.createWalletFromMenomic(menomic, index, password)
+                m.name = name
                 WalletApi.saveWallet(m)
                 WalletApi.setCurrentWallet(m)
                 m.toWalletModel()
@@ -52,13 +57,15 @@ class WalletViewModel : ViewModel() {
 
     //通过私钥创建钱包
     fun createWalletFromPrivateKey(
+        name:String,
         privateKey: String,
         password: String,
         callback: suspend (WalletModel) -> Unit
     ) {
         viewModelScope.launch {
             val walletEntity: WalletModel = withContext(Dispatchers.IO) {
-                val m = WalletApi.createWalletFromPrivateKey(privateKey, password)
+                var m = WalletApi.createWalletFromPrivateKey(privateKey, password)
+                m.name = name
                 WalletApi.saveWallet(m)
                 WalletApi.setCurrentWallet(m)
                 m.toWalletModel()
@@ -87,6 +94,14 @@ class WalletViewModel : ViewModel() {
         }
     }
 
+    fun checkPassword(password:String,callback: suspend (Boolean) -> Unit){
+        viewModelScope.launch {
+            val checkResult = withContext(Dispatchers.IO){
+                WalletApi.checkPassword(password)
+            }
+            callback(checkResult)
+        }
+    }
 
     /**
      * 获取所有钱包

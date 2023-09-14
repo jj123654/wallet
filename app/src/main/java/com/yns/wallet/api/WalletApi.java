@@ -50,6 +50,15 @@ public class WalletApi {
         return true;
     }
 
+    public static String getMenomic(String password) {
+        // 实现通过密码获取助记词的逻辑
+        return "web ecology matter tongue expire type still fee agent bike grit budget";
+    }
+
+    public static void saveMenomic(String menomic){
+        //实现保存助记词的逻辑
+    }
+
     public static WalletEntity getCurrentWallet() {
         // 实现获取当前钱包的逻辑
         WalletEntity wallet = new WalletEntity();
@@ -82,6 +91,10 @@ public class WalletApi {
         WalletEntity walletEntity2 = new WalletEntity();
         walletEntity2.address = "TFDNwyqwrQd1tkqujo3GsQwkQYFea29x4y";
         addressList.add(walletEntity2);
+
+        WalletEntity walletEntity3 = new WalletEntity();
+        walletEntity3.address = "TFDNwyqwrQd1tkqujo3GsQwkQYFea29x4y213";
+        addressList.add(walletEntity3);
         return addressList;
     }
 

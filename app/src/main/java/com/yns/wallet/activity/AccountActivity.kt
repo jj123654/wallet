@@ -18,6 +18,8 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
         AccountListAdapter(mutableListOf()).apply {
             setOnItemClickListener { adapter, view, position ->
                 this.refreshData(position)
+                walletViewModel.switchCurrentWallet(position)
+                finish()
             }
         }
     }
@@ -26,10 +28,11 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
             tvCreate.setOnClickListener {
-                CommonCenterDialog(this@AccountActivity).showPswEditDialog {
+                showVerifyPasswordDialog {
                     var intent = Intent(this@AccountActivity, CreateStepImportActivity::class.java)
                     intent.putExtra("isFirstLoad", false)
-                    startActivity(CreateStepImportActivity::class.java)
+                    intent.putExtra("password", it)
+                    startActivity(intent)
                 }
 
             }
@@ -55,7 +58,8 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
         }
 
         walletViewModel.walletsLiveData.observe(this) {
-            accountListAdapter.setNewInstance(it.toMutableList())
+            accountListAdapter.setList(it)
+            accountListAdapter.refreshData(it.indexOfFirst { wallet-> walletViewModel.currentWalletLiveData.value?.address == wallet.address  })
         }
         walletViewModel.getAllWallet()
 
