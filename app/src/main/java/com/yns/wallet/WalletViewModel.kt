@@ -1,6 +1,7 @@
 package com.yns.wallet
 
 import android.text.TextUtils
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yns.wallet.api.WalletApi
@@ -14,6 +15,8 @@ import kotlinx.coroutines.withContext
  * 钱包的viewModel
  */
 class WalletViewModel : ViewModel() {
+
+    val walletsLiveData = MutableLiveData<List<WalletModel>>(emptyList())
 
     //创建钱包
     fun createMenomic(callback: suspend (String) -> Unit) {
@@ -67,6 +70,20 @@ class WalletViewModel : ViewModel() {
         }
     }
 
+
+    /**
+     * 获取所有钱包
+     */
+    fun getAllWallet() {
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO) {
+                WalletApi.listAllWallet().map {
+                    it.toWalletModel()
+                }
+            }
+            walletsLiveData.value = r
+        }
+    }
 
     /**
      *         // 实现从助记词获取地址的逻辑

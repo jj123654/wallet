@@ -1,28 +1,26 @@
 package com.yns.wallet.adapter
 
 
-import android.content.Context
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
-import com.yns.wallet.bean.AccountBean
-import com.yns.wallet.bean.LanguageBean
-import com.yns.wallet.bean.TransactionRecord
-import com.yns.wallet.databinding.ItemSelectLanguageBinding
+import com.yns.wallet.bean.WalletModel
 import com.yns.wallet.databinding.ItemSelectNetworkBinding
-import com.yns.wallet.databinding.ItemTransactionRecordBinding
-import com.yns.wallet.util.LanguageUtils
 
 
-class AccountListAdapter(context:Context, data: MutableList<AccountBean>?) :
-    BaseQuickAdapter<AccountBean, AccountListAdapter.BaseHolder>(R.layout.item_select_network, data) {
-    override fun convert(holder: BaseHolder, item: AccountBean) {
+class AccountListAdapter(data: MutableList<WalletModel>?) :
+    BaseQuickAdapter<WalletModel, AccountListAdapter.BaseHolder>(
+        R.layout.item_select_network,
+        data
+    ) {
+    var current = -1
+    override fun convert(holder: BaseHolder, item: WalletModel) {
         holder.vb.apply {
             nameTv.text = item.name
             contentTv.visibility = View.VISIBLE
             contentTv.text = "0xsadjkfhjlas....asdfasdf"
-            tagImg.isSelected = item.isSelected
+            tagImg.isSelected = holder.absoluteAdapterPosition == current
         }
 
     }
@@ -32,9 +30,8 @@ class AccountListAdapter(context:Context, data: MutableList<AccountBean>?) :
     }
 
 
-    fun refreshData(position:Int){
-        data.forEach { it.isSelected = false }
-        data[position].isSelected = true
+    fun refreshData(position: Int) {
+        current = position
         notifyDataSetChanged()
     }
 
