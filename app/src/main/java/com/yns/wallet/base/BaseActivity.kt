@@ -1,6 +1,7 @@
 package com.yns.wallet.base
 
 import android.app.Activity
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -123,19 +124,26 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
 
-    private var dialog: ProgressDialog? = null
+    private var dialog: Dialog? = null
     fun showProgress() {
-        dismissProgress()
-        ProgressDialog(this).apply {
-            setCancelable(false)
-            setCanceledOnTouchOutside(false)
-            show()
-            dialog = this
+        if(dialog == null){
+            dialog = Dialog(this,R.style.Dialog).apply {
+                setContentView(
+                    LayoutInflater.from(this@BaseActivity).inflate(R.layout.view_loading, null)
+                )
+                setCancelable(false)
+                setCanceledOnTouchOutside(false)
+            }
+        }
+        if(!dialog!!.isShowing){
+            dialog!!.show()
         }
     }
 
     fun dismissProgress() {
-        dialog?.dismiss()
+        if(dialog!=null&&dialog!!.isShowing){
+            dialog?.dismiss()
+        }
     }
 
 }

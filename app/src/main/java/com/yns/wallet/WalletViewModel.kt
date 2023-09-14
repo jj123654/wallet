@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yns.wallet.api.WalletApi
 import com.yns.wallet.bean.WalletModel
+import com.yns.wallet.bean.toWalletEntity
 import com.yns.wallet.bean.toWalletModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,9 +17,11 @@ import kotlinx.coroutines.withContext
  */
 class WalletViewModel : ViewModel() {
 
-    val walletsLiveData = MutableLiveData<List<WalletModel>>(emptyList())
+    val walletsLiveData = MutableLiveData<MutableList<WalletModel>>(mutableListOf())
 
-    //创建钱包
+    val currentWalletLiveData = MutableLiveData<WalletModel>()
+
+    //创建助记词
     fun createMenomic(callback: suspend (String) -> Unit) {
         viewModelScope.launch {
             val menomic: String = withContext(Dispatchers.IO) {
@@ -28,7 +31,7 @@ class WalletViewModel : ViewModel() {
         }
     }
 
-    //创建钱包
+    //通过助记词创建钱包
     fun createWalletFromMenomic(
         menomic: String,
         password: String,
@@ -39,12 +42,15 @@ class WalletViewModel : ViewModel() {
                 val m =
                     WalletApi.createWalletFromMenomic(menomic, WalletApi.getWalletCnt(), password)
                 WalletApi.saveWallet(m)
+                WalletApi.setCurrentWallet(m)
                 m.toWalletModel()
             }
+            currentWalletLiveData.value = walletEntity
             callback(walletEntity)
         }
     }
 
+    //通过私钥创建钱包
     fun createWalletFromPrivateKey(
         privateKey: String,
         password: String,
@@ -54,14 +60,25 @@ class WalletViewModel : ViewModel() {
             val walletEntity: WalletModel = withContext(Dispatchers.IO) {
                 val m = WalletApi.createWalletFromPrivateKey(privateKey, password)
                 WalletApi.saveWallet(m)
+                WalletApi.setCurrentWallet(m)
                 m.toWalletModel()
             }
+            currentWalletLiveData.value = walletEntity
             callback(walletEntity)
         }
     }
 
     fun getWalletCount(): Int {
         return WalletApi.getWalletCnt()
+    }
+
+    fun switchCurrentWallet(position:Int){
+        walletsLiveData.value?.let {
+            val walletModel = walletsLiveData.value?.get(position)
+            WalletApi.setCurrentWallet(walletModel?.toWalletEntity())
+            currentWalletLiveData.value = walletModel!!
+        }
+
     }
 
     fun getCurrentWallet(callback: suspend (WalletModel) -> Unit) {
@@ -81,7 +98,7 @@ class WalletViewModel : ViewModel() {
                     it.toWalletModel()
                 }
             }
-            walletsLiveData.value = r
+            walletsLiveData.value = r.toMutableList()
         }
     }
 
