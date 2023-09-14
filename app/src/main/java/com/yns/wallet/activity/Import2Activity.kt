@@ -6,14 +6,22 @@ import android.widget.Toast
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.base.KeyValuePairVO
+import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.databinding.ActivityImport2Binding
 import com.yns.wallet.util.AppManager
+import com.yns.wallet.util.EventBusUtil
 import com.yns.wallet.util.addEditEyeViewLogic
 
 class Import2Activity : BaseActivity<ActivityImport2Binding>() {
 
-    override fun initView(root: View, savedInstanceState: Bundle?) {
+    var isFirstLoad = false
 
+    var privateKey:String?=null
+
+    override fun initView(root: View, savedInstanceState: Bundle?) {
+        isFirstLoad = intent.getBooleanExtra("isFirstLoad",false)
+        privateKey = intent.getStringExtra("privateKey")
         viewBinding.apply {
             tvImport.onClick {
                 walletNameEmptyTv.visibility = if(etWalletName.text.toString().isNullOrEmpty()) View.VISIBLE else View.GONE
@@ -35,7 +43,16 @@ class Import2Activity : BaseActivity<ActivityImport2Binding>() {
                     ||repeatPswEmptyTv.visibility != View.GONE){
                     return@onClick
                 }
-                AppManager.getAppManager().returnToActivity(MainActivity::class.java)
+
+                walletViewModel.createWalletFromPrivateKey(privateKey?:"",pswEmptyTv.text.toString()){
+                    if(isFirstLoad){
+                        AppManager.getAppManager().returnToActivity(ImportOrCreateWallet::class.java)
+                        EventBusUtil.sendEvent(KeyValuePairVO(EventBusUtil.CREATE_WALLET_SUCCESS,true))
+                    }else{
+                        AppManager.getAppManager().returnToActivity(MainActivity::class.java)
+                    }
+                }
+
             }
         }
 

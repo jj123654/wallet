@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.base.Constant
+import com.yns.wallet.base.KeyValuePairVO
+import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.databinding.ActivityCreateStepImport2Binding
-import com.yns.wallet.databinding.ActivityCreateStepImportBinding
 import com.yns.wallet.util.AppManager
+import com.yns.wallet.util.EventBusUtil
 import com.yns.wallet.util.SharedPreferencesUtils
 import com.yns.wallet.widget.bottomsheet.BottomSheet
 
@@ -23,14 +25,39 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
 
     var isFirstLoad = false
 
+    var menomic:String?=null
+    var password:String?=null
+
     override fun initView(root: View, savedInstanceState: Bundle?) {
         isFirstLoad = intent.getBooleanExtra("isFirstLoad",false)
+        menomic = intent.getStringExtra("menomic")
+        password = intent.getStringExtra("password")
 
-        if(isFirstLoad){
-            viewBinding.topLayout.visibility = View.GONE
-        }else{
-            viewBinding.topLayout.visibility = View.VISIBLE
+        viewBinding.apply {
+            if(isFirstLoad){
+                topLayout.visibility = View.GONE
+            }else{
+                topLayout.visibility = View.VISIBLE
+            }
+
+            // activity
+            tvChooseAccount.setOnClickListener {
+                bottomSheet.show()
+            }
+            tvConfirm.setOnClickListener {
+                walletViewModel.createWalletFromMenomic(menomic?:"",password?:"") {
+                    if(isFirstLoad){
+                        AppManager.getAppManager().returnToActivity(ImportOrCreateWallet::class.java)
+                        EventBusUtil.sendEvent(KeyValuePairVO(EventBusUtil.CREATE_WALLET_SUCCESS,true))
+                    }else{
+                        AppManager.getAppManager().returnToActivity(MainActivity::class.java)
+                    }
+                }
+
+            }
+
         }
+
 
         // bottom sheet
         val view: View = LayoutInflater.from(this).inflate(R.layout.layout_choose_account, null)
@@ -42,14 +69,6 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
         rvList.layoutManager = LinearLayoutManager(this)
         rvList.adapter = BottomSheetList(this)
 
-        // activity
-        findViewById<View>(R.id.tv_choose_account).setOnClickListener {
-            bottomSheet.show()
-        }
-        findViewById<View>(R.id.tv_confirm).setOnClickListener {
-            SharedPreferencesUtils.putString(this, Constant.walletStateKey, "true")
-            AppManager.getAppManager().returnToActivity(MainActivity::class.java)
-        }
     }
 
     class BottomSheetList(private val context: Context) :

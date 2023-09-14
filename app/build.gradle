@@ -16,19 +16,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        release {
-            storeFile file('/sign.jks')
-            storePassword 'wallet2023'
-            keyAlias 'key0'
-            keyPassword 'wallet2023'
-        }
+//        release {
+//            storeFile file('/sign.jks')
+//            storePassword 'wallet2023'
+//            keyAlias 'key0'
+//            keyPassword 'wallet2023'
+//        }
     }
     buildTypes {
-        debug {
-            signingConfig signingConfigs.release
-        }
+//        debug {
+//            signingConfig signingConfigs.release
+//        }
         release {
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

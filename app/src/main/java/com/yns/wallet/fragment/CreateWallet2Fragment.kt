@@ -19,10 +19,14 @@ class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
 
     var wordList = mutableListOf<String>()
 
+    var menomic:String?=null
+    var password:String?=null
+
     companion object {
-        fun newInstance(it: String): CreateWallet2Fragment {
+        fun newInstance(menomic: String,password: String): CreateWallet2Fragment {
             val arguments = Bundle()
-            arguments.putString("menomic", it)
+            arguments.putString("menomic", menomic)
+            arguments.putString("password", password)
             val createWallet2Fragment = CreateWallet2Fragment()
             createWallet2Fragment.arguments = arguments
             return createWallet2Fragment
@@ -39,17 +43,18 @@ class CreateWallet2Fragment : BaseFragment<FragmentCreateWallet2Binding>() {
                 parentFragmentManager.commit {
                     replace(
                         R.id.fl_content,
-                        CreateWallet22Fragment.newInstance(arguments?.getString("menomic") ?: "")
+                        CreateWallet22Fragment.newInstance(menomic?:"",password?:"")
                     )
                 }
             }
-            val menomics = arguments?.getString("menomic")
-            menomics?.split(" ")?.forEach { menomic ->
+            password = arguments?.getString("password")
+            menomic = arguments?.getString("menomic")
+            menomic?.split(" ")?.forEach { menomic ->
                 wordList.add(menomic)
             }
             tvScanBtn.onClick {
                 CommonCenterDialog(activity).showCenterQRDialog(
-                    menomics,
+                    menomic,
                     getString(R.string.mnemonic_qr_code),
                     "",
                     "",

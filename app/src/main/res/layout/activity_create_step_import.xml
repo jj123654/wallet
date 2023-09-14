@@ -140,7 +140,7 @@
                 <TextView
                     style="@style/common_white_tv"
                     android:paddingVertical="15dp"
-                    android:text="@string/change_account"
+                    android:text="@string/choose_another_account"
                     android:textColor="@color/transaction_blue_color" />
 
             </LinearLayout>

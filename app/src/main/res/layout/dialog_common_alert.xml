@@ -77,7 +77,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/continue_"
+                    android:text="@string/continue_tips"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     app:backgroundTint="#6229FF"

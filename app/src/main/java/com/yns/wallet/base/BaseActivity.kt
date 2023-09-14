@@ -16,6 +16,7 @@ import com.yns.wallet.util.AppManager
 import com.yns.wallet.util.EventBusUtil
 import com.yns.wallet.util.LanguageUtils
 import com.yns.wallet.util.getStatusBarHeight
+import org.greenrobot.eventbus.Subscribe
 import java.lang.reflect.ParameterizedType
 
 
@@ -38,6 +39,9 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
         }
 
         AppManager.getAppManager().addActivity(this)
+        if (isRegisterEventBus()) {
+            EventBusUtil.register(this);
+        }
         //利用反射，调用指定ViewBinding中的inflate方法填充视图
         val type = javaClass.genericSuperclass
         if (type is ParameterizedType) {
@@ -79,6 +83,22 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
     protected open fun isRegisterEventBus(): Boolean {
         return false
     }
+
+    @Subscribe
+    open fun onEventBusReceive(keyValuePairVO: KeyValuePairVO?) {
+        if (keyValuePairVO == null) {
+            return
+        }
+        onEventBusMsgReceived(keyValuePairVO)
+    }
+
+    /**
+     * 如果需要调用eventbus，则重写isRegisterEventBus返回true，并且重写该方法即可
+     * eventBus的key建议写到EventBusUtils里
+     *
+     * @param keyValuePairVO
+     */
+    open fun onEventBusMsgReceived(keyValuePairVO: KeyValuePairVO?) {}
 
     override fun onDestroy() {
         super.onDestroy()

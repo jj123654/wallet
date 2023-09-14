@@ -14,7 +14,7 @@ public class WalletApi {
 
     public static int getWalletCnt() {
         // 实现获取钱包数量的逻辑
-        return 2;
+        return 0;
     }
 
     public static String getAddressFromMenomic(String menomic, int index) {
@@ -56,6 +56,10 @@ public class WalletApi {
         wallet.address = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
         wallet.keystore = "testkeystore";
         return wallet;
+    }
+
+    public static void setCurrentWallet(WalletEntity wallet){
+        //实现设置当前钱包的逻辑
     }
 
     public static String getPrivateKeyFromKeystore(String keystore, String password) {

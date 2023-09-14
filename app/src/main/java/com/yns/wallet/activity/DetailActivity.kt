@@ -22,8 +22,8 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
             ivMineName.onClick {
                 CommonCenterDialog(this@DetailActivity).showCenterEditDialog(
                     false,
-                    getString(R.string.change_wallet_name),
-                    getString(R.string.change_wallet_name),
+                    getString(R.string.set_wallet_name),
+                    getString(R.string.set_wallet_name),
                     null,
                     null,
                     null

@@ -52,7 +52,7 @@ class BackUpPrivateKeyActivity : BaseActivity<ActivityBackUpPrivateKeyBinding>()
             CommonCenterDialog(this).showCenterQRDialog(text,
                 getString(R.string.private_key_qr_code),
                 getString(R.string.cancel),
-                getString(R.string.continue_),
+                getString(R.string.continue_tips),
                 View.OnClickListener {
 
                 },

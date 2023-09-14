@@ -60,9 +60,9 @@ class CreateWalletFragment : BaseFragment<FragmentCreateWalletBinding>() {
                     return@onClick
                 }
 
-                walletViewModel.createWallet{
+                walletViewModel.createMenomic{
                     parentFragmentManager.commit(true) {
-                        replace(R.id.fl_content, CreateWallet2Fragment.newInstance(it))
+                        replace(R.id.fl_content, CreateWallet2Fragment.newInstance(it,etPwd.text.toString()))
                     }
                 }
 

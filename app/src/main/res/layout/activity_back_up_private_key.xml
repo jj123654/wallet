@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/anyone_with_your_private_key_can_access_all_your_assets_please_store_it_safely_as_it_cannot_be_retrieved_once_lost"
+                    android:text="@string/keep_content"
                     android:textColor="#ff8775ae"
                     android:textSize="10sp" />
 
@@ -124,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="@string/yns_will_not_store_your_private_key_on_its_server_and_therefore_is_unable_to_recover_your_wallet_once_it_is_lost"
+                    android:text="@string/keep_content2"
                     android:textColor="#ff8775ae"
                     android:textSize="10sp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
