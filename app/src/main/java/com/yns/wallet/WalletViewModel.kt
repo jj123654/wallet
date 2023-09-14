@@ -1,5 +1,6 @@
 package com.yns.wallet
 
+import android.text.TextUtils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yns.wallet.api.WalletApi
@@ -66,4 +67,29 @@ class WalletViewModel : ViewModel() {
         }
     }
 
+
+    /**
+     *         // 实现从助记词获取地址的逻辑
+     */
+    fun getAddressFromMenomic(
+        menomic: String,
+        index: Int,
+        callback: suspend (List<String>) -> Unit
+    ) {
+        viewModelScope.launch {
+            val from = (index - 1) * 20
+            val to = from + 20
+            val r = withContext(Dispatchers.IO) {
+                val result = mutableListOf<String>()
+                for (i in from until to) {
+                    val p = WalletApi.getAddressFromMenomic(menomic, i)
+                    if (!TextUtils.isEmpty(p)) {
+                        result.add(p)
+                    }
+                }
+                result
+            }
+            callback.invoke(r)
+        }
+    }
 }

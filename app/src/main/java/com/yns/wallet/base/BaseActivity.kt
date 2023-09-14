@@ -12,21 +12,23 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.yns.wallet.R
+import com.yns.wallet.WalletViewModel
 import com.yns.wallet.util.AppManager
 import com.yns.wallet.util.EventBusUtil
 import com.yns.wallet.util.LanguageUtils
 import com.yns.wallet.util.getStatusBarHeight
+import com.yns.wallet.util.globalViewModel
 import org.greenrobot.eventbus.Subscribe
 import java.lang.reflect.ParameterizedType
 
 
-abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     lateinit var viewBinding: VB
-
+    protected val walletViewModel: WalletViewModel by globalViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(!beforeSetContentView()){
+        if (!beforeSetContentView()) {
             // 1. 使内容区域全屏
 //        WindowCompat.setDecorFitsSystemWindows(window, true)
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
@@ -58,6 +60,7 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
         }
         adjustStatusBar()
     }
+
     abstract fun initView(root: View, savedInstanceState: Bundle?)
 
     //livedata监听
@@ -71,7 +74,7 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
     }
 
     //部分页面有特殊需求的
-    open fun beforeSetContentView():Boolean{
+    open fun beforeSetContentView(): Boolean {
         return false
     }
 

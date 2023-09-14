@@ -21,6 +21,7 @@ import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.bean.WalletItemInfo
+import com.yns.wallet.bean.WalletModel
 import com.yns.wallet.databinding.FragmentHomeBinding
 import com.yns.wallet.databinding.LayoutWalletHeaderBinding
 import com.yns.wallet.util.adjustStatusBarMargin
@@ -39,7 +40,7 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
         WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
     )
 
-    var walletEntity:WalletApi.WalletEntity?=null
+    var walletEntity: WalletModel? = null
 
     private val walletListAdapter: WalletListAdapter by lazy {
         WalletListAdapter(requireContext(), list).apply {
@@ -96,7 +97,6 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 }
                 ivHomeBalanceEye.isSelected = !ivHomeBalanceEye.isSelected
             }
-
 
 
         }

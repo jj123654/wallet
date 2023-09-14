@@ -14,6 +14,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.luck.picture.lib.utils.ToastUtils
 import com.yns.wallet.R
 import com.yns.wallet.activity.MainActivity
@@ -141,5 +143,12 @@ fun String.copyToClipboard(context: Context) {
     clip?.let {
         it.setPrimaryClip(ClipData.newPlainText("copy", this))
         ToastUtils.showToast(context, context.getString(R.string.copy_success))
+    }
+}
+
+
+inline fun <reified T : ViewModel> globalViewModel(): Lazy<T> {
+    return lazy {
+        ViewModelProvider(BaseApplication.globalContext()).get(T::class.java)
     }
 }

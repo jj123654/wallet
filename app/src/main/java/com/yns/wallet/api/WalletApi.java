@@ -3,6 +3,7 @@ package com.yns.wallet.api;
 import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class WalletApi {
     // 钱包管理
@@ -19,7 +20,7 @@ public class WalletApi {
 
     public static String getAddressFromMenomic(String menomic, int index) {
         // 实现从助记词获取地址的逻辑
-        return "";
+        return UUID.randomUUID().toString();
     }
 
     public static WalletEntity createWalletFromMenomic(String menomic, int index, String password) {
@@ -58,7 +59,7 @@ public class WalletApi {
         return wallet;
     }
 
-    public static void setCurrentWallet(WalletEntity wallet){
+    public static void setCurrentWallet(WalletEntity wallet) {
         //实现设置当前钱包的逻辑
     }
 
