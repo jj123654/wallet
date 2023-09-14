@@ -18,6 +18,7 @@ import com.yns.wallet.*
 import com.yns.wallet.activity.*
 import com.yns.wallet.adapter.WalletListAdapter
 import com.yns.wallet.api.WalletApi
+import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.bean.WalletItemInfo
