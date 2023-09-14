@@ -11,7 +11,8 @@ import kotlinx.parcelize.Parcelize
 data class WalletModel(
     var name: String? = null,
     var address: String? = null,
-    var keystore: String? = null
+    var keystore: String? = null,
+    var iconUrl: String? = null
 ) : Parcelable
 
 

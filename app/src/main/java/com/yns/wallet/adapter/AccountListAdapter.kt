@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
 import com.yns.wallet.bean.WalletModel
 import com.yns.wallet.databinding.ItemSelectNetworkBinding
+import com.yns.wallet.util.loadCircle
 
 
 class AccountListAdapter(data: MutableList<WalletModel>?) :
@@ -17,10 +18,11 @@ class AccountListAdapter(data: MutableList<WalletModel>?) :
     var current = -1
     override fun convert(holder: BaseHolder, item: WalletModel) {
         holder.vb.apply {
-            nameTv.text = item.name
+            nameTv.text = "Wallet-${holder.absoluteAdapterPosition}"
             contentTv.visibility = View.VISIBLE
             contentTv.text = "0xsadjkfhjlas....asdfasdf"
             tagImg.isSelected = holder.absoluteAdapterPosition == current
+            logoImg.loadCircle(item.iconUrl,R.mipmap.logo_eth)
         }
 
     }

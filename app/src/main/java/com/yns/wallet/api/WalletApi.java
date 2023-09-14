@@ -15,7 +15,7 @@ public class WalletApi {
 
     public static int getWalletCnt() {
         // 实现获取钱包数量的逻辑
-        return 0;
+        return 2;
     }
 
     public static String getAddressFromMenomic(String menomic, int index) {

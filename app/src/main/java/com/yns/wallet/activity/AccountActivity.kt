@@ -57,6 +57,7 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
         walletViewModel.walletsLiveData.observe(this) {
             accountListAdapter.setNewInstance(it.toMutableList())
         }
+        walletViewModel.getAllWallet()
 
     }
 
