@@ -22,7 +22,9 @@ class AddWalletActivity : BaseActivity<ActivityAddWalletBinding>() {
             }
 
             vImportWalletBg.onClick {
-                startActivity(ImportActivity::class.java)
+                var intent = Intent(this@AddWalletActivity,ImportActivity::class.java)
+                intent.putExtra("isFirstLoad",false)
+                startActivity(intent)
             }
 
         }

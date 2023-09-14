@@ -5,19 +5,37 @@ import android.os.Bundle
 import android.view.View
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.base.KeyValuePairVO
 import com.yns.wallet.databinding.ActivityImportCreateBinding
+import com.yns.wallet.util.EventBusUtil
 
 class ImportOrCreateWallet : BaseActivity<ActivityImportCreateBinding>() {
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
 
-        setContentView(R.layout.activity_import_create)
 
-        findViewById<View>(R.id.tv_import).setOnClickListener {
-            startActivity(Intent(this, ImportActivity::class.java))
+        viewBinding.apply {
+            tvImport.setOnClickListener {
+                var intent = Intent(this@ImportOrCreateWallet,ImportActivity::class.java)
+                intent.putExtra("isFirstLoad",true)
+                startActivity(intent)
+            }
+            tvCreate.setOnClickListener {
+                startActivity(CreateActivity::class.java)
+            }
         }
-        findViewById<View>(R.id.tv_create).setOnClickListener {
-            startActivity(Intent(this, CreateActivity::class.java))
+
+    }
+
+    override fun isRegisterEventBus(): Boolean {
+        return true
+    }
+
+    override fun onEventBusMsgReceived(keyValuePairVO: KeyValuePairVO?) {
+        super.onEventBusMsgReceived(keyValuePairVO)
+        if(keyValuePairVO?.key == EventBusUtil.CREATE_WALLET_SUCCESS){
+            startActivity(MainActivity::class.java)
+            finish()
         }
     }
 

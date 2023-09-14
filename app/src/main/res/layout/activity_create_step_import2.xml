@@ -85,41 +85,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:paddingVertical="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/shape_edit_import_bg">
 
-
             <TextView
+                android:id="@+id/tv_seed_hash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/transaction_blue_tv_color"
-                android:text="@string/wallet"
-                android:textSize="13sp"/>
+                android:text="@string/tabbgfncgyhjvprxg1wp57va5wae6chrwc"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_choose_account" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/dp_10">
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_seed_path"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:singleLine="true"
-                    android:textColor="@color/transaction_blue_tv_color"
-                    android:text="@string/test_mine_string"
-                    android:textSize="13sp"/>
+                    android:text="@string/path_m_dhdj_345_1"
+                    android:textColor="#8775AE"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_account_hash" />
 
                 <TextView
+                    android:id="@+id/tv_seed_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="0"
                     android:textColor="@color/transaction_blue_tv_color"
                     android:textSize="13sp"
-                    android:text="0"
-                    android:layout_marginLeft="10dp"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_account_path" />
+
 
             </LinearLayout>
 
@@ -217,7 +228,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/shape_btn_full_bg"
+        android:background="@drawable/shape_normal_blue_corner_50_bg"
         android:gravity="center"
         android:text="@string/confirm"
         android:textColor="@color/white"

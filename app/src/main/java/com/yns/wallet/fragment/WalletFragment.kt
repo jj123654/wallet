@@ -17,7 +17,9 @@ import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.yns.wallet.*
 import com.yns.wallet.activity.*
 import com.yns.wallet.adapter.WalletListAdapter
+import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseFragment
+import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.bean.WalletItemInfo
 import com.yns.wallet.databinding.FragmentHomeBinding
 import com.yns.wallet.databinding.LayoutWalletHeaderBinding
@@ -37,6 +39,8 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
         WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
     )
 
+    var walletEntity:WalletApi.WalletEntity?=null
+
     private val walletListAdapter: WalletListAdapter by lazy {
         WalletListAdapter(requireContext(), list).apply {
             setOnItemClickListener { adapter, position, view ->
@@ -46,6 +50,10 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
+        walletViewModel.getCurrentWallet {
+            walletEntity = it
+        }
+
         viewBinding.rvList.layoutManager =
             WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         val viewBinding =
@@ -55,6 +63,9 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
         adjustStatusBarMargin(viewBinding.ivLogo)
 
         viewBinding.apply {
+
+            walletNameTv.text = walletEntity?.name
+
             tvDetail.onClick {
                 startActivity(DetailActivity::class.java)
             }
@@ -86,9 +97,6 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
                 ivHomeBalanceEye.isSelected = !ivHomeBalanceEye.isSelected
             }
 
-            ivLogo.onClick {
-//                startActivity(SelectTokenActivity::class.java)
-            }
 
 
         }

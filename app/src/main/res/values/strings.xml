@@ -135,7 +135,7 @@
     <string name="change_hd_wallet">Change HD Wallet</string>
     <string name="hi_welcome_to_yns_wallet">Hi～\nWelcome to YNS Wallet!</string>
     <string name="generate_wallet">Generate Wallet</string>
-    <string name="generate_wallet_tips">Generate one or more new wallets with the seed of the following wallet</string>
+    <string name="generate_wallet_tips">Generate from the seed of the following wallet</string>
     <string name="generate_related_wallet">Generate Related Wallet</string>
     <string name="generate_wallet_content">Generate a related wallet based on your HD wallet</string>
     <string name="import_your_mnemonic_private_key_or_keystore_with_one_tap">Import your mnemonic, private key, or keystore with one tap</string>
