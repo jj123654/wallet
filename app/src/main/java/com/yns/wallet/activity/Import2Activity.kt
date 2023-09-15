@@ -43,8 +43,8 @@ class Import2Activity : BaseActivity<ActivityImport2Binding>() {
                     ||repeatPswEmptyTv.visibility != View.GONE){
                     return@onClick
                 }
-
-                walletViewModel.createWalletFromPrivateKey(privateKey?:"",pswEmptyTv.text.toString()){
+                //TODO 此处后续需要完善可能是通过私钥也可能是通过助记词创建的钱包
+                walletViewModel.createWalletFromPrivateKey(walletNameEmptyTv.text.toString(),privateKey?:"",pswEmptyTv.text.toString()){
                     if(isFirstLoad){
                         AppManager.getAppManager().returnToActivity(ImportOrCreateWallet::class.java)
                         EventBusUtil.sendEvent(KeyValuePairVO(EventBusUtil.CREATE_WALLET_SUCCESS,true))

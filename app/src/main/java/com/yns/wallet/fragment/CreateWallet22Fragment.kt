@@ -28,12 +28,14 @@ class CreateWallet22Fragment : BaseFragment<FragmentCreateWallet22Binding>() {
     private val wordList = mutableListOf<String>()
 
     var menomic:String?=null
+    var name:String?=null
     var password:String?=null
 
     companion object {
-        fun newInstance(menomic: String,password: String): CreateWallet22Fragment {
+        fun newInstance(menomic: String,name:String,password: String): CreateWallet22Fragment {
             val arguments = Bundle()
             arguments.putString("menomic", menomic)
+            arguments.putString("name", name)
             arguments.putString("password", password)
             val createWallet22Fragment = CreateWallet22Fragment()
             createWallet22Fragment.arguments = arguments
@@ -43,6 +45,7 @@ class CreateWallet22Fragment : BaseFragment<FragmentCreateWallet22Binding>() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         password = arguments?.getString("password")
+        name = arguments?.getString("name")
         menomic = arguments?.getString("menomic")
         menomic?.let {
             it?.split(" ")?.forEach {menomic->
@@ -86,6 +89,7 @@ class CreateWallet22Fragment : BaseFragment<FragmentCreateWallet22Binding>() {
                 var intent = Intent(activity,CreateStepImportActivity::class.java)
                 intent.putExtra("isFirstLoad",true)
                 intent.putExtra("menomic", menomic)
+                intent.putExtra("name", name)
                 intent.putExtra("password", password)
                 startActivity(intent)
             }

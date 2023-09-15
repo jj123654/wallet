@@ -6,4 +6,6 @@ object Constant {
 
     const val APP_LANGUAGE = "APP_LANGUAGE"
 
+    const val DEFAULT_PATH = "Path:m/44'/195'/0'/0/"
+
 }

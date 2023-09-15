@@ -23,10 +23,11 @@ class CreateWalletFragment : BaseFragment<FragmentCreateWalletBinding>() {
 
         viewBinding.apply {
             if(BuildConfig.DEBUG){
-                etName.setText("测试")
                 etPwd.setText("123456789")
                 etRepeatPwd.setText("123456789")
             }
+
+            etName.setText("Wallet-"+ walletViewModel.getWalletCount())
 
             rbCheck.isSelected = true
 
@@ -62,7 +63,7 @@ class CreateWalletFragment : BaseFragment<FragmentCreateWalletBinding>() {
 
                 walletViewModel.createMenomic{
                     parentFragmentManager.commit(true) {
-                        replace(R.id.fl_content, CreateWallet2Fragment.newInstance(it,etPwd.text.toString()))
+                        replace(R.id.fl_content, CreateWallet2Fragment.newInstance(it,etName.text.toString(),etPwd.text.toString()))
                     }
                 }
 

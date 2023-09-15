@@ -14,11 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.yns.wallet.R
 import com.yns.wallet.WalletViewModel
-import com.yns.wallet.util.AppManager
-import com.yns.wallet.util.EventBusUtil
-import com.yns.wallet.util.LanguageUtils
-import com.yns.wallet.util.getStatusBarHeight
-import com.yns.wallet.util.globalViewModel
+import com.yns.wallet.activity.CreateStepImportActivity
+import com.yns.wallet.util.*
+import com.yns.wallet.widget.CommonCenterDialog
 import org.greenrobot.eventbus.Subscribe
 import java.lang.reflect.ParameterizedType
 
@@ -146,4 +144,16 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         }
     }
 
+    fun showVerifyPasswordDialog(callback:(String) -> Unit){
+        CommonCenterDialog(this@BaseActivity).showPswEditDialog{
+            walletViewModel.checkPassword(it){result->
+                if(result){
+                    callback(it)
+                }else{
+                    showToast(getString(R.string.password_is_wrong))
+                }
+            }
+        }
+
+    }
 }

@@ -13,16 +13,17 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:text="@string/tabbgfncgyhjvprxg1wp57va5wae6chrwc"
-        android:textColor="#6229FF"
+        android:textColor="@color/white"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tag_img"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         android:layout_marginEnd="12dp"
-        android:src="@mipmap/radio_checked"
+        android:src="@drawable/selector_radio_button_bg"
         app:layout_constraintBottom_toBottomOf="@id/tv_account_hash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_account_hash" />

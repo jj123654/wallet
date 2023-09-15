@@ -13,10 +13,11 @@ class AddWalletActivity : BaseActivity<ActivityAddWalletBinding>() {
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
             vGenerateWalletBg.onClick{
-                CommonCenterDialog(this@AddWalletActivity).showPswEditDialog{
+                showVerifyPasswordDialog {
                     var intent = Intent(this@AddWalletActivity,CreateStepImportActivity::class.java)
                     intent.putExtra("isFirstLoad",false)
-                    startActivity(CreateStepImportActivity::class.java)
+                    intent.putExtra("password", it)
+                    startActivity(intent)
                 }
 
             }

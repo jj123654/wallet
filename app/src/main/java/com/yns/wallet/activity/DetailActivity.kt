@@ -35,26 +35,32 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
                 ivMineHash.text.toString().copyToClipboard(this@DetailActivity)
             }
             changePasswordTv.onClick {
-                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
-                    startActivity(ChangePasswordActivity::class.java)
+                showVerifyPasswordDialog {
+                    var intent = Intent(this@DetailActivity, ChangePasswordActivity::class.java)
+                    intent.putExtra("password", it)
+                    startActivity(intent)
                 }
 
             }
             tvPrivateKey.onClick {
-                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
-                    startActivity(BackUpPrivateKeyActivity::class.java)
+                showVerifyPasswordDialog {
+                    var intent = Intent(this@DetailActivity, BackUpPrivateKeyActivity::class.java)
+                    intent.putExtra("password", it)
+                    startActivity(intent)
                 }
             }
             tvMnemonic.onClick {
-                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
-                    startActivity(BackUpMnemonicActivity::class.java)
+                showVerifyPasswordDialog {
+                    var intent = Intent(this@DetailActivity, BackUpMnemonicActivity::class.java)
+                    intent.putExtra("password", it)
+                    startActivity(intent)
                 }
             }
             backUpRecordsTv.onClick {
                 startActivity(BackUpRecordActivity::class.java)
             }
             tvResetWallet.onClick {
-                CommonCenterDialog(this@DetailActivity).showPswEditDialog {
+                showVerifyPasswordDialog {
 
                 }
             }

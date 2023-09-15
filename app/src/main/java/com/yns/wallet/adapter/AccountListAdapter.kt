@@ -18,11 +18,11 @@ class AccountListAdapter(data: MutableList<WalletModel>?) :
     var current = -1
     override fun convert(holder: BaseHolder, item: WalletModel) {
         holder.vb.apply {
-            nameTv.text = "Wallet-${holder.absoluteAdapterPosition}"
+            nameTv.text = item.name
             contentTv.visibility = View.VISIBLE
-            contentTv.text = "0xsadjkfhjlas....asdfasdf"
+            contentTv.text = item.address
             tagImg.isSelected = holder.absoluteAdapterPosition == current
-            logoImg.loadCircle(item.iconUrl,R.mipmap.logo_eth)
+            logoImg.loadCircle("",R.mipmap.logo_eth)
         }
 
     }

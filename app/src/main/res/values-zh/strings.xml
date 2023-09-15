@@ -239,5 +239,6 @@
     <string name="use_contract">调用智能合约</string>
     <string name="search_by_token_address">通过Token地址搜索</string>
     <string name="loading">加载中...</string>
+    <string name="password_is_wrong">密码错误</string>
 
 </resources>
