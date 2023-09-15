@@ -1,5 +1,5 @@
 ext {
-    compile = 33
-    target = 33
+    compile = 32
+    target = 32
     min = 26
 }

@@ -11,8 +11,7 @@ import okhttp3.RequestBody
  */
 object RequestHelper {
 
-
-    var baseUrl = "https://www.baidu.com"
+    var baseUrl = "https://apilist.tronscanapi.com/api/"
     private val MEDIA_TYPE_JSON: MediaType? = "application/json;charset=utf-8".toMediaTypeOrNull()
 
     /**

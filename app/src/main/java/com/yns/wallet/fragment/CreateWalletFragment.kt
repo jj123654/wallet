@@ -10,7 +10,6 @@ import com.yns.wallet.BuildConfig
 import com.yns.wallet.BuildConfig.DEBUG
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseFragment
-import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.databinding.FragmentCreateWalletBinding
 import com.yns.wallet.util.addEditEyeViewLogic
 import com.yns.wallet.util.showToast

@@ -141,4 +141,9 @@ class WalletViewModel : ViewModel() {
             callback.invoke(r)
         }
     }
+
+    fun getPopularTokens(){
+
+    }
+
 }

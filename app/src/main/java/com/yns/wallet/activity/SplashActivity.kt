@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.yns.wallet.base.BaseActivity
-import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.databinding.ActivitySplashBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

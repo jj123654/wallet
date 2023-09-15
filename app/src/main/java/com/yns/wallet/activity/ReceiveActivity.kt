@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import com.yns.wallet.base.BaseActivity
-import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.databinding.ActivityReceiveBinding
 import com.yns.wallet.util.CodeCreator
 import com.yns.wallet.util.copyToClipboard

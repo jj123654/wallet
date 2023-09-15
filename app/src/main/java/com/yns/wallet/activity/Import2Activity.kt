@@ -7,7 +7,6 @@ import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.base.KeyValuePairVO
-import com.yns.wallet.base.walletViewModel
 import com.yns.wallet.databinding.ActivityImport2Binding
 import com.yns.wallet.util.AppManager
 import com.yns.wallet.util.EventBusUtil

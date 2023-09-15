@@ -18,6 +18,7 @@
         app:bar_title="@string/about_us" />
 
     <ImageView
+        android:id="@+id/about_img"
         android:layout_width="103dp"
         android:layout_height="103dp"
         android:layout_gravity="center_horizontal"
