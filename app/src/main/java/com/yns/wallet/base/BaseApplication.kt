@@ -10,9 +10,9 @@ import com.yns.wallet.WalletViewModel
 import com.yns.wallet.io.SpUtil
 import com.yns.wallet.util.LanguageUtils
 
-val walletViewModel:WalletViewModel by lazy {BaseApplication.walletViewModelInstance}
+val walletViewModel: WalletViewModel by lazy { BaseApplication.walletViewModelInstance }
 
-class BaseApplication:Application(), ViewModelStoreOwner {
+class BaseApplication : Application(), ViewModelStoreOwner {
 
     override fun onCreate() {
         super.onCreate()
@@ -32,13 +32,7 @@ class BaseApplication:Application(), ViewModelStoreOwner {
         lateinit var walletViewModelInstance: WalletViewModel
     }
 
-    var modelStore: ViewModelStore? = null
-    override fun getViewModelStore(): ViewModelStore {
-        if (modelStore == null) {
-            modelStore = ViewModelStore()
-        }
-        return modelStore!!
-    }
+    var modelStore: ViewModelStore = ViewModelStore()
 
     override fun attachBaseContext(base: Context?) {
         LanguageUtils.getInstance().saveSystemCurrentLanguage()
@@ -52,5 +46,8 @@ class BaseApplication:Application(), ViewModelStoreOwner {
         super.onConfigurationChanged(newConfig)
         LanguageUtils.getInstance().setConfiguration(applicationContext);
     }
+
+    override val viewModelStore: ViewModelStore
+        get() = modelStore
 
 }

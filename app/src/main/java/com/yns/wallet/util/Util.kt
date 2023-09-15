@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -17,16 +18,15 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.Transformation
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
+import coil.imageLoader
+import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
+import coil.transform.Transformation
 import com.luck.picture.lib.utils.ToastUtils
 import com.yns.wallet.R
 import com.yns.wallet.activity.MainActivity
 import com.yns.wallet.base.BaseApplication
-import java.io.File
 
 fun adjustStatusBarMargin(view: View) {
     val params = view.layoutParams as ConstraintLayout.LayoutParams
@@ -165,52 +165,50 @@ inline fun <reified T : ViewModel> globalViewModel(): Lazy<T> {
  */
 @JvmOverloads
 fun ImageView.loadUrl(
-    url: String?,
+    url: Any?,
     defaultIcon: Int = -1,
-    vararg transform: Transformation<Bitmap>
+    vararg transform: Transformation
 ) {
-    Glide.with(this).load(url).let {
-        var requestOptions = RequestOptions()
-        if (defaultIcon != -1) {
-            requestOptions.placeholder(defaultIcon)
+    val u = when (url) {
+        null -> { //为null的时候，coil 不加载图片，自己处理下
+            if (defaultIcon != -1) {
+                this.setImageResource(defaultIcon)
+            } else {
+                this.setImageBitmap(null)
+            }
+            return
         }
+
+        is Int -> {
+            Uri.parse("android.resource://${context.packageName}/$url")
+        }
+
+        else -> {
+            url
+        }
+    }
+    this.load(u, this.context.imageLoader) {
+        this.crossfade(true)
         if (transform.isNotEmpty()) {
-            requestOptions.transform(*transform)
+            transformations(*transform)
         }
-        it.apply(requestOptions)
-        it
-    }.into(this)
+        if (defaultIcon != -1) {
+            placeholder(defaultIcon)
+        }
+    }
 }
 
-@JvmOverloads
-fun ImageView.loadFile(
-    file: File,
-    defaultIcon: Int = -1,
-    vararg transform: Transformation<Bitmap>
-) {
-    Glide.with(this).load(file).let {
-        var requestOptions = RequestOptions()
-        if (defaultIcon != -1) {
-            requestOptions.placeholder(defaultIcon)
-        }
-        if (transform.isNotEmpty()) {
-            requestOptions.transform(*transform)
-        }
-        it.apply(requestOptions)
-        it
-    }.into(this)
-}
 
 /**
  * 加载圆形
  */
 fun ImageView.loadCircle(url: String?, defaultIcon: Int = -1) {
-    loadUrl(url, defaultIcon, CircleCrop())
+    loadUrl(url, defaultIcon, CircleCropTransformation())
 }
 
 /**
  * 加载圆角
  */
-fun ImageView.loadRoundCorner(url: String?, defaultIcon: Int = -1, radius: Int) {
-    loadUrl(url, defaultIcon, CircleCrop(), RoundedCorners(radius))
+fun ImageView.loadRoundCorner(url: String?, defaultIcon: Int = -1, radius: Float) {
+    loadUrl(url, defaultIcon, CircleCropTransformation(), RoundedCornersTransformation(radius))
 }
