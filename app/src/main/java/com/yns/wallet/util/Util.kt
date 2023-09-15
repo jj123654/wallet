@@ -166,19 +166,10 @@ inline fun <reified T : ViewModel> globalViewModel(): Lazy<T> {
 @JvmOverloads
 fun ImageView.loadUrl(
     url: Any?,
-    defaultIcon: Int = -1,
+    defaultIcon: Int = -1, errorIcon: Int = defaultIcon,
     vararg transform: Transformation
 ) {
     val u = when (url) {
-        null -> { //为null的时候，coil 不加载图片，自己处理下
-            if (defaultIcon != -1) {
-                this.setImageResource(defaultIcon)
-            } else {
-                this.setImageBitmap(null)
-            }
-            return
-        }
-
         is Int -> {
             Uri.parse("android.resource://${context.packageName}/$url")
         }
@@ -195,6 +186,9 @@ fun ImageView.loadUrl(
         if (defaultIcon != -1) {
             placeholder(defaultIcon)
         }
+        if (errorIcon != -1) {
+            error(defaultIcon)
+        }
     }
 }
 
@@ -203,12 +197,16 @@ fun ImageView.loadUrl(
  * 加载圆形
  */
 fun ImageView.loadCircle(url: String?, defaultIcon: Int = -1) {
-    loadUrl(url, defaultIcon, CircleCropTransformation())
+    loadUrl(url, defaultIcon, transform = arrayOf(CircleCropTransformation()))
 }
 
 /**
  * 加载圆角
  */
 fun ImageView.loadRoundCorner(url: String?, defaultIcon: Int = -1, radius: Float) {
-    loadUrl(url, defaultIcon, CircleCropTransformation(), RoundedCornersTransformation(radius))
+    loadUrl(
+        url,
+        defaultIcon,
+        transform = arrayOf(CircleCropTransformation(), RoundedCornersTransformation(radius))
+    )
 }
