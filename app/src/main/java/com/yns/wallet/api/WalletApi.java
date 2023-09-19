@@ -1,6 +1,5 @@
 package com.yns.wallet.api;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
@@ -66,7 +65,7 @@ public class WalletApi {
         return "web ecology matter tongue expire type still fee agent bike grit budget";
     }
 
-    public static void saveMenomic(String menomic){
+    public static void saveMenomic(String menomic) {
         //实现保存助记词的逻辑
     }
 
@@ -156,14 +155,12 @@ public class WalletApi {
         NetworkApi.tokenOverView("TRX", new Function1<Response<String>, Unit>() {
             @Override
             public Unit invoke(Response<String> stringResponse) {
-                //TODO 这里解析返回数据
-                String response = stringResponse.getData();
-                if(!TextUtils.isEmpty(response)){
-                    PopularTokenInfo info = JsonUtils.jsonToObject(response,PopularTokenInfo.class);
-                    Log.i("httpTest","测试info:"+info.getTokens().get(0).getAbbr());
+                if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
+                    String response = stringResponse.getData();
+                    PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
+                    Log.i("httpTest", "测试info:" + info.getTokens().get(0).getAbbr());
                 }
 
-                //这里的返空不用管
                 return null;
             }
         });
