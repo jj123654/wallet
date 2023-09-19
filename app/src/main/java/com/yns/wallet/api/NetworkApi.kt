@@ -3,13 +3,11 @@ package com.yns.wallet.api
 import android.text.TextUtils
 import com.yns.wallet.bean.Response
 import com.yns.wallet.service.Request
-import com.yns.wallet.service.RequestHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Call
 import okhttp3.internal.closeQuietly
 import java.lang.StringBuilder
 
