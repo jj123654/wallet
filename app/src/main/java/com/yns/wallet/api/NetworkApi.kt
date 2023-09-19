@@ -26,6 +26,26 @@ object NetworkApi {
     const val BASE_URL = "https://apilist.tronscanapi.com/api/"
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
+    @JvmStatic
+    fun test() {
+        tokenOverView {
+
+        }
+
+        transfer {
+
+        }
+        tokenTRC20Transfer {
+
+        }
+        transaction {
+
+        }
+        accountTokens {
+
+        }
+    }
+
     /**
      * //1.https://apilist.tronscanapi.com/api/tokens/overview?filter=TRX
 
