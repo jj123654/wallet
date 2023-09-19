@@ -1,6 +1,7 @@
 package com.yns.wallet.api
 
 import android.text.TextUtils
+import android.util.Log
 import com.yns.wallet.bean.Response
 import com.yns.wallet.service.Request
 import kotlinx.coroutines.CoroutineScope
@@ -28,20 +29,20 @@ object NetworkApi {
     @JvmStatic
     fun test() {
         tokenOverView {
-
+            Log.i("httpTest","第一个----${it.data.toString()}")
         }
 
         transfer {
-
+            Log.i("httpTest","第二个----${it.data.toString()}")
         }
         tokenTRC20Transfer {
-
+            Log.i("httpTest","第三个----${it.data.toString()}")
         }
         transaction {
-
+            Log.i("httpTest","第四个----${it.data.toString()}")
         }
         accountTokens {
-
+            Log.i("httpTest","第五个----${it.data.toString()}")
         }
     }
 
@@ -146,7 +147,9 @@ object NetworkApi {
         hidden: Int = 0,
         show: Int = 0,
         sortType: Int = 0,
+        sortBy:Int = 0,
         address: String = "",
+        token:String = "",
         callback: (Response<String>) -> Unit
     ) {
         scope.launch {
@@ -159,6 +162,8 @@ object NetworkApi {
                     "address" to address,
                     "show" to show,
                     "sortType" to sortType,
+                    "sortBy" to sortBy,
+                    "token" to token
                 )
             )
             callback.invoke(r)
