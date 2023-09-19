@@ -16,7 +16,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
             delay(2000)
             checkWallet()
         }
-        NetworkApi.test()
     }
 
     /**

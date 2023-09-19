@@ -125,32 +125,32 @@ public class PopularTokenInfo {
 
     public static class TokensBean {
         private String abbr;
-        private Integer canShow;
+        private String canShow;
         private String contractAddress;
-        private Integer dateCreated;
+        private String dateCreated;
         private Integer decimal;
         private String description;
-        private Double gain;
+        private String gain;
         private String github;
         private String imgUrl;
         private Boolean isTop;
         private String level;
-        private Double marketcap;
+        private String marketcap;
         private String name;
-        private Integer nrOfTokenHolders;
+        private String nrOfTokenHolders;
         private String ownerAddress;
         private String pairUrl;
-        private Integer priceInTrx;
-        private Double priceInUsd;
+        private String priceInTrx;
+        private String priceInUsd;
         private String projectSite;
         private String social_media;
-        private Double supply;
-        private Integer tokenId;
+        private String supply;
+        private String tokenId;
         private String tokenType;
-        private Long transferCount;
+        private String transferCount;
         private String verifier;
         private Boolean vip;
-        private Double volume24hInTrx;
+        private String volume24hInTrx;
         private String whitePaper;
         private String announcement;
         private String blueTag;
@@ -159,9 +159,9 @@ public class PopularTokenInfo {
         private String extra;
         private String greyTag;
         private String issueTime;
-        private Integer pairId;
+        private String pairId;
         private String publicTag;
-        private Integer recentTransferCount;
+        private String recentTransferCount;
         private String redTag;
         private String hash;
 
@@ -173,11 +173,11 @@ public class PopularTokenInfo {
             this.abbr = abbr;
         }
 
-        public Integer getCanShow() {
+        public String getCanShow() {
             return canShow;
         }
 
-        public void setCanShow(Integer canShow) {
+        public void setCanShow(String canShow) {
             this.canShow = canShow;
         }
 
@@ -189,11 +189,11 @@ public class PopularTokenInfo {
             this.contractAddress = contractAddress;
         }
 
-        public Integer getDateCreated() {
+        public String getDateCreated() {
             return dateCreated;
         }
 
-        public void setDateCreated(Integer dateCreated) {
+        public void setDateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
         }
 
@@ -213,11 +213,11 @@ public class PopularTokenInfo {
             this.description = description;
         }
 
-        public Double getGain() {
+        public String getGain() {
             return gain;
         }
 
-        public void setGain(Double gain) {
+        public void setGain(String gain) {
             this.gain = gain;
         }
 
@@ -253,11 +253,11 @@ public class PopularTokenInfo {
             this.level = level;
         }
 
-        public Double getMarketcap() {
+        public String getMarketcap() {
             return marketcap;
         }
 
-        public void setMarketcap(Double marketcap) {
+        public void setMarketcap(String marketcap) {
             this.marketcap = marketcap;
         }
 
@@ -269,11 +269,11 @@ public class PopularTokenInfo {
             this.name = name;
         }
 
-        public Integer getNrOfTokenHolders() {
+        public String getNrOfTokenHolders() {
             return nrOfTokenHolders;
         }
 
-        public void setNrOfTokenHolders(Integer nrOfTokenHolders) {
+        public void setNrOfTokenHolders(String nrOfTokenHolders) {
             this.nrOfTokenHolders = nrOfTokenHolders;
         }
 
@@ -293,19 +293,19 @@ public class PopularTokenInfo {
             this.pairUrl = pairUrl;
         }
 
-        public Integer getPriceInTrx() {
+        public String getPriceInTrx() {
             return priceInTrx;
         }
 
-        public void setPriceInTrx(Integer priceInTrx) {
+        public void setPriceInTrx(String priceInTrx) {
             this.priceInTrx = priceInTrx;
         }
 
-        public Double getPriceInUsd() {
+        public String getPriceInUsd() {
             return priceInUsd;
         }
 
-        public void setPriceInUsd(Double priceInUsd) {
+        public void setPriceInUsd(String priceInUsd) {
             this.priceInUsd = priceInUsd;
         }
 
@@ -325,19 +325,19 @@ public class PopularTokenInfo {
             this.social_media = social_media;
         }
 
-        public Double getSupply() {
+        public String getSupply() {
             return supply;
         }
 
-        public void setSupply(Double supply) {
+        public void setSupply(String supply) {
             this.supply = supply;
         }
 
-        public Integer getTokenId() {
+        public String getTokenId() {
             return tokenId;
         }
 
-        public void setTokenId(Integer tokenId) {
+        public void setTokenId(String tokenId) {
             this.tokenId = tokenId;
         }
 
@@ -349,11 +349,11 @@ public class PopularTokenInfo {
             this.tokenType = tokenType;
         }
 
-        public Long getTransferCount() {
+        public String getTransferCount() {
             return transferCount;
         }
 
-        public void setTransferCount(Long transferCount) {
+        public void setTransferCount(String transferCount) {
             this.transferCount = transferCount;
         }
 
@@ -373,11 +373,11 @@ public class PopularTokenInfo {
             this.vip = vip;
         }
 
-        public Double getVolume24hInTrx() {
+        public String getVolume24hInTrx() {
             return volume24hInTrx;
         }
 
-        public void setVolume24hInTrx(Double volume24hInTrx) {
+        public void setVolume24hInTrx(String volume24hInTrx) {
             this.volume24hInTrx = volume24hInTrx;
         }
 
@@ -445,11 +445,11 @@ public class PopularTokenInfo {
             this.issueTime = issueTime;
         }
 
-        public Integer getPairId() {
+        public String getPairId() {
             return pairId;
         }
 
-        public void setPairId(Integer pairId) {
+        public void setPairId(String pairId) {
             this.pairId = pairId;
         }
 
@@ -461,11 +461,11 @@ public class PopularTokenInfo {
             this.publicTag = publicTag;
         }
 
-        public Integer getRecentTransferCount() {
+        public String getRecentTransferCount() {
             return recentTransferCount;
         }
 
-        public void setRecentTransferCount(Integer recentTransferCount) {
+        public void setRecentTransferCount(String recentTransferCount) {
             this.recentTransferCount = recentTransferCount;
         }
 
