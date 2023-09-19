@@ -155,12 +155,14 @@ public class WalletApi {
         NetworkApi.tokenOverView("TRX", new Function1<Response<String>, Unit>() {
             @Override
             public Unit invoke(Response<String> stringResponse) {
+                //此处处理返回数据
                 if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
                     String response = stringResponse.getData();
                     PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
                     Log.i("httpTest", "测试info:" + info.getTokens().get(0).getAbbr());
                 }
 
+                //这里的返空不用管
                 return null;
             }
         });
