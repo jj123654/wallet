@@ -41,7 +41,7 @@
             android:id="@+id/iv_mine_icon"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:src="@mipmap/icon_default_user" />
+            android:src="@mipmap/account_default_photo" />
 
         <LinearLayout
             android:layout_width="match_parent"

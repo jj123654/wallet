@@ -22,7 +22,7 @@ class AccountListAdapter(data: MutableList<WalletModel>?) :
             contentTv.visibility = View.VISIBLE
             contentTv.text = item.address
             tagImg.isSelected = holder.absoluteAdapterPosition == current
-            logoImg.loadCircle("",R.mipmap.logo_eth)
+            logoImg.loadCircle("",R.mipmap.account_default_photo)
         }
 
     }

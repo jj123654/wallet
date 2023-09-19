@@ -124,7 +124,7 @@
     <View
         android:layout_width="0.5dp"
         android:layout_height="74dp"
-        android:background="@color/transaction_blue_color"
+        android:background="@color/transaction_blue_color_50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="2dp"

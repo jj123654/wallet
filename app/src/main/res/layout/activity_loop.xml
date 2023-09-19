@@ -259,7 +259,7 @@
                     android:layout_height="0.5dp"
                     android:layout_marginHorizontal="@dimen/dp_10"
                     android:layout_marginTop="8dp"
-                    android:background="@color/transaction_blue_color" />
+                    android:background="@color/transaction_blue_color_50" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

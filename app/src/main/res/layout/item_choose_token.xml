@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="20dp"
-        android:background="@color/transaction_blue_color"
+        android:background="@color/transaction_blue_color_50"
         app:layout_constraintTop_toBottomOf="@id/iv_icon"
         />
 

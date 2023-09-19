@@ -133,7 +133,7 @@
             <View
                 android:layout_width="0.5dp"
                 android:layout_height="match_parent"
-                android:background="#6229FF" />
+                android:background="@color/transaction_blue_color_50" />
 
             <TextView
                 android:id="@+id/tv_mnemonic"

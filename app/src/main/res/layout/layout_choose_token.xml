@@ -42,7 +42,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/transaction_blue_color"
+        android:background="@color/transaction_blue_color_50"
         app:layout_constraintTop_toBottomOf="@id/top_layout" />
 
     <androidx.recyclerview.widget.RecyclerView

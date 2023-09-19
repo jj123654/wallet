@@ -57,9 +57,9 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewBinding.rvList.layoutManager =
             WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        val viewBinding =
-            LayoutWalletHeaderBinding.inflate(layoutInflater, viewBinding.rvList, false)
-        walletListAdapter.addHeaderView(viewBinding.root)
+//        val viewBinding =
+//            LayoutWalletHeaderBinding.inflate(layoutInflater, viewBinding.rvList, false)
+//        walletListAdapter.addHeaderView(viewBinding.root)
         this.viewBinding.rvList.adapter = walletListAdapter
         adjustStatusBarMargin(viewBinding.ivLogo)
 
