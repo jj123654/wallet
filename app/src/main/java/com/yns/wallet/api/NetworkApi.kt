@@ -20,6 +20,7 @@ import java.lang.StringBuilder
 //4.https://apilist.tronscanapi.com/api/transaction?sort=-timestamp&limit=50&address=地址&start_timestamp=时间
 //5.https://apilist.tronscanapi.com/api/account/tokens?address=地址&start=0&limit=20&hidden=0&show=0&sortType=0&sortBy=0&token=
 
+实现5个API
  */
 object NetworkApi {
     const val BASE_URL = "https://apilist.tronscanapi.com/api/"
@@ -30,6 +31,7 @@ object NetworkApi {
 
      */
     @JvmStatic
+    @JvmOverloads
     fun tokenOverView(filter: String? = "TRX", callback: (Response<String>) -> Unit) {
         scope.launch {
             val r = getSuspend("tokens/overview", mapOf("filter" to filter))
@@ -41,6 +43,7 @@ object NetworkApi {
     /**
      * //2. https://apilist.tronscanapi.com/api/new/transfer?sort=-timestamp&start=页数&limit=50&address=地址
      */
+    @JvmOverloads
     @JvmStatic
     fun transfer(
         sort: String? = "-timestamp",
@@ -61,6 +64,7 @@ object NetworkApi {
     /**
     //3.https://apilist.tronscanapi.com/api/token_trc20/transfers?limit=50&start=0&contract_address=地址&start_timestamp=时间&relatedAddress=地址
      */
+    @JvmOverloads
     @JvmStatic
     fun tokenTRC20Transfer(
         start: Int = 1,
@@ -85,17 +89,73 @@ object NetworkApi {
         }
     }
 
+
+    /**
+    //4.https://apilist.tronscanapi.com/api/transaction?sort=-timestamp&limit=50&address=地址&start_timestamp=时间
+     */
+    @JvmOverloads
+    @JvmStatic
+    fun transaction(
+        sort: String? = "-timestamp",
+        start_timestamp: Long = 0,
+        limit: Int = 50,
+        address: String = "",
+        callback: (Response<String>) -> Unit
+    ) {
+        scope.launch {
+            val r = getSuspend(
+                "transaction",
+                mapOf(
+                    "sort" to sort,
+                    "start_timestamp" to start_timestamp,
+                    "limit" to limit,
+                    "address" to address
+                )
+            )
+            callback.invoke(r)
+        }
+    }
+
+    /**
+    //5.https://apilist.tronscanapi.com/api/account/tokens?address=地址&start=0&limit=20&hidden=0&show=0&sortType=0&sortBy=0&token=
+     */
+    @JvmOverloads
+    @JvmStatic
+    fun accountTokens(
+        start: Int = 0,
+        limit: Int = 50,
+        hidden: Int = 0,
+        show: Int = 0,
+        sortType: Int = 0,
+        address: String = "",
+        callback: (Response<String>) -> Unit
+    ) {
+        scope.launch {
+            val r = getSuspend(
+                "account/tokens",
+                mapOf(
+                    "start" to start,
+                    "hidden" to hidden,
+                    "limit" to limit,
+                    "address" to address,
+                    "show" to show,
+                    "sortType" to sortType,
+                )
+            )
+            callback.invoke(r)
+        }
+    }
+
     private suspend fun getSuspend(path: String, params: Map<String, Any?>): Response<String> {
         return withContext(Dispatchers.IO) {
             val client = Request.okhttp
-            val url = RequestHelper.check(BASE_URL + path)
+            val url = BASE_URL + path //拼接url
             val r = client.newCall(
                 okhttp3.Request.Builder().url(makeUrl(url, params)).method("GET", null).build()
-            )
-                .execute()
+            ).execute()
             try {
                 if (r.isSuccessful) {
-                    val body = r.body?.toString()
+                    val body = r.body?.string()
                     if (!TextUtils.isEmpty(body)) {
                         return@withContext Response.success(body)
                     }
@@ -112,7 +172,7 @@ object NetworkApi {
     }
 
     private fun makeUrl(url: String, map: Map<String, Any?>): String {
-        val u = if (!url.contains("?")) url + "?" else url
+        val u = if (!url.contains("?")) "$url?" else url
         val p = StringBuilder()
         map.forEach {
             p.append(it.key)
