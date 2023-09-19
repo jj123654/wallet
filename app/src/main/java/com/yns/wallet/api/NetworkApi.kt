@@ -28,22 +28,16 @@ object NetworkApi {
 
     @JvmStatic
     fun test() {
-        tokenOverView {
-            Log.i("httpTest","第一个----${it.data.toString()}")
+        scope.launch {
+            withContext(Dispatchers.IO) {
+                Log.i("httpTest", "第一个----${tokenOverView().data.toString()}")
+                Log.i("httpTest", "第二个----${transfer().data.toString()}")
+                Log.i("httpTest", "第三个----${tokenTRC20Transfer().data.toString()}")
+                Log.i("httpTest", "第四个----${transaction().data.toString()}")
+                Log.i("httpTest", "第五个----${accountTokens().data.toString()}")
+            }
         }
 
-        transfer {
-            Log.i("httpTest","第二个----${it.data.toString()}")
-        }
-        tokenTRC20Transfer {
-            Log.i("httpTest","第三个----${it.data.toString()}")
-        }
-        transaction {
-            Log.i("httpTest","第四个----${it.data.toString()}")
-        }
-        accountTokens {
-            Log.i("httpTest","第五个----${it.data.toString()}")
-        }
     }
 
     /**
@@ -52,11 +46,8 @@ object NetworkApi {
      */
     @JvmStatic
     @JvmOverloads
-    fun tokenOverView(filter: String? = "TRX", callback: (Response<String>) -> Unit) {
-        scope.launch {
-            val r = getSuspend("tokens/overview", mapOf("filter" to filter))
-            callback.invoke(r)
-        }
+    fun tokenOverView(filter: String? = "TRX"): Response<String> {
+        return getSuspend("tokens/overview", mapOf("filter" to filter))
     }
 
 
@@ -69,16 +60,12 @@ object NetworkApi {
         sort: String? = "-timestamp",
         start: Int = 1,
         limit: Int = 50,
-        address: String = "",
-        callback: (Response<String>) -> Unit
-    ) {
-        scope.launch {
-            val r = getSuspend(
-                "new/transfer",
-                mapOf("sort" to sort, "start" to start, "limit" to limit, "address" to address)
-            )
-            callback.invoke(r)
-        }
+        address: String = ""
+    ): Response<String> {
+        return getSuspend(
+            "new/transfer",
+            mapOf("sort" to sort, "start" to start, "limit" to limit, "address" to address)
+        )
     }
 
     /**
@@ -91,22 +78,18 @@ object NetworkApi {
         limit: Int = 50,
         contract_address: String = "",
         relatedAddress: String = "",
-        start_timestamp: Long = 0,
-        callback: (Response<String>) -> Unit
-    ) {
-        scope.launch {
-            val r = getSuspend(
-                "token_trc20/transfers",
-                mapOf(
-                    "start" to start,
-                    "limit" to limit,
-                    "contract_address" to contract_address,
-                    "relatedAddress" to relatedAddress,
-                    "start_timestamp" to start_timestamp
-                )
+        start_timestamp: Long = 0
+    ): Response<String> {
+        return getSuspend(
+            "token_trc20/transfers",
+            mapOf(
+                "start" to start,
+                "limit" to limit,
+                "contract_address" to contract_address,
+                "relatedAddress" to relatedAddress,
+                "start_timestamp" to start_timestamp
             )
-            callback.invoke(r)
-        }
+        )
     }
 
 
@@ -119,21 +102,17 @@ object NetworkApi {
         sort: String? = "-timestamp",
         start_timestamp: Long = 0,
         limit: Int = 50,
-        address: String = "",
-        callback: (Response<String>) -> Unit
-    ) {
-        scope.launch {
-            val r = getSuspend(
-                "transaction",
-                mapOf(
-                    "sort" to sort,
-                    "start_timestamp" to start_timestamp,
-                    "limit" to limit,
-                    "address" to address
-                )
+        address: String = ""
+    ): Response<String> {
+        return getSuspend(
+            "transaction",
+            mapOf(
+                "sort" to sort,
+                "start_timestamp" to start_timestamp,
+                "limit" to limit,
+                "address" to address
             )
-            callback.invoke(r)
-        }
+        )
     }
 
     /**
@@ -147,53 +126,46 @@ object NetworkApi {
         hidden: Int = 0,
         show: Int = 0,
         sortType: Int = 0,
-        sortBy:Int = 0,
+        sortBy: Int = 0,
         address: String = "",
-        token:String = "",
-        callback: (Response<String>) -> Unit
-    ) {
-        scope.launch {
-            val r = getSuspend(
-                "account/tokens",
-                mapOf(
-                    "start" to start,
-                    "hidden" to hidden,
-                    "limit" to limit,
-                    "address" to address,
-                    "show" to show,
-                    "sortType" to sortType,
-                    "sortBy" to sortBy,
-                    "token" to token
-                )
+        token: String = ""
+    ): Response<String> {
+        return getSuspend(
+            "account/tokens",
+            mapOf(
+                "start" to start,
+                "hidden" to hidden,
+                "limit" to limit,
+                "address" to address,
+                "show" to show,
+                "sortType" to sortType,
+                "sortBy" to sortBy,
+                "token" to token
             )
-            callback.invoke(r)
-        }
+        )
     }
 
-    private suspend fun getSuspend(path: String, params: Map<String, Any?>): Response<String> {
-        return withContext(Dispatchers.IO) {
-            val client = Request.okhttp
-            val url = BASE_URL + path //拼接url
-            var response: okhttp3.Response? = null
-            try {
-                val r = client.newCall(
-                    okhttp3.Request.Builder().url(makeUrl(url, params)).method("GET", null).build()
-                )
-                response = r.execute()
-                if (response.isSuccessful) {
-                    val body = response.body?.string()
-                    if (!TextUtils.isEmpty(body)) {
-                        return@withContext Response.success(body)
-                    }
+    private fun getSuspend(path: String, params: Map<String, Any?>): Response<String> {
+        val client = Request.okhttp
+        val url = BASE_URL + path //拼接url
+        var response: okhttp3.Response? = null
+        try {
+            val r = client.newCall(
+                okhttp3.Request.Builder().url(makeUrl(url, params)).method("GET", null).build()
+            )
+            response = r.execute()
+            if (response.isSuccessful) {
+                val body = response.body?.string()
+                if (!TextUtils.isEmpty(body)) {
+                    return Response.success(body)
                 }
-                return@withContext Response.error(response.code, msg = response.body?.string())
-            } catch (e: Exception) {
-                e.printStackTrace()
-                return@withContext Response.error(-1, msg = e.message)
-            } finally {
-                response?.closeQuietly()
             }
-
+            return Response.error(response.code, msg = response.body?.string())
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return Response.error(-1, msg = e.message)
+        } finally {
+            response?.closeQuietly()
         }
     }
 

@@ -41,8 +41,8 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
 
             tvImport.setOnClickListener {
 //                startActivity(ImportActivity::class.java)
-//                NetworkApi.test()
-                WalletApi.getPopularToken()
+                NetworkApi.test()
+//                WalletApi.getPopularToken()
             }
 
             rvList.layoutManager = WrapContentLinearLayoutManager(
@@ -63,7 +63,7 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
 
         walletViewModel.walletsLiveData.observe(this) {
             accountListAdapter.setList(it)
-            accountListAdapter.refreshData(it.indexOfFirst { wallet-> walletViewModel.currentWalletLiveData.value?.address == wallet.address  })
+            accountListAdapter.refreshData(it.indexOfFirst { wallet -> walletViewModel.currentWalletLiveData.value?.address == wallet.address })
         }
         walletViewModel.getAllWallet()
 
