@@ -152,13 +152,21 @@ public class WalletApi {
     }
 
     public static List<Token> getPopularToken() {
-        Response<String> stringResponse = NetworkApi.tokenOverView("TRX");
-        if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
-            //TODO 检查数据并返回列表
-            String response = stringResponse.getData();
-            PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
-            Log.i("httpTest", "测试info:" + info.getTokens().get(0).getAbbr());
-        }
+        NetworkApi.tokenOverView("TRX", new Function1<Response<String>, Unit>() {
+            @Override
+            public Unit invoke(Response<String> stringResponse) {
+                //此处处理返回数据
+                if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
+                    String response = stringResponse.getData();
+                    PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
+                    Log.i("httpTest", "测试info:" + info.getTokens().get(0).getAbbr());
+                }
+
+                //这里的返空不用管
+                return null;
+            }
+        });
+
 //        // 实现获取热门令牌的逻辑
 //        List<Token> tokenList = new ArrayList<>();
 //
