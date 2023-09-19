@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.Call
 import okhttp3.internal.closeQuietly
 import java.lang.StringBuilder
 
@@ -170,22 +171,24 @@ object NetworkApi {
         return withContext(Dispatchers.IO) {
             val client = Request.okhttp
             val url = BASE_URL + path //拼接url
-            val r = client.newCall(
-                okhttp3.Request.Builder().url(makeUrl(url, params)).method("GET", null).build()
-            ).execute()
+            var response: okhttp3.Response? = null
             try {
-                if (r.isSuccessful) {
-                    val body = r.body?.string()
+                val r = client.newCall(
+                    okhttp3.Request.Builder().url(makeUrl(url, params)).method("GET", null).build()
+                )
+                response = r.execute()
+                if (response.isSuccessful) {
+                    val body = response.body?.string()
                     if (!TextUtils.isEmpty(body)) {
                         return@withContext Response.success(body)
                     }
                 }
-                return@withContext Response.error(r.code, msg = r.body?.string())
+                return@withContext Response.error(response.code, msg = response.body?.string())
             } catch (e: Exception) {
                 e.printStackTrace()
-                Response.error(-1, msg = e.message)
+                return@withContext Response.error(-1, msg = e.message)
             } finally {
-                r.closeQuietly()
+                response?.closeQuietly()
             }
 
         }
