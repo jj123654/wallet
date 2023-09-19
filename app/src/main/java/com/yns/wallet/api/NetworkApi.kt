@@ -194,12 +194,14 @@ object NetworkApi {
 
     private fun makeUrl(url: String, map: Map<String, Any?>): String {
         val u = if (!url.contains("?")) "$url?" else url
-        val p = StringBuilder()
+        val strs = mutableListOf<String>()
         map.forEach {
+            val p = StringBuilder()
             p.append(it.key)
             p.append("=")
             p.append(it.value?.toString())
+            strs.add(p.toString())
         }
-        return u + p.toString()
+        return u + strs.joinToString("&")
     }
 }
