@@ -6,6 +6,8 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.yns.wallet.adapter.AccountListAdapter
+import com.yns.wallet.api.NetworkApi
+import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityAccountBinding
 import com.yns.wallet.widget.CommonCenterDialog
@@ -38,7 +40,9 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
             }
 
             tvImport.setOnClickListener {
-                startActivity(ImportActivity::class.java)
+//                startActivity(ImportActivity::class.java)
+//                NetworkApi.test()
+                WalletApi.getPopularToken()
             }
 
             rvList.layoutManager = WrapContentLinearLayoutManager(

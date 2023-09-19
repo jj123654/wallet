@@ -1,9 +1,19 @@
 package com.yns.wallet.api;
 
+import android.util.Log;
+
+import com.google.gson.reflect.TypeToken;
+import com.yns.wallet.bean.PopularTokenInfo;
+import com.yns.wallet.bean.Response;
+import com.yns.wallet.io.JsonUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class WalletApi {
     // 钱包管理
@@ -142,27 +152,39 @@ public class WalletApi {
     }
 
     public static List<Token> getPopularToken() {
-        // 实现获取热门令牌的逻辑
-        List<Token> tokenList = new ArrayList<>();
+        NetworkApi.tokenOverView("TRX", new Function1<Response<String>, Unit>() {
+            @Override
+            public Unit invoke(Response<String> stringResponse) {
+                String response = stringResponse.getData();
+                PopularTokenInfo info = JsonUtils.jsonToObject(response,PopularTokenInfo.class);
+                Log.i("httpTest","测试info:"+info.getTokens().get(0).getAbbr());
 
-        Token yunusToken = new Token();
-        yunusToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
-        yunusToken.name = "YNS";
-        yunusToken.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
-        tokenList.add(yunusToken);
 
-        Token trxToken = new Token();
-        trxToken.name = "TRX";
-        trxToken.imageUrl = "https://static.tronscan.org/production/upload/logo/TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR.png?t=1598430824415";
-        tokenList.add(trxToken);
+                return null;
+            }
+        });
 
-        Token usdtToken = new Token();
-        usdtToken.address = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
-        usdtToken.name = "USDT";
-        usdtToken.imageUrl = "https://static.tronscan.org/production/logo/usdtlogo.png";
-        tokenList.add(usdtToken);
+//        // 实现获取热门令牌的逻辑
+//        List<Token> tokenList = new ArrayList<>();
+//
+//        Token yunusToken = new Token();
+//        yunusToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
+//        yunusToken.name = "YNS";
+//        yunusToken.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
+//        tokenList.add(yunusToken);
+//
+//        Token trxToken = new Token();
+//        trxToken.name = "TRX";
+//        trxToken.imageUrl = "https://static.tronscan.org/production/upload/logo/TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR.png?t=1598430824415";
+//        tokenList.add(trxToken);
+//
+//        Token usdtToken = new Token();
+//        usdtToken.address = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
+//        usdtToken.name = "USDT";
+//        usdtToken.imageUrl = "https://static.tronscan.org/production/logo/usdtlogo.png";
+//        tokenList.add(usdtToken);
 
-        return tokenList;
+        return null;
     }
 
     public static Token getToken(String tokenAddress) {
