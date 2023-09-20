@@ -27,6 +27,8 @@ import com.luck.picture.lib.utils.ToastUtils
 import com.yns.wallet.R
 import com.yns.wallet.activity.MainActivity
 import com.yns.wallet.base.BaseApplication
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun adjustStatusBarMargin(view: View) {
     val params = view.layoutParams as ConstraintLayout.LayoutParams
@@ -209,4 +211,11 @@ fun ImageView.loadRoundCorner(url: String?, defaultIcon: Int = -1, radius: Float
         defaultIcon,
         transform = arrayOf(CircleCropTransformation(), RoundedCornersTransformation(radius))
     )
+}
+
+fun formatTimeString(time:Long):String{
+    val dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+    val date = Date(time)
+
+    return dateFormat.format(date)
 }

@@ -44,8 +44,8 @@ class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
         tabList.add(getString(R.string.all))
         tabList.add(getString(R.string.transfer))
         tabList.add(getString(R.string.receive))
-        tabList.forEach {
-            tabFragments.add(AssetsFragment.newInstance(it))
+        for(i in 0 until tabList.size) {
+            tabFragments.add(AssetsFragment.newInstance(i))
         }
         viewBinding.viewPager.adapter =
             ContentPagerAdapter(

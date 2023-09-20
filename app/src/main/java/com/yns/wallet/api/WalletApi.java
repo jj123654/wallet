@@ -122,6 +122,7 @@ public class WalletApi {
         tokenList.add(yunusToken);
 
         Token trxToken = new Token();
+        trxToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQw456gfhdfbGh";
         trxToken.name = "TRX";
         trxToken.imageUrl = "https://static.tronscan.org/production/upload/logo/TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR.png?t=1598430824415";
         trxToken.usd = new BigDecimal("0.14");
@@ -129,7 +130,7 @@ public class WalletApi {
         tokenList.add(trxToken);
 
         Token usdtToken = new Token();
-        usdtToken.address = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
+        usdtToken.address = "TY7copxkSQZBym6eTGMEdrqPHaNNsmjxKe";
         usdtToken.name = "USDT";
         usdtToken.imageUrl = "https://static.tronscan.org/production/logo/usdtlogo.png";
         usdtToken.usd = new BigDecimal("7.22");
@@ -158,20 +159,24 @@ public class WalletApi {
     }
 
     public static List<Token> getPopularToken() {
-        NetworkApi.tokenOverView("TRX", new Function1<Response<String>, Unit>() {
-            @Override
-            public Unit invoke(Response<String> stringResponse) {
-                //此处处理返回数据
-                if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
-                    String response = stringResponse.getData();
-                    PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
-                    Log.i("httpTest", "测试info:" + info.getTokens().get(0).getAbbr());
-                }
+        List<Token> tokenList = new ArrayList<>();
 
-                //这里的返空不用管
-                return null;
-            }
-        });
+        Response<String> stringResponse = NetworkApi.tokenOverView("TRX");
+        if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
+            //TODO 检查数据并返回列表
+            String response = stringResponse.getData();
+            PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
+            Log.i("httpTest", "测试info:" + info.getTokens().get(0).getAbbr());
+            //TODO 处理接口返回数据，填充tokenList
+
+            //以下是示例写法
+            Token token = new Token();
+            token.name = info.getTokens().get(0).getName();
+            token.address = info.getTokens().get(0).getOwnerAddress();
+            tokenList.add(token);
+        }
+
+        return tokenList;
 
 //        // 实现获取热门令牌的逻辑
 //        List<Token> tokenList = new ArrayList<>();
@@ -193,7 +198,7 @@ public class WalletApi {
 //        usdtToken.imageUrl = "https://static.tronscan.org/production/logo/usdtlogo.png";
 //        tokenList.add(usdtToken);
 
-        return null;
+//        return null;
     }
 
     public static Token getToken(String tokenAddress) {
@@ -229,6 +234,7 @@ public class WalletApi {
         yunusToken.to = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
         yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
         yunusToken.time = 1693991784000L;
+        yunusToken.amount = new BigDecimal("234.41");
         yunusToken.result = TX_RESULT.SUCCESS;
         tokenTransferTransactionList.add(yunusToken);
 
@@ -237,6 +243,7 @@ public class WalletApi {
         yunusToken.to = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
         yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
         yunusToken.time = 1693991784000L;
+        yunusToken.amount = new BigDecimal("3456.33");
         yunusToken.result = TX_RESULT.FAILED;
         tokenTransferTransactionList.add(yunusToken);
 

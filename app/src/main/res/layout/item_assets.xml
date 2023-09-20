@@ -12,20 +12,37 @@
         android:orientation="horizontal"
         android:layout_marginTop="15dp">
 
-        <TextView
-            android:id="@+id/name_tv"
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            tools:text="Transfer(0xasdf...345345)"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/transfer"/>
+
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:ellipsize="middle"
+                android:textColor="@color/white"
+                tools:text="(0xasdf...345345)"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/tips_red_color"
-            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginLeft="20dp"
             tools:text="-5734523.435"/>
 
     </LinearLayout>

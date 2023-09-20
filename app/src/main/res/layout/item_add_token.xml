@@ -59,7 +59,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="16dp"
         android:paddingVertical="@dimen/dp_10"
-        android:src="@mipmap/icon_search_add" />
+        android:src="@drawable/selector_token_state" />
 
     <View
         android:id="@+id/line_view"

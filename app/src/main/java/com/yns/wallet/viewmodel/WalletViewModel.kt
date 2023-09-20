@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yns.wallet.api.WalletApi
 import com.yns.wallet.bean.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 /**
  * 钱包的viewModel
@@ -22,6 +20,19 @@ class WalletViewModel : ViewModel() {
     val tokenLiveData = MutableLiveData<MutableList<TokenModel>>(mutableListOf())
 
     val currentTokenLiveData = MutableLiveData<TokenModel>()
+
+    init {
+        //开一个全局计时器每隔60秒刷新一次首页余额
+        viewModelScope.launch {
+            while (isActive){
+                delay(1000*60)
+                currentWalletLiveData.value?.address?.let {
+                    //getAllTokenWithAalletAddress
+                }
+            }
+
+        }
+    }
 
     //创建助记词
     fun createMenomic(callback: suspend (String) -> Unit) {
@@ -43,7 +54,7 @@ class WalletViewModel : ViewModel() {
         password: String,
         callback: suspend (WalletModel) -> Unit
     ) {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             val walletEntity: WalletModel = withContext(Dispatchers.IO) {
                 var m =
                     WalletApi.createWalletFromMenomic(menomic, index, password)
@@ -54,6 +65,18 @@ class WalletViewModel : ViewModel() {
             }
             currentWalletLiveData.value = walletEntity
             callback(walletEntity)
+        }
+    }
+
+    fun modifyWalletName(address: String, name: String) {
+        viewModelScope.launch {
+            walletsLiveData.value?.forEach {
+                if (it.address == address) {
+                    it.name = name
+                }
+            }
+            currentWalletLiveData.value?.name = name
+            WalletApi.saveWallet(currentWalletLiveData.value?.toWalletEntity())
         }
     }
 
@@ -79,6 +102,10 @@ class WalletViewModel : ViewModel() {
 
     fun getWalletCount(): Int {
         return WalletApi.getWalletCnt()
+    }
+
+    fun deleteWallet(address: String){
+        WalletApi.deleteWallet(address)
     }
 
     fun switchCurrentWallet(position:Int){
@@ -148,6 +175,24 @@ class WalletViewModel : ViewModel() {
         }
     }
 
+    fun addWalletToken(address:String,callback: suspend (Boolean) -> Unit){
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO) {
+                WalletApi.addWalletToken(currentWalletLiveData.value?.address,address)
+            }
+            callback(true)
+        }
+    }
+
+    fun deleteWalletToken(address:String,callback: suspend (Boolean) -> Unit){
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO) {
+                WalletApi.deleteWalletToken(currentWalletLiveData.value?.address,address)
+            }
+            callback(true)
+        }
+    }
+
     /**
      *         // 实现从助记词获取地址的逻辑
      */
@@ -171,10 +216,6 @@ class WalletViewModel : ViewModel() {
             }
             callback.invoke(r)
         }
-    }
-
-    fun getPopularTokens(){
-
     }
 
 }

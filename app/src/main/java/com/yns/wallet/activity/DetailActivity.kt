@@ -69,7 +69,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
             }
             tvResetWallet.onClick {
                 showVerifyPasswordDialog {
-
+                    walletViewModel.currentWalletLiveData.value?.address?.let { it1 ->
+                        walletViewModel.deleteWallet(
+                            it1
+                        )
+                    }
                 }
             }
         }
