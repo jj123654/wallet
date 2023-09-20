@@ -92,10 +92,8 @@ class WalletViewModel : ViewModel() {
     fun getCurrentWallet(callback: suspend (WalletModel) -> Unit) {
         viewModelScope.launch {
             if(currentWalletLiveData.value == null){
-                Log.i("walletTest","初次舒适化")
                 currentWalletLiveData.value = WalletApi.getCurrentWallet().toWalletModel()
             }
-            Log.i("walletTest","再次舒适化")
             callback(currentWalletLiveData.value?: WalletModel())
         }
     }
