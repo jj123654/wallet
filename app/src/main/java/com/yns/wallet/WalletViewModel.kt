@@ -1,6 +1,7 @@
 package com.yns.wallet
 
 import android.text.TextUtils
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -90,7 +91,12 @@ class WalletViewModel : ViewModel() {
 
     fun getCurrentWallet(callback: suspend (WalletModel) -> Unit) {
         viewModelScope.launch {
-            callback(WalletApi.getCurrentWallet().toWalletModel())
+            if(currentWalletLiveData.value == null){
+                Log.i("walletTest","初次舒适化")
+                currentWalletLiveData.value = WalletApi.getCurrentWallet().toWalletModel()
+            }
+            Log.i("walletTest","再次舒适化")
+            callback(currentWalletLiveData.value?: WalletModel())
         }
     }
 

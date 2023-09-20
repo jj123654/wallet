@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,6 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
         WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
     )
 
-    var walletEntity: WalletModel? = null
 
     private val walletListAdapter: WalletListAdapter by lazy {
         WalletListAdapter(requireContext(), list).apply {
@@ -51,8 +51,11 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
+        walletViewModel.currentWalletLiveData.observe(this) {
+            viewBinding.tvHomeName.text = it.name
+        }
+
         walletViewModel.getCurrentWallet {
-            walletEntity = it
         }
 
         viewBinding.rvList.layoutManager =
@@ -65,7 +68,6 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewBinding.apply {
 
-            walletNameTv.text = walletEntity?.name
 
             tvDetail.onClick {
                 startActivity(DetailActivity::class.java)

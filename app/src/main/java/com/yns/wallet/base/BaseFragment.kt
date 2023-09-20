@@ -95,7 +95,7 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
         return super.onCreateDialog(savedInstanceState)
     }
 
-    override fun show(manager: FragmentManager, tag: String?) {
+    fun add(manager: FragmentManager, tag: String?) {
         try {
             val clazz = Fragment::class.java
             val f = clazz.getField("mShownByMe")
@@ -109,9 +109,10 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
         ft.commitAllowingStateLoss()
     }
 
-    fun show(manager: FragmentManager) {
-        show(manager, this.javaClass.name)
+    fun add(manager: FragmentManager) {
+        add(manager, this.javaClass.name)
     }
+
 
     override fun onStart() {
         super.onStart()

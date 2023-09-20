@@ -18,7 +18,7 @@ class AccountListAdapter(data: MutableList<WalletModel>?) :
     var current = -1
     override fun convert(holder: BaseHolder, item: WalletModel) {
         holder.vb.apply {
-            nameTv.text = item.name
+            nameTv.text = "mock-name"+holder.absoluteAdapterPosition
             contentTv.visibility = View.VISIBLE
             contentTv.text = item.address
             tagImg.isSelected = holder.absoluteAdapterPosition == current

@@ -1,16 +1,13 @@
 package com.yns.wallet.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.adapter.BottomSheetChooseTokenListAdapter
-import com.yns.wallet.adapter.SelectTokenListAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.TokenBean
 import com.yns.wallet.databinding.ActivitySendBinding
@@ -43,13 +40,17 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
         loadTokenBottomSheetData()
 
+        walletViewModel.currentWalletLiveData.observe(this) {
+            viewBinding.ivMineName.text = it.name
+            viewBinding.ivMineHash.text = it.address
+        }
 
         viewBinding.apply {
             ivMineName2.onClick {
                 bottomSheet.show()
             }
             tvConfirm.onClick {
-                ConfirmLoopFragment().show(supportFragmentManager)
+                ConfirmLoopFragment().add(supportFragmentManager)
             }
             ivMineName2.text = currentTokenBean?.name
 

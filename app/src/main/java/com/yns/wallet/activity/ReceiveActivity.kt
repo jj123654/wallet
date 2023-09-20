@@ -12,7 +12,7 @@ import com.yns.wallet.util.onClick
 class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
-        walletViewModel.getCurrentWallet {
+        walletViewModel.currentWalletLiveData.observe(this) {
             viewBinding.ivMineName.text = it.address
             setQRCode(viewBinding.ivMineName.text.toString())
         }

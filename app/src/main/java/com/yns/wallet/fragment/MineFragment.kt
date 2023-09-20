@@ -2,6 +2,7 @@ package com.yns.wallet.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
@@ -15,6 +16,7 @@ import com.yns.wallet.util.onClick
 class MineFragment : BaseFragment<FragmentMineBinding>() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
+        Log.i("walletTest","mineFragment创建")
         val statusBar = view.findViewById<View>(R.id.v_status_bar)
         if (statusBar != null) {
             statusBar.layoutParams.height = getStatusBarHeight(view.context)
@@ -26,7 +28,13 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
             startActivity(Intent(view.context, AccountActivity::class.java))
         }
 
+        walletViewModel.currentWalletLiveData.observe(this) {
+            refreshData()
+        }
+
         viewBinding.apply {
+//            ivMineName.text = walletViewModel.currentWalletLiveData.value?.name
+
             languageTv.text = LanguageUtils.getInstance().getLanguageName(activity)
             transactionRecordLayout.onClick{
                 startActivity(TransactionRecordsActivity::class.java)
@@ -41,6 +49,11 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
             }
         }
 
+    }
+
+    private fun refreshData(){
+        viewBinding.ivMineName.text = walletViewModel.currentWalletLiveData.value?.name
+        viewBinding.ivMineHash.text = walletViewModel.currentWalletLiveData.value?.address
     }
 
 }

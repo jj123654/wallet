@@ -9,7 +9,6 @@ import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.SwapRecordBean
 import com.yns.wallet.databinding.ActivitySwapBinding
 import com.yns.wallet.databinding.LayoutChooseTokenBinding
-import com.yns.wallet.databinding.LayoutSwapHeaderBinding
 import com.yns.wallet.fragment.ConfirmLoopFragment
 import com.yns.wallet.util.onClick
 import com.yns.wallet.widget.bottomsheet.BottomSheet
@@ -58,7 +57,7 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
             showChooseToken()
         }
         header.tvSwap.onClick {
-            ConfirmLoopFragment().show(supportFragmentManager)
+            ConfirmLoopFragment().add(supportFragmentManager)
         }
     }
 

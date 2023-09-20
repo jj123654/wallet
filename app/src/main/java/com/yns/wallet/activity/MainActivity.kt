@@ -5,38 +5,50 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
+import com.yns.wallet.adapter.ContentPagerAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityMainBinding
+import com.yns.wallet.fragment.AssetsFragment
 import com.yns.wallet.fragment.MineFragment
 import com.yns.wallet.fragment.WalletFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private lateinit var walletCreateDialog: AlertDialog
+    private val tabFragments: MutableList<Fragment> = ArrayList()
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit(true) {
-                setReorderingAllowed(true)
-                add<WalletFragment>(R.id.fragment_container)
-            }
-        }
+//        if (savedInstanceState == null) {
+//            supportFragmentManager.commit(true) {
+//                setReorderingAllowed(true)
+//                add<WalletFragment>(R.id.fragment_container)
+//            }
+//        }
 
         viewBinding.apply {
+            tabFragments.add(WalletFragment())
+            tabFragments.add(MineFragment())
+            viewPager.adapter =
+                ContentPagerAdapter(
+                    supportFragmentManager,
+                    tabFragments
+                )
+
             ivWallet.onClick {
-                changeState(true)
-                supportFragmentManager.commit(true) {
-                    replace(R.id.fragment_container, WalletFragment())
+                if(viewPager.currentItem == 1){
+                    changeState(true)
+                    viewPager.setCurrentItem(0,false)
                 }
+
             }
             ivMine.onClick {
-                changeState(false)
-                supportFragmentManager.commit(true) {
-                    replace(R.id.fragment_container, MineFragment())
+                if(viewPager.currentItem == 0){
+                    changeState(false)
+                    viewPager.setCurrentItem(1,false)
                 }
             }
         }
@@ -68,10 +80,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        walletCreateDialog.dismiss()
-    }
+//    override fun onNewIntent(intent: Intent?) {
+//        super.onNewIntent(intent)
+//        walletCreateDialog.dismiss()
+//    }
 
     private fun openImportOrCreate() {
         startActivity(Intent(this, ImportOrCreateWallet::class.java))

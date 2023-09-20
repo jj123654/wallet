@@ -31,7 +31,7 @@
             android:id="@+id/iv_mine_icon"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:src="@mipmap/icon_default_user" />
+            android:src="@mipmap/account_default_photo" />
 
         <TextView
             android:id="@+id/iv_mine_name"
@@ -55,6 +55,7 @@
             android:layout_toEndOf="@id/iv_mine_icon"
             android:maxEms="16"
             android:maxLines="1"
+            android:ellipsize="middle"
             android:text="@string/test_mine_string"
             android:textColor="#8775AE"
             android:textSize="13sp" />

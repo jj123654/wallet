@@ -18,6 +18,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
 
+        walletViewModel.currentWalletLiveData.observe(this) {
+            viewBinding.ivMineName.text = it.name
+            viewBinding.ivMineHash.text = it.address
+        }
+
         viewBinding.apply {
             ivMineName.onClick {
                 CommonCenterDialog(this@DetailActivity).showCenterEditDialog(

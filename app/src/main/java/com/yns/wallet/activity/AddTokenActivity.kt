@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yns.wallet.R
 import com.yns.wallet.adapter.TokenListAdapter
 import com.yns.wallet.adapter.WalletListAdapter
+import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.TokenBean
 import com.yns.wallet.databinding.ActivityAddTokenBinding
@@ -54,6 +55,9 @@ class AddTokenActivity : BaseActivity<ActivityAddTokenBinding>() {
 
             tokenListAdapter.addData(list)
         }
+
+        WalletApi.getPopularToken()
+
     }
 
 }

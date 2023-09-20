@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:maxLines="1"
+                android:ellipsize="middle"
                 android:text="asdfasdfawerawsdfgasdfasddfgsdfgsdfgsdfgfasdfasdfasdfasdf"
                 android:textColor="#8775AE"
                 android:textSize="13sp" />
