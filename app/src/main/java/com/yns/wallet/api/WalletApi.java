@@ -216,9 +216,31 @@ public class WalletApi {
             String walletAddress,
             String tokenContractAddress,
             long startTime,
-            int size) {
+            int size,
+            int type,//0全部，1转出，2转入
+            boolean hide//true隐藏，false不隐藏
+            ) {
         // 实现获取令牌交易的逻辑
-        return null;
+
+        List<TokenTransferTransaction> tokenTransferTransactionList = new ArrayList<>();
+
+        TokenTransferTransaction yunusToken = new TokenTransferTransaction();
+        yunusToken.from = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
+        yunusToken.to = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
+        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
+        yunusToken.time = 1693991784000L;
+        yunusToken.result = TX_RESULT.SUCCESS;
+        tokenTransferTransactionList.add(yunusToken);
+
+        yunusToken = new TokenTransferTransaction();
+        yunusToken.from = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
+        yunusToken.to = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
+        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
+        yunusToken.time = 1693991784000L;
+        yunusToken.result = TX_RESULT.FAILED;
+        tokenTransferTransactionList.add(yunusToken);
+
+        return tokenTransferTransactionList;
     }
 
     // 交易管理
