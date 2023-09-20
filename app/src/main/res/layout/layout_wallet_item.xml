@@ -6,7 +6,7 @@
     android:paddingVertical="8dp"
     android:paddingLeft="8dp"
     android:paddingRight="15dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
     android:layout_marginHorizontal="20dp"
     android:orientation="horizontal"
     android:background="@drawable/shape_edit_import_bg"
@@ -18,6 +18,7 @@
         android:layout_height="54dp"
         android:background="@drawable/shape_home_list_icon_bg"
         android:src="@mipmap/eth"
+        android:padding="@dimen/dp_10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

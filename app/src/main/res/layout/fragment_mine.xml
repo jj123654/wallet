@@ -41,6 +41,7 @@
             android:id="@+id/iv_mine_icon"
             android:layout_width="54dp"
             android:layout_height="54dp"
+            android:background="@drawable/shape_home_list_icon_bg"
             android:src="@mipmap/account_default_photo" />
 
         <LinearLayout

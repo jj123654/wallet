@@ -5,40 +5,41 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.adapter.BottomSheetChooseTokenListAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.TokenBean
+import com.yns.wallet.bean.TokenModel
 import com.yns.wallet.databinding.ActivitySendBinding
 import com.yns.wallet.fragment.ConfirmLoopFragment
 import com.yns.wallet.widget.bottomsheet.BottomSheet
+import java.math.BigDecimal
 
 class SendActivity : BaseActivity<ActivitySendBinding>() {
 
     private lateinit var bottomSheet: BottomSheet
 
-    private var currentTokenBean:TokenBean?=null
+    private var currentTokenBean:TokenModel?=null
 
     private val chooseTokenListAdapter: BottomSheetChooseTokenListAdapter by lazy {
         BottomSheetChooseTokenListAdapter(this@SendActivity, mutableListOf()).apply {
             setOnItemClickListener { adapter, view, position ->
-                if(!data[position].isSelected){
-                    refreshData(position)
-                    currentTokenBean = data[position]
-                    viewBinding.ivMineName2.text = currentTokenBean?.name
+                if(getCurrentSelect()!=position){
                     bottomSheet?.let { bottomSheet.dismiss() }
+                    showCurrentToken(position)
                 }
 
             }
         }
     }
 
-    var list:MutableList<TokenBean> = ArrayList()
+    var list:MutableList<TokenModel> = ArrayList()
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
 
-        loadTokenBottomSheetData()
+
 
         walletViewModel.currentWalletLiveData.observe(this) {
             viewBinding.ivMineName.text = it.name
@@ -49,6 +50,11 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             ivMineName2.onClick {
                 bottomSheet.show()
             }
+
+            ivMineMax.onClick {
+                etBalance.setText(currentTokenBean?.balance.toString())
+            }
+
             tvConfirm.onClick {
                 ConfirmLoopFragment().add(supportFragmentManager)
             }
@@ -56,6 +62,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
         }
 
+        loadTokenBottomSheetData()
 
     }
 
@@ -70,16 +77,40 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         rvList.layoutManager = LinearLayoutManager(this)
         rvList.adapter = chooseTokenListAdapter
 
-        if(list==null||list.size<=0) {
-            currentTokenBean = TokenBean(0,"TRX","0xsadtr234",true)
-            list.add(currentTokenBean!!)
-            list.add(TokenBean(0,"YNS","0xsadtr234",false))
-            list.add(TokenBean(0,"USDT","0xsadtr234",false))
-
-            chooseTokenListAdapter.addData(list)
+        list.clear()
+        walletViewModel.tokenLiveData.value?.forEach {
+            if (it.name == "TRX") {
+                list.add(0, it)
+            } else {
+                list.add(it)
+            }
         }
+
+        chooseTokenListAdapter.addData(list)
+
+        showCurrentToken(0)
     }
 
+
+    private fun showCurrentToken(position:Int){
+        if(position<=chooseTokenListAdapter.data.size-1) {
+            currentTokenBean = chooseTokenListAdapter.data[position]
+        }
+        chooseTokenListAdapter.refreshData(position)
+
+        viewBinding.apply {
+            currentTokenBean?.let {
+                ivMineIcon2.load(it.imageUrl) {
+                    placeholder(R.mipmap.account_default_photo)
+                }
+                ivMineName2.text = it?.name
+                ivMineHash2.text = it?.name
+                ivMineWallet.text = "${it?.balance.toString()} ${it.name}"
+                etBalance.setText("")
+            }
+        }
+
+    }
 
 
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.adapter.TokenListAdapter
 import com.yns.wallet.adapter.WalletListAdapter
@@ -14,6 +15,7 @@ import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.TokenBean
 import com.yns.wallet.databinding.ActivityAddTokenBinding
+import com.yns.wallet.util.showToast
 import com.yns.wallet.widget.bottomsheet.BottomSheet
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 
@@ -37,6 +39,19 @@ class AddTokenActivity : BaseActivity<ActivityAddTokenBinding>() {
 
             rvList.layoutManager = WrapContentLinearLayoutManager(this@AddTokenActivity)
             rvList.adapter = tokenListAdapter
+
+            tvSearch.onClick {
+                if(etSearch.text.toString().isNullOrEmpty()){
+                    showToast(getString(R.string.please_enter_name))
+                    return@onClick
+                }
+
+                walletViewModel.getToken(etSearch.text.toString()){
+
+                }
+
+            }
+
         }
 
         if(list==null||list.size<=0) {

@@ -117,17 +117,23 @@ public class WalletApi {
         yunusToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
         yunusToken.name = "YNS";
         yunusToken.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
+        yunusToken.usd = new BigDecimal("0.53");
+        yunusToken.balance = new BigDecimal("75.23");
         tokenList.add(yunusToken);
 
         Token trxToken = new Token();
         trxToken.name = "TRX";
         trxToken.imageUrl = "https://static.tronscan.org/production/upload/logo/TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR.png?t=1598430824415";
+        trxToken.usd = new BigDecimal("0.14");
+        trxToken.balance = new BigDecimal("23.33");
         tokenList.add(trxToken);
 
         Token usdtToken = new Token();
         usdtToken.address = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
         usdtToken.name = "USDT";
         usdtToken.imageUrl = "https://static.tronscan.org/production/logo/usdtlogo.png";
+        usdtToken.usd = new BigDecimal("7.22");
+        usdtToken.balance = new BigDecimal("44.44");
         tokenList.add(usdtToken);
 
         return tokenList;

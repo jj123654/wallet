@@ -31,6 +31,7 @@
             android:id="@+id/iv_mine_icon"
             android:layout_width="54dp"
             android:layout_height="54dp"
+            android:background="@drawable/shape_home_list_icon_bg"
             android:src="@mipmap/account_default_photo" />
 
         <TextView
@@ -109,6 +110,8 @@
             android:id="@+id/iv_mine_icon2"
             android:layout_width="54dp"
             android:layout_height="54dp"
+            android:padding="@dimen/dp_10"
+            android:background="@drawable/shape_home_list_icon_bg"
             android:src="@mipmap/icon_default_user" />
 
         <TextView
@@ -125,15 +128,18 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/iv_balance"
-            android:layout_width="wrap_content"
+            android:id="@+id/et_balance"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/iv_mine_icon2"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@id/iv_mine_name2"
             android:background="@null"
-            android:inputType="numberDecimal"
+            android:gravity="center_vertical|right"
             android:hint="0"
+            android:inputType="numberDecimal"
             android:textColor="@color/white"
             android:textColorHint="@color/transaction_blue_tv_color"
             android:textSize="18sp" />
@@ -155,10 +161,10 @@
         <View
             android:id="@+id/v_line"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_below="@id/iv_mine_icon2"
             android:layout_marginTop="16dp"
-            android:background="#886229FF" />
+            android:background="@color/transaction_blue_color_50" />
 
         <TextView
             android:id="@+id/iv_mine_wallet"
@@ -180,7 +186,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/v_line"
-            android:layout_alignEnd="@id/iv_balance"
+            android:layout_alignEnd="@id/et_balance"
             android:layout_marginStart="10dp"
             android:layout_marginTop="18dp"
             android:gravity="center"

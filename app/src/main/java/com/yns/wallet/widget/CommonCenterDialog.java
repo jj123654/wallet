@@ -115,6 +115,7 @@ public class CommonCenterDialog {
                 }
             });
         } else {
+            inputEt.setInputType(InputType.TYPE_CLASS_TEXT);
             eyeImg.setVisibility(View.GONE);
         }
 

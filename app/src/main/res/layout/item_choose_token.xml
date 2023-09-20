@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+    <ImageView
         android:id="@+id/iv_icon"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:src="@mipmap/yns"
-        app:qmui_is_circle="true"
+        android:padding="7dp"
+        android:src="@mipmap/icon_close"
+        android:background="@drawable/shape_white_circle_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -30,20 +30,14 @@ import com.yns.wallet.widget.decoration.SpacesItemDecoration
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 
 class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
-    val list = mutableListOf(
-        WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-        WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-        WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-        WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00),
-        WalletItemInfo(R.mipmap.eth, "ETH", "ETH", 0, 0.00)
-    )
-
+    private var totalBalance:String?=null
 
     private val walletListAdapter: WalletListAdapter by lazy {
-        WalletListAdapter(requireContext(), list).apply {
+        WalletListAdapter(requireContext(), mutableListOf()).apply {
             setOnItemClickListener { adapter, position, view ->
                 startActivity(AssetsActivity::class.java)
             }
@@ -55,19 +49,25 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
             viewBinding.tvHomeName.text = it.name
         }
 
+        walletViewModel.tokenLiveData.observe(this){
+            walletListAdapter.setList(it)
+            totalBalance = it.sumOf {
+                it.usd?: BigDecimal("0")
+            }.toString()
+            changeTotalPrice()
+        }
+
         walletViewModel.getCurrentWallet {
         }
 
-        viewBinding.rvList.layoutManager =
-            WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-//        val viewBinding =
-//            LayoutWalletHeaderBinding.inflate(layoutInflater, viewBinding.rvList, false)
-//        walletListAdapter.addHeaderView(viewBinding.root)
-        this.viewBinding.rvList.adapter = walletListAdapter
+        walletViewModel.getWalletAllToken(walletViewModel.currentWalletLiveData.value?.address?:"")
+
         adjustStatusBarMargin(viewBinding.ivLogo)
 
         viewBinding.apply {
-
+            rvList.layoutManager =
+                WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            rvList.adapter = walletListAdapter
 
             tvDetail.onClick {
                 startActivity(DetailActivity::class.java)
@@ -92,12 +92,8 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
             }
 
             ivHomeBalanceEye.onClick {
-                if (ivHomeBalanceEye.isSelected) {
-                    tvBalance.text = "$ 0.00"
-                } else {
-                    tvBalance.text = "$ ⁕⁕⁕⁕⁕⁕"
-                }
                 ivHomeBalanceEye.isSelected = !ivHomeBalanceEye.isSelected
+                changeTotalPrice()
             }
 
 
@@ -106,5 +102,12 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
     }
 
+    private fun changeTotalPrice(){
+        if (viewBinding.ivHomeBalanceEye.isSelected) {
+            viewBinding.tvBalance.text = "$ ⁕⁕⁕⁕⁕⁕"
+        } else {
+            viewBinding.tvBalance.text = "$ ${totalBalance?:""}"
+        }
+    }
 
 }

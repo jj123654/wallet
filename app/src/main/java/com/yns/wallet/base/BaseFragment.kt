@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
 import com.yns.wallet.R
-import com.yns.wallet.WalletViewModel
+import com.yns.wallet.viewmodel.WalletViewModel
 import com.yns.wallet.util.globalViewModel
 import java.lang.Exception
 import java.lang.reflect.ParameterizedType

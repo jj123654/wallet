@@ -1,14 +1,11 @@
-package com.yns.wallet
+package com.yns.wallet.viewmodel
 
 import android.text.TextUtils
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yns.wallet.api.WalletApi
-import com.yns.wallet.bean.WalletModel
-import com.yns.wallet.bean.toWalletEntity
-import com.yns.wallet.bean.toWalletModel
+import com.yns.wallet.bean.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,6 +18,10 @@ class WalletViewModel : ViewModel() {
     val walletsLiveData = MutableLiveData<MutableList<WalletModel>>(mutableListOf())
 
     val currentWalletLiveData = MutableLiveData<WalletModel>()
+
+    val tokenLiveData = MutableLiveData<MutableList<TokenModel>>(mutableListOf())
+
+    val currentTokenLiveData = MutableLiveData<TokenModel>()
 
     //创建助记词
     fun createMenomic(callback: suspend (String) -> Unit) {
@@ -118,6 +119,32 @@ class WalletViewModel : ViewModel() {
                 }
             }
             walletsLiveData.value = r.toMutableList()
+        }
+    }
+
+    /**
+     * 获取当前钱包下的所有token
+     */
+    fun getWalletAllToken(address:String) {
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO) {
+                WalletApi.getAllWalletToken(address).map {
+                    it.toTokenModel()
+                }
+            }
+            tokenLiveData.value = r.toMutableList()
+        }
+    }
+
+    /**
+     * 获取当前钱包下的所有token
+     */
+    fun getToken(address:String,callback: suspend (TokenModel) -> Unit) {
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO) {
+                WalletApi.getToken(address).toTokenModel()
+            }
+            callback(r)
         }
     }
 

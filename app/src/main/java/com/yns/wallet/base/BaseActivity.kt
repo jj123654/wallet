@@ -2,7 +2,6 @@ package com.yns.wallet.base
 
 import android.app.Activity
 import android.app.Dialog
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -13,8 +12,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.yns.wallet.R
-import com.yns.wallet.WalletViewModel
-import com.yns.wallet.activity.CreateStepImportActivity
+import com.yns.wallet.viewmodel.WalletViewModel
 import com.yns.wallet.util.*
 import com.yns.wallet.widget.CommonCenterDialog
 import org.greenrobot.eventbus.Subscribe

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.base.Constant
 import com.yns.wallet.databinding.ActivityDetailBinding
 import com.yns.wallet.util.copyToClipboard
 import com.yns.wallet.widget.CommonCenterDialog
@@ -24,6 +25,8 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
         }
 
         viewBinding.apply {
+            ivMinePath.text = Constant.DEFAULT_PATH
+
             ivMineName.onClick {
                 CommonCenterDialog(this@DetailActivity).showCenterEditDialog(
                     false,
