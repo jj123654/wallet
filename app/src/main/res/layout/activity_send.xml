@@ -82,7 +82,6 @@
         android:layout_margin="20dp"
         android:background="@drawable/shape_edit_import_bg"
         android:hint="@string/enter_or_paste_the_address"
-        android:inputType="textPassword"
         android:paddingStart="20dp"
         android:paddingEnd="80dp"
         android:textSize="13sp" />

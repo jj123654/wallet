@@ -240,5 +240,9 @@
     <string name="search_by_token_address">通过Token地址搜索</string>
     <string name="loading">加载中...</string>
     <string name="password_is_wrong">密码错误</string>
+    <string name="should_less_than_balance">需少于余额</string>
+    <string name="please_enter_amount">请输入金额</string>
+    <string name="should_more_than_0_000001">需大于0.000001</string>
+    <string name="address_is_not_valid">地址错误</string>
 
 </resources>

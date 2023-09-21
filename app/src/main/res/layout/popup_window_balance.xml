@@ -34,6 +34,7 @@
                 android:textSize="10sp" />
 
             <TextView
+                android:id="@+id/balance_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -56,6 +57,7 @@
                 android:textSize="10sp" />
 
             <TextView
+                android:id="@+id/bind_width_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -78,6 +80,7 @@
                 android:textSize="10sp" />
 
             <TextView
+                android:id="@+id/energy_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

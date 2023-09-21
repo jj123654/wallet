@@ -14,6 +14,7 @@ import com.yns.wallet.bean.TokenBean
 import com.yns.wallet.bean.TokenModel
 import com.yns.wallet.databinding.ActivitySendBinding
 import com.yns.wallet.fragment.ConfirmLoopFragment
+import com.yns.wallet.util.showToast
 import com.yns.wallet.widget.bottomsheet.BottomSheet
 import java.math.BigDecimal
 
@@ -56,7 +57,24 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             }
 
             tvConfirm.onClick {
-                ConfirmLoopFragment().add(supportFragmentManager)
+                if(etPwd.text.toString().isNullOrEmpty()){
+                    showToast(getString(R.string.enter_or_paste_the_address))
+                    return@onClick
+                }
+                if(etBalance.text.toString().isNullOrEmpty()){
+                    showToast(getString(R.string.please_enter_amount))
+                    return@onClick
+                }
+                if(BigDecimal(etBalance.text.toString()).compareTo(currentTokenBean?.balance)==1){
+                    showToast(getString(R.string.should_less_than_balance))
+                    return@onClick
+                }
+                if(BigDecimal(etBalance.text.toString()).compareTo(BigDecimal("0.000001"))==-1){
+                    showToast(getString(R.string.should_more_than_0_000001))
+                    return@onClick
+                }
+                ConfirmLoopFragment.newInstance(true,"",etBalance.text.toString(),etPwd.text.toString(),currentTokenBean).add(supportFragmentManager)
+
             }
             ivMineName2.text = currentTokenBean?.name
 
