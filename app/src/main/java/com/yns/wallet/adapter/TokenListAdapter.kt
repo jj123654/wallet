@@ -25,7 +25,7 @@ class TokenListAdapter(context:Context,currentWalletTokenList:MutableList<TokenM
     BaseQuickAdapter<TokenModel, TokenListAdapter.BaseHolder>(R.layout.item_add_token, data) {
 
     var dpItem = QMUIDisplayHelper.dp2px(context,16)
-    val tokenList = currentWalletTokenList
+    private var tokenList = currentWalletTokenList
 
     override fun convert(holder: BaseHolder, item: TokenModel) {
         holder.vb.apply {
@@ -35,21 +35,18 @@ class TokenListAdapter(context:Context,currentWalletTokenList:MutableList<TokenM
 
             when (holder.absoluteAdapterPosition) {
                 0 -> {
-                    ivBalance.visibility = View.INVISIBLE
                     lineView.visibility = View.VISIBLE
                     layoutParams.topMargin = 0
                     layoutParams.bottomMargin = 0
                     background = R.drawable.shape_main_top_corner_20_normal_bg
                 }
                 data.size-1 -> {
-                    ivBalance.visibility = View.VISIBLE
                     lineView.visibility = View.GONE
                     layoutParams.topMargin = 0
                     layoutParams.bottomMargin = dpItem
                     background = R.drawable.shape_main_bottom_corner_20_normal_bg
                 }
                 else -> {
-                    ivBalance.visibility = View.VISIBLE
                     lineView.visibility = View.VISIBLE
                     layoutParams.topMargin = 0
                     layoutParams.bottomMargin = 0
@@ -65,6 +62,7 @@ class TokenListAdapter(context:Context,currentWalletTokenList:MutableList<TokenM
             ivMineName2.text = item.name
             ivMineHash2.text = item.address
 
+            ivBalance.visibility = if(item.name == "YNS"||item.name=="USDT"||item.name=="TRX") View.INVISIBLE else View.VISIBLE
             ivBalance.isSelected = tokenList.firstOrNull{it.address==item.address}!=null
 
             addChildClickViewIds(R.id.iv_balance)
@@ -74,6 +72,11 @@ class TokenListAdapter(context:Context,currentWalletTokenList:MutableList<TokenM
 
     class BaseHolder(view: View) : BaseViewHolder(view) {
         val vb = ItemAddTokenBinding.bind(view)
+    }
+
+    fun refreshData(currentWalletTokenList:MutableList<TokenModel>){
+        tokenList = currentWalletTokenList
+        notifyDataSetChanged()
     }
 
 }

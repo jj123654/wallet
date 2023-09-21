@@ -13,8 +13,8 @@ data class TokenModel(
     var address: String? = null,
     var imageUrl: String? = null,
     var name: String? = null,
-    var balance: BigDecimal? = null,
-    var usd: BigDecimal? = null
+    var balance: BigDecimal? = BigDecimal("0"),
+    var usd: BigDecimal? = BigDecimal("0")
 ) : Parcelable
 
 

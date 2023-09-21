@@ -175,20 +175,22 @@ class WalletViewModel : ViewModel() {
         }
     }
 
-    fun addWalletToken(address:String,callback: suspend (Boolean) -> Unit){
+    fun addWalletToken(tokenModel: TokenModel,callback: suspend (Boolean) -> Unit){
         viewModelScope.launch {
-            val r = withContext(Dispatchers.IO) {
-                WalletApi.addWalletToken(currentWalletLiveData.value?.address,address)
+            withContext(Dispatchers.IO) {
+                WalletApi.addWalletToken(currentWalletLiveData.value?.address,tokenModel?.address)
             }
+            tokenLiveData.value = tokenLiveData.value?.apply { add(tokenModel) }
             callback(true)
         }
     }
 
-    fun deleteWalletToken(address:String,callback: suspend (Boolean) -> Unit){
+    fun deleteWalletToken(tokenModel: TokenModel,callback: suspend (Boolean) -> Unit){
         viewModelScope.launch {
-            val r = withContext(Dispatchers.IO) {
-                WalletApi.deleteWalletToken(currentWalletLiveData.value?.address,address)
+            withContext(Dispatchers.IO) {
+                WalletApi.deleteWalletToken(currentWalletLiveData.value?.address,tokenModel?.address)
             }
+            tokenLiveData.value = tokenLiveData.value?.apply { removeIf { it.address == tokenModel?.address } }
             callback(true)
         }
     }

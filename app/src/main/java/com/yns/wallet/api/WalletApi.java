@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.gson.reflect.TypeToken;
 import com.yns.wallet.bean.PopularTokenInfo;
 import com.yns.wallet.bean.Response;
+import com.yns.wallet.bean.SearchTokenInfo;
 import com.yns.wallet.io.JsonUtils;
 
 import java.util.ArrayList;
@@ -167,30 +168,52 @@ public class WalletApi {
 
         Response<String> stringResponse = NetworkApi.tokenOverView("TRX");
         if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
-            //TODO 检查数据并返回列表
+
             String response = stringResponse.getData();
             PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
-            Log.i("httpTest", "测试info:" + info.getTokens().get(0).getAbbr());
-            //TODO 处理接口返回数据，填充tokenList
 
-            //以下是示例写法
-            Token token = new Token();
-            token.name = info.getTokens().get(0).getName();
-            token.address = info.getTokens().get(0).getOwnerAddress();
-            tokenList.add(token);
+            if(info!=null&&info.getTokens()!=null&&info.getTokens().size()>0){
+                WalletApi.Token token = new WalletApi.Token();
+                token.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
+                token.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
+                token.name = "YNS";
+                tokenList.add(token);
+
+                for (int i = 0;i<info.getTokens().size();i++){
+                    PopularTokenInfo.TokensBean it = info.getTokens().get(i);
+                    token = new WalletApi.Token();
+                    token.address = it.getContractAddress();
+                    token.imageUrl = it.getImgUrl();
+                    token.name = it.getAbbr();
+                    tokenList.add(token);
+                }
+            }
+
         }
 
         return tokenList;
+
     }
 
-    public static Token getToken(String tokenAddress) {
-        Token yunusToken = new Token();
-        yunusToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
-        yunusToken.name = "YNS";
-        yunusToken.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
-        yunusToken.balance = new BigDecimal("1");
-        yunusToken.usd = new BigDecimal("10");
-        return yunusToken;
+    public static Token getToken(String contract) {
+        Token token = new Token();
+
+        Response<String> stringResponse = NetworkApi.searchToken(contract);
+        if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
+
+            String response = stringResponse.getData();
+            SearchTokenInfo info = JsonUtils.jsonToObject(response, SearchTokenInfo.class);
+
+            if(info!=null&&info.getTrc20_tokens()!=null&&info.getTrc20_tokens().size()>0){
+                SearchTokenInfo.Trc20TokensBean trc20TokensBean = info.getTrc20_tokens().get(0);
+                token.name = trc20TokensBean.getSymbol();
+                token.imageUrl = trc20TokensBean.getIcon_url();
+                token.address = trc20TokensBean.getContract_address();
+            }
+        }
+
+        return token;
+
     }
 
     public static SwapInfo getSwapInfoFromTokenAddress(String fromTokenAddress, String toTokenAddress, String fromTokenAmount) {
@@ -336,8 +359,8 @@ public class WalletApi {
         public String address;
         public String imageUrl;
         public String name;
-        public BigDecimal balance;
-        public BigDecimal usd;
+        public BigDecimal balance = new BigDecimal("0");
+        public BigDecimal usd = new BigDecimal("0");
     }
 
     public static class TokenTransferTransaction {

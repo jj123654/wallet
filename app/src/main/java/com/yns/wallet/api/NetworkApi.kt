@@ -50,6 +50,16 @@ object NetworkApi {
         return getSuspend("tokens/overview", mapOf("filter" to filter))
     }
 
+    /**
+     * //1.https://apilist.tronscanapi.com/api/tokens/overview?filter=TRX
+
+     */
+    @JvmStatic
+    @JvmOverloads
+    fun searchToken(contract: String): Response<String> {
+        return getSuspend("token_trc20", mapOf("contract" to contract))
+    }
+
 
     /**
      * //2. https://apilist.tronscanapi.com/api/new/transfer?sort=-timestamp&start=页数&limit=50&address=地址
