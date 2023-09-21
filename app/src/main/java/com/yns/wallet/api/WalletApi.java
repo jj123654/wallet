@@ -80,6 +80,7 @@ public class WalletApi {
 
     public static void setCurrentWallet(WalletEntity wallet) {
         //实现设置当前钱包的逻辑
+        Log.d("setCurrentWallet", wallet.address);
     }
 
     public static String getPrivateKeyFromKeystore(String keystore, String password) {
@@ -89,6 +90,7 @@ public class WalletApi {
 
     public static void switchWallet(String address) {
         // 实现切换钱包的逻辑
+        Log.d("switchWallet", address);
     }
 
     public static List<WalletEntity> listAllWallet() {
@@ -152,10 +154,12 @@ public class WalletApi {
 
     public static void addWalletToken(String walletAddress, String address) {
         // 实现添加令牌到钱包的逻辑
+        Log.d("addWalletToken", String.format("wallet: %s token:%s", walletAddress, address));
     }
 
     public static void deleteWalletToken(String walletAddress, String address) {
         // 实现从钱包删除令牌的逻辑
+        Log.d("deleteWalletToken", String.format("wallet: %s token:%s", walletAddress, address));
     }
 
     public static List<Token> getPopularToken() {
@@ -177,28 +181,6 @@ public class WalletApi {
         }
 
         return tokenList;
-
-//        // 实现获取热门令牌的逻辑
-//        List<Token> tokenList = new ArrayList<>();
-//
-//        Token yunusToken = new Token();
-//        yunusToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
-//        yunusToken.name = "YNS";
-//        yunusToken.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
-//        tokenList.add(yunusToken);
-//
-//        Token trxToken = new Token();
-//        trxToken.name = "TRX";
-//        trxToken.imageUrl = "https://static.tronscan.org/production/upload/logo/TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR.png?t=1598430824415";
-//        tokenList.add(trxToken);
-//
-//        Token usdtToken = new Token();
-//        usdtToken.address = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
-//        usdtToken.name = "USDT";
-//        usdtToken.imageUrl = "https://static.tronscan.org/production/logo/usdtlogo.png";
-//        tokenList.add(usdtToken);
-
-//        return null;
     }
 
     public static Token getToken(String tokenAddress) {
@@ -209,12 +191,58 @@ public class WalletApi {
         yunusToken.balance = new BigDecimal("1");
         yunusToken.usd = new BigDecimal("10");
         return yunusToken;
+    }
 
+    public static SwapInfo getSwapInfoFromTokenAddress(String fromTokenAddress, String toTokenAddress, String fromTokenAmount) {
+        SwapInfo swapInfo = new SwapInfo();
+        swapInfo.fromToken = "USDT";
+        swapInfo.toToken = "YNS";
+        swapInfo.rate = (new BigDecimal("0.19"));
+        swapInfo.fee = (new BigDecimal("0.03"));
+        swapInfo.priceImpact = (new BigDecimal("0.4"));
+        swapInfo.fromAmount = (new BigDecimal("100"));
+        swapInfo.toAmount = (new BigDecimal("7.992"));
+        swapInfo.minReceive = (new BigDecimal("5.992"));
+        return swapInfo;
+    }
+
+    public static List<SwapRecord> listSwap(String address) {
+        SwapInfo swapInfo = new SwapInfo();
+        swapInfo.fromToken = "USDT";
+        swapInfo.toToken = "YNS";
+        swapInfo.rate = (new BigDecimal("0.19"));
+        swapInfo.fee = (new BigDecimal("0.03"));
+        swapInfo.priceImpact = (new BigDecimal("0.4"));
+        swapInfo.fromAmount = (new BigDecimal("100"));
+        swapInfo.toAmount = (new BigDecimal("7.992"));
+        swapInfo.minReceive = (new BigDecimal("5.992"));
+
+        SwapRecord swapRecord = new SwapRecord();
+        swapRecord.time = (1694490305000L);
+        swapRecord.result = (TX_RESULT.SUCCESS);
+        swapRecord.swapInfo = (swapInfo);
+
+        List<SwapRecord> swapList = new ArrayList<>();
+        swapList.add(swapRecord);
+
+        return swapList;
+    }
+
+    public void saveSwap(String walletAddress, SwapRecord swapRecord) {
+        Log.d(
+                "saveSwap",
+                String.format("address: %s, from: %s, to:%s", walletAddress, swapRecord.swapInfo.fromToken, swapRecord.swapInfo.toToken)
+        );
     }
 
     public enum TX_RESULT {
         SUCCESS,
         FAILED
+    }
+
+    public enum TRANSFER_TYPE {
+        TRC20,
+        TRC10
     }
 
     public static List<TokenTransferTransaction> getTokenTransaction(
@@ -250,6 +278,19 @@ public class WalletApi {
         return tokenTransferTransactionList;
     }
 
+    public static TokenTransferTransactionDetail getTokenTransactionDetail(String tx) {
+        TokenTransferTransactionDetail detail = new TokenTransferTransactionDetail();
+        detail.from = ("TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t");
+        detail.to = ("TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF");
+        detail.tx = ("724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75");
+        detail.time = (1693991784000L);
+        detail.result = (TX_RESULT.SUCCESS);
+        detail.fee = (new BigDecimal("7.992"));
+        detail.transferType = (TRANSFER_TYPE.TRC20);
+
+        return detail;
+    }
+
     // 交易管理
 
     public static String writeContract(
@@ -277,7 +318,12 @@ public class WalletApi {
             String targetAddress,
             BigDecimal amount) {
         // 实现TRX转账的逻辑
-        return "";
+        return "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
+    }
+
+    public static String transfer(String tokenAddress, BigDecimal amount, String to) {
+        Log.i("transfer", String.format("token: %s amount:%s to:%s", tokenAddress, amount.toString(), to));
+        return "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
     }
 
     public static class WalletEntity {
@@ -301,5 +347,35 @@ public class WalletApi {
         public long time;
         public BigDecimal amount;
         public TX_RESULT result;
+    }
+
+    public static class TokenTransferTransactionDetail extends TokenTransferTransaction {
+     public BigDecimal fee;
+     public TRANSFER_TYPE transferType;
+    }
+
+    public static class SwapInfo {
+        public String fromToken;
+        public String toToken;
+        public BigDecimal rate;
+        public BigDecimal fee;
+        public BigDecimal priceImpact;
+        public BigDecimal fromAmount;
+        public BigDecimal toAmount;
+        public BigDecimal minReceive;
+    }
+
+    public static class SwapRecord {
+        public long time;
+        public TX_RESULT result;
+        public SwapInfo swapInfo;
+    }
+
+    // 这个作为事件参数，弹出交易确认框
+    public static class CallContractParam {
+        public String caller;
+        public String address;
+        public String func;
+        public List<String> args;
     }
 }
