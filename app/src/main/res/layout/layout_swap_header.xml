@@ -170,6 +170,7 @@
             android:hint="@string/enter_an_amount"
             android:maxEms="16"
             android:maxLines="1"
+            android:inputType="numberDecimal"
             android:layout_marginTop="@dimen/dp_4"
             android:textColor="@color/white"
             android:textColorHint="@color/transaction_blue_tv_color"
@@ -216,6 +217,8 @@
             android:hint="@string/enter_an_amount"
             android:maxEms="16"
             android:maxLines="1"
+            android:focusable="false"
+            android:clickable="false"
             android:layout_marginTop="@dimen/dp_4"
             android:textColor="@color/white"
             android:textColorHint="@color/transaction_blue_tv_color"
@@ -230,6 +233,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="40dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_left_layout">
@@ -245,6 +249,7 @@
                 android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/from_to_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -267,13 +272,14 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                <ImageView
+                    android:id="@+id/from_img"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@mipmap/yns"
-                    app:qmui_is_circle="true" />
+                    android:src="@mipmap/yns"/>
 
                 <TextView
+                    android:id="@+id/from_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -292,10 +298,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/yns"
+                    android:text="@string/rate"
                     android:textColor="@color/transaction_blue_tv_color" />
 
                 <TextView
+                    android:id="@+id/rate_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -318,6 +325,7 @@
                     android:textColor="@color/transaction_blue_tv_color" />
 
                 <TextView
+                    android:id="@+id/fee_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -340,6 +348,7 @@
                     android:textColor="@color/transaction_blue_tv_color" />
 
                 <TextView
+                    android:id="@+id/price_impact_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -362,6 +371,7 @@
                     android:textColor="@color/transaction_blue_tv_color" />
 
                 <TextView
+                    android:id="@+id/min_receive_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -382,7 +392,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/shape_bg_btn"
+        android:enabled="false"
+        android:background="@drawable/selector_btn_bg"
         android:gravity="center"
         android:text="@string/swap"
         android:textColor="@color/white"

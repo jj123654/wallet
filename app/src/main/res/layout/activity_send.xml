@@ -80,10 +80,11 @@
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_margin="20dp"
+        android:singleLine="true"
         android:background="@drawable/shape_edit_import_bg"
         android:hint="@string/enter_or_paste_the_address"
         android:paddingStart="20dp"
-        android:paddingEnd="80dp"
+        android:paddingEnd="20dp"
         android:textSize="13sp" />
 
     <TextView

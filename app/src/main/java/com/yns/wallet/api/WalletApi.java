@@ -240,12 +240,17 @@ public class WalletApi {
         swapInfo.toAmount = (new BigDecimal("7.992"));
         swapInfo.minReceive = (new BigDecimal("5.992"));
 
+        List<SwapRecord> swapList = new ArrayList<>();
         SwapRecord swapRecord = new SwapRecord();
         swapRecord.time = (1694490305000L);
         swapRecord.result = (TX_RESULT.SUCCESS);
         swapRecord.swapInfo = (swapInfo);
+        swapList.add(swapRecord);
 
-        List<SwapRecord> swapList = new ArrayList<>();
+        swapRecord = new SwapRecord();
+        swapRecord.time = (1694490305000L);
+        swapRecord.result = (TX_RESULT.FAILED);
+        swapRecord.swapInfo = (swapInfo);
         swapList.add(swapRecord);
 
         return swapList;

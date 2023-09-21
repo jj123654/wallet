@@ -27,7 +27,7 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
     var contractAddress:String?=null
 
     companion object {
-        fun newInstance(fromWhich:Boolean,contract:String?,amount: String?,toAddress:String,tokenModel: TokenModel?): ConfirmLoopFragment {
+        fun newInstance(fromWhich:Boolean,contract:String?,amount: String?,toAddress:String?,tokenModel: TokenModel?): ConfirmLoopFragment {
             val arguments = Bundle()
             arguments.putBoolean("fromWhich",fromWhich)
             arguments.putString("contract",contract)
@@ -80,7 +80,12 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
             amountTv.text = "$amount ${tokenModel?.name}"
             fromAddrTv.text = walletViewModel.currentWalletLiveData.value?.address
             toAddrTv.text = toAddress
-            contractTv.text = contractAddress
+            if(contractAddress.isNullOrEmpty()){
+                contractLayout.visibility = View.GONE
+            }else{
+                contractLayout.visibility = View.VISIBLE
+                contractTv.text = contractAddress
+            }
         }
     }
 

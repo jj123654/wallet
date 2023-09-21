@@ -251,25 +251,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="@string/contract"
                         android:textColor="#ff808080"
                         android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/contract_tv"
+
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end|center_vertical"
-                        android:text="TAbBgFNCgYHJvPRxG1wp57Va5Wae6chRwcR"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp" />
+                        android:layout_weight="1.2"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="14dp"
+                            android:text="SC"
+                            android:textSize="10sp"
+                            android:paddingHorizontal="3dp"
+                            android:layout_marginTop="-2dp"
+                            android:textColor="#ff000000"
+                            android:background="@drawable/shape_black_bg"/>
+
+                        <TextView
+                            android:id="@+id/contract_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="TAbBgFNCgYHJvPRasdfasdfasdf"
+                            android:gravity="right"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout

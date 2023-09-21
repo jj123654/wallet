@@ -73,7 +73,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                     showToast(getString(R.string.should_more_than_0_000001))
                     return@onClick
                 }
-                ConfirmLoopFragment.newInstance(true,"",etBalance.text.toString(),etPwd.text.toString(),currentTokenBean).add(supportFragmentManager)
+                ConfirmLoopFragment.newInstance(true,if(currentTokenBean?.name=="TRX") "" else currentTokenBean?.address,etBalance.text.toString(),etPwd.text.toString(),currentTokenBean).add(supportFragmentManager)
 
             }
             ivMineName2.text = currentTokenBean?.name
