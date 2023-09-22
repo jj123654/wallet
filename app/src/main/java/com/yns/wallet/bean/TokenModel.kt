@@ -14,7 +14,10 @@ data class TokenModel(
     var imageUrl: String? = null,
     var name: String? = null,
     var balance: BigDecimal? = BigDecimal("0"),
-    var usd: BigDecimal? = BigDecimal("0")
+    var usd: BigDecimal? = BigDecimal("0"),
+    var trxAmount: BigDecimal? = BigDecimal("0"),
+    var usdPrice: BigDecimal? = BigDecimal("0"),
+    var preset:Boolean = false
 ) : Parcelable
 
 
@@ -28,6 +31,9 @@ fun TokenModel.toToken(): Token {
         it.name = this.name
         it.balance = this.balance
         it.usd = this.usd
+        it.trxAmount = this.trxAmount
+        it.usdPrice = this.usdPrice
+        it.preset = this.preset
     }
 }
 
@@ -41,5 +47,8 @@ fun Token.toTokenModel(): TokenModel {
         it.name = this.name
         it.balance = this.balance
         it.usd = this.usd
+        it.trxAmount = this.trxAmount
+        it.usdPrice = this.usdPrice
+        it.preset = this.preset
     }
 }

@@ -17,59 +17,51 @@
         android:id="@+id/v_bottom_bg"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@mipmap/main_bottom_bg"
+        android:background="@color/main"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <ImageView
-        android:id="@+id/wallet_indicator_img"
-        android:layout_width="45dp"
-        android:layout_height="3dp"
-        android:layout_marginStart="58dp"
-        android:src="@drawable/shape_blue_indicator_view"
-        app:layout_constraintBottom_toTopOf="@id/v_bottom_bg"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <ImageView
-        android:id="@+id/iv_wallet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:src="@mipmap/icon_wallet_selected"
-        android:padding="@dimen/dp_10"
-        app:layout_constraintBottom_toBottomOf="@id/v_bottom_bg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/v_bottom_bg" />
+        <TextView
+            android:id="@+id/iv_wallet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/assets"
+            android:drawablePadding="@dimen/dp_4"
+            android:textColor="@color/white"
+            android:drawableTop="@mipmap/icon_wallet_selected"/>
 
-    <ImageView
-        android:id="@+id/iv_main"
-        android:layout_width="102dp"
-        android:layout_height="102dp"
-        android:layout_marginBottom="22dp"
-        android:src="@mipmap/main_center_bg"
-        app:layout_constraintBottom_toBottomOf="@id/v_bottom_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/iv_discover"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/discover"
+            android:drawablePadding="@dimen/dp_4"
+            android:textColor="@color/white"
+            android:drawableTop="@mipmap/icon_discover_normal"/>
 
-    <ImageView
-        android:id="@+id/mine_indicator_img"
-        android:layout_width="45dp"
-        android:layout_height="3dp"
-        android:layout_marginEnd="58dp"
-        android:visibility="gone"
-        android:src="@drawable/shape_blue_indicator_view"
-        app:layout_constraintBottom_toTopOf="@id/v_bottom_bg"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/iv_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/me"
+            android:drawablePadding="@dimen/dp_4"
+            android:textColor="@color/white"
+            android:drawableTop="@mipmap/icon_user_normal"/>
 
-    <ImageView
-        android:id="@+id/iv_mine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="58dp"
-        android:src="@mipmap/icon_user_normal"
-        android:padding="@dimen/dp_10"
-        app:layout_constraintBottom_toBottomOf="@id/v_bottom_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/v_bottom_bg" />
+    </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

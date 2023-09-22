@@ -28,6 +28,10 @@ class AddWalletActivity : BaseActivity<ActivityAddWalletBinding>() {
                 startActivity(intent)
             }
 
+            vPairColdWalletBg.onClick {
+                startActivity(PairColdWalletActivity::class.java)
+            }
+
         }
     }
 

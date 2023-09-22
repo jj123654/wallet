@@ -38,8 +38,10 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val walletListAdapter: WalletListAdapter by lazy {
         WalletListAdapter(requireContext(), mutableListOf()).apply {
-            setOnItemClickListener { adapter, position, view ->
-                startActivity(AssetsActivity::class.java)
+            setOnItemClickListener { adapter,view,position ->
+                var intent = Intent(activity,AssetsActivity::class.java)
+                intent.putExtra("tokenModel",data[position])
+                startActivity(intent)
             }
         }
     }

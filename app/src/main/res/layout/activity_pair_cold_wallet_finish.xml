@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main" />
+
+    <com.yns.wallet.widget.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_title="@string/pair_cold_wallet" />
+
+
+    <FrameLayout
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/shape_round_white_bg">
+
+        <ImageView
+            android:id="@+id/qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="11dp"
+            android:background="#DFDFDF" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tv_has_signed"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_bg_btn"
+        android:gravity="center"
+        android:text="@string/cold_wallet_has_signed"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

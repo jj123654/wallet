@@ -67,15 +67,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun changeState(walletOrMe:Boolean){
         viewBinding.apply {
             if(walletOrMe){
-                walletIndicatorImg.visibility = View.VISIBLE
-                mineIndicatorImg.visibility = View.GONE
-                ivWallet.setImageResource(R.mipmap.icon_wallet_selected)
-                ivMine.setImageResource(R.mipmap.icon_user_normal)
+                ivWallet.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_wallet_selected),null,null)
+                ivMine.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_user_normal),null,null)
             }else{
-                walletIndicatorImg.visibility = View.GONE
-                mineIndicatorImg.visibility = View.VISIBLE
-                ivWallet.setImageResource(R.mipmap.icon_wallet_normal)
-                ivMine.setImageResource(R.mipmap.icon_user_selected)
+                ivWallet.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_wallet_normal),null,null)
+                ivMine.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_user_selected),null,null)
             }
         }
     }

@@ -122,6 +122,9 @@ public class WalletApi {
         yunusToken.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
         yunusToken.usd = new BigDecimal("0.53");
         yunusToken.balance = new BigDecimal("75.23");
+        yunusToken.trxAmount = new BigDecimal("0.41");
+        yunusToken.usdPrice = new BigDecimal("0.19");
+        yunusToken.preset = false;
         tokenList.add(yunusToken);
 
         Token trxToken = new Token();
@@ -130,6 +133,9 @@ public class WalletApi {
         trxToken.imageUrl = "https://static.tronscan.org/production/upload/logo/TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR.png?t=1598430824415";
         trxToken.usd = new BigDecimal("0.14");
         trxToken.balance = new BigDecimal("23.33");
+        trxToken.trxAmount = new BigDecimal("0.41");
+        trxToken.usdPrice = new BigDecimal("0.19");
+        trxToken.preset = true;
         tokenList.add(trxToken);
 
         Token usdtToken = new Token();
@@ -138,6 +144,9 @@ public class WalletApi {
         usdtToken.imageUrl = "https://static.tronscan.org/production/logo/usdtlogo.png";
         usdtToken.usd = new BigDecimal("7.22");
         usdtToken.balance = new BigDecimal("44.44");
+        usdtToken.trxAmount = new BigDecimal("0.41");
+        usdtToken.usdPrice = new BigDecimal("0.19");
+        usdtToken.preset = false;
         tokenList.add(usdtToken);
 
         return tokenList;
@@ -177,6 +186,7 @@ public class WalletApi {
                 token.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
                 token.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
                 token.name = "YNS";
+                token.preset = true;
                 tokenList.add(token);
 
                 for (int i = 0;i<info.getTokens().size();i++){
@@ -185,6 +195,7 @@ public class WalletApi {
                     token.address = it.getContractAddress();
                     token.imageUrl = it.getImgUrl();
                     token.name = it.getAbbr();
+//                    token.preset = it. //后续看哪个是对应preset
                     tokenList.add(token);
                 }
             }
@@ -366,6 +377,9 @@ public class WalletApi {
         public String name;
         public BigDecimal balance = new BigDecimal("0");
         public BigDecimal usd = new BigDecimal("0");
+        public BigDecimal trxAmount = new BigDecimal("0");
+        public BigDecimal usdPrice = new BigDecimal("0");
+        public boolean preset;//true不显示+-号
     }
 
     public static class TokenTransferTransaction {

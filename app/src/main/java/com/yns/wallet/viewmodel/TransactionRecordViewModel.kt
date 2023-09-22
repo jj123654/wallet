@@ -15,13 +15,6 @@ import kotlinx.coroutines.withContext
  */
 class TransactionRecordViewModel : ViewModel() {
 
-    val walletsLiveData = MutableLiveData<MutableList<WalletModel>>(mutableListOf())
-
-    val currentWalletLiveData = MutableLiveData<WalletModel>()
-
-    val tokenLiveData = MutableLiveData<MutableList<TokenModel>>(mutableListOf())
-
-    val currentTokenLiveData = MutableLiveData<TokenModel>()
 
     //创建助记词
     fun getTransactionRecord(callback: suspend (String) -> Unit) {

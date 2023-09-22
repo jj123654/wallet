@@ -4,10 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import coil.load
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.adapter.ContentPagerAdapter
 import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.bean.TokenModel
+import com.yns.wallet.bean.TokenTransferTransactionModel
 import com.yns.wallet.databinding.ActivityAboutUsBinding
 import com.yns.wallet.databinding.ActivityAssetsBinding
 import com.yns.wallet.fragment.AssetsFragment
@@ -24,6 +27,8 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.Simple
 
 class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
 
+    var tokenModel: TokenModel?=null
+
     private val tabFragments: MutableList<Fragment> = ArrayList()
 
     private var tabList: MutableList<String> = mutableListOf()
@@ -33,9 +38,17 @@ class AssetsActivity : BaseActivity<ActivityAssetsBinding>() {
     }
 
     private fun initIndicator() {
+        tokenModel = intent.getParcelableExtra("tokenModel")
         viewBinding.apply {
-            titleBar.setTitle(getString(R.string.usdt))
-            priceTv.text = "$ 1.1434415"
+            tokenModel?.name?.let { titleBar.setTitle(it) }
+
+            priceTv.text = "$ ${tokenModel?.usdPrice}"
+            iconImg.load(tokenModel?.imageUrl){
+                placeholder(R.mipmap.account_default_photo)
+            }
+            balanceTv.text = tokenModel?.balance.toString()
+            balance2Tv.text = "${tokenModel?.trxAmount} TRX"
+            balance3Tv.text = "$ ${tokenModel?.usd}"
 
             hideSmallTransactionLayout.onClick{
                 checkRb.isSelected = !checkRb.isSelected

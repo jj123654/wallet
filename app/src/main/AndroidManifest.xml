@@ -72,6 +72,12 @@
             android:name=".activity.AddWalletActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.PairColdWalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PairColdWalletFinishActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.ReceiveActivity"
             android:screenOrientation="portrait" />
         <activity

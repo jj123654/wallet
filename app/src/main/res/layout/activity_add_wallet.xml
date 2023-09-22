@@ -39,11 +39,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/shape_edit_import_bg"
         app:layout_constraintBottom_toBottomOf="@id/tv_generate_wallet_content"
-        app:layout_constraintTop_toTopOf="@id/tv_generate_wallet_title" />
+        app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
     <TextView
         android:id="@+id/tv_generate_wallet_title"
@@ -52,38 +52,36 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:paddingStart="20dp"
-        android:paddingTop="24dp"
-        android:paddingBottom="16dp"
         android:text="@string/generate_wallet"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_tv" />
+        app:layout_constraintTop_toTopOf="@id/v_generate_wallet_bg" />
 
     <ImageView
         android:id="@+id/tv_wallet_title_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="20dp"
         android:src="@mipmap/import_wallet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/v_generate_wallet_bg" />
+        app:layout_constraintEnd_toEndOf="@id/v_generate_wallet_bg"
+        app:layout_constraintTop_toTopOf="@id/v_generate_wallet_bg"
+        app:layout_constraintBottom_toBottomOf="@id/v_generate_wallet_bg"/>
 
     <TextView
         android:id="@+id/tv_generate_wallet_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="17dp"
         android:text="@string/generate_wallet_content"
         android:textColor="#8775AE"
         android:textSize="13sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingVertical="16dp"
         app:layout_constraintEnd_toStartOf="@id/tv_wallet_title_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_generate_wallet_title" />
+        app:layout_constraintStart_toStartOf="@id/v_generate_wallet_bg"
+        app:layout_constraintTop_toBottomOf="@id/tv_generate_wallet_title"
+        app:layout_constraintBottom_toBottomOf="@id/v_generate_wallet_bg"/>
 
     <View
         android:id="@+id/v_import_wallet_bg"
@@ -94,47 +92,89 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/shape_edit_import_bg"
         app:layout_constraintBottom_toBottomOf="@id/tv_import_wallet_content"
-        app:layout_constraintTop_toTopOf="@id/tv_import_wallet_title" />
+        app:layout_constraintTop_toBottomOf="@id/v_generate_wallet_bg" />
 
     <TextView
         android:id="@+id/tv_import_wallet_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:paddingStart="20dp"
-        android:paddingTop="24dp"
-        android:paddingBottom="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/import_wallet"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/v_generate_wallet_bg" />
+        app:layout_constraintStart_toStartOf="@id/v_import_wallet_bg"
+        app:layout_constraintTop_toTopOf="@id/v_import_wallet_bg" />
 
     <ImageView
         android:id="@+id/tv_import_title_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="20dp"
         android:src="@mipmap/add_wallet_import"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/v_import_wallet_bg" />
+        app:layout_constraintEnd_toEndOf="@id/v_import_wallet_bg"
+        app:layout_constraintTop_toTopOf="@id/v_import_wallet_bg"
+        app:layout_constraintBottom_toBottomOf="@id/v_import_wallet_bg"/>
 
     <TextView
         android:id="@+id/tv_import_wallet_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="17dp"
+        android:layout_marginEnd="20dp"
+        android:paddingVertical="16dp"
         android:text="@string/import_your_mnemonic_private_key_or_keystore_with_one_tap"
         android:textColor="#8775AE"
         android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@id/tv_import_wallet_title"
         app:layout_constraintEnd_toStartOf="@id/tv_wallet_title_icon"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_import_wallet_title" />
+
+
+    <View
+        android:id="@+id/v_pair_cold_wallet_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_edit_import_bg"
+        app:layout_constraintBottom_toBottomOf="@id/tv_pair_cold_wallet_content"
+        app:layout_constraintTop_toBottomOf="@id/v_import_wallet_bg" />
+
+    <TextView
+        android:id="@+id/tv_pair_cold_wallet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/pair_cold_wallet"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/v_pair_cold_wallet_bg"
+        app:layout_constraintTop_toTopOf="@id/v_pair_cold_wallet_bg" />
+
+    <ImageView
+        android:id="@+id/tv_pair_cold_title_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@mipmap/add_pair_cold_wallet"
+        app:layout_constraintEnd_toEndOf="@id/v_pair_cold_wallet_bg"
+        app:layout_constraintTop_toTopOf="@id/v_pair_cold_wallet_bg"
+        app:layout_constraintBottom_toBottomOf="@id/v_pair_cold_wallet_bg"/>
+
+    <TextView
+        android:id="@+id/tv_pair_cold_wallet_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_with_your_offine_cold_wallet"
+        android:textColor="#8775AE"
+        android:textSize="13sp"
+        android:paddingVertical="16dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_pair_cold_title_icon"
+        app:layout_constraintStart_toStartOf="@id/tv_pair_cold_wallet_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_pair_cold_wallet_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

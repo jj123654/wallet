@@ -20,6 +20,7 @@
     <string name="loop_edit_tips">Input amount≤500USDT</string>
     <string name="enter_your_secret">Enter your Secret Recovery Phrase</string>
     <string name="set_wallet_name">Set wallet name</string>
+    <string name="wallet_name">Wallet Name</string>
     <string name="please_enter_a_name">Please enter a name</string>
     <string name="please_enter_name">Please enter name</string>
     <string name="please_enter_password">Please enter password</string>
@@ -87,6 +88,7 @@
     <string name="circulation">Circulation</string>
     <string name="provided_by_yunus">Provided by YUNUS</string>
     <string name="assets">Assets</string>
+    <string name="discover">Discover</string>
     <string name="ethereum_mainnet">Ethereum Mainnet</string>
     <string name="me">Me</string>
     <string name="test_mine_string">037hd75jdr83hfnlksowu5fddhu43ew82737edhfvjskfjhgi99</string>
@@ -127,6 +129,8 @@
     <string name="choose_index_1">Choose the No.%s word</string>
     <string name="word_order_wrong_tips">Wrong order, Please try again</string>
     <string name="import_wallet">Import Wallet</string>
+    <string name="pair_cold_wallet">Pair Cold Wallet</string>
+    <string name="sign_with_your_offine_cold_wallet">sign with your offine cold wallet; recommended for large asset holders</string>
     <string name="accounts_to_be_imported">Accounts to be imported</string>
     <string name="choose_another_account">choose another account</string>
     <string name="tabbgfncgyhjvprxg1wp57va5wae6chrwc">TAbBgFNCgYHJvPRxG1wp57Va5Wae6chRwc</string>
@@ -147,6 +151,9 @@
     <string name="check_back_up_record">Check Back Up Record</string>
     <string name="old_password">Old Password</string>
     <string name="copy_address">Copy Address</string>
+    <string name="wallet_address">Wallet Address</string>
+    <string name="please_enter_wallet_address">Please enter wallet address</string>
+    <string name="cold_wallet_has_signed">Cold wallet has been signed</string>
     <string name="copy_private_key">Copy Private Key</string>
     <string name="send">Send</string>
     <string name="tronscan">TRONSCAN</string>
@@ -160,6 +167,8 @@
     <string name="yunus_loop_defi">Yunus Loop DeFi</string>
     <string name="token_rewards">Token Rewards</string>
     <string name="receive_account">Receive Account</string>
+    <string name="transaction_type">Transaction Type</string>
+    <string name="transaction_time">Transaction Time</string>
     <string name="confirm_loop">Confirm Loop</string>
     <string name="confirm_to_reset">Confirm to reset?</string>
 

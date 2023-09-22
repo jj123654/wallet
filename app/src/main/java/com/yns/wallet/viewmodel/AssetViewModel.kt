@@ -13,15 +13,9 @@ import kotlinx.coroutines.withContext
 /**
  * 钱包的viewModel
  */
-class TokenTransactionRecordViewModel : ViewModel() {
+class AssetViewModel : ViewModel() {
 
     val tokenTransferTransactionLiveData = MutableLiveData<MutableList<TokenTransferTransactionModel>>(mutableListOf())
-
-    val currentWalletLiveData = MutableLiveData<WalletModel>()
-
-    val tokenLiveData = MutableLiveData<MutableList<TokenModel>>(mutableListOf())
-
-    val currentTokenLiveData = MutableLiveData<TokenModel>()
 
     //创建助记词
     fun getTokenTransactionRecord(address:String,tokenContractAddress:String,startTime:Long,size:Int,type:Int,hide:Boolean) {

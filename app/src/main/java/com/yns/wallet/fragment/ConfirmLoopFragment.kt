@@ -102,7 +102,7 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
             popupViewBinding = view
             it.isFocusable = false
             it.contentView = view.root
-            view.balanceTv.text = walletViewModel.tokenLiveData.value?.firstOrNull { it.name=="TRX" }?.balance.toString()
+//            view.balanceTv.text = walletViewModel.tokenLiveData.value?.firstOrNull { it.name=="TRX" }?.balance.toString()
             it
         }
         p.showAsDropDown(viewBinding.walletName)

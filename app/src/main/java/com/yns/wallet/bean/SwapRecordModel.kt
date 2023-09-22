@@ -2,7 +2,6 @@ package com.yns.wallet.bean
 
 import android.os.Parcelable
 import com.yns.wallet.api.WalletApi
-import com.yns.wallet.api.WalletApi.Token
 import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 
