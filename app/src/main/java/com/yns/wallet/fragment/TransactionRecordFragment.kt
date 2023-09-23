@@ -2,30 +2,31 @@ package com.yns.wallet.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.yns.wallet.adapter.TransactionListAdapter
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.bean.TransactionRecord
 import com.yns.wallet.databinding.FragmentTransactionRecordBinding
+import com.yns.wallet.viewmodel.TransactionRecordViewModel
 import com.yns.wallet.widget.decoration.SpacesItemDecoration
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
-import jp.wasabeef.glide.transformations.internal.Utils
 
-class TransactionRecordFragment:BaseFragment<FragmentTransactionRecordBinding>() {
+class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>() {
 
-    private val transactionListAdapter:TransactionListAdapter by lazy {
+    private val transactionListAdapter: TransactionListAdapter by lazy {
         TransactionListAdapter(requireContext(), mutableListOf()).apply {
 
         }
     }
-
-    var list:MutableList<TransactionRecord> = ArrayList()
+    val transactionRecordViewModel: TransactionRecordViewModel by viewModels()
+    var list: MutableList<TransactionRecord> = ArrayList()
 
     companion object {
-        fun newInstance(type:String): TransactionRecordFragment {
+        fun newInstance(index: Int): TransactionRecordFragment {
             val arguments = Bundle()
-            arguments.putString("type",type)
+            arguments.putInt("index", index)
             val transactionRecordFragment = TransactionRecordFragment()
             transactionRecordFragment.arguments = arguments
             return transactionRecordFragment
@@ -34,23 +35,21 @@ class TransactionRecordFragment:BaseFragment<FragmentTransactionRecordBinding>()
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
-            recyclerView.layoutManager = WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
-            recyclerView.addItemDecoration(SpacesItemDecoration(QMUIDisplayHelper.dp2px(context, 20), QMUIDisplayHelper.dp2px(context, 10)))
+            recyclerView.layoutManager =
+                WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            recyclerView.addItemDecoration(
+                SpacesItemDecoration(
+                    QMUIDisplayHelper.dp2px(
+                        context,
+                        20
+                    ), QMUIDisplayHelper.dp2px(context, 10)
+                )
+            )
             recyclerView.adapter = transactionListAdapter
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        if(list==null||list.size<=0) {
-            for (i in 0..11) {
-                list.add(TransactionRecord())
-            }
-
-            transactionListAdapter.addData(list)
+        transactionRecordViewModel.getTransactionRecord(arguments?.getInt("index", 0) ?: 0) {
+            transactionListAdapter.setNewInstance(it.toMutableList())
         }
-
     }
 
 }

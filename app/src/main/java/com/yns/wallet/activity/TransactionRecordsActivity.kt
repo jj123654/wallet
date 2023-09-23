@@ -32,8 +32,8 @@ class TransactionRecordsActivity : BaseActivity<ActivityTransactionRecordsBindin
         tabList.add(getString(R.string.all))
         tabList.add(getString(R.string.disburse))
         tabList.add(getString(R.string.income))
-        tabList.forEach {
-            tabFragments.add(TransactionRecordFragment.newInstance(it))
+        tabList.forEachIndexed{index ,item ->
+            tabFragments.add(TransactionRecordFragment.newInstance(index))
         }
         viewBinding.viewPager.adapter =
             ContentPagerAdapter(

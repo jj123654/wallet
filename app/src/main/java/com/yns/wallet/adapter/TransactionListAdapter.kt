@@ -6,13 +6,13 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
-import com.yns.wallet.bean.TransactionRecord
+import com.yns.wallet.bean.TokenTransferTransactionModel
 import com.yns.wallet.databinding.ItemTransactionRecordBinding
 
 
-class TransactionListAdapter(context:Context, data: MutableList<TransactionRecord>?) :
-    BaseQuickAdapter<TransactionRecord, TransactionListAdapter.BaseHolder>(R.layout.item_transaction_record, data) {
-    override fun convert(holder: BaseHolder, item: TransactionRecord) {
+class TransactionListAdapter(context:Context, data: MutableList<TokenTransferTransactionModel>?) :
+    BaseQuickAdapter<TokenTransferTransactionModel, TransactionListAdapter.BaseHolder>(R.layout.item_transaction_record, data) {
+    override fun convert(holder: BaseHolder, item: TokenTransferTransactionModel) {
         holder.vb.apply {
             sourceTv.text = "智能触发合约"
             addressTv.text = "sdfasdfasdf....asdf"
