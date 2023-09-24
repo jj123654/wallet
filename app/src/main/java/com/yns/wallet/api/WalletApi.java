@@ -61,12 +61,21 @@ public class WalletApi {
 
     public static boolean checkPassword(String password) {
         // 实现检查密码的逻辑
-        return true;
+        return password.equals("Ks123456");
+    }
+
+    public static void changePassword(String newPassword, String oldPassword) {
+        Log.i("change password", String.format("new:%s old:%s", newPassword, oldPassword));
+
     }
 
     public static String getMenomic(String password) {
         // 实现通过密码获取助记词的逻辑
         return "web ecology matter tongue expire type still fee agent bike grit budget";
+    }
+
+    public boolean hasHDWallet() {
+        return true;
     }
 
     public static void saveMenomic(String menomic) {
@@ -112,6 +121,20 @@ public class WalletApi {
         walletEntity3.address = "TFDNwyqwrQd1tkqujo3GsQwkQYFea29x4y213";
         addressList.add(walletEntity3);
         return addressList;
+    }
+
+    public static AccountResource getAccountResource(String address) {
+        AccountResource source = new AccountResource();
+        source.trx = BigDecimal.valueOf(239);
+        source.bandwidth = BigDecimal.valueOf(10);
+        source.energy = BigDecimal.valueOf(37);
+        return source;
+    }
+
+    public static  WalletEntity getwalltbyaddress(String address)
+    {
+        //    todo:我简单的返回个空对象
+        return new WalletEntity();
     }
 
     // token管理
@@ -163,6 +186,10 @@ public class WalletApi {
         yunusToken.balance = new BigDecimal("1");
         yunusToken.usd = new BigDecimal("10");
         return yunusToken;
+    }
+
+    public static void addWalletTokenAdress(String walletAddress, String token) {
+        Log.i("addWalletTokenAdress", String.format("addWalletToken wallet:%s token:%s", walletAddress, token));
     }
 
     public static void addWalletToken(String walletAddress, String address) {
@@ -275,6 +302,29 @@ public class WalletApi {
                 "saveSwap",
                 String.format("address: %s, from: %s, to:%s", walletAddress, swapRecord.swapInfo.fromToken, swapRecord.swapInfo.toToken)
         );
+    }
+
+    public static CallFeeModel getFeeWithCallContractParam(CallContractParam callContractParam) {
+        CallFeeModel callFeeModel = new CallFeeModel();
+        callFeeModel.bandwidth = 11L;
+        callFeeModel.energy = 12L;
+        callFeeModel.trx = BigDecimal.valueOf(13.9);
+        return callFeeModel;
+    }
+
+    public void addBackupRecord(BackupRecord bc) {
+        // 将BackupRecord对象添加到列表中
+    }
+
+    public List<BackupRecord> listBackupRecord(String wallet) {
+        List<BackupRecord> filteredRecords = new ArrayList<>();
+        BackupRecord bc = new BackupRecord();
+        bc.address = "TLaz9R9Z4CSZKK3mbMgouWHiSDgac5mSDL";
+        bc.name = "name";
+        bc.type = BACKUP_TYPE.PRIVATE_KEY;
+        bc.time = System.currentTimeMillis();
+        filteredRecords.add(bc);
+        return filteredRecords;
     }
 
     public enum TX_RESULT {
@@ -429,4 +479,31 @@ public class WalletApi {
         public String func;
         public List<String> args;
     }
+
+    public static class AccountResource {
+        public BigDecimal trx;
+        public BigDecimal bandwidth;
+        public BigDecimal energy;
+    }
+
+    public static class CallFeeModel {
+        public BigDecimal trx;
+        public long bandwidth;
+        public long energy;
+    }
+
+    public class BackupRecord {
+        private BACKUP_TYPE type;
+        private String name;
+        private String address;
+        private long time;
+    }
+
+    // 枚举定义
+    enum BACKUP_TYPE {
+        PRIVATE_KEY,
+        MENOMIC
+    }
+
+
 }
