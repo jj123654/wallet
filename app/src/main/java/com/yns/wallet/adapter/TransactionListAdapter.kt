@@ -2,25 +2,42 @@ package com.yns.wallet.adapter
 
 
 import android.content.Context
+import android.text.TextUtils
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
-import com.yns.wallet.bean.TokenTransferTransactionModel
+import com.yns.wallet.bean.Data
 import com.yns.wallet.databinding.ItemTransactionRecordBinding
+import java.text.SimpleDateFormat
 
 
-class TransactionListAdapter(context:Context, data: MutableList<TokenTransferTransactionModel>?) :
-    BaseQuickAdapter<TokenTransferTransactionModel, TransactionListAdapter.BaseHolder>(R.layout.item_transaction_record, data) {
-    override fun convert(holder: BaseHolder, item: TokenTransferTransactionModel) {
+class TransactionListAdapter(context: Context, data: MutableList<Data>?) :
+    BaseQuickAdapter<Data, TransactionListAdapter.BaseHolder>(
+        R.layout.item_transaction_record,
+        data
+    ), LoadMoreModule {
+    private val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    override fun convert(holder: BaseHolder, item: Data) {
         holder.vb.apply {
-            sourceTv.text = "智能触发合约"
-            addressTv.text = "sdfasdfasdf....asdf"
-            addressTv2.text = "sdfasdfasdf....asdf"
-            numTitleTv.text = "转账数量："
-            numContentTv.text = "100TRX"
-            timeTv.text = "2023/07/19 22:33:00"
-            submitTv.text = "已确认"
+            if (TextUtils.isEmpty(item.toAddress)) {
+                sourceTv.text = context.getString(R.string.use_contract)
+            } else {
+                sourceTv.text = context.getString(R.string.transfer)
+            }
+            addressTv.text = item.ownerAddress
+            addressTv2.text = item.toAddress
+            numTitleTv.text = context.getString(R.string.money_fee)
+            numContentTv.text = item.amount
+            timeTv.text = format.format(item.timestamp ?: 0)
+            if (item.confirmed == true) {
+                submitTv.text = context.getString(R.string.confirmed)
+                submitTv.visibility = View.VISIBLE
+            } else {
+                submitTv.visibility = View.INVISIBLE
+
+            }
         }
 
     }

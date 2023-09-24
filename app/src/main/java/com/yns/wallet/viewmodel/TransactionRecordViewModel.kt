@@ -19,21 +19,19 @@ class TransactionRecordViewModel : ViewModel() {
     +(void)getAllTradeListWithAdress:(NSString *)adress start_timestamp:(NSInteger)start_timestamp type:(NSString *)type success:(void (^)(NSDictionary *dic))success  failure:(void (^)(NSError *error))failure   给你发过的
      */
     fun getTransactionRecord(
-        type: Int,
-        callback: suspend (List<TokenTransferTransactionModel>) -> Unit
+        type: Int, start: Int,
+        callback: suspend (List<Data>) -> Unit
     ) {
         viewModelScope.launch {
             val r = withContext(Dispatchers.IO) {
                 WalletApi.getTokenTransaction(
                     WalletApi.getCurrentWallet().address,
                     WalletApi.getCurrentWallet().address,
-                    0,
+                    start.toLong(),
                     50,
                     type,
                     false
-                ).map {
-                    it.toTokenTransferTransactionModel()
-                }
+                )
             }
             callback.invoke(r)
         }

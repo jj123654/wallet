@@ -109,7 +109,7 @@ object NetworkApi {
     @JvmOverloads
     @JvmStatic
     fun transaction(
-        sort: String? = "-timestamp",
+        type: Int = 0,
         start_timestamp: Long = 0,
         limit: Int = 50,
         address: String = ""
@@ -117,10 +117,11 @@ object NetworkApi {
         return getSuspend(
             "transaction",
             mapOf(
-                "sort" to sort,
+                "sort" to "-timestamp",
                 "start_timestamp" to start_timestamp,
                 "limit" to limit,
-                "address" to address
+                "address" to address,
+                "type" to type
             )
         )
     }

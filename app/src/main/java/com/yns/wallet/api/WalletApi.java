@@ -2,10 +2,13 @@ package com.yns.wallet.api;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.yns.wallet.bean.Data;
 import com.yns.wallet.bean.PopularTokenInfo;
 import com.yns.wallet.bean.Response;
 import com.yns.wallet.bean.SearchTokenInfo;
+import com.yns.wallet.bean.TokenTransferTransactionModel;
 import com.yns.wallet.io.JsonUtils;
 
 import java.util.ArrayList;
@@ -181,7 +184,7 @@ public class WalletApi {
             String response = stringResponse.getData();
             PopularTokenInfo info = JsonUtils.jsonToObject(response, PopularTokenInfo.class);
 
-            if(info!=null&&info.getTokens()!=null&&info.getTokens().size()>0){
+            if (info != null && info.getTokens() != null && info.getTokens().size() > 0) {
                 WalletApi.Token token = new WalletApi.Token();
                 token.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
                 token.imageUrl = "https://static.tronscan.org/production/upload/logo/new/TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh.png?t=1690628898608";
@@ -189,7 +192,7 @@ public class WalletApi {
                 token.preset = true;
                 tokenList.add(token);
 
-                for (int i = 0;i<info.getTokens().size();i++){
+                for (int i = 0; i < info.getTokens().size(); i++) {
                     PopularTokenInfo.TokensBean it = info.getTokens().get(i);
                     token = new WalletApi.Token();
                     token.address = it.getContractAddress();
@@ -215,7 +218,7 @@ public class WalletApi {
             String response = stringResponse.getData();
             SearchTokenInfo info = JsonUtils.jsonToObject(response, SearchTokenInfo.class);
 
-            if(info!=null&&info.getTrc20_tokens()!=null&&info.getTrc20_tokens().size()>0){
+            if (info != null && info.getTrc20_tokens() != null && info.getTrc20_tokens().size() > 0) {
                 SearchTokenInfo.Trc20TokensBean trc20TokensBean = info.getTrc20_tokens().get(0);
                 token.name = trc20TokensBean.getSymbol();
                 token.imageUrl = trc20TokensBean.getIcon_url();
@@ -284,37 +287,43 @@ public class WalletApi {
         TRC10
     }
 
-    public static List<TokenTransferTransaction> getTokenTransaction(
+    public static List<Data> getTokenTransaction(
             String walletAddress,
             String tokenContractAddress,
             long startTime,
             int size,
             int type,//0全部，1转出，2转入
             boolean hide//true隐藏，false不隐藏
-            ) {
+    ) {
         // 实现获取令牌交易的逻辑
-
-        List<TokenTransferTransaction> tokenTransferTransactionList = new ArrayList<>();
-
-        TokenTransferTransaction yunusToken = new TokenTransferTransaction();
-        yunusToken.from = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
-        yunusToken.to = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
-        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
-        yunusToken.time = 1693991784000L;
-        yunusToken.amount = new BigDecimal("234.41");
-        yunusToken.result = TX_RESULT.SUCCESS;
-        tokenTransferTransactionList.add(yunusToken);
-
-        yunusToken = new TokenTransferTransaction();
-        yunusToken.from = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
-        yunusToken.to = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
-        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
-        yunusToken.time = 1693991784000L;
-        yunusToken.amount = new BigDecimal("3456.33");
-        yunusToken.result = TX_RESULT.FAILED;
-        tokenTransferTransactionList.add(yunusToken);
-
-        return tokenTransferTransactionList;
+        //type 暂时传0
+        Response<String> r = NetworkApi.transaction(0, startTime, size, walletAddress);
+        if (r.isSuccessful() && r.getData() != null) {
+            TokenTransferTransactionModel model = new Gson().fromJson(r.getData(), TokenTransferTransactionModel.class);
+            return model.getData();
+        }
+        return new ArrayList<>();
+//        List<TokenTransferTransaction> tokenTransferTransactionList = new ArrayList<>();
+//
+//        TokenTransferTransaction yunusToken = new TokenTransferTransaction();
+//        yunusToken.from = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
+//        yunusToken.to = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
+//        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
+//        yunusToken.time = 1693991784000L;
+//        yunusToken.amount = new BigDecimal("234.41");
+//        yunusToken.result = TX_RESULT.SUCCESS;
+//        tokenTransferTransactionList.add(yunusToken);
+//
+//        yunusToken = new TokenTransferTransaction();
+//        yunusToken.from = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
+//        yunusToken.to = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
+//        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
+//        yunusToken.time = 1693991784000L;
+//        yunusToken.amount = new BigDecimal("3456.33");
+//        yunusToken.result = TX_RESULT.FAILED;
+//        tokenTransferTransactionList.add(yunusToken);
+//
+//        return tokenTransferTransactionList;
     }
 
     public static TokenTransferTransactionDetail getTokenTransactionDetail(String tx) {
@@ -392,8 +401,8 @@ public class WalletApi {
     }
 
     public static class TokenTransferTransactionDetail extends TokenTransferTransaction {
-     public BigDecimal fee;
-     public TRANSFER_TYPE transferType;
+        public BigDecimal fee;
+        public TRANSFER_TYPE transferType;
     }
 
     public static class SwapInfo {

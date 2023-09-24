@@ -8,6 +8,7 @@ import com.bumptech.glide.util.Util
 import com.yns.wallet.R
 import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.bean.Data
 import com.yns.wallet.bean.TokenTransferTransactionModel
 import com.yns.wallet.databinding.ActivityAboutUsBinding
 import com.yns.wallet.databinding.ActivityAssetsDetailBinding
@@ -20,7 +21,7 @@ import com.yns.wallet.viewmodel.AssetDetailViewModel
 
 class AssetsDetailActivity : BaseActivity<ActivityAssetsDetailBinding>() {
 
-    var tokenModel: TokenTransferTransactionModel?=null
+    var tokenModel: Data?=null
 
     private val assetDetailViewModel:AssetDetailViewModel by lazyViewModel()
 
@@ -38,7 +39,7 @@ class AssetsDetailActivity : BaseActivity<ActivityAssetsDetailBinding>() {
         }
 
         viewBinding.apply {
-            if(walletViewModel.currentWalletLiveData.value?.address == tokenModel?.from){
+            if(walletViewModel.currentWalletLiveData.value?.address == tokenModel?.ownerAddress){
                 amountTv.text = "-${tokenModel?.amount}"
                 amountTv.setTextColor(getColor(R.color.tips_red_color))
             }else{
@@ -47,7 +48,7 @@ class AssetsDetailActivity : BaseActivity<ActivityAssetsDetailBinding>() {
             }
 
             when(tokenModel?.result){
-                WalletApi.TX_RESULT.SUCCESS->{
+                "SUCCESS"->{
                     resultTagTv.text = getString(R.string.success)
                     resultTagTv.setTextColor(getColor(R.color.transaction_green_color))
                     resultTagTv.setCompoundDrawablesWithIntrinsicBounds(resources.getDrawable(R.mipmap.icon_success),null,null,null)
@@ -89,6 +90,6 @@ class AssetsDetailActivity : BaseActivity<ActivityAssetsDetailBinding>() {
 
     private fun loadData(){
         showProgress()
-        assetDetailViewModel.getTokenTransactionRecord(tokenModel?.tx)
+        assetDetailViewModel.getTokenTransactionRecord(tokenModel?.toAddress)
     }
 }

@@ -17,11 +17,12 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
 
     private val transactionListAdapter: TransactionListAdapter by lazy {
         TransactionListAdapter(requireContext(), mutableListOf()).apply {
-
+            loadMoreModule.isEnableLoadMore = true
         }
     }
     val transactionRecordViewModel: TransactionRecordViewModel by viewModels()
     var list: MutableList<TransactionRecord> = ArrayList()
+    var start = 0
 
     companion object {
         fun newInstance(index: Int): TransactionRecordFragment {
@@ -47,8 +48,32 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
             )
             recyclerView.adapter = transactionListAdapter
         }
-        transactionRecordViewModel.getTransactionRecord(arguments?.getInt("index", 0) ?: 0) {
-            transactionListAdapter.setNewInstance(it.toMutableList())
+        viewBinding.refresh.isRefreshing = true
+        viewBinding.refresh.setOnRefreshListener {
+            start = 0
+            loadData()
+        }
+        loadData()
+    }
+
+    private fun loadData() {
+        transactionRecordViewModel.getTransactionRecord(
+            (arguments?.getInt("index", 0) ?: 0) + 1,
+            start
+        ) {
+            val d = it.toMutableList()
+            if (start == 0) {
+                transactionListAdapter.setNewInstance(d)
+                viewBinding.refresh.isRefreshing = false
+            } else {
+                transactionListAdapter.addData(d)
+            }
+            if (d.size < 50) {
+                transactionListAdapter.loadMoreModule.loadMoreEnd(true)
+            } else {
+                transactionListAdapter.loadMoreModule.loadMoreComplete()
+
+            }
         }
     }
 
