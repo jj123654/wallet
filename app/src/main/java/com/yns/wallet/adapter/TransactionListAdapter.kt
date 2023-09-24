@@ -18,7 +18,7 @@ class TransactionListAdapter(context: Context, data: MutableList<Data>?) :
         R.layout.item_transaction_record,
         data
     ), LoadMoreModule {
-    private val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    private val format = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
     override fun convert(holder: BaseHolder, item: Data) {
         holder.vb.apply {
             if (TextUtils.isEmpty(item.toAddress)) {
@@ -29,7 +29,7 @@ class TransactionListAdapter(context: Context, data: MutableList<Data>?) :
             addressTv.text = item.ownerAddress
             addressTv2.text = item.toAddress
             numTitleTv.text = context.getString(R.string.money_fee)
-            numContentTv.text = item.amount
+            numContentTv.text = item.amount +"TRX"
             timeTv.text = format.format(item.timestamp ?: 0)
             if (item.confirmed == true) {
                 submitTv.text = context.getString(R.string.confirmed)
