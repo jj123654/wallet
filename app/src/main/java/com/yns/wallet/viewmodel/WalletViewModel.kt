@@ -46,6 +46,16 @@ class WalletViewModel : ViewModel() {
         }
     }
 
+    //保存助记词
+    fun saveMenomic(menomic:String,callback: suspend () -> Unit) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                WalletApi.saveMenomic(menomic)
+            }
+            callback()
+        }
+    }
+
     //通过助记词创建钱包
     fun createWalletFromMenomic(
         name:String,
@@ -217,6 +227,15 @@ class WalletViewModel : ViewModel() {
                 result
             }
             callback.invoke(r)
+        }
+    }
+
+    fun hasHDWallet(callback: suspend (Boolean) -> Unit){
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO) {
+                WalletApi.hasHDWallet()
+            }
+            callback(r)
         }
     }
 

@@ -16,11 +16,14 @@ class Import2Activity : BaseActivity<ActivityImport2Binding>() {
 
     var isFirstLoad = false
 
-    var privateKey:String?=null
+    var inputText:String?=null
+
+    var privateKeyOrMemomic = true
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         isFirstLoad = intent.getBooleanExtra("isFirstLoad",false)
-        privateKey = intent.getStringExtra("privateKey")
+        inputText = intent.getStringExtra("privateKey")
+        privateKeyOrMemomic = intent.getBooleanExtra("privateKeyOrMemomic",true)
         viewBinding.apply {
             tvImport.onClick {
                 walletNameEmptyTv.visibility = if(etWalletName.text.toString().isNullOrEmpty()) View.VISIBLE else View.GONE
@@ -42,15 +45,18 @@ class Import2Activity : BaseActivity<ActivityImport2Binding>() {
                     ||repeatPswEmptyTv.visibility != View.GONE){
                     return@onClick
                 }
-                //TODO 此处后续需要完善可能是通过私钥也可能是通过助记词创建的钱包
-                walletViewModel.createWalletFromPrivateKey(walletNameEmptyTv.text.toString(),privateKey?:"",pswEmptyTv.text.toString()){
-                    if(isFirstLoad){
-                        AppManager.getAppManager().returnToActivity(ImportOrCreateWallet::class.java)
-                        EventBusUtil.sendEvent(KeyValuePairVO(EventBusUtil.CREATE_WALLET_SUCCESS,true))
-                    }else{
-                        AppManager.getAppManager().returnToActivity(MainActivity::class.java)
+
+                if(privateKeyOrMemomic){
+                    walletViewModel.createWalletFromPrivateKey(walletNameEmptyTv.text.toString(),inputText?:"",pswEmptyTv.text.toString()){
+                        createSuccess()
+                    }
+                }else{
+                    //TODO 这里index有疑问，传几后续待确定
+                    walletViewModel.createWalletFromMenomic(walletNameEmptyTv.text.toString(),inputText?:"",0,pswEmptyTv.text.toString()){
+                        createSuccess()
                     }
                 }
+
 
             }
         }
@@ -59,4 +65,15 @@ class Import2Activity : BaseActivity<ActivityImport2Binding>() {
         addEditEyeViewLogic(window.decorView, R.id.iv_pwd_eye, R.id.et_pwd)
         addEditEyeViewLogic(window.decorView, R.id.iv_repeat_pwd_eye, R.id.et_repeat_pwd)
     }
+
+
+    private fun createSuccess(){
+        if(isFirstLoad){
+            AppManager.getAppManager().returnToActivity(ImportOrCreateWallet::class.java)
+            EventBusUtil.sendEvent(KeyValuePairVO(EventBusUtil.CREATE_WALLET_SUCCESS,true))
+        }else{
+            AppManager.getAppManager().returnToActivity(MainActivity::class.java)
+        }
+    }
+
 }

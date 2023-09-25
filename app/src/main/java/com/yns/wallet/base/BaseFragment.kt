@@ -134,4 +134,6 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
             fragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
         }
     }
+
+    fun getBaseActivity() = activity as BaseActivity<*>
 }

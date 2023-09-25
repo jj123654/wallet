@@ -75,7 +75,7 @@ public class WalletApi {
         return "web ecology matter tongue expire type still fee agent bike grit budget";
     }
 
-    public boolean hasHDWallet() {
+    public static boolean hasHDWallet() {
         return true;
     }
 
@@ -179,6 +179,7 @@ public class WalletApi {
         return tokenList;
     }
 
+    //暂时没用
     public static Token getWalletToken(String walletAddress, String address) {
         Token yunusToken = new Token();
         yunusToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
