@@ -219,3 +219,6 @@ fun formatTimeString(time:Long):String{
 
     return dateFormat.format(date)
 }
+
+fun getNowTime():String =
+    SimpleDateFormat("yyyy-MM-dd HH:mm").format(Date())

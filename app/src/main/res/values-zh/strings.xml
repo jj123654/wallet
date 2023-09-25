@@ -256,5 +256,10 @@
     <string name="please_enter_amount">请输入金额</string>
     <string name="should_more_than_0_000001">需大于0.000001</string>
     <string name="address_is_not_valid">地址错误</string>
+    <string name="confirmed">已确认</string>
+    <string name="money_fee">转账数量：</string>
+    <string name="back_up_time">备份时间：</string>
+    <string name="back_up_name">名称：</string>
+    <string name="back_up_address">地址：</string>
 
 </resources>

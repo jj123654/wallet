@@ -6,10 +6,15 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import com.yns.wallet.R
+import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.bean.BackUpRecordModel
 import com.yns.wallet.databinding.ActivityBackUpPrivateKeyBinding
+import com.yns.wallet.util.ViewModelUtils.lazyViewModel
+import com.yns.wallet.util.getNowTime
 import com.yns.wallet.util.onClick
 import com.yns.wallet.util.showToast
+import com.yns.wallet.viewmodel.BackUpViewModel
 import com.yns.wallet.widget.CommonAlertDialog
 import com.yns.wallet.widget.CommonCenterDialog
 
@@ -18,7 +23,18 @@ import com.yns.wallet.widget.CommonCenterDialog
  */
 class BackUpPrivateKeyActivity : BaseActivity<ActivityBackUpPrivateKeyBinding>() {
 
+    private val backUpViewModel:BackUpViewModel by lazyViewModel()
+
     override fun initView(root: View, savedInstanceState: Bundle?) {
+
+        var backUpRecordModel = BackUpRecordModel(WalletApi.BACKUP_TYPE.PRIVATE_KEY
+            ,walletViewModel.currentWalletLiveData.value?.name
+            ,walletViewModel.currentWalletLiveData.value?.address
+            ,System.currentTimeMillis())
+        backUpViewModel.addBackUpRecord(backUpRecordModel){
+
+        }
+
         viewBinding.topLayout.let {
             it.tvViewMnemonic.onClick {
                 CommonAlertDialog.show(

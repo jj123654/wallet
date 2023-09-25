@@ -2,41 +2,38 @@ package com.yns.wallet.activity
 
 import android.os.Bundle
 import android.view.View
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.yns.wallet.R
+import com.yns.wallet.adapter.BackUpRecordListAdapter
 import com.yns.wallet.base.BaseActivity
-import com.yns.wallet.bean.BackupRecordModel
 import com.yns.wallet.databinding.ActivityBackUpRecordsBinding
+import com.yns.wallet.util.ViewModelUtils.lazyViewModel
+import com.yns.wallet.viewmodel.BackUpViewModel
+import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 
 class BackUpRecordActivity : BaseActivity<ActivityBackUpRecordsBinding>() {
 
-    private val adapter: BackupAdapter by lazy {
-        BackupAdapter(mutableListOf<BackupRecordModel>().apply {
-            repeat(10) {
-                add(BackupRecordModel())
-            }
-        })
+    private val backUpViewModel: BackUpViewModel by lazyViewModel()
+
+    private val backUpRecordListAdapter: BackUpRecordListAdapter by lazy {
+        BackUpRecordListAdapter(mutableListOf()).apply {
+        }
     }
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
-        viewBinding.let {
-            it.rv.adapter = adapter
-        }
-    }
-
-
-    class BackupAdapter(data: MutableList<BackupRecordModel>) :
-        BaseQuickAdapter<BackupRecordModel, BackupViewHolder>(
-            R.layout.list_item_back_up_record,
-            data
-        ) {
-        override fun convert(holder: BackupViewHolder, item: BackupRecordModel) {
+        backUpViewModel.backUpRecordLiveData.observe(this){
+            dismissProgress()
+            backUpRecordListAdapter.addData(it)
         }
 
+        viewBinding.recyclerView.layoutManager = WrapContentLinearLayoutManager(this@BackUpRecordActivity)
+        viewBinding.recyclerView.adapter = backUpRecordListAdapter
+
+
+        loadData()
     }
 
-    class BackupViewHolder(view: View) : BaseViewHolder(view) {
-
+    private fun loadData(){
+        showProgress()
+        backUpViewModel.getBackUpRecord(walletViewModel.currentWalletLiveData.value?.address)
     }
+
 }
