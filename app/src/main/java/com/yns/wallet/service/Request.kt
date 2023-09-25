@@ -17,6 +17,11 @@ import java.io.File
 import java.lang.reflect.Type
 import java.util.concurrent.TimeUnit
 import java.net.URLEncoder
+import java.security.SecureRandom
+import javax.net.ssl.HostnameVerifier
+import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLSession
+import javax.net.ssl.TrustManager
 
 /**
  * 网络请求访问工具
@@ -30,7 +35,18 @@ object Request {
         addInterceptor(LoggingInterceptor())
         connectTimeout(30L, TimeUnit.SECONDS)
         readTimeout(30L, TimeUnit.SECONDS)
-        writeTimeout(30L, TimeUnit.SECONDS)
+        writeTimeout(30L, TimeUnit.SECONDS).apply {
+            val ssl = SSLContext.getInstance("SSL")
+            val manager = HttpsUtils.UnSafeTrustManager()
+            ssl.init(null, arrayOf(manager), SecureRandom())
+            this.sslSocketFactory(ssl.socketFactory, manager)
+            this.hostnameVerifier(object : HostnameVerifier {
+                override fun verify(hostname: String?, session: SSLSession?): Boolean {
+                    return true
+                }
+
+            })
+        }
     }.build()
 
     /**
