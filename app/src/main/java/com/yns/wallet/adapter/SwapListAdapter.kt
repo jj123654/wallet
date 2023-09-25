@@ -7,11 +7,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
 import com.yns.wallet.api.WalletApi
-import com.yns.wallet.bean.SwapRecordBean
 import com.yns.wallet.bean.SwapRecordModel
-import com.yns.wallet.bean.TransactionRecord
 import com.yns.wallet.databinding.ItemSwapRecordBinding
-import com.yns.wallet.databinding.ItemTransactionRecordBinding
 import com.yns.wallet.util.formatTimeString
 
 

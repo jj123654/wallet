@@ -14,9 +14,14 @@ class PairColdWalletActivity : BaseActivity<ActivityPairColdWalletBinding>() {
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
-                tvNext.onClick {
-                    startActivity(PairColdWalletFinishActivity::class.java)
-                }
+
+            ivBack.onClick {
+                onBackPressed()
+            }
+
+            tvNext.onClick {
+                startActivity(PairColdWalletFinishActivity::class.java)
+            }
 
         }
     }

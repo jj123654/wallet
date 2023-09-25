@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 
 class TitleBar @JvmOverloads constructor(
@@ -57,4 +58,11 @@ class TitleBar @JvmOverloads constructor(
         imgRight.visibility = View.VISIBLE
         imgRight.setImageResource(rightIconId)
     }
+
+    fun setLeftListener(onClickListener: OnClickListener){
+        findViewById<ImageView>(R.id.iv_back).onClick {
+            onClickListener.onClick(it)
+        }
+    }
+
 }

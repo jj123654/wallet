@@ -9,6 +9,7 @@ import com.yns.wallet.bean.PopularTokenInfo;
 import com.yns.wallet.bean.Response;
 import com.yns.wallet.bean.SearchTokenInfo;
 import com.yns.wallet.bean.TokenTransferTransactionModel;
+import com.yns.wallet.bean.TransactionRecordModel;
 import com.yns.wallet.io.JsonUtils;
 
 import java.util.ArrayList;
@@ -337,7 +338,7 @@ public class WalletApi {
         TRC10
     }
 
-    public static List<Data> getTokenTransaction(
+    public static List<TokenTransferTransaction> getTokenTransaction(
             String walletAddress,
             String tokenContractAddress,
             long startTime,
@@ -346,34 +347,27 @@ public class WalletApi {
             boolean hide//true隐藏，false不隐藏
     ) {
         // 实现获取令牌交易的逻辑
-        //type 暂时传0
-        Response<String> r = NetworkApi.transaction(0, startTime, size, walletAddress);
-        if (r.isSuccessful() && r.getData() != null) {
-            TokenTransferTransactionModel model = new Gson().fromJson(r.getData(), TokenTransferTransactionModel.class);
-            return model.getData();
-        }
-        return new ArrayList<>();
-//        List<TokenTransferTransaction> tokenTransferTransactionList = new ArrayList<>();
-//
-//        TokenTransferTransaction yunusToken = new TokenTransferTransaction();
-//        yunusToken.from = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
-//        yunusToken.to = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
-//        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
-//        yunusToken.time = 1693991784000L;
-//        yunusToken.amount = new BigDecimal("234.41");
-//        yunusToken.result = TX_RESULT.SUCCESS;
-//        tokenTransferTransactionList.add(yunusToken);
-//
-//        yunusToken = new TokenTransferTransaction();
-//        yunusToken.from = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
-//        yunusToken.to = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
-//        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
-//        yunusToken.time = 1693991784000L;
-//        yunusToken.amount = new BigDecimal("3456.33");
-//        yunusToken.result = TX_RESULT.FAILED;
-//        tokenTransferTransactionList.add(yunusToken);
-//
-//        return tokenTransferTransactionList;
+        List<TokenTransferTransaction> tokenTransferTransactionList = new ArrayList<>();
+
+        TokenTransferTransaction yunusToken = new TokenTransferTransaction();
+        yunusToken.from = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
+        yunusToken.to = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
+        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
+        yunusToken.time = 1693991784000L;
+        yunusToken.amount = new BigDecimal("234.41");
+        yunusToken.result = TX_RESULT.SUCCESS;
+        tokenTransferTransactionList.add(yunusToken);
+
+        yunusToken = new TokenTransferTransaction();
+        yunusToken.from = "TPLqbpGHXZSLLRYKws6hFheRjYotNY8XwF";
+        yunusToken.to = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6";
+        yunusToken.tx = "724a04c539634ee3082aa4c108eacd42b0826082c6a39824fbac94e210a45e75";
+        yunusToken.time = 1693991784000L;
+        yunusToken.amount = new BigDecimal("3456.33");
+        yunusToken.result = TX_RESULT.FAILED;
+        tokenTransferTransactionList.add(yunusToken);
+
+        return tokenTransferTransactionList;
     }
 
     public static TokenTransferTransactionDetail getTokenTransactionDetail(String tx) {
@@ -387,6 +381,21 @@ public class WalletApi {
         detail.transferType = (TRANSFER_TYPE.TRC20);
 
         return detail;
+    }
+
+    public static List<Data> getAllTradeListWithAdress(
+            String walletAddress,
+            long startTime,
+            int size,
+            int type//0全部，1转出，2转入
+    ){
+        //type 暂时传0
+        Response<String> r = NetworkApi.transaction(type, startTime, size, walletAddress);
+        if (r.isSuccessful() && r.getData() != null) {
+            TransactionRecordModel model = new Gson().fromJson(r.getData(), TransactionRecordModel.class);
+            return model.getData();
+        }
+        return new ArrayList<>();
     }
 
     // 交易管理

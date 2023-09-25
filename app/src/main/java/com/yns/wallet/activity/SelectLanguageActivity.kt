@@ -3,15 +3,11 @@ package com.yns.wallet.activity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.yns.wallet.adapter.LanguageListAdapter
-import com.yns.wallet.adapter.TransactionListAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.LanguageBean
-import com.yns.wallet.bean.TransactionRecord
 import com.yns.wallet.databinding.ActivitySelectLanguageBinding
-import com.yns.wallet.util.LanguageType
 import com.yns.wallet.util.LanguageUtils
 import com.yns.wallet.util.restartApp
 import com.yns.wallet.widget.decoration.SpacesItemDecoration

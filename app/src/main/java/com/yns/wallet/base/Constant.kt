@@ -8,4 +8,6 @@ object Constant {
 
     const val DEFAULT_PATH = "Path:m/44'/195'/0'/0/"
 
+    const val TX_URL = "https://tronscan.org/#/transaction/"
+
 }

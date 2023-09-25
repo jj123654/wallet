@@ -15,6 +15,10 @@ class PairColdWalletFinishActivity : BaseActivity<ActivityPairColdWalletFinishBi
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
+            ivBack.onClick {
+                onBackPressed()
+            }
+
             tvHasSigned.onClick {
                 AppManager.getAppManager().returnToActivity(AddWalletActivity::class.java)
             }

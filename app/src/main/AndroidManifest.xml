@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.READ_CLIPBOARD"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" /> <!-- Android 13版本适配，细化存储权限 -->
@@ -22,6 +23,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wallet"
         tools:targetApi="31">
+
+        <!--腾讯X5内核-->
+        <service
+            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
+            android:label="dexopt"
+            android:process=":dexopt" >
+        </service>
 
         <activity
             android:name=".activity.SplashActivity"
@@ -139,6 +147,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BackUpMnemonic2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WebViewActivity"
             android:screenOrientation="portrait" />
     </application>
 

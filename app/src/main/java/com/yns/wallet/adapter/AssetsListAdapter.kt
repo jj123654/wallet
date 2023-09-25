@@ -6,30 +6,28 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
-import com.yns.wallet.bean.Data
 import com.yns.wallet.bean.TokenTransferTransactionModel
-import com.yns.wallet.bean.TransactionRecord
 import com.yns.wallet.databinding.ItemAssetsBinding
 import com.yns.wallet.databinding.ItemTransactionRecordBinding
 import com.yns.wallet.util.formatTimeString
 
 
-class AssetsListAdapter(address: String, context: Context, data: MutableList<Data>?) :
-    BaseQuickAdapter<Data, AssetsListAdapter.BaseHolder>(R.layout.item_assets, data) {
+class AssetsListAdapter(address:String,context:Context, data: MutableList<TokenTransferTransactionModel>?) :
+    BaseQuickAdapter<TokenTransferTransactionModel, AssetsListAdapter.BaseHolder>(R.layout.item_assets, data) {
 
-    private val address: String = address
+    private val address:String = address
 
-    override fun convert(holder: BaseHolder, item: Data) {
+    override fun convert(holder: BaseHolder, item: TokenTransferTransactionModel) {
         holder.vb.apply {
-            nameTv.text = "(${item.ownerAddress})"
-            if (address == item.ownerAddress) {
+            nameTv.text = "(${item.from})"
+            if(address == item.from){
                 priceTv.text = "-${item.amount.toString()}"
                 priceTv.setTextColor(context.getColor(R.color.tips_red_color))
-            } else {
+            }else{
                 priceTv.text = "+${item.amount.toString()}"
                 priceTv.setTextColor(context.getColor(R.color.transaction_green_color))
             }
-            timeTv.text = formatTimeString(item.timestamp ?: 0L)
+            timeTv.text = formatTimeString(item.time)
         }
 
     }

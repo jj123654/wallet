@@ -3,22 +3,14 @@ package com.yns.wallet.adapter
 
 import android.content.Context
 import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.yns.wallet.R
-import com.yns.wallet.bean.TokenBean
 import com.yns.wallet.bean.TokenModel
-import com.yns.wallet.bean.TransactionRecord
-import com.yns.wallet.bean.WalletItemInfo
 import com.yns.wallet.databinding.ItemAddTokenBinding
-import com.yns.wallet.databinding.ItemAssetsBinding
-import com.yns.wallet.databinding.ItemTransactionRecordBinding
-import com.yns.wallet.databinding.LayoutWalletItemBinding
 
 
 class TokenListAdapter(context:Context,currentWalletTokenList:MutableList<TokenModel>, data: MutableList<TokenModel>?) :

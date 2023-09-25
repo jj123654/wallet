@@ -92,4 +92,7 @@ dependencies {
 
     implementation 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
+    //腾讯X5内核
+    api 'com.tencent.tbs:tbssdk:44226'
+
 }

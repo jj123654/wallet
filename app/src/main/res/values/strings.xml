@@ -117,6 +117,7 @@
     <string name="repeat_password">Repeat Password</string>
     <string name="resetting_the_password_will_reset">Resetting the password will reset the wallet, and accounts previously imported through the private key will be deleted</string>
     <string name="next">next</string>
+    <string name="next_step">Next Step</string>
     <string name="done">Done</string>
     <string name="wallet_step_hint_title">Please write down the following words in the correct order.</string>
     <string name="wallet_step_hint_bottom">Anyone with your private key can access all your assets. Please keep the information to yourself.</string>
@@ -130,6 +131,8 @@
     <string name="word_order_wrong_tips">Wrong order, Please try again</string>
     <string name="import_wallet">Import Wallet</string>
     <string name="pair_cold_wallet">Pair Cold Wallet</string>
+    <string name="pair_cold_wallet_finish_tips">Please scan the QR code below through cold wallet mode</string>
+    <string name="pair_cold_wallet_tips">Pairing your wallet with a cold wallet allows you to checkyour wallet balance and transaction records in real time.You can also sign transactions by scanning the QR codesof both wallets in a mutual way to improve your assetsecurity.</string>
     <string name="sign_with_your_offine_cold_wallet">sign with your offine cold wallet; recommended for large asset holders</string>
     <string name="accounts_to_be_imported">Accounts to be imported</string>
     <string name="choose_another_account">choose another account</string>
@@ -153,7 +156,7 @@
     <string name="copy_address">Copy Address</string>
     <string name="wallet_address">Wallet Address</string>
     <string name="please_enter_wallet_address">Please enter wallet address</string>
-    <string name="cold_wallet_has_signed">Cold wallet has been signed</string>
+    <string name="cold_wallet_has_signed">Cold wallet signed</string>
     <string name="copy_private_key">Copy Private Key</string>
     <string name="send">Send</string>
     <string name="tronscan">TRONSCAN</string>

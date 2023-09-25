@@ -5,24 +5,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <View
         android:id="@+id/v_status_bar"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/main" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.yns.wallet.widget.TitleBar
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:bar_title="@string/pair_cold_wallet" />
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/shape_back_bg"
+        android:padding="12dp"
+        android:src="@mipmap/icon_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_status_bar"/>
+
 
 
     <FrameLayout
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/shape_round_white_bg">
 
         <ImageView
@@ -33,6 +43,15 @@
             android:background="#DFDFDF" />
     </FrameLayout>
 
+    <TextView
+        style="@style/common_white_tv"
+        android:layout_width="match_parent"
+        android:layout_marginTop="24dp"
+        android:padding="20dp"
+        android:gravity="center"
+        android:text="@string/pair_cold_wallet_finish_tips"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/shape_main_corner_20_normal_bg"/>
 
     <TextView
         android:id="@+id/tv_has_signed"
@@ -41,7 +60,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/shape_bg_btn"
+        android:background="@drawable/shape_btn_full_bg"
         android:gravity="center"
         android:text="@string/cold_wallet_has_signed"
         android:textColor="@color/white"

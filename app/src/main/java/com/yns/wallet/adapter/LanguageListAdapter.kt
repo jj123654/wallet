@@ -7,9 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
 import com.yns.wallet.bean.LanguageBean
-import com.yns.wallet.bean.TransactionRecord
 import com.yns.wallet.databinding.ItemSelectLanguageBinding
-import com.yns.wallet.databinding.ItemTransactionRecordBinding
 import com.yns.wallet.util.LanguageUtils
 
 

@@ -8,10 +8,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.yns.wallet.R
 import com.yns.wallet.bean.TokenModel
-import com.yns.wallet.bean.TransactionRecord
-import com.yns.wallet.bean.WalletItemInfo
-import com.yns.wallet.databinding.ItemAssetsBinding
-import com.yns.wallet.databinding.ItemTransactionRecordBinding
 import com.yns.wallet.databinding.LayoutWalletItemBinding
 
 

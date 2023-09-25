@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.yns.wallet.adapter.TransactionListAdapter
 import com.yns.wallet.base.BaseFragment
-import com.yns.wallet.bean.TransactionRecord
+import com.yns.wallet.bean.TransactionRecordModel
 import com.yns.wallet.databinding.FragmentTransactionRecordBinding
 import com.yns.wallet.viewmodel.TransactionRecordViewModel
 import com.yns.wallet.widget.decoration.SpacesItemDecoration
@@ -21,7 +21,7 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
         }
     }
     val transactionRecordViewModel: TransactionRecordViewModel by viewModels()
-    var list: MutableList<TransactionRecord> = ArrayList()
+    var list: MutableList<TransactionRecordModel> = ArrayList()
     var start = 0
 
     companion object {

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.yns.wallet.activity.AssetsDetailActivity
 import com.yns.wallet.adapter.AssetsListAdapter
 import com.yns.wallet.base.BaseFragment
-import com.yns.wallet.bean.TokenTransferTransactionModel
-import com.yns.wallet.bean.TransactionRecord
+import com.yns.wallet.bean.TransactionRecordModel
 import com.yns.wallet.databinding.FragmentTransactionRecordBinding
 import com.yns.wallet.util.ViewModelUtils.lazyViewModel
 import com.yns.wallet.viewmodel.AssetViewModel
@@ -28,7 +27,7 @@ class AssetsFragment:BaseFragment<FragmentTransactionRecordBinding>() {
         }
     }
 
-    var list:MutableList<TransactionRecord> = ArrayList()
+    var list:MutableList<TransactionRecordModel> = ArrayList()
 
     var type:Int = 0
 

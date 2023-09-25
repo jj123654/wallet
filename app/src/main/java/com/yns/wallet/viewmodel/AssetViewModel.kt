@@ -1,5 +1,6 @@
 package com.yns.wallet.viewmodel
 
+import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,27 +15,15 @@ import kotlinx.coroutines.withContext
  */
 class AssetViewModel : ViewModel() {
 
-    val tokenTransferTransactionLiveData = MutableLiveData<MutableList<Data>>(mutableListOf())
+    val tokenTransferTransactionLiveData = MutableLiveData<MutableList<TokenTransferTransactionModel>>(mutableListOf())
 
     //创建助记词
-    fun getTokenTransactionRecord(
-        address: String,
-        tokenContractAddress: String,
-        startTime: Long,
-        size: Int,
-        type: Int,
-        hide: Boolean
-    ) {
+    fun getTokenTransactionRecord(address:String,tokenContractAddress:String,startTime:Long,size:Int,type:Int,hide:Boolean) {
         viewModelScope.launch {
             val r = withContext(Dispatchers.IO) {
-                WalletApi.getTokenTransaction(
-                    address,
-                    tokenContractAddress,
-                    startTime,
-                    size,
-                    type,
-                    hide
-                )
+                WalletApi.getTokenTransaction(address,tokenContractAddress,startTime,size,type,hide).map {
+                    it.toTokenTransferTransactionModel()
+                }
             }
             tokenTransferTransactionLiveData.value = r.toMutableList()
         }

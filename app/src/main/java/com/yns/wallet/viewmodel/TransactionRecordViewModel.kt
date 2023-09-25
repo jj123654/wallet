@@ -24,13 +24,11 @@ class TransactionRecordViewModel : ViewModel() {
     ) {
         viewModelScope.launch {
             val r = withContext(Dispatchers.IO) {
-                WalletApi.getTokenTransaction(
-                    WalletApi.getCurrentWallet().address,
+                WalletApi.getAllTradeListWithAdress(
                     WalletApi.getCurrentWallet().address,
                     start.toLong(),
                     50,
-                    type,
-                    false
+                    type
                 )
             }
             callback.invoke(r)

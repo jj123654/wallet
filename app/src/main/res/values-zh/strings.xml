@@ -117,6 +117,7 @@
     <string name="repeat_password">重复密码</string>
     <string name="resetting_the_password_will_reset">Resetting the password will reset the wallet, and accounts previously imported through the private key will be deleted</string>
     <string name="next">下一步</string>
+    <string name="next_step">下一步</string>
     <string name="done">成交</string>
     <string name="wallet_step_hint_title">助记词用来恢复您的钱包，请将它正确的写在纸上并妥善保管。</string>
     <string name="wallet_step_hint_bottom">请不要截屏，图片有可能被黑客获取。建议存到安全的地方。</string>
@@ -130,6 +131,8 @@
     <string name="word_order_wrong_tips">顺序错误，请重试</string>
     <string name="import_wallet">导入钱包</string>
     <string name="pair_cold_wallet">配对冷钱包</string>
+    <string name="pair_cold_wallet_finish_tips">请通过冷钱包模式扫描下面的二维码</string>
+    <string name="pair_cold_wallet_tips">将钱包与冷钱包配对，可以实时检查钱包余额和交易记录。您还可以通过相互扫描两个钱包的二维码来签署交易，以提高资产安全性。</string>
     <string name="sign_with_your_offine_cold_wallet">配合离线冷钱包进行签名，推荐大额资产用户使用</string>
     <string name="accounts_to_be_imported">将被导入的地址</string>
     <string name="choose_another_account">选择其他地址</string>
@@ -153,7 +156,7 @@
     <string name="copy_address">复制地址</string>
     <string name="wallet_address">钱包地址</string>
     <string name="please_enter_wallet_address">请输入钱包地址</string>
-    <string name="cold_wallet_has_signed">冷钱包已签名</string>
+    <string name="cold_wallet_has_signed">冷钱包签名</string>
     <string name="copy_private_key">复制私钥</string>
     <string name="send">转账</string>
     <string name="tronscan">TRONSCAN</string>
