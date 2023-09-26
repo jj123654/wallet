@@ -265,5 +265,7 @@
     <string name="back_up_address">Account address：</string>
     <string name="no_data">No Data</string>
     <string name="has_hd_wallet_tips">You already have a HD wallet. Accounts that are not imported by current HD wallet mnemonics will be displayed as private key wallets.</string>
+    <string name="password_error">Password error</string>
+    <string name="edit_success">修改成功</string>
 
 </resources>
