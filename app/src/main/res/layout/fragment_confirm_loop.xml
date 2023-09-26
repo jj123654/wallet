@@ -306,6 +306,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/transaction_resource_tv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -329,6 +330,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/fee_tv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

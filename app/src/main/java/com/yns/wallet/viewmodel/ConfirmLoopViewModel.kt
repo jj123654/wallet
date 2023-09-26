@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 class ConfirmLoopViewModel : ViewModel() {
 
     val accountResourceLiveData = UnPeekLiveData<AccountResourceModel>()
-
+    val feeWithCallContractParamsLiveData = UnPeekLiveData<CallFeeInfoModel>()
 
     fun getAccountResource(address:String){
         viewModelScope.launch {
@@ -30,6 +30,13 @@ class ConfirmLoopViewModel : ViewModel() {
         }
     }
 
-
+    fun getFeeWithCallParams(callContractParam:WalletApi.CallContractParam){
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO) {
+                WalletApi.getFeeWithCallContractParam(callContractParam).toCallFeeInfoModel()
+            }
+            feeWithCallContractParamsLiveData.value = r
+        }
+    }
 
 }

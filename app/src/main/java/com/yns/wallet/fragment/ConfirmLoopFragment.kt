@@ -10,6 +10,7 @@ import coil.load
 import com.luck.lib.camerax.utils.DensityUtil
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
+import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.bean.AccountResourceModel
@@ -75,6 +76,11 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
             accountResourceModel = it
         }
 
+        confirmLoopViewModel.feeWithCallContractParamsLiveData.observe(this){
+            viewBinding.transactionResourceTv.text = "${it.bandwidth}${getString(R.string.bind_width)} + ${it.energy}${getString(R.string.energy)}"
+            viewBinding.feeTv.text = "${it.trx} TRX ≈ $ ${it.trx?.multiply(tokenModel?.usdPrice)}"
+        }
+
         sendOrSwap = arguments?.getBoolean("fromWhich")?:true
         contractAddress = arguments?.getString("contract")
         amount = arguments?.getString("amount")
@@ -116,6 +122,12 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
                 it
             )
         }
+
+        confirmLoopViewModel.getFeeWithCallParams(WalletApi.CallContractParam().apply {
+            this.address = toAddress
+            this.func = "transfer"
+            this.args = mutableListOf(toAddress,amount)
+        })
     }
 
     var popup: PopupWindow? = null

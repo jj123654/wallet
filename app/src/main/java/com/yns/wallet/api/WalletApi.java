@@ -308,8 +308,8 @@ public class WalletApi {
 
     public static CallFeeModel getFeeWithCallContractParam(CallContractParam callContractParam) {
         CallFeeModel callFeeModel = new CallFeeModel();
-        callFeeModel.bandwidth = 11L;
-        callFeeModel.energy = 12L;
+        callFeeModel.bandwidth = BigDecimal.valueOf(35);
+        callFeeModel.energy = BigDecimal.valueOf(96);
         callFeeModel.trx = BigDecimal.valueOf(13.9);
         return callFeeModel;
     }
@@ -498,8 +498,8 @@ public class WalletApi {
 
     public static class CallFeeModel {
         public BigDecimal trx;
-        public long bandwidth;
-        public long energy;
+        public BigDecimal bandwidth;
+        public BigDecimal energy;
     }
 
     public static class BackupRecord {
