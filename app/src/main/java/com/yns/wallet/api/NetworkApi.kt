@@ -23,7 +23,7 @@ import java.lang.StringBuilder
 实现5个API
  */
 object NetworkApi {
-    const val BASE_URL = "https://apilist.tronscanapi.com/api/"
+    const val BASE_URL = "http://apilist.tronscanapi.com/api/"
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     @JvmStatic
