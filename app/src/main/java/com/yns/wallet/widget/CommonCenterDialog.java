@@ -35,7 +35,7 @@ public class CommonCenterDialog {
     }
 
     public void showPswEditDialog(EditCallBackListener editCallBackListener) {
-        this.showCenterEditDialog(true, null, null, null, null, null, editCallBackListener);
+        this.showCenterEditDialog(true,context.getString(R.string.please_enter_password), null, null, null, null, null, editCallBackListener);
     }
 
 
@@ -123,7 +123,7 @@ public class CommonCenterDialog {
     /**
      * 通用中间带输入框的弹窗
      */
-    public AlertDialog showCenterEditDialog(boolean isPassword, String title, String content, String left, String right, View.OnClickListener leftClickListener, EditCallBackListener editCallBackListener) {
+    public AlertDialog showCenterEditDialog(boolean isPassword,String tips, String title, String content, String left, String right, View.OnClickListener leftClickListener, EditCallBackListener editCallBackListener) {
         View contentView = View.inflate(context, R.layout.dialog_common_edit, null);
 
         TextView titleTv = contentView.findViewById(R.id.title_tv);
@@ -180,7 +180,11 @@ public class CommonCenterDialog {
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(inputEt.getText().toString())) {
-                    ToastUtils.showToast(context, context.getString(R.string.please_enter_a_name));
+                    if(TextUtils.isEmpty(tips)){
+                        ToastUtils.showToast(context, context.getString(R.string.please_enter_a_name));
+                    }else{
+                        ToastUtils.showToast(context, tips);
+                    }
                 } else {
                     dialog.dismiss();
                     if (editCallBackListener != null) {

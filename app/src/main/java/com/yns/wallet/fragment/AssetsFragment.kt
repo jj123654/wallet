@@ -32,8 +32,6 @@ class AssetsFragment:BaseFragment<FragmentTransactionRecordBinding>() {
 
     var type:Int = 0
 
-    var isLoaded = false
-
     companion object {
         fun newInstance(type:Int): AssetsFragment {
             val arguments = Bundle()
@@ -57,14 +55,9 @@ class AssetsFragment:BaseFragment<FragmentTransactionRecordBinding>() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
 
-        if(!isLoaded) {
-            isLoaded = true
-            assetViewModel.getTokenTransactionRecord("","",0L,50,type,true)
-
-        }
+    override fun requestData() {
+        assetViewModel.getTokenTransactionRecord("","",0L,50,type,true)
 
     }
 

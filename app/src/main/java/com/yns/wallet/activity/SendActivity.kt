@@ -57,22 +57,48 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             }
 
             tvConfirm.onClick {
-                if(etPwd.text.toString().isNullOrEmpty()){
-                    showToast(getString(R.string.enter_or_paste_the_address))
+                addressEmptyTv.visibility = if(etPwd.text.toString().isNullOrEmpty()){
+                    addressEmptyTv.text = getString(R.string.enter_or_paste_the_address)
+                    View.VISIBLE
+                }else{
+                    View.INVISIBLE
+                }
+                amountEmptyTv.visibility = if(etBalance.text.toString().isNullOrEmpty()){
+                    amountEmptyTv.text = getString(R.string.please_enter_amount)
+                    View.VISIBLE
+                }else{
+                    if(BigDecimal(etBalance.text.toString()).compareTo(currentTokenBean?.balance)==1){
+                        amountEmptyTv.text = getString(R.string.should_less_than_balance)
+                        View.VISIBLE
+                    }else if(BigDecimal(etBalance.text.toString()).compareTo(BigDecimal("0.000001"))==-1){
+                        amountEmptyTv.text = getString(R.string.should_more_than_0_000001)
+                        View.VISIBLE
+                    }else{
+                        View.INVISIBLE
+                    }
+                }
+
+                if(addressEmptyTv.visibility != View.INVISIBLE
+                    ||amountEmptyTv.visibility != View.INVISIBLE){
                     return@onClick
                 }
-                if(etBalance.text.toString().isNullOrEmpty()){
-                    showToast(getString(R.string.please_enter_amount))
-                    return@onClick
-                }
-                if(BigDecimal(etBalance.text.toString()).compareTo(currentTokenBean?.balance)==1){
-                    showToast(getString(R.string.should_less_than_balance))
-                    return@onClick
-                }
-                if(BigDecimal(etBalance.text.toString()).compareTo(BigDecimal("0.000001"))==-1){
-                    showToast(getString(R.string.should_more_than_0_000001))
-                    return@onClick
-                }
+
+//                if(etPwd.text.toString().isNullOrEmpty()){
+//                    showToast(getString(R.string.enter_or_paste_the_address))
+//                    return@onClick
+//                }
+//                if(etBalance.text.toString().isNullOrEmpty()){
+//                    showToast(getString(R.string.please_enter_amount))
+//                    return@onClick
+//                }
+//                if(BigDecimal(etBalance.text.toString()).compareTo(currentTokenBean?.balance)==1){
+//                    showToast(getString(R.string.should_less_than_balance))
+//                    return@onClick
+//                }
+//                if(BigDecimal(etBalance.text.toString()).compareTo(BigDecimal("0.000001"))==-1){
+//                    showToast(getString(R.string.should_more_than_0_000001))
+//                    return@onClick
+//                }
                 ConfirmLoopFragment.newInstance(true,if(currentTokenBean?.name=="TRX") "" else currentTokenBean?.address,etBalance.text.toString(),etPwd.text.toString(),currentTokenBean).add(supportFragmentManager)
 
             }
