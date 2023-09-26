@@ -239,4 +239,13 @@ class WalletViewModel : ViewModel() {
         }
     }
 
+    fun changePassword(newPassword:String?,oldPassword:String?,callback: suspend () -> Unit){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                WalletApi.changePassword(newPassword,oldPassword)
+            }
+            callback()
+        }
+    }
+
 }

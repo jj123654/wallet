@@ -9,8 +9,10 @@ import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityAboutUsBinding
 import com.yns.wallet.databinding.ActivityChangePwdBinding
+import com.yns.wallet.util.addEditEyeViewLogic
 import com.yns.wallet.util.showToast
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Objects
@@ -22,10 +24,15 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePwdBinding>() {
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         viewBinding.apply {
+
             tvConfirm.onClick {
                 checkInput()
             }
         }
+
+        addEditEyeViewLogic(window.decorView, R.id.iv_current_pwd_eye, R.id.et_current_pwd)
+        addEditEyeViewLogic(window.decorView, R.id.iv_pwd_eye, R.id.et_pwd)
+        addEditEyeViewLogic(window.decorView, R.id.iv_repeat_pwd_eye, R.id.et_repeat_pwd)
     }
 
     private fun checkInput() {
@@ -49,7 +56,7 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePwdBinding>() {
                 if (!r) {
                     correct = false
                     viewBinding.walletCurrentPwdEmptyTv.visibility = View.VISIBLE
-                    viewBinding.walletCurrentPwdEmptyTv.text = getString(R.string.password_error)
+                    viewBinding.walletCurrentPwdEmptyTv.text = getString(R.string.password_is_wrong)
                 }
             }
             if (newPass.isEmpty()) {
@@ -68,10 +75,9 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePwdBinding>() {
                 viewBinding.walletRepeatPwdEmptyTv.setText(R.string.repeat_password_should_equal_to_password)
             }
             if (correct) {
-                withContext(Dispatchers.IO) {
-                    WalletApi.changePassword(old, newPass)
+                walletViewModel.changePassword(newPass,old){
+                    finish()
                 }
-                showToast(getString(R.string.edit_success))
             }
         }
 

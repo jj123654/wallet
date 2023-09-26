@@ -32,6 +32,7 @@
 
     <string name="set_password">Set Password</string>
     <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
     <string name="password_is_not_less_than_8digits">Password is not less than 8digits</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="index_1">1</string>
@@ -265,7 +266,5 @@
     <string name="back_up_address">Account address：</string>
     <string name="no_data">No Data</string>
     <string name="has_hd_wallet_tips">You already have a HD wallet. Accounts that are not imported by current HD wallet mnemonics will be displayed as private key wallets.</string>
-    <string name="password_error">Password error</string>
-    <string name="edit_success">修改成功</string>
 
 </resources>
