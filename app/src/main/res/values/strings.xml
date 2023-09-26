@@ -23,6 +23,8 @@
     <string name="wallet_name">Wallet Name</string>
     <string name="please_enter_a_name">Please enter a name</string>
     <string name="please_enter_name">Please enter name</string>
+    <string name="please_enter_current_password">Please enter current password</string>
+    <string name="please_enter_new_password">Please enter new password</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="please_repeat_password">Please repeat password</string>
     <string name="repeat_password_should_equal_to_password">repeat password should equal to password</string>

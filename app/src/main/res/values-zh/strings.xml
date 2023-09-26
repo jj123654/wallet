@@ -23,6 +23,8 @@
     <string name="wallet_name">钱包名称</string>
     <string name="please_enter_a_name">输入名称</string>
     <string name="please_enter_name">请输入名称</string>
+    <string name="please_enter_current_password">请输入当前密码</string>
+    <string name="please_enter_new_password">请输入新密码</string>
     <string name="please_enter_password">请输入密码</string>
     <string name="please_repeat_password">请重复密码</string>
     <string name="repeat_password_should_equal_to_password">重复密码需与密码相同</string>
