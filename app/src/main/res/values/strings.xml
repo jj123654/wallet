@@ -256,7 +256,10 @@
     <string name="please_enter_amount">Please enter amount</string>
     <string name="should_more_than_0_000001">Should more than 0.000001</string>
     <string name="address_is_not_valid">Address is not valid</string>
-    <string name="confirmed">已确认</string>
-    <string name="money_fee">转账数量：</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="money_fee">Transfer Amount：</string>
+    <string name="back_up_time">Back up time：</string>
+    <string name="back_up_name">Account name：</string>
+    <string name="back_up_address">Account address：</string>
 
 </resources>

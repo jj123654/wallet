@@ -10,11 +10,15 @@ import coil.load
 import com.luck.lib.camerax.utils.DensityUtil
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
+import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.base.BaseFragment
+import com.yns.wallet.bean.AccountResourceModel
 import com.yns.wallet.bean.TokenModel
 import com.yns.wallet.databinding.FragmentConfirmLoopBinding
 import com.yns.wallet.databinding.PopupWindowBalanceBinding
+import com.yns.wallet.util.ViewModelUtils.lazyViewModel
 import com.yns.wallet.util.onClick
+import com.yns.wallet.viewmodel.ConfirmLoopViewModel
 import java.math.BigDecimal
 
 class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
@@ -25,6 +29,10 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
     var toAddress:String?=null
     var sendOrSwap = true
     var contractAddress:String?=null
+
+    private val confirmLoopViewModel:ConfirmLoopViewModel by lazyViewModel()
+
+    private var accountResourceModel:AccountResourceModel?=null
 
     companion object {
         fun newInstance(fromWhich:Boolean,contract:String?,amount: String?,toAddress:String?,tokenModel: TokenModel?): ConfirmLoopFragment {
@@ -52,9 +60,16 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
         }
 
         initData()
+
+        loadData()
     }
 
     private fun initData(){
+        confirmLoopViewModel.accountResourceLiveData.observe(this){
+            getBaseActivity().dismissProgress()
+            accountResourceModel = it
+        }
+
         sendOrSwap = arguments?.getBoolean("fromWhich")?:true
         contractAddress = arguments?.getString("contract")
         amount = arguments?.getString("amount")
@@ -89,6 +104,14 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
         }
     }
 
+    private fun loadData(){
+        getBaseActivity().showProgress()
+        walletViewModel.currentWalletLiveData.value?.address?.let {
+            confirmLoopViewModel.getAccountResource(
+                it
+            )
+        }
+    }
 
     var popup: PopupWindow? = null
     var popupViewBinding: PopupWindowBalanceBinding? = null
@@ -102,7 +125,9 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
             popupViewBinding = view
             it.isFocusable = false
             it.contentView = view.root
-//            view.balanceTv.text = walletViewModel.tokenLiveData.value?.firstOrNull { it.name=="TRX" }?.balance.toString()
+            view.balanceTv.text = accountResourceModel?.trx.toString()
+            view.bindWidthTv.text = accountResourceModel?.bandwidth.toString()
+            view.energyTv.text = accountResourceModel?.energy.toString()
             it
         }
         p.showAsDropDown(viewBinding.walletName)

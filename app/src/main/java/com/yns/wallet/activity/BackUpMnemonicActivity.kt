@@ -14,10 +14,13 @@ import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
+import com.yns.wallet.bean.BackUpRecordModel
 import com.yns.wallet.databinding.ActivityAboutUsBinding
 import com.yns.wallet.databinding.ActivityBackUpMnemonicBinding
 import com.yns.wallet.fragment.CreateWallet22Fragment
 import com.yns.wallet.fragment.CreateWallet2Fragment
+import com.yns.wallet.util.ViewModelUtils.lazyViewModel
+import com.yns.wallet.viewmodel.BackUpViewModel
 import com.yns.wallet.widget.CommonCenterDialog
 
 class BackUpMnemonicActivity : BaseActivity<ActivityBackUpMnemonicBinding>() {
@@ -26,7 +29,18 @@ class BackUpMnemonicActivity : BaseActivity<ActivityBackUpMnemonicBinding>() {
 
     var menomics:String?=null
 
+    private val backUpViewModel: BackUpViewModel by lazyViewModel()
+
     override fun initView(root: View, savedInstanceState: Bundle?) {
+
+        var backUpRecordModel = BackUpRecordModel(WalletApi.BACKUP_TYPE.MENOMIC
+            ,walletViewModel.currentWalletLiveData.value?.name
+            ,walletViewModel.currentWalletLiveData.value?.address
+            ,System.currentTimeMillis())
+        backUpViewModel.addBackUpRecord(backUpRecordModel){
+
+        }
+
         viewBinding.apply {
             topLayout.tvViewMnemonic.onClick {
                 tipsLayout.visibility = View.GONE

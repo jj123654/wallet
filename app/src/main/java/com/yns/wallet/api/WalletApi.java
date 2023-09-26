@@ -75,7 +75,7 @@ public class WalletApi {
         return "web ecology matter tongue expire type still fee agent bike grit budget";
     }
 
-    public boolean hasHDWallet() {
+    public static boolean hasHDWallet() {
         return true;
     }
 
@@ -179,6 +179,7 @@ public class WalletApi {
         return tokenList;
     }
 
+    //暂时没用
     public static Token getWalletToken(String walletAddress, String address) {
         Token yunusToken = new Token();
         yunusToken.address = "TKevsGkyqoSux8NENgbM1An1cLt6QQfbGh";
@@ -313,11 +314,11 @@ public class WalletApi {
         return callFeeModel;
     }
 
-    public void addBackupRecord(BackupRecord bc) {
+    public static void addBackupRecord(BackupRecord bc) {
         // 将BackupRecord对象添加到列表中
     }
 
-    public List<BackupRecord> listBackupRecord(String wallet) {
+    public static List<BackupRecord> listBackupRecord(String wallet) {
         List<BackupRecord> filteredRecords = new ArrayList<>();
         BackupRecord bc = new BackupRecord();
         bc.address = "TLaz9R9Z4CSZKK3mbMgouWHiSDgac5mSDL";
@@ -501,15 +502,15 @@ public class WalletApi {
         public long energy;
     }
 
-    public class BackupRecord {
-        private BACKUP_TYPE type;
-        private String name;
-        private String address;
-        private long time;
+    public static class BackupRecord {
+        public BACKUP_TYPE type;
+        public String name;
+        public String address;
+        public long time;
     }
 
     // 枚举定义
-    enum BACKUP_TYPE {
+    public enum BACKUP_TYPE {
         PRIVATE_KEY,
         MENOMIC
     }

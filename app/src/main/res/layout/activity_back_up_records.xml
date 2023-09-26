@@ -50,13 +50,13 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_back_up_record" />
+            tools:listitem="@layout/item_back_up_record" />
     </LinearLayout>
 
 </LinearLayout>

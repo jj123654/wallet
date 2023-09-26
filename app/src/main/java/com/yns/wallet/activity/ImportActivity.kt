@@ -11,6 +11,7 @@ import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityImportBinding
 import com.yns.wallet.util.showToast
+import com.yns.wallet.widget.CommonCenterDialog
 
 
 class ImportActivity : BaseActivity<ActivityImportBinding>() {
@@ -29,10 +30,24 @@ class ImportActivity : BaseActivity<ActivityImportBinding>() {
                 if(inputEdit.text.toString().isNullOrEmpty()){
                     showToast(getString(R.string.please_enter_name))
                 }else {
-                    var intent = Intent(this@ImportActivity,Import2Activity::class.java)
-                    intent.putExtra("isFirstLoad",isFirstLoad)
-                    intent.putExtra("privateKey",inputEdit.text.toString())
-                    startActivity(intent)
+                    if(inputEdit.text.toString().contains(" ")){
+                        walletViewModel.hasHDWallet {
+                            //测试代码
+                            walletViewModel.saveMenomic(inputEdit.text.toString()) {
+                                    gotoImport2(false)
+                            }
+//                            if(it){
+//                                CommonCenterDialog(this@ImportActivity).showCenterTipsDialog()
+//                            }else{
+//                                walletViewModel.saveMenomic(inputEdit.text.toString()) {
+//                                    gotoImport2(false)
+//                                }
+//                            }
+                        }
+                    }else{
+                        gotoImport2(true)
+                    }
+
                 }
 
             }
@@ -40,6 +55,14 @@ class ImportActivity : BaseActivity<ActivityImportBinding>() {
 
     }
 
+    private fun gotoImport2(privateKeyOrMemomic:Boolean){
+        var intent = Intent(this@ImportActivity,Import2Activity::class.java)
+        intent.putExtra("isFirstLoad",isFirstLoad)
+        intent.putExtra("privateKeyOrMemomic",privateKeyOrMemomic)
+        intent.putExtra("privateKey",viewBinding.inputEdit.text.toString())
+        startActivity(intent)
+
+    }
 
     private fun pastePrivateKey():String{
         val clipboardManager: ClipboardManager =
