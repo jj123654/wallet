@@ -23,6 +23,8 @@
     <string name="wallet_name">Wallet Name</string>
     <string name="please_enter_a_name">Please enter a name</string>
     <string name="please_enter_name">Please enter name</string>
+    <string name="please_enter_current_password">Please enter current password</string>
+    <string name="please_enter_new_password">Please enter new password</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="please_repeat_password">Please repeat password</string>
     <string name="repeat_password_should_equal_to_password">repeat password should equal to password</string>
@@ -261,5 +263,7 @@
     <string name="back_up_time">Back up time：</string>
     <string name="back_up_name">Account name：</string>
     <string name="back_up_address">Account address：</string>
+    <string name="no_data">No Data</string>
+    <string name="has_hd_wallet_tips">You already have a HD wallet. Accounts that are not imported by current HD wallet mnemonics will be displayed as private key wallets.</string>
 
 </resources>

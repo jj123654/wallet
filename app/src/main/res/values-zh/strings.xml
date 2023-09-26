@@ -23,6 +23,8 @@
     <string name="wallet_name">钱包名称</string>
     <string name="please_enter_a_name">输入名称</string>
     <string name="please_enter_name">请输入名称</string>
+    <string name="please_enter_current_password">请输入当前密码</string>
+    <string name="please_enter_new_password">请输入新密码</string>
     <string name="please_enter_password">请输入密码</string>
     <string name="please_repeat_password">请重复密码</string>
     <string name="repeat_password_should_equal_to_password">重复密码需与密码相同</string>
@@ -261,5 +263,7 @@
     <string name="back_up_time">备份时间：</string>
     <string name="back_up_name">名称：</string>
     <string name="back_up_address">地址：</string>
+    <string name="no_data">没有数据</string>
+    <string name="has_hd_wallet_tips">您当前已拥有HD钱包，非当前HD钱包助记词导入的账户将会展示成私钥钱包样式</string>
 
 </resources>

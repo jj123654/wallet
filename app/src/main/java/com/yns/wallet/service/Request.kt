@@ -35,18 +35,19 @@ object Request {
         addInterceptor(LoggingInterceptor())
         connectTimeout(30L, TimeUnit.SECONDS)
         readTimeout(30L, TimeUnit.SECONDS)
-        writeTimeout(30L, TimeUnit.SECONDS).apply {
-            val ssl = SSLContext.getInstance("SSL")
-            val manager = HttpsUtils.UnSafeTrustManager()
-            ssl.init(null, arrayOf(manager), SecureRandom())
-            this.sslSocketFactory(ssl.socketFactory, manager)
-            this.hostnameVerifier(object : HostnameVerifier {
-                override fun verify(hostname: String?, session: SSLSession?): Boolean {
-                    return true
-                }
-
-            })
-        }
+        writeTimeout(30L, TimeUnit.SECONDS)
+//            .apply {
+//            val ssl = SSLContext.getInstance("SSL")
+//            val manager = HttpsUtils.UnSafeTrustManager()
+//            ssl.init(null, arrayOf(manager), SecureRandom())
+//            this.sslSocketFactory(ssl.socketFactory, manager)
+//            this.hostnameVerifier(object : HostnameVerifier {
+//                override fun verify(hostname: String?, session: SSLSession?): Boolean {
+//                    return true
+//                }
+//
+//            })
+//        }
     }.build()
 
     /**

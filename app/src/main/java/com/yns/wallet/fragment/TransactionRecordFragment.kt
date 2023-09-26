@@ -5,11 +5,13 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
+import com.yns.wallet.R
 import com.yns.wallet.adapter.TransactionListAdapter
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.bean.TransactionRecordModel
 import com.yns.wallet.databinding.FragmentTransactionRecordBinding
 import com.yns.wallet.viewmodel.TransactionRecordViewModel
+import com.yns.wallet.widget.LoadMoreView
 import com.yns.wallet.widget.decoration.SpacesItemDecoration
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 
@@ -18,9 +20,13 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
     private val transactionListAdapter: TransactionListAdapter by lazy {
         TransactionListAdapter(requireContext(), mutableListOf()).apply {
             loadMoreModule.isEnableLoadMore = true
+            loadMoreModule.setOnLoadMoreListener {
+                start += 2000
+                loadData()
+            }
         }
     }
-    val transactionRecordViewModel: TransactionRecordViewModel by viewModels()
+    private val transactionRecordViewModel: TransactionRecordViewModel by viewModels()
     var list: MutableList<TransactionRecordModel> = ArrayList()
     var start = 0
 
@@ -47,18 +53,25 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
                 )
             )
             recyclerView.adapter = transactionListAdapter
+            transactionListAdapter.setEmptyView(R.layout.common_empty_view)
+            transactionListAdapter.loadMoreModule.loadMoreView = LoadMoreView()
         }
         viewBinding.refresh.isRefreshing = true
         viewBinding.refresh.setOnRefreshListener {
             start = 0
             loadData()
         }
+    }
+
+    override fun requestData() {
         loadData()
     }
 
     private fun loadData() {
         transactionRecordViewModel.getTransactionRecord(
-            (arguments?.getInt("index", 0) ?: 0) + 1,
+            //此处后续注意打开
+//            (arguments?.getInt("index", 0) ?: 0) + 1,
+            0,
             start
         ) {
             val d = it.toMutableList()

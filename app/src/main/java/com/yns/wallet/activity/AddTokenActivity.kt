@@ -44,7 +44,7 @@ class AddTokenActivity : BaseActivity<ActivityAddTokenBinding>() {
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
         addTokenModel.tokenListLiveData.observe(this){
-            dismissProgress()
+            viewBinding.refresh.isRefreshing = false
             tokenListAdapter.addData(it)
         }
 
@@ -54,6 +54,12 @@ class AddTokenActivity : BaseActivity<ActivityAddTokenBinding>() {
 
             rvList.layoutManager = WrapContentLinearLayoutManager(this@AddTokenActivity)
             rvList.adapter = tokenListAdapter
+            tokenListAdapter.setEmptyView(R.layout.common_empty_view)
+
+            viewBinding.refresh.isRefreshing = true
+            viewBinding.refresh.setOnRefreshListener {
+                loadData()
+            }
 
             etSearch.doAfterTextChanged {
                 if(it.toString().isNullOrEmpty()){
@@ -100,11 +106,12 @@ class AddTokenActivity : BaseActivity<ActivityAddTokenBinding>() {
 
         }
 
-        showProgress()
-        addTokenModel.getPopularTokens()
-
+        loadData()
     }
 
+    private fun loadData(){
+        addTokenModel.getPopularTokens()
+    }
 
     private fun changeSelectedState(imageView: ImageView,tokenModel: TokenModel){
         if(imageView.isSelected){

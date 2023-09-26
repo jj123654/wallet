@@ -75,6 +75,19 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
         vb = null
     }
 
+    var isLoaded = false
+
+    override fun onResume() {
+        super.onResume()
+        if(!isLoaded){
+            isLoaded = true
+            requestData()
+        }
+    }
+
+    open fun requestData(){
+
+    }
 
     abstract fun initView(root: View, savedInstanceState: Bundle?)
 

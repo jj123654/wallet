@@ -51,7 +51,6 @@ class Import2Activity : BaseActivity<ActivityImport2Binding>() {
                         createSuccess()
                     }
                 }else{
-                    //TODO 这里index有疑问，传几后续待确定
                     walletViewModel.createWalletFromMenomic(walletNameEmptyTv.text.toString(),inputText?:"",0,pswEmptyTv.text.toString()){
                         createSuccess()
                     }

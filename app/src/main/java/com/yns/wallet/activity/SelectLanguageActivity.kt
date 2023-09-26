@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
+import com.yns.wallet.R
 import com.yns.wallet.adapter.LanguageListAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.LanguageBean
@@ -34,6 +35,7 @@ class SelectLanguageActivity:BaseActivity<ActivitySelectLanguageBinding>() {
             recyclerView.layoutManager = WrapContentLinearLayoutManager(this@SelectLanguageActivity, LinearLayoutManager.VERTICAL,false)
             recyclerView.addItemDecoration(SpacesItemDecoration(QMUIDisplayHelper.dp2px(this@SelectLanguageActivity, 20), QMUIDisplayHelper.dp2px(this@SelectLanguageActivity, 20)))
             recyclerView.adapter = languageListAdapter
+            languageListAdapter.setEmptyView(R.layout.common_empty_view)
         }
 
         languageListAdapter.data.forEach {

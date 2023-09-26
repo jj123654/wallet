@@ -18,6 +18,7 @@ import com.yns.wallet.databinding.FragmentConfirmLoopBinding
 import com.yns.wallet.databinding.PopupWindowBalanceBinding
 import com.yns.wallet.util.ViewModelUtils.lazyViewModel
 import com.yns.wallet.util.onClick
+import com.yns.wallet.util.showToast
 import com.yns.wallet.viewmodel.ConfirmLoopViewModel
 import java.math.BigDecimal
 
@@ -56,7 +57,11 @@ class ConfirmLoopFragment : BaseFragment<FragmentConfirmLoopBinding>() {
             showPopup()
         }
         viewBinding.confirm.onClick {
-            removeSelf()
+            getBaseActivity().showVerifyPasswordDialog{
+                showToast(getString(R.string.success))
+                removeSelf()
+                getBaseActivity().finish()
+            }
         }
 
         initData()

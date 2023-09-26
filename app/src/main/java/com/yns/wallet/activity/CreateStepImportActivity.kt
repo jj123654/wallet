@@ -34,10 +34,7 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
     var name:String?=null
     var password: String? = null
     var page = 1
-    var index = 0
-
-    var addressList = mutableListOf<HDWalletBean>()
-
+    var index:Int = 0
 
     private val adapter: HDWalletListAdapter by lazy {
         HDWalletListAdapter(mutableListOf()).apply {
@@ -60,6 +57,7 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
         name = intent.getStringExtra("name")
         menomic = intent.getStringExtra("menomic")
         password = intent.getStringExtra("password")
+        index = walletViewModel.getWalletCount()
 
         viewBinding.apply {
             if (isFirstLoad) {
@@ -109,16 +107,17 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
         val rvList = view.rvList
         rvList.layoutManager = WrapContentLinearLayoutManager(this)
         rvList.adapter = adapter
+        adapter.setEmptyView(R.layout.common_empty_view)
         loadData(page)
     }
 
     private fun setAddressAndPath(){
         viewBinding.apply {
-            tvSeedHash.text = addressList[0].address
+            tvSeedHash.text = adapter.data[0].address
             tvSeedPath.text = "${Constant.DEFAULT_PATH}${0}"
             tvSeedNum.text = "0"
 
-            tvAccountHash.text = addressList[index].address
+            tvAccountHash.text = adapter.data[index].address
             tvAccountPath.text = "${Constant.DEFAULT_PATH}${index}"
             tvAccountBalance.text = "$index"
         }
@@ -129,15 +128,18 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
             val r = it.map {addres-> HDWalletBean(addres,false) }.toMutableList()
             if (page == 1) {
                 if(r.size>0){
-                    r[0].isSelected = true
+                    if(r.size>index){
+                        r[index].isSelected = true
+                    }else{
+                        r[0].isSelected = true
+                    }
+
                 }
                 adapter.setList(r)
-                addressList.clear()
+                setAddressAndPath()
             } else {
                 adapter.addData(r)
             }
-            addressList.addAll(r)
-            setAddressAndPath()
             if (r.size < 20) {
                 adapter.loadMoreModule.loadMoreComplete()
                 adapter.loadMoreModule.loadMoreEnd(true)

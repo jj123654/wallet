@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
+import com.yns.wallet.R
 import com.yns.wallet.adapter.SelectTokenListAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.bean.TokenBean
@@ -30,6 +31,7 @@ class SelectTokenActivity:BaseActivity<ActivitySelectTokenBinding>() {
             recyclerView.layoutManager = WrapContentLinearLayoutManager(this@SelectTokenActivity, LinearLayoutManager.VERTICAL,false)
             recyclerView.addItemDecoration(SpacesItemDecoration(QMUIDisplayHelper.dp2px(this@SelectTokenActivity, 20), QMUIDisplayHelper.dp2px(this@SelectTokenActivity, 20)))
             recyclerView.adapter = selectTokenListAdapter
+            selectTokenListAdapter.setEmptyView(R.layout.common_empty_view)
         }
 
         if(list==null||list.size<=0) {

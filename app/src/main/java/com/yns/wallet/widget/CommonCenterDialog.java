@@ -35,7 +35,7 @@ public class CommonCenterDialog {
     }
 
     public void showPswEditDialog(EditCallBackListener editCallBackListener) {
-        this.showCenterEditDialog(true, null, null, null, null, null, editCallBackListener);
+        this.showCenterEditDialog(true,context.getString(R.string.please_enter_password), null, null, null, null, null, editCallBackListener);
     }
 
 
@@ -85,9 +85,45 @@ public class CommonCenterDialog {
     }
 
     /**
+     * 通用中间弹窗（只有一个按钮）
+     */
+    public AlertDialog showCenterSingleBtnDialog(String content,String right,View.OnClickListener rightClickListener) {
+        View contentView = View.inflate(context, R.layout.dialog_common_tips, null);
+
+        TextView contentTv = contentView.findViewById(R.id.content_tv);
+
+        if (!TextUtils.isEmpty(content)) {
+            contentTv.setText(content);
+        }
+
+        TextView leftTv = contentView.findViewById(R.id.left_tv);
+        View dividerView = contentView.findViewById(R.id.divider_view);
+        TextView rightTv = contentView.findViewById(R.id.right_tv);
+
+        leftTv.setVisibility(View.GONE);
+        dividerView.setVisibility(View.GONE);
+        if (!TextUtils.isEmpty(right)) {
+            rightTv.setText(right);
+        }
+        rightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                if (rightClickListener != null) {
+                    rightClickListener.onClick(view);
+                }
+
+            }
+        });
+
+        showDialog(contentView);
+        return dialog;
+    }
+
+    /**
      * 通用中间带输入框的弹窗
      */
-    public AlertDialog showCenterEditDialog(boolean isPassword, String title, String content, String left, String right, View.OnClickListener leftClickListener, EditCallBackListener editCallBackListener) {
+    public AlertDialog showCenterEditDialog(boolean isPassword,String tips, String title, String content, String left, String right, View.OnClickListener leftClickListener, EditCallBackListener editCallBackListener) {
         View contentView = View.inflate(context, R.layout.dialog_common_edit, null);
 
         TextView titleTv = contentView.findViewById(R.id.title_tv);
@@ -144,7 +180,11 @@ public class CommonCenterDialog {
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(inputEt.getText().toString())) {
-                    ToastUtils.showToast(context, context.getString(R.string.please_enter_a_name));
+                    if(TextUtils.isEmpty(tips)){
+                        ToastUtils.showToast(context, context.getString(R.string.please_enter_a_name));
+                    }else{
+                        ToastUtils.showToast(context, tips);
+                    }
                 } else {
                     dialog.dismiss();
                     if (editCallBackListener != null) {
@@ -160,7 +200,7 @@ public class CommonCenterDialog {
     }
 
     /**
-     * 通用中间带输入框的弹窗
+     * 通用中间带二维码的弹窗
      */
     public AlertDialog showCenterQRDialog(String imageUrl, String title, String left, String right, View.OnClickListener leftClickListener, View.OnClickListener rightClickListener) {
         View contentView = View.inflate(context, R.layout.dialog_qr_code, null);

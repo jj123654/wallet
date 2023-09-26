@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/title_bar" />
 
     <EditText
-        android:id="@+id/et_secret"
+        android:id="@+id/et_current_pwd"
         style="@style/import_edit"
         android:layout_width="match_parent"
         android:layout_height="46dp"
@@ -43,8 +43,32 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textSize="13sp"
+        android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_old_pwd_title" />
+
+    <ImageView
+        android:id="@+id/iv_current_pwd_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/selector_pwd_eye"
+        app:layout_constraintBottom_toBottomOf="@id/et_current_pwd"
+        app:layout_constraintEnd_toEndOf="@id/et_current_pwd"
+        app:layout_constraintTop_toTopOf="@id/et_current_pwd" />
+
+
+    <TextView
+        android:id="@+id/wallet_current_pwd_empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/tips_red_color"
+        android:textSize="10sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_current_pwd" />
+
 
     <TextView
         android:id="@+id/tv_pwd_title"
@@ -56,7 +80,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_secret" />
+        app:layout_constraintTop_toBottomOf="@id/et_current_pwd" />
 
     <EditText
         android:id="@+id/et_pwd"
@@ -82,6 +106,18 @@
         app:layout_constraintBottom_toBottomOf="@id/et_pwd"
         app:layout_constraintEnd_toEndOf="@id/et_pwd"
         app:layout_constraintTop_toTopOf="@id/et_pwd" />
+
+    <TextView
+        android:id="@+id/wallet_pwd_empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/tips_red_color"
+        android:textSize="10sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_pwd" />
+
 
     <TextView
         android:id="@+id/tv_repeat_pwd_title"
@@ -119,6 +155,18 @@
         app:layout_constraintBottom_toBottomOf="@id/et_repeat_pwd"
         app:layout_constraintEnd_toEndOf="@id/et_repeat_pwd"
         app:layout_constraintTop_toTopOf="@id/et_repeat_pwd" />
+
+    <TextView
+        android:id="@+id/wallet_repeat_pwd_empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/tips_red_color"
+        android:textSize="10sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_repeat_pwd" />
+
 
     <TextView
         android:id="@+id/tv_confirm"

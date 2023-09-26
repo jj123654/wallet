@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yns.wallet.R
 import com.yns.wallet.activity.AssetsDetailActivity
 import com.yns.wallet.adapter.AssetsListAdapter
 import com.yns.wallet.base.BaseFragment
@@ -31,8 +32,6 @@ class AssetsFragment:BaseFragment<FragmentTransactionRecordBinding>() {
 
     var type:Int = 0
 
-    var isLoaded = false
-
     companion object {
         fun newInstance(type:Int): AssetsFragment {
             val arguments = Bundle()
@@ -48,6 +47,7 @@ class AssetsFragment:BaseFragment<FragmentTransactionRecordBinding>() {
         viewBinding.apply {
             recyclerView.layoutManager = WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
             recyclerView.adapter = assetsListAdapter
+            assetsListAdapter.setEmptyView(R.layout.common_empty_view)
         }
 
         assetViewModel.tokenTransferTransactionLiveData.observe(this){
@@ -55,14 +55,9 @@ class AssetsFragment:BaseFragment<FragmentTransactionRecordBinding>() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
 
-        if(!isLoaded) {
-            isLoaded = true
-            assetViewModel.getTokenTransactionRecord("","",0L,50,type,true)
-
-        }
+    override fun requestData() {
+        assetViewModel.getTokenTransactionRecord("","",0L,50,type,true)
 
     }
 

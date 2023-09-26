@@ -2,6 +2,7 @@ package com.yns.wallet.activity
 
 import android.os.Bundle
 import android.view.View
+import com.yns.wallet.R
 import com.yns.wallet.adapter.BackUpRecordListAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityBackUpRecordsBinding
@@ -14,8 +15,7 @@ class BackUpRecordActivity : BaseActivity<ActivityBackUpRecordsBinding>() {
     private val backUpViewModel: BackUpViewModel by lazyViewModel()
 
     private val backUpRecordListAdapter: BackUpRecordListAdapter by lazy {
-        BackUpRecordListAdapter(mutableListOf()).apply {
-        }
+        BackUpRecordListAdapter(mutableListOf())
     }
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class BackUpRecordActivity : BaseActivity<ActivityBackUpRecordsBinding>() {
 
         viewBinding.recyclerView.layoutManager = WrapContentLinearLayoutManager(this@BackUpRecordActivity)
         viewBinding.recyclerView.adapter = backUpRecordListAdapter
-
+        backUpRecordListAdapter.setEmptyView(R.layout.common_empty_view)
 
         loadData()
     }

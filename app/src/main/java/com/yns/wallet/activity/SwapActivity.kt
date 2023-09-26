@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.qmuiteam.qmui.kotlin.onClick
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.yns.wallet.R
 import com.yns.wallet.adapter.BottomSheetChooseTokenListAdapter
@@ -41,7 +42,8 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
     }
 
     private val swapListAdapter: SwapListAdapter by lazy {
-        SwapListAdapter(this@SwapActivity, mutableListOf())
+        SwapListAdapter(this@SwapActivity, mutableListOf()).apply{
+        }
     }
 
     var recordList: MutableList<SwapRecordBean> = ArrayList()
@@ -104,15 +106,9 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
                 )
             )
             recyclerView.adapter = swapListAdapter
+            swapListAdapter.setEmptyView(R.layout.common_empty_view)
         }
         val header = viewBinding.header
-//        if (recordList.size <= 0) {
-//            for (i in 0..11) {
-//                recordList.add(SwapRecordBean())
-//            }
-//
-//            swapListAdapter.setList(recordList)
-//        }
         header.rlFromLayout.onClick {
             fromOrTo = true
             chooseTokenListAdapter.refreshData(leftPosition)
@@ -122,6 +118,9 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
             fromOrTo = false
             chooseTokenListAdapter.refreshData(rightPosition)
             bottomSheet.show()
+        }
+        header.ivSwap.onClick {
+            changeLeftAndRight()
         }
 
         header.fromEt.doAfterTextChanged {
@@ -156,7 +155,7 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
         val rvList = view.findViewById<RecyclerView>(R.id.rv_list)
         rvList.layoutManager = LinearLayoutManager(this)
         rvList.adapter = chooseTokenListAdapter
-
+        chooseTokenListAdapter.setEmptyView(R.layout.common_empty_view)
         var list:MutableList<TokenModel> = ArrayList()
         list.clear()
         walletViewModel.tokenLiveData.value?.forEach {
@@ -225,16 +224,35 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
 
     }
 
+    /**
+     * 左右交换token
+     */
+    private fun changeLeftAndRight(){
+        var changePosition = rightPosition
+        rightPosition = leftPosition
+        leftPosition = changePosition
+        fromOrTo = true
+        showCurrentToken()
+        fromOrTo = false
+        showCurrentToken()
+        viewBinding.header.fromEt.text = viewBinding.header.toEt.text
+    }
 
+    /**
+     * 通过左侧的token获取兑换比例等其他信息
+     */
     private fun getSwapInfo(){
         showProgress()
         swapViewModel.getSwapInfoFromTokenAddress(leftTokenBean?.address,rightTokenBean?.address,viewBinding.header.fromEt.text.toString())
 
     }
 
+    /**
+     * 获取闪兑记录
+     */
     private fun getSwapRecord(){
         showProgress()
-        swapViewModel.getSwapRecordList(leftTokenBean?.address)
+        swapViewModel.getSwapRecordList(walletViewModel.currentWalletLiveData.value?.address)
     }
 
 }

@@ -36,8 +36,10 @@ class ImportActivity : BaseActivity<ActivityImportBinding>() {
                             walletViewModel.saveMenomic(inputEdit.text.toString()) {
                                     gotoImport2(false)
                             }
+                            //正式代码，后续记得打开
 //                            if(it){
-//                                CommonCenterDialog(this@ImportActivity).showCenterTipsDialog()
+//                                CommonCenterDialog(this@ImportActivity).showCenterSingleBtnDialog(getString(R.string.has_hd_wallet_tips),null){
+//                                }
 //                            }else{
 //                                walletViewModel.saveMenomic(inputEdit.text.toString()) {
 //                                    gotoImport2(false)
