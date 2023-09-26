@@ -41,7 +41,8 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
     }
 
     private val swapListAdapter: SwapListAdapter by lazy {
-        SwapListAdapter(this@SwapActivity, mutableListOf())
+        SwapListAdapter(this@SwapActivity, mutableListOf()).apply{
+        }
     }
 
     var recordList: MutableList<SwapRecordBean> = ArrayList()
@@ -104,6 +105,7 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
                 )
             )
             recyclerView.adapter = swapListAdapter
+            swapListAdapter.setEmptyView(R.layout.common_empty_view)
         }
         val header = viewBinding.header
 //        if (recordList.size <= 0) {
@@ -156,7 +158,7 @@ class SwapActivity : BaseActivity<ActivitySwapBinding>() {
         val rvList = view.findViewById<RecyclerView>(R.id.rv_list)
         rvList.layoutManager = LinearLayoutManager(this)
         rvList.adapter = chooseTokenListAdapter
-
+        chooseTokenListAdapter.setEmptyView(R.layout.common_empty_view)
         var list:MutableList<TokenModel> = ArrayList()
         list.clear()
         walletViewModel.tokenLiveData.value?.forEach {

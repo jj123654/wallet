@@ -261,5 +261,7 @@
     <string name="back_up_time">备份时间：</string>
     <string name="back_up_name">名称：</string>
     <string name="back_up_address">地址：</string>
+    <string name="no_data">没有数据</string>
+    <string name="has_hd_wallet_tips">您当前已拥有HD钱包，非当前HD钱包助记词导入的账户将会展示成私钥钱包样式</string>
 
 </resources>

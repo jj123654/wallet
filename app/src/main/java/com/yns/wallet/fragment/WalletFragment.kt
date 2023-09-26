@@ -70,7 +70,7 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
             rvList.layoutManager =
                 WrapContentLinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             rvList.adapter = walletListAdapter
-
+            walletListAdapter.setEmptyView(R.layout.common_empty_view)
             tvDetail.onClick {
                 startActivity(DetailActivity::class.java)
             }

@@ -40,6 +40,7 @@
             android:textSize="@dimen/sp_16"/>
 
         <View
+            android:id="@+id/divider_view"
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:background="@color/transaction_blue_tv_color"/>

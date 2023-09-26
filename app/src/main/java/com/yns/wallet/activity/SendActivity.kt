@@ -94,6 +94,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         val rvList = view.findViewById<RecyclerView>(R.id.rv_list)
         rvList.layoutManager = LinearLayoutManager(this)
         rvList.adapter = chooseTokenListAdapter
+        chooseTokenListAdapter.setEmptyView(R.layout.common_empty_view)
 
         list.clear()
         walletViewModel.tokenLiveData.value?.forEach {

@@ -261,5 +261,7 @@
     <string name="back_up_time">Back up time：</string>
     <string name="back_up_name">Account name：</string>
     <string name="back_up_address">Account address：</string>
+    <string name="no_data">No Data</string>
+    <string name="has_hd_wallet_tips">You already have a HD wallet. Accounts that are not imported by current HD wallet mnemonics will be displayed as private key wallets.</string>
 
 </resources>

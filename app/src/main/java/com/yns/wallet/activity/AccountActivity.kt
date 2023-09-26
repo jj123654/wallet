@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
+import com.yns.wallet.R
 import com.yns.wallet.adapter.AccountListAdapter
 import com.yns.wallet.api.NetworkApi
 import com.yns.wallet.api.WalletApi
@@ -57,6 +58,7 @@ class AccountActivity : BaseActivity<ActivityAccountBinding>() {
                 )
             )
             rvList.adapter = accountListAdapter
+            accountListAdapter.setEmptyView(R.layout.common_empty_view)
         }
 
         walletViewModel.walletsLiveData.observe(this) {

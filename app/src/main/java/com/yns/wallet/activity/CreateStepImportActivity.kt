@@ -109,6 +109,7 @@ class CreateStepImportActivity : BaseActivity<ActivityCreateStepImport2Binding>(
         val rvList = view.rvList
         rvList.layoutManager = WrapContentLinearLayoutManager(this)
         rvList.adapter = adapter
+        adapter.setEmptyView(R.layout.common_empty_view)
         loadData(page)
     }
 

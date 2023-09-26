@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
+import com.yns.wallet.R
 import com.yns.wallet.adapter.TransactionListAdapter
 import com.yns.wallet.base.BaseFragment
 import com.yns.wallet.bean.TransactionRecordModel
@@ -47,6 +48,7 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
                 )
             )
             recyclerView.adapter = transactionListAdapter
+            transactionListAdapter.setEmptyView(R.layout.common_empty_view)
         }
         viewBinding.refresh.isRefreshing = true
         viewBinding.refresh.setOnRefreshListener {

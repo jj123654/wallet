@@ -54,6 +54,7 @@ class AddTokenActivity : BaseActivity<ActivityAddTokenBinding>() {
 
             rvList.layoutManager = WrapContentLinearLayoutManager(this@AddTokenActivity)
             rvList.adapter = tokenListAdapter
+            tokenListAdapter.setEmptyView(R.layout.common_empty_view)
 
             etSearch.doAfterTextChanged {
                 if(it.toString().isNullOrEmpty()){
