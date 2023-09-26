@@ -35,7 +35,7 @@ public class WalletApi {
 
     public static String getAddressFromMenomic(String menomic, int index) {
         // 实现从助记词获取地址的逻辑
-        return UUID.randomUUID().toString();
+        return "TPLqbpGHXZSLLRYKws6hFheRjYotNY8Xw"+index;
     }
 
     public static WalletEntity createWalletFromMenomic(String menomic, int index, String password) {
