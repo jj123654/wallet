@@ -79,7 +79,8 @@ object Request {
     @JvmStatic
     fun <T> post(
         path: String,
-        body: Map<String, Any> = HashMap(), clazz: Type
+        body: Map<String, Any> = HashMap(),
+        clazz: Type
     ): Response<T> {
         val body = RequestHelper.createBody(body)
         var response: okhttp3.Response? = null

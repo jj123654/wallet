@@ -2,8 +2,10 @@ package com.yns.wallet.api
 
 import android.text.TextUtils
 import android.util.Log
+import com.yns.wallet.base.Constant
 import com.yns.wallet.bean.Response
 import com.yns.wallet.service.Request
+import com.yns.wallet.service.RequestHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -11,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.internal.closeQuietly
 import java.lang.StringBuilder
+import java.lang.reflect.Type
 
 /**
  *  //时间 默认穿0
@@ -156,13 +159,31 @@ object NetworkApi {
         )
     }
 
+    @JvmOverloads
+    @JvmStatic
+    fun verifyAddress(
+        address:String = "",
+        visible:Boolean = true
+    ): Response<String> {
+        return postSuspend(
+            Constant.VERIFY_ADDRESS,
+            mapOf(
+                "address" to address,
+                "visible" to visible
+            )
+        )
+    }
+
+    /**
+     * get请求
+     */
     private fun getSuspend(path: String, params: Map<String, Any?>): Response<String> {
         val client = Request.okhttp
-        val url = BASE_URL + path //拼接url
+//        val url = BASE_URL + path //拼接url
         var response: okhttp3.Response? = null
         try {
             val r = client.newCall(
-                okhttp3.Request.Builder().url(makeUrl(url, params)).method("GET", null).build()
+                okhttp3.Request.Builder().url(makeUrl(RequestHelper.check(path), params)).method("GET", null).build()
             )
             response = r.execute()
             if (response.isSuccessful) {
@@ -178,6 +199,40 @@ object NetworkApi {
         } finally {
             response?.closeQuietly()
         }
+        return Response.error()
+    }
+
+    /**
+     * post请求
+     */
+    private fun postSuspend(path: String,
+                            body: Map<String, Any> = HashMap()
+    ): Response<String> {
+        val body = RequestHelper.createBody(body)
+        var response: okhttp3.Response? = null
+        try {
+            val r = Request.okhttp.newCall(
+                okhttp3.Request.Builder().url(RequestHelper.check(path))
+                    .post(body).apply {
+                        RequestHelper.addCommonParams(this)
+                    }.build()
+            ).execute()
+            response = r
+            if (response.isSuccessful) {
+                val body = response.body?.string()
+                if (!TextUtils.isEmpty(body)) {
+                    return Response.success(body)
+                }
+            }
+            return Response.error(response.code, msg = response.body?.string())
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return Response.error(-1, msg = e.message)
+
+        } finally {
+            response?.closeQuietly()
+        }
+        return Response.error()
     }
 
     private fun makeUrl(url: String, map: Map<String, Any?>): String {

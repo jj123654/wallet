@@ -10,4 +10,6 @@ object Constant {
 
     const val TX_URL = "https://tronscan.org/#/transaction/"
 
+    const val VERIFY_ADDRESS = "https://api.shasta.trongrid.io/wallet/validateaddress"
+
 }

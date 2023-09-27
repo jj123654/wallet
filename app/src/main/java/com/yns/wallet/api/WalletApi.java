@@ -10,6 +10,7 @@ import com.yns.wallet.bean.Response;
 import com.yns.wallet.bean.SearchTokenInfo;
 import com.yns.wallet.bean.TokenTransferTransactionModel;
 import com.yns.wallet.bean.TransactionRecordModel;
+import com.yns.wallet.bean.VerifyAddressResult;
 import com.yns.wallet.io.JsonUtils;
 
 import java.util.ArrayList;
@@ -190,6 +191,7 @@ public class WalletApi {
         return yunusToken;
     }
 
+    //和addWalletToken重复
     public static void addWalletTokenAdress(String walletAddress, String token) {
         Log.i("addWalletTokenAdress", String.format("addWalletToken wallet:%s token:%s", walletAddress, token));
     }
@@ -257,6 +259,18 @@ public class WalletApi {
 
         return token;
 
+    }
+
+    public static VerifyAddressResult verifyAddress(String address,boolean visible){
+        VerifyAddressResult result = null;
+
+        Response<String> stringResponse = NetworkApi.verifyAddress(address,visible);
+        if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
+            String response = stringResponse.getData();
+            result = JsonUtils.jsonToObject(response, VerifyAddressResult.class);
+        }
+
+        return result;
     }
 
     public static SwapInfo getSwapInfoFromTokenAddress(String fromTokenAddress, String toTokenAddress, String fromTokenAmount) {

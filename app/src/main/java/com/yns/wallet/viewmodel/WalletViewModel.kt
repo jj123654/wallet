@@ -4,8 +4,10 @@ import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yns.wallet.api.NetworkApi
 import com.yns.wallet.api.WalletApi
 import com.yns.wallet.bean.*
+import com.yns.wallet.service.Request
 import kotlinx.coroutines.*
 
 /**
@@ -245,6 +247,15 @@ class WalletViewModel : ViewModel() {
                 WalletApi.changePassword(newPassword,oldPassword)
             }
             callback()
+        }
+    }
+
+    fun verifyAddress(address:String,visible:Boolean,callback: suspend (VerifyAddressResult) -> Unit){
+        viewModelScope.launch {
+            val r = withContext(Dispatchers.IO){
+                WalletApi.verifyAddress(address,visible)
+            }
+            callback(r)
         }
     }
 

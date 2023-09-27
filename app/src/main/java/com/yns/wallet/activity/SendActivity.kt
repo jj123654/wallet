@@ -83,23 +83,17 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                     return@onClick
                 }
 
-//                if(etPwd.text.toString().isNullOrEmpty()){
-//                    showToast(getString(R.string.enter_or_paste_the_address))
-//                    return@onClick
-//                }
-//                if(etBalance.text.toString().isNullOrEmpty()){
-//                    showToast(getString(R.string.please_enter_amount))
-//                    return@onClick
-//                }
-//                if(BigDecimal(etBalance.text.toString()).compareTo(currentTokenBean?.balance)==1){
-//                    showToast(getString(R.string.should_less_than_balance))
-//                    return@onClick
-//                }
-//                if(BigDecimal(etBalance.text.toString()).compareTo(BigDecimal("0.000001"))==-1){
-//                    showToast(getString(R.string.should_more_than_0_000001))
-//                    return@onClick
-//                }
-                ConfirmLoopFragment.newInstance(true,if(currentTokenBean?.name=="TRX") "" else currentTokenBean?.address,etBalance.text.toString(),etPwd.text.toString(),currentTokenBean).add(supportFragmentManager)
+                showProgress()
+                walletViewModel.verifyAddress(etPwd.text.toString(),true){
+                    dismissProgress()
+                    if(it!=null&&it.result){
+                        ConfirmLoopFragment.newInstance(true,if(currentTokenBean?.name=="TRX") "" else currentTokenBean?.address,etBalance.text.toString(),etPwd.text.toString(),currentTokenBean).add(supportFragmentManager)
+                    }else{
+                        addressEmptyTv.visibility = View.VISIBLE
+                        addressEmptyTv.text = getString(R.string.address_is_not_valid)
+
+                    }
+                }
 
             }
             ivMineName2.text = currentTokenBean?.name
