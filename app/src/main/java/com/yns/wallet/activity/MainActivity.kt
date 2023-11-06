@@ -14,6 +14,7 @@ import com.yns.wallet.adapter.ContentPagerAdapter
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityMainBinding
 import com.yns.wallet.fragment.AssetsFragment
+import com.yns.wallet.fragment.DiscoverFragment
 import com.yns.wallet.fragment.MineFragment
 import com.yns.wallet.fragment.WalletFragment
 
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         viewBinding.apply {
             tabFragments.add(WalletFragment())
+            tabFragments.add(DiscoverFragment())
             tabFragments.add(MineFragment())
             viewPager.adapter =
                 ContentPagerAdapter(
@@ -39,16 +41,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 )
 
             ivWallet.onClick {
-                if(viewPager.currentItem == 1){
-                    changeState(true)
+                if(viewPager.currentItem == 1||viewPager.currentItem==2){
+                    changeState(0)
                     viewPager.setCurrentItem(0,false)
                 }
 
             }
-            ivMine.onClick {
-                if(viewPager.currentItem == 0){
-                    changeState(false)
+            ivDiscover.onClick {
+                if(viewPager.currentItem == 0||viewPager.currentItem==2){
+                    changeState(1)
                     viewPager.setCurrentItem(1,false)
+                }
+            }
+            ivMine.onClick {
+                if(viewPager.currentItem == 0||viewPager.currentItem == 1){
+                    changeState(2)
+                    viewPager.setCurrentItem(2,false)
                 }
             }
         }
@@ -64,14 +72,25 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 //        walletCreateDialog.window?.setLayout(width, height)
     }
 
-    private fun changeState(walletOrMe:Boolean){
+    private fun changeState(tab:Int){
         viewBinding.apply {
-            if(walletOrMe){
-                ivWallet.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_wallet_selected),null,null)
-                ivMine.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_user_normal),null,null)
-            }else{
-                ivWallet.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_wallet_normal),null,null)
-                ivMine.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_user_selected),null,null)
+            when(tab){
+                0->{
+                    ivWallet.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_wallet_selected),null,null)
+                    ivDiscover.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_discover_normal),null,null)
+                    ivMine.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_user_normal),null,null)
+                }
+                1->{
+                    ivWallet.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_wallet_normal),null,null)
+                    ivDiscover.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_discover_selected),null,null)
+                    ivMine.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_user_normal),null,null)
+                }
+                2->{
+                    ivWallet.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_wallet_normal),null,null)
+                    ivDiscover.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_discover_normal),null,null)
+                    ivMine.setCompoundDrawablesWithIntrinsicBounds(null,resources.getDrawable(R.mipmap.icon_user_selected),null,null)
+                }
+
             }
         }
     }

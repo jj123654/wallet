@@ -17,10 +17,6 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         Log.i("walletTest","mineFragment创建")
-        val statusBar = view.findViewById<View>(R.id.v_status_bar)
-        if (statusBar != null) {
-            statusBar.layoutParams.height = getStatusBarHeight(view.context)
-        }
         view.findViewById<View>(R.id.v_about_bg).setOnClickListener {
             startActivity(Intent(view.context, AboutUsActivity::class.java))
         }

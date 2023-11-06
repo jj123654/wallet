@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
 import com.yns.wallet.R
+import com.yns.wallet.util.getStatusBarHeight
 import com.yns.wallet.viewmodel.WalletViewModel
 import com.yns.wallet.util.globalViewModel
 import java.lang.Exception
@@ -44,6 +45,11 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
 
         vb ?: findView(container).apply {
             initView(vb!!.root, savedInstanceState)
+            //通用状态栏高度
+            val statusBar = vb!!.root.findViewById<View>(R.id.v_status_bar)
+            if (statusBar != null) {
+                statusBar.layoutParams.height = getStatusBarHeight(vb!!.root.context)
+            }
         }
 
         if (vb != null && vb!!.root != null) {

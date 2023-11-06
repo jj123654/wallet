@@ -52,6 +52,7 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
         }
 
         walletViewModel.tokenLiveData.observe(this){
+            viewBinding.refresh.isRefreshing = false
             walletListAdapter.setList(it)
             totalBalance = it.sumOf {
                 it.usd?: BigDecimal("0")
@@ -60,6 +61,10 @@ class WalletFragment : BaseFragment<FragmentHomeBinding>() {
         }
 
         walletViewModel.getCurrentWallet {
+        }
+
+        viewBinding.refresh.setOnRefreshListener {
+            walletViewModel.getWalletAllToken(walletViewModel.currentWalletLiveData.value?.address?:"")
         }
 
         walletViewModel.getWalletAllToken(walletViewModel.currentWalletLiveData.value?.address?:"")
