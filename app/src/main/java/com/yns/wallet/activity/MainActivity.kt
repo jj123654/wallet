@@ -11,6 +11,7 @@ import androidx.fragment.app.commit
 import com.qmuiteam.qmui.kotlin.onClick
 import com.yns.wallet.R
 import com.yns.wallet.adapter.ContentPagerAdapter
+import com.yns.wallet.api.WalletApi
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityMainBinding
 import com.yns.wallet.fragment.AssetsFragment
@@ -30,6 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 //            }
 //        }
 
+        WalletApi.initWebView(viewBinding.webView)
         viewBinding.apply {
             tabFragments.add(WalletFragment())
             tabFragments.add(DiscoverFragment())

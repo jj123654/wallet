@@ -1,6 +1,7 @@
 package com.yns.wallet.api;
 
 import android.util.Log;
+import android.webkit.WebView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -12,6 +13,8 @@ import com.yns.wallet.bean.TokenTransferTransactionModel;
 import com.yns.wallet.bean.TransactionRecordModel;
 import com.yns.wallet.bean.VerifyAddressResult;
 import com.yns.wallet.io.JsonUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +39,7 @@ public class WalletApi {
 
     public static String getAddressFromMenomic(String menomic, int index) {
         // 实现从助记词获取地址的逻辑
-        return "TPLqbpGHXZSLLRYKws6hFheRjYotNY8Xw"+index;
+        return "TPLqbpGHXZSLLRYKws6hFheRjYotNY8Xw" + index;
     }
 
     public static WalletEntity createWalletFromMenomic(String menomic, int index, String password) {
@@ -133,8 +136,7 @@ public class WalletApi {
         return source;
     }
 
-    public static  WalletEntity getwalltbyaddress(String address)
-    {
+    public static WalletEntity getwalltbyaddress(String address) {
         //    todo:我简单的返回个空对象
         return new WalletEntity();
     }
@@ -261,10 +263,10 @@ public class WalletApi {
 
     }
 
-    public static VerifyAddressResult verifyAddress(String address,boolean visible){
+    public static VerifyAddressResult verifyAddress(String address, boolean visible) {
         VerifyAddressResult result = null;
 
-        Response<String> stringResponse = NetworkApi.verifyAddress(address,visible);
+        Response<String> stringResponse = NetworkApi.verifyAddress(address, visible);
         if (stringResponse.isSuccessful() && stringResponse.getData() != null) {
             String response = stringResponse.getData();
             result = JsonUtils.jsonToObject(response, VerifyAddressResult.class);
@@ -343,6 +345,10 @@ public class WalletApi {
         return filteredRecords;
     }
 
+    public static void initWebView(@NotNull WebView webView) {
+        //TODO webview相关
+    }
+
     public enum TX_RESULT {
         SUCCESS,
         FAILED
@@ -403,7 +409,7 @@ public class WalletApi {
             long startTime,
             int size,
             int type//0全部，1转出，2转入
-    ){
+    ) {
         //type 暂时传0
         Response<String> r = NetworkApi.transaction(type, startTime, size, walletAddress);
         if (r.isSuccessful() && r.getData() != null) {
