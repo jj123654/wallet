@@ -25,12 +25,12 @@
         android:theme="@style/Theme.Wallet"
         tools:targetApi="31">
 
-        <!--腾讯X5内核-->
-        <service
-            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
-            android:label="dexopt"
-            android:process=":dexopt" >
-        </service>
+<!--        &lt;!&ndash;腾讯X5内核&ndash;&gt;-->
+<!--        <service-->
+<!--            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"-->
+<!--            android:label="dexopt"-->
+<!--            android:process=":dexopt" >-->
+<!--        </service>-->
 
         <activity
             android:name=".activity.SplashActivity"

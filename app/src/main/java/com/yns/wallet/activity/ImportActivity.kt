@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.qmuiteam.qmui.kotlin.onClick
+import com.qmuiteam.qmui.util.QMUIKeyboardHelper
 import com.yns.wallet.R
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityImportBinding
@@ -22,6 +23,12 @@ class ImportActivity : BaseActivity<ActivityImportBinding>() {
         isFirstLoad = intent.getBooleanExtra("isFirstLoad",false)
 
         viewBinding.apply {
+            bgLayout.onClick {
+                if(QMUIKeyboardHelper.isKeyboardVisible(this@ImportActivity)){
+                    QMUIKeyboardHelper.hideKeyboard(inputEdit)
+                }
+            }
+
             pasteTv.onClick {
                 inputEdit.setText(pastePrivateKey())
             }

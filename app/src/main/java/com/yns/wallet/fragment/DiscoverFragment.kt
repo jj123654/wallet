@@ -2,9 +2,12 @@ package com.yns.wallet.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.webkit.WebSettings
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tencent.smtt.sdk.WebSettings
 import com.yns.wallet.R
 import com.yns.wallet.activity.AssetsDetailActivity
 import com.yns.wallet.adapter.AssetsListAdapter
@@ -13,6 +16,7 @@ import com.yns.wallet.bean.TransactionRecordModel
 import com.yns.wallet.databinding.FragmentDiscoverBinding
 import com.yns.wallet.databinding.FragmentTransactionRecordBinding
 import com.yns.wallet.util.ViewModelUtils.lazyViewModel
+import com.yns.wallet.util.showToast
 import com.yns.wallet.viewmodel.AssetViewModel
 import com.yns.wallet.widget.decoration.WrapContentLinearLayoutManager
 
@@ -21,6 +25,18 @@ class DiscoverFragment:BaseFragment<FragmentDiscoverBinding>() {
 
 
     override fun initView(root: View, savedInstanceState: Bundle?) {
+        viewBinding.searchEt.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEND || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE || event != null && KeyEvent.KEYCODE_ENTER == event.keyCode && KeyEvent.ACTION_DOWN == event.action) {
+                if(viewBinding.searchEt.text.isNullOrEmpty()){
+                    return@setOnEditorActionListener true
+                }
+                viewBinding.webView.loadUrl(viewBinding.searchEt.text.toString())
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+
+
         val webSettings: WebSettings = viewBinding.webView.settings
         webSettings.useWideViewPort = true
         webSettings.loadWithOverviewMode = true

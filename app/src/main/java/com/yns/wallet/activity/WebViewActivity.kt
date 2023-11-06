@@ -2,7 +2,7 @@ package com.yns.wallet.activity
 
 import android.os.Bundle
 import android.view.View
-import com.tencent.smtt.sdk.WebSettings
+import android.webkit.WebSettings
 import com.yns.wallet.base.BaseActivity
 import com.yns.wallet.databinding.ActivityWebViewBinding
 import com.yns.wallet.util.showToast
@@ -58,7 +58,7 @@ class WebViewActivity : BaseActivity<ActivityWebViewBinding>() {
         }
 
         val url = intent.getStringExtra("url")
-        viewBinding.webView.loadUrl(url)
+        url?.let { viewBinding.webView.loadUrl(it) }
     }
 
 
