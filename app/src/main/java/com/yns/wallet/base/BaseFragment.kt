@@ -115,13 +115,13 @@ abstract class BaseFragment<VB : ViewBinding> : DialogFragment() {
     }
 
     fun add(manager: FragmentManager, tag: String?) {
-        try {
-            val clazz = Fragment::class.java
-            val f = clazz.getField("mShownByMe")
-            f.set(this, true)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+//        try {
+//            val clazz = Fragment::class.java
+//            val f = clazz.getField("mShownByMe")
+//            f.set(this, true)
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
         val ft = manager.beginTransaction()
         ft.setReorderingAllowed(true)
         ft.add(this, tag)
