@@ -152,6 +152,9 @@
         <activity
             android:name=".activity.WebViewActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchDiscoveryActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

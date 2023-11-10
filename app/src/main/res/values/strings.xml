@@ -220,6 +220,11 @@
     <string name="check_for_updates">Check For Updates</string>
     <string name="search">Search</string>
     <string name="search_for_token_address">Search for token address</string>
+    <string name="search_or_enter_the_address">Search or enter the address</string>
+    <string name="recommended_applications">Recommended Applications</string>
+    <string name="collect">Collect</string>
+    <string name="how_to_collect_a_page">How to collect a page？</string>
+    <string name="search_history">Search history</string>
     <string name="popular_tokens">Popular Tokens</string>
     <string name="congratulations">Congratulations</string>
     <string name="create_wallet_success_tips">You‘ve successfully import your wallet.\nRemember to keep your secret recovery phrase\nsafe, it’s your responsibility!</string>

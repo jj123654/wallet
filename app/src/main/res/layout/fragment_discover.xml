@@ -3,29 +3,118 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <View
-        android:id="@+id/v_status_bar"
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="200dp"
+        android:background="#8775AE"/>
 
-    <EditText
-        android:id="@+id/search_et"
+    <LinearLayout
+        android:id="@+id/goto_webview_tv"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginVertical="5dp"
-        android:hint="@string/search"
-        android:paddingHorizontal="15dp"
-        android:imeOptions="actionSearch"
-        android:singleLine="true"
-        android:background="@drawable/shape_edit_dc_bg_color"/>
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="-23dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_edit_dc_bg_color">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/et_search"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/transaction_blue_tv_color"
+            android:layout_marginHorizontal="8dp"
+            android:text="@string/search_or_enter_the_address"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/et_scan"
+            android:layout_marginRight="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp"
+            android:text="@string/recommended_applications"/>
 
 
-<!--    <WebView-->
-<!--        android:id="@+id/webView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="20dp"
+            android:textColor="@color/transaction_blue_color"
+            android:text="@string/all"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_discovery_recommend"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/collect"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:background="@drawable/shape_edit_import_bg"
+        android:layout_marginHorizontal="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/collect"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_marginLeft="12dp"
+            android:text="@string/how_to_collect_a_page"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_arrow"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingVertical="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="15dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="horizontal"
+    android:background="@drawable/shape_edit_import_bg"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:background="@drawable/shape_home_list_icon_bg"
+        android:src="@mipmap/eth"
+        android:padding="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp">
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_string_eth"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Unleash the power of your digital assets"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/transaction_blue_tv_color"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

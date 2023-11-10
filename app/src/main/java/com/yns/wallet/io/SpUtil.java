@@ -34,6 +34,7 @@ public class SpUtil {
     public static final String DELIVER_CITY_LIST = "DELIVER_CITY_LIST";
     public static final String SIMULATION_TEST_WRONG_LIST = "SIMULATION_TEST_WRONG_LIST";
     public static final String APP_VERSION = "APP_VERSION";//App版本号
+    public static final String DISCOVERY_LIST = "DISCOVERY_LIST";//发现页跳转过的webView
 
 
     public static void initSp(Context context) {
