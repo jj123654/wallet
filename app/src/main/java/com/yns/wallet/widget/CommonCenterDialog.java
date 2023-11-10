@@ -1,5 +1,6 @@
 package com.yns.wallet.widget;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.media.Image;
@@ -255,8 +256,8 @@ public class CommonCenterDialog {
     private void showDialog(View view) {
         dialog.setView(view);
         dialog.show();
-        if (context instanceof BaseActivity) {
-            WindowManager windowManager = ((BaseActivity) context).getWindowManager();
+        if (context instanceof Activity) {
+            WindowManager windowManager = ((Activity) context).getWindowManager();
             Display display = windowManager.getDefaultDisplay();
             WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
             lp.width = (int) (display.getWidth() * 0.8); //设置宽度
