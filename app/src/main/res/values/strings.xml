@@ -222,6 +222,9 @@
     <string name="search_for_token_address">Search for token address</string>
     <string name="search_or_enter_the_address">Search or enter the address</string>
     <string name="recommended_applications">Recommended Applications</string>
+    <string name="yunus">YUNUS</string>
+    <string name="sunswap">SunSwap</string>
+    <string name="discovery_recommend_tips">Unleash the power of your digital assets</string>
     <string name="collect">Collect</string>
     <string name="how_to_collect_a_page">How to collect a page？</string>
     <string name="search_history">Search history</string>

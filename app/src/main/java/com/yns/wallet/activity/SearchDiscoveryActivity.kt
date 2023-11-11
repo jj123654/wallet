@@ -26,7 +26,8 @@ class SearchDiscoveryActivity : BaseActivity<ActivitySearchDiscoveryBinding>() {
 
     private val discoveryHistoryListAdapter:DiscoveryHistoryListAdapter by lazy{
         DiscoveryHistoryListAdapter(mutableListOf()).apply{
-            setOnItemChildClickListener{ adapter,view,position->
+            addChildClickViewIds(R.id.link_tv,R.id.close_img)
+            setOnItemChildClickListener{ adapter, view, position->
                 if(view.id == R.id.link_tv){
                     gotoWebView(discoveryHistoryListAdapter.data[position])
                 } else if (view.id == R.id.close_img) {
@@ -70,11 +71,17 @@ class SearchDiscoveryActivity : BaseActivity<ActivitySearchDiscoveryBinding>() {
                 finish()
             }
 
+            deleteAllImg.onClick {
+                historyList?.clear()
+                discoveryHistoryListAdapter.setList(mutableListOf())
+                SpUtil.remove(SpUtil.DISCOVERY_LIST)
+            }
+
             recyclerView.layoutManager = WrapContentLinearLayoutManager(
                 this@SearchDiscoveryActivity
             )
-            discoveryHistoryListAdapter.setList(historyList)
             recyclerView.adapter = discoveryHistoryListAdapter
+            discoveryHistoryListAdapter.setList(historyList)
 
         }
 

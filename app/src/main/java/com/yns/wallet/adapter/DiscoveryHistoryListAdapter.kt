@@ -16,13 +16,11 @@ class DiscoveryHistoryListAdapter(data: MutableList<String>?) :
         R.layout.item_discorvery_history,
         data
     ) {
-    var current = -1
+
     override fun convert(holder: BaseHolder, item: String) {
         holder.vb.apply {
             linkTv.text = item
 
-            addChildClickViewIds(R.id.link_tv)
-            addChildClickViewIds(R.id.close_img)
         }
 
 
@@ -32,10 +30,5 @@ class DiscoveryHistoryListAdapter(data: MutableList<String>?) :
         val vb = ItemDiscorveryHistoryBinding.bind(view)
     }
 
-
-    fun refreshData(position: Int) {
-        current = position
-        notifyDataSetChanged()
-    }
 
 }
